@@ -22,6 +22,13 @@ app.use(helmet({
 
 const PORT = 8080 || process.env.PORT
 
+app.get("/",(request, response)=> {
+    ///server to client
+    response.json({
+        message: "Sever is running " + PORT
+    })
+}) 
+
 app.listen(PORT, ()=>{ 
     console.log("Server is running", PORT)
 })
