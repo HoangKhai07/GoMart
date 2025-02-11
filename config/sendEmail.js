@@ -6,7 +6,7 @@ if(!process.env.RESEND_API){
     console.log("Provide RESEND_API in the side .env file")
 }
 
-const resend = new Resend('process.env.RESEND_API');
+const resend = new Resend(process.env.RESEND_API);
 
 const sendEmail = async({sendTo, subject, html})=>{
     try {
