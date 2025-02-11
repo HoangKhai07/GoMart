@@ -38,7 +38,7 @@ const orderSchema = new mongoose.Schema({
         ref: "address"
     },
 
-    subTatalAmt: {
+    subTotalAmt: {
         type: Number,
         default: 0,
     },
