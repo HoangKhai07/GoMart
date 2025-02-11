@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import sendEmail from '../config/sendEmail.js'
 import generatedAccessToken from '../utils/generatedAccessToken.js'
 import generatedRefreshToken from '../utils/generatedRefreshToken.js'
+import uploadImageCloudinary from '../utils/uploadImageCloudinary.js'
 
 export async function registerUserController(request, response){
     try {
@@ -28,8 +29,8 @@ export async function registerUserController(request, response){
             })
         }
 
-        const salt = await bcryptjs.genSalt(10)
-        const hashPassword = await bcryptjs.hash(password, salt)
+        const salt = await bcrypt.genSalt(10)
+        const hashPassword = await bcrypt.hash(password, salt)
 
         const payload = {
             name,
@@ -180,7 +181,7 @@ export async function loginController(request, response){
 //logout controller
 export async function logoutController(request, response){
     try{
-        
+        const userid = request.userId
 
         const cookiesOption = {
             httpOnly: true,
@@ -191,6 +192,9 @@ export async function logoutController(request, response){
         response.clearCookie('accessToken', cookiesOption)
         response.clearCookie('refreshToken', cookiesOption) 
 
+        const removeRefreshToken = await UserModel.findByIdAndUpdate(userid,{
+            refresh_token: ""
+        })
         return response.json({
             message: "Đăng xuất thành công!",
             error: false,
@@ -206,3 +210,32 @@ export async function logoutController(request, response){
         })
     }
 } 
+
+//upload user avatar
+export async function uploadAvatar(request, response){
+    try{
+        const userId = request.userId
+        const image = request.file
+
+        const upload = await uploadImageCloudinary(image)
+
+        const updateUser = await UserModel.findByIdAndUpdate(userId,{
+            avatar: upload.url
+        })
+
+        return response.json({
+                message: "upload profile",
+                data: {
+                    _id: userId,
+                    avatar: upload.url
+                }
+        })
+       
+    } catch(error){
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
