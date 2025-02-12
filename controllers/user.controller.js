@@ -5,6 +5,8 @@ import sendEmail from '../config/sendEmail.js'
 import generatedAccessToken from '../utils/generatedAccessToken.js'
 import generatedRefreshToken from '../utils/generatedRefreshToken.js'
 import uploadImageCloudinary from '../utils/uploadImageCloudinary.js'
+import generatedOtp from '../utils/generatedOtp.js'
+import forgotPasswordTemplate from '../utils/forgotPasswordOtp.js'
 
 //register controller
 export async function registerUserController(request, response){
@@ -75,8 +77,8 @@ export async function verifyEmailController(request, response){
         const user = await UserModel.findOne({ _id : code})
 
         if(!user) {
-            rerurn.response.status(400).json({
-                message: "Sai mã code!",
+            return response.status(400).json({
+                message: "Sai mã OTP!",
                 error: true,
                 success: false
             })
@@ -87,7 +89,7 @@ export async function verifyEmailController(request, response){
         })
 
         return response.json({
-            message: "Xác minh email thành công!",
+            message: "Xác minh e mail thành công!",
             error: false,
             success: true
         })
@@ -95,7 +97,7 @@ export async function verifyEmailController(request, response){
         return response.status(500).json({
             message: error.message || error,  
             error: true,
-            sucess: true
+            sucess: false
         })
     }
 }
@@ -275,6 +277,166 @@ export async function updateUserDetails(request, response){
             message: error.message || error,
             error: true,
             success: false
+        })
+    }
+}
+
+//forgot password
+export async function forgotPasswordController(request, response){
+    try {
+
+        const {email}= request.body
+
+        const user = await UserModel.findOne({email})
+
+        if(!user){
+            return response.status(400).json({
+                message: "Email chưa được đăng ký!",
+                error: true,
+                success: false
+            })
+        }
+
+        const otp = generatedOtp()
+        const expireTime = new Date() + 60 * 60 * 1000
+
+        const update = await UserModel.findByIdAndUpdate(user._id, {
+            forgot_password_otp: otp,
+            forgot_password_expiry: new Date(expireTime).toISOString()
+        })
+
+        await sendEmail({
+            sendTo: email, 
+            subject: "Yêu cầu đặt lại mật khẩu goMart",
+            html: forgotPasswordTemplate({
+                name: user.name,
+                otp: otp
+            })
+        })
+
+        return response.json({
+            message: "Mã OTP đã được gửi, vui lòng kiểm tra email!",
+            error: false,
+            success: true
+        })
+        
+    } catch (error) {
+        return response.status(500).json({
+            messsage: error.message || message,
+            error: true,
+            success: false
+        })
+    }
+}
+
+//verify forgot password
+export async function verifyForgotPasswordOtp(request, response){
+    try {
+        const {email, otp} = request.body
+
+        if(!email || !otp){
+            return response.status(400).json({
+                message: "Vui lòng nhập mã OTP",
+                error: true,
+                success: false 
+        })
+        }
+        const user = await UserModel.findOne({email})
+
+        if(!user){
+            return response.status(400).json({
+                message: "Email chưa được đăng ký!",
+                error: true,
+                success: false
+            })
+        }
+
+        const currentTime = new Date().toISOString
+        
+        if(user.forgot_password_expiry < currentTime){
+            return response.status(400).json({
+                message: "Mã OTP đã hết hạn!",
+                error: true,
+                success: false
+            })
+        }
+
+        if(otp !== user.forgot_password_otp){
+            return response.status(400).json({
+                message: "Mã OTP không hợp lệ!",
+                error: true,
+                success: false
+        })
+    }
+
+    return response.json({
+        message: "Xác minh OTP thành công",
+        error: false,
+        success: true 
+    })
+        
+        
+    } catch (error) {
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false 
+        })
+        
+    }
+}
+
+//reset password
+export async function resetPassword(request, response){
+    try {
+        const {email, newPassword, confirmPassword} = request.body
+
+        if(!email || ! newPassword || !confirmPassword){
+            return response.status(400).json({
+                message: "Vui lòng nhập thông tin",
+                // error: true,
+                // success: false
+            })
+        }
+
+        const user = await UserModel.findOne({email})
+
+        if(!user){
+            return response.status(400).json({
+                message: "email chưa được đăng ký!",
+                error: true,
+                success: false
+            })
+        }
+
+        if(newPassword !== confirmPassword){
+            return response.status(400).json({
+                message: "Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại!",
+                error: true,
+                success: false
+            })
+        }
+
+        const salt = await bcryptjs.genSalt(10)
+        const hashPassword = await bcryptjs.hash(newPassword, salt)
+
+        const update = await UserModel.findByIdAndUpdate(user._id,{
+            password: hashPassword
+
+        })
+
+        return response.json({
+            messsage: "Thay đổi mật khẩu thành công!",
+            error: false,
+            success: true
+         
+        })
+        
+    } catch (error) {
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false 
         })
     }
 }
