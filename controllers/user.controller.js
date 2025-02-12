@@ -1,11 +1,12 @@
 import verifyEmailTemplate from '../utils/VerifyEmailTemplate.js'
 import UserModel from '../model/user.model.js'
-import bcrypt from 'bcryptjs'
+import bcryptjs from 'bcryptjs'
 import sendEmail from '../config/sendEmail.js'
 import generatedAccessToken from '../utils/generatedAccessToken.js'
 import generatedRefreshToken from '../utils/generatedRefreshToken.js'
 import uploadImageCloudinary from '../utils/uploadImageCloudinary.js'
 
+//register controller
 export async function registerUserController(request, response){
     try {
         const {name, email, password} = request.body    
@@ -29,8 +30,8 @@ export async function registerUserController(request, response){
             })
         }
 
-        const salt = await bcrypt.genSalt(10)
-        const hashPassword = await bcrypt.hash(password, salt)
+        const salt = await bcryptjs.genSalt(10)
+        const hashPassword = await bcryptjs.hash(password, salt)
 
         const payload = {
             name,
@@ -66,6 +67,7 @@ export async function registerUserController(request, response){
     }
 }
 
+//verify email controller
 export async function verifyEmailController(request, response){
     try {
         const {code} = request.body 
@@ -126,6 +128,7 @@ export async function loginController(request, response){
                 error: true,
                 success: false
         })
+
     }
 
     if(user.status !== "Active"){
@@ -137,7 +140,7 @@ export async function loginController(request, response){
         })
     }
 
-    const checkPassword = bcrypt.compare(password, user.password)
+    const checkPassword = await bcryptjs.compare(password, user.password)
 
     if(!checkPassword){
         return response.status(400).json({
@@ -231,6 +234,42 @@ export async function uploadAvatar(request, response){
                 }
         })
        
+    } catch(error){
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+//update user
+export async function updateUserDetails(request, response){
+    try{
+        const userId = request.userId 
+        const {name, email, password, mobile} = request.body
+
+        let hashPassword = ""
+
+        if(password){
+            const salt = await bcryptjs.genSalt(10)
+            hashPassword = await bcryptjs.hash(password, salt)
+        }
+
+        const updateUser = await UserModel.updateOne({_id: userId},{
+            ...(name && {name: name}),
+            ...(email && {email: email}),
+            ...(mobile && {mobile: mobile}),
+            ...(password && {password: hashPassword}),
+        })
+
+        return response.json({
+            message:"Cập nhật thông tin tài khoản thành công!",
+            error: false,
+            success: true,
+            data: updateUser
+        })
+
     } catch(error){
         return response.status(500).json({
             message: error.message || error,
