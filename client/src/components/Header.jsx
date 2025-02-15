@@ -1,15 +1,20 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import Search from './Search'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, Links, useLocation, useNavigate } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
+import { TiShoppingCart } from "react-icons/ti";
 import useMobile from '../hook/useMobile';
 
 const Header = () => {
   const [ isMobile ] = useMobile()
   const location = useLocation()
-
+  const navigate = useNavigate()
   const isSearchPage = location.pathname === "/search"
+
+  const redirectToLoginPage = () => {
+    navigate("/login")
+  }
   return (
     <header className='h-24 lg:h-20 lg:shadow-md sticky top-0 flex items-center'>
       {
@@ -20,7 +25,7 @@ const Header = () => {
             <Link to={"/"} className='h-full flex justify-center items-center '>
               <img
                 src={logo}
-                width={250}
+                width={220}
                 height={60}
                 alt='logo'
                 className='hidden lg:block'
@@ -40,12 +45,25 @@ const Header = () => {
             <Search/>
           </div>
   
-          <div className=''>
+          {/* login and my cart */}
+          <div className=''> 
             <button className='text-neutral-500 lg:hidden'>
               <FaUser size={23}/>
             </button>
-          <div  className='hidden lg:block'>
-            My cart and login
+
+          <div  className='hidden lg:flex items-center gap-5'>
+            <button onClick={redirectToLoginPage} className='flex items-center gap-3 px-10 py-4 bg-slate-100 hover:bg-slate-300 rounded-xl border-2 font-medium'>
+            Login
+            </button>
+
+            <button className='flex items-center gap-3 px-3 py-3 bg-primary-light-2 hover:bg-green-800 rounded-xl text-white'>
+              <div>
+                  <TiShoppingCart size={33}/>
+              </div>
+              <div>
+                  <p className='font-bold'>Giỏ hàng</p>
+              </div>
+            </button>
           </div>
           </div>
   

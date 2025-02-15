@@ -22,11 +22,11 @@ const Search = () => {
     navigate("/search")
   }
 
-  console.log("search", isSearchPage)
+  // console.log("search", isSearchPage)
 
   return (
-    <div className='w-fullbg-red-500 min-w-[320px] lg:min-w-[420px] h11 lg:h-12 rounded-lg 
-    border-2 p-1 overflow-hidden flex items-center w-full text-neutral-500
+    <div className='w-full min-w-[320px] lg:min-w-[800px] h11 lg:h-12 rounded-lg 
+    border-2 p-1 overflow-hidden flex items-center  text-neutral-500
      bg-slate-50 focus-within:border-primary-light' >
       <div>
       
@@ -47,7 +47,7 @@ const Search = () => {
       <div className='w-full h-full'>
         {
           !isSearchPage ? (
-            <div onClick={redirectToSearchPage}  className='w-full h-full flex items-center' >
+            <div onClick={redirectToSearchPage}  className='w-full h-full flex items-center font-medium' >
               <TypeAnimation
                 sequence={[
                   'Tìm kiếm "ngũ cốc dinh dưỡng"',
