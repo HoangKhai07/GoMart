@@ -1,20 +1,16 @@
 import React, { useState } from 'react'
 import login from '../assets/login.jpg'
-import { FaEyeSlash } from "react-icons/fa6";
-import { FaEye } from "react-icons/fa6";
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastArror from '../utils/AxiosToastError';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const forgotPassword = () => {
     const [data, setData] = useState({
         email: "",
-        password: "",
     })
 
-    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -36,7 +32,7 @@ const Login = () => {
 
        try {
         const response = await Axios({
-            ...SummaryApi.login ,
+            ...SummaryApi.forgot_password,
             data: data
           })
 
@@ -48,9 +44,8 @@ const Login = () => {
             toast.success(response.data.message)
             setData({
                 email: "",
-                password: "", 
             })
-            navigate("/")
+            navigate("/verification-otp")
           }
 
           console.log('response', response)
@@ -74,7 +69,7 @@ const Login = () => {
             </div>
 
             <div className='bg-primary-light-3 my-4 p-5 w-full max-w-lg mx-auto rounded'>
-                <p className='text-3xl text-white font-bold flex items-center justify-center'>Đăng nhập</p>
+                <p className='text-3xl text-white font-bold flex items-center justify-center'>Đặt lại mật khẩu</p>
 
                 <form className="grid gap-5 mt-6" onSubmit={handleSubmit}>
                     <div className='grid gap-1'>
@@ -89,41 +84,17 @@ const Login = () => {
                         />
                     </div>
 
-                    <div className='grid gap-1'>
-                        <label htmlFor="password" className='text-white font-semibold'>Mật khẩu:</label>
-                        <div className='bg-blue-50 p-2 rounded flex items-center'>
-                            <input type={showPassword ? "text" : "password"}
-                                id='password'
-                                className='w-full font-semibold outline-none'
-                                name='password'
-                                placeholder='Vui lòng điền vào mật khẩu'
-                                value={data.password}
-                                onChange={handleChange}
-                            />
-
-                            <div onClick={() => setShowPassword(preve => !preve)} className='cursor-pointer'>
-                                {
-                                    showPassword ? (
-                                        <FaEye />
-                                    ) : (
-                                        <FaEyeSlash />
-                                    )
-                                }
-
-                            </div>
-                        </div>
-                        <Link to={"/forgot-password"} className='block ml-auto p-2 font-bold text-white hover:text-primary-light-2'>Quên mật khẩu?</Link>
-                    </div>
+                  
 
 
                     <button disabled={!valideValid} className={` ${valideValid ? "bg-white hover:bg-slate-300": "bg-gray-400"    } text-black font-bold text-xl
                       mx-20 my-4 p-2 rounded`}>
-                        Đăng nhập
+                        Gửi mã OTP
                     </button>
                 </form>
 
                 <p className='text-white font-bold flex justify-center gap-2 '>
-                    Bạn chưa có tài khoản? <Link to={"/register"} className='hover:text-primary-light-2'>Đăng ký ngay</Link>
+                    Bạn chưa nhận được mã? <Link to={"/register"} className='hover:text-primary-light-2'>Gửi lại</Link>
                 </p>  
             </div>
 
@@ -132,4 +103,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default forgotPassword

@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastArror from '../utils/AxiosToastError';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [data, setData] = useState({
@@ -17,6 +18,7 @@ const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -53,6 +55,13 @@ const Register = () => {
 
           if(response.data.success){ 
             toast.success(response.data.message)
+            setData({
+                name: "",
+                email: "",
+                password: "",
+                confirmPassword: ""
+            })
+            navigate("/login")
           }
 
           console.log('response', response)
@@ -154,11 +163,15 @@ const Register = () => {
 
                     <button disabled={!valideValid} className={` ${valideValid ? "bg-white hover:bg-slate-300": "bg-gray-400"    } text-black font-bold text-xl
                       mx-20 my-4 p-2 rounded`}>
-                        Register
+                        Đăng ký
                     </button>
 
                     
                 </form>
+
+                <p className='text-white font-bold flex justify-center gap-2 '>
+                    Bạn đã có tài khoản? <Link to={"/login"} className='hover:text-primary-light-2'>Đăng nhập</Link>
+                </p>
             </div>
 
            
