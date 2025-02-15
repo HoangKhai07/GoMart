@@ -7,6 +7,7 @@ import generatedRefreshToken from '../utils/generatedRefreshToken.js'
 import uploadImageCloudinary from '../utils/uploadImageCloudinary.js'
 import generatedOtp from '../utils/generatedOtp.js'
 import forgotPasswordTemplate from '../utils/forgotPasswordOtp.js'
+import jwt from 'jsonwebtoken'
 
 //register controller
 export async function registerUserController(request, response){
@@ -25,8 +26,8 @@ export async function registerUserController(request, response){
         const user = await UserModel.findOne({email})
 
         if(user){
-            return response.json({
-                massage : "Email này đã được sử dụng!",
+            return response.status(400).json({
+                message : "Email này đã được sử dụng!",
                 error: true,
                 success: false 
             })
@@ -101,7 +102,6 @@ export async function verifyEmailController(request, response){
         })
     }
 }
-
 
 //login controller
 export async function loginController(request, response){
@@ -438,5 +438,60 @@ export async function resetPassword(request, response){
             error: true,
             success: false 
         })
+    }
+}
+
+//refresh token
+export async function refreshTokenController(request, response){
+    try {
+        const refreshToken = request.cookies.refreshToken || request?.header?.authorization?.split(" ")[1]
+
+        if(!refreshToken){
+            return response.status(401).json({
+                message: "Unauthorrized access",
+                error: true,
+                success: false
+            })
+        }
+
+        const verifyToken = await jwt.verify(refreshToken, process.env.SECRET_KEY_REFRESH_TOKEN)
+
+
+        if(!verifyToken){
+            return response.status(401).json({
+                message: "Token is expired",
+                error: true,
+                success: false
+            })
+        }
+        console.log("verifyToken", verifyToken)
+
+        const userId = verifyToken?.id
+
+        const newAccessToken = await generatedAccessToken(userId)
+
+        const cookiesOption = {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None"    
+        }   
+
+        response.cookie('accesstoken', newAccessToken,cookiesOption)
+
+        return response.json({
+            message: "New Access token generated",
+            error: false,
+            success: true,
+            data: {
+                accessToken: newAccessToken
+            }
+        })
+    } catch (error) {
+        return response(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+        
     }
 }
