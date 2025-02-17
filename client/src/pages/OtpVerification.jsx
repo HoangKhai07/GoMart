@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import login from '../assets/login.jpg'
+import otp from '../assets/otp.jpg'
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
@@ -12,13 +12,14 @@ const OtpVerification = () => {
     const inputRef = useRef([])
     const location = useLocation()
 
+    console.log("location", location)
+
     useEffect(()=>{
         if(!location?.state?.email){
-            navigate('/forgot-password')
+            navigate("/forgot-password")
         }
     },[])
 
-    console.log("location", location)
 
     const valideValid = data.every(el => el)
 
@@ -31,7 +32,7 @@ const OtpVerification = () => {
             ...SummaryApi.forgot_password_otp_verification,
             data: {
              otp: data.join(""),
-             email: location.state?.email
+             email: location?.state?.email
             }
           })
 
@@ -42,14 +43,20 @@ const OtpVerification = () => {
           if(response.data.success){ 
             toast.success(response.data.message)
             setData(["","","","","",""])
-            // navigate("/verification-otp")
+            navigate("/reset-password",{
+                state: {
+                    data: response.data,
+                    email: location?.state?.email
+                }
+            })
           }
-
-          console.log('response', response)
        } catch (error) {
+            console.log("error", error)
             AxiosToastArror(error)
        }
     }
+
+    
 
 
 
@@ -57,7 +64,7 @@ const OtpVerification = () => {
         <section className='w-full container mx-auto px-2 py-10 flex justify-between'>
             <div>
                 <img
-                    src={login}
+                    src={otp}
                     width={600}
                     height={100}
                     alt='logo'
