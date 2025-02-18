@@ -1,0 +1,47 @@
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Axios from '../utils/Axios'
+import SummaryApi from '../common/SummaryApi'
+import { logout } from '../store/userSlice'
+import toast from 'react-hot-toast'
+import AxiosToastArror from '../utils/AxiosToastError'
+
+const UserMenu = ({close}) => {
+    const user = useSelector((state)=> state.user)
+    const dispatch = useDispatch()
+    const handleLogout = async() => {
+        try {
+            const response = await Axios({
+                ...SummaryApi.logout
+            })
+
+            if(response.data.success){
+                close()
+                dispatch(logout())
+                localStorage.clear()
+                toast.success(response.data.message)
+            }
+        } catch (error) {
+            AxiosToastArror(error)
+        }
+    }
+  return (
+    <div>
+      <div className='font-bold gap-3'>Tài khoản của tôi</div>
+      <div className='text-sm'>{user.name || user.mobile}</div>
+
+      <div className='p-[0.5px] bg-slate-400 my-2' ></div>
+      <div className='text-base font-bold grid gap-3'>
+        <Link to={""} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
+        <Link to={""} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
+        <button onClick={handleLogout} className='text-left hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
+      </div>
+
+
+
+    </div>
+  )
+}
+
+export default UserMenu
