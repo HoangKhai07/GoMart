@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { logout } from '../store/userSlice'
@@ -11,6 +11,8 @@ import { FiExternalLink } from "react-icons/fi";
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleLogout = async () => {
     try {
       const response = await Axios({
@@ -27,16 +29,23 @@ const UserMenu = ({ close }) => {
       AxiosToastArror(error)
     }
   }
+
+  const handleClose = () => {
+    if(close){
+      close()
+    }
+  }
   return (
     <div>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
       <div className='text-sm flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
-        {user.name || user.mobile} <Link to={"/dashboard/profile"}><FiExternalLink /></Link></div>
+        {user.name || user.mobile} 
+        <Link onClick={handleClose} to={"/dashboard/profile"}><FiExternalLink /></Link></div>
 
       <div className='p-[0.5px] bg-slate-400 my-2' ></div>
       <div className='text-base font-bold grid gap-3'>
-        <Link to={""} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
-        <Link to={""} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
+        <Link onClick={handleClose} to={""} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
+        <Link onClick={handleClose} to={""} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
         <button onClick={handleLogout} className='text-left hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
       </div>
     </div>
