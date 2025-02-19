@@ -10,7 +10,7 @@ const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSearchPage, setIsSearchPage] = useState(false)
-  const [isMobile ] = useMobile()
+  const [isMobile] = useMobile()
 
   useEffect(() => {
     const isSearch = location.pathname == "/search"
@@ -25,29 +25,29 @@ const Search = () => {
   // console.log("search", isSearchPage)
 
   return (
-    <div className='w-full min-w-[320px] lg:min-w-[800px] h11 lg:h-12 rounded-lg 
+    <div className='w-full min-w-[20px] lg:min-w-[800px] h11 lg:h-12 rounded-lg 
     border-2 p-1 overflow-hidden flex items-center  text-neutral-500
      bg-slate-50 focus-within:border-primary-light' >
       <div>
-      
-      {
-        (isMobile && isSearchPage) ? (
-          <Link to={"/"} className='flex justify-center items-center h-full p-2 m-1 group-focus-within: text-primary-light bg-white shadow-md rounded-md'>
-            <FaArrowLeft/>
-          </Link>
-        ) : (
-          <button className='flex justify-center items-center h-full p-3 group-focus-within: text-primary-light'>
-            <IoSearchOutline size={25} />
-          </button>
-        )
-      }
-      
+
+        {
+          (isMobile && isSearchPage) ? (
+            <Link to={"/"} className='flex justify-center items-center h-full p-2 m-1 group-focus-within: text-primary-light bg-white shadow-md rounded-md'>
+              <FaArrowLeft />
+            </Link>
+          ) : (
+            <button className='flex justify-center items-center h-full p-3 group-focus-within: text-primary-light'>
+              <IoSearchOutline size={25} />
+            </button>
+          )
+        }
+
       </div>
 
       <div className='w-full h-full'>
         {
           !isSearchPage ? (
-            <div onClick={redirectToSearchPage}  className='w-full h-full flex items-center font-medium' >
+            <div onClick={redirectToSearchPage} className='w-full h-full flex items-center font-medium' >
               <TypeAnimation
                 sequence={[
                   'Tìm kiếm "ngũ cốc dinh dưỡng"',
@@ -78,7 +78,7 @@ const Search = () => {
               />
             </div>
 
-            )
+          )
         }
       </div>
     </div>

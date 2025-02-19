@@ -6,30 +6,32 @@ import SummaryApi from '../common/SummaryApi'
 import { logout } from '../store/userSlice'
 import toast from 'react-hot-toast'
 import AxiosToastArror from '../utils/AxiosToastError'
+import { FiExternalLink } from "react-icons/fi";
 
-const UserMenu = ({close}) => {
-    const user = useSelector((state)=> state.user)
-    const dispatch = useDispatch()
-    const handleLogout = async() => {
-        try {
-            const response = await Axios({
-                ...SummaryApi.logout
-            })
+const UserMenu = ({ close }) => {
+  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+  const handleLogout = async () => {
+    try {
+      const response = await Axios({
+        ...SummaryApi.logout
+      })
 
-            if(response.data.success){
-                close()
-                dispatch(logout())
-                localStorage.clear()
-                toast.success(response.data.message)
-            }
-        } catch (error) {
-            AxiosToastArror(error)
-        }
+      if (response.data.success) {
+        close()
+        dispatch(logout())
+        localStorage.clear()
+        toast.success(response.data.message)
+      }
+    } catch (error) {
+      AxiosToastArror(error)
     }
+  }
   return (
     <div>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
-      <div className='text-sm'>{user.name || user.mobile}</div>
+      <div className='text-sm flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
+        {user.name || user.mobile} <Link to={"/dashboard/profile"}><FiExternalLink /></Link></div>
 
       <div className='p-[0.5px] bg-slate-400 my-2' ></div>
       <div className='text-base font-bold grid gap-3'>
@@ -37,9 +39,6 @@ const UserMenu = ({close}) => {
         <Link to={""} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
         <button onClick={handleLogout} className='text-left hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
       </div>
-
-
-
     </div>
   )
 }
