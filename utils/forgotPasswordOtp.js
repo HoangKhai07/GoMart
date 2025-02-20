@@ -5,7 +5,7 @@ const forgotPasswordTemplate = ({name, otp}) => {
         <p>Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản của bạn. Vui lòng sử dụng mã OTP dưới đây để tiếp tục: </p>
         <p>Mã OTP của bạn: </p>
 
-        <div style="text-align: center; background: #9FBD48; padding: 15px; font-size: 20px; font-weight: 700 ;">
+        <div style="text-align: center; background: #4caf50; padding: 15px; font-size: 20px; font-weight: 700 ;">
             ${otp}
         </div>
 

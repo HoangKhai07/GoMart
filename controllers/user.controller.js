@@ -155,6 +155,10 @@ export async function loginController(request, response){
     const accessToken = await generatedAccessToken(user._id)
     const refreshToken = await generatedRefreshToken(user._id)
 
+    const updateUser = await UserModel.findByIdAndUpdate(user?._id,{
+        last_login_date: new Date()
+    })
+
     const cookiesOption = {
         httpOnly: true,
         secure: true,
@@ -230,6 +234,8 @@ export async function uploadAvatar(request, response){
 
         return response.json({
                 message: "upload profile",
+                success: true,
+                error: false,
                 data: {
                     _id: userId,
                     avatar: upload.url
@@ -281,6 +287,28 @@ export async function updateUserDetails(request, response){
     }
 }
 
+//get login user details
+export async function userDetails(request, response){
+    try {
+        const userId = request.userId
+        
+
+        const user = await UserModel.findById(userId).select('-password -refresh_token')
+        return response.json({
+            message: "Thông tin tài khoản",
+            data: user,
+            error: false,
+            success: true 
+        })
+    } catch (error) {
+        return response.json({
+            message: "Đã có lỗi xảy ra!",
+            error: true,
+            success: false
+        })
+    }
+}
+
 //forgot password
 export async function forgotPasswordController(request, response){
     try {
@@ -307,7 +335,7 @@ export async function forgotPasswordController(request, response){
 
         await sendEmail({
             sendTo: email, 
-            subject: "Yêu cầu đặt lại mật khẩu goMart",
+            subject: "Yêu cầu đặt lại mật khẩu GoMart",
             html: forgotPasswordTemplate({
                 name: user.name,
                 otp: otp
@@ -369,8 +397,13 @@ export async function verifyForgotPasswordOtp(request, response){
         })
     }
 
+    const updateUser = await UserModel.findByIdAndUpdate(user._id,{
+        forgot_password_expiry: "",
+        forgot_password_otp: ""
+    })
+
     return response.json({
-        message: "Xác minh OTP thành công",
+        message: "Xác minh OTP thành công!",
         error: false,
         success: true 
     })
@@ -426,7 +459,7 @@ export async function resetPassword(request, response){
         })
 
         return response.json({
-            messsage: "Thay đổi mật khẩu thành công!",
+            message: "Thay đổi mật khẩu thành công!",
             error: false,
             success: true
          

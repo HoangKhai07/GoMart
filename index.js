@@ -38,4 +38,5 @@ app.listen(PORT, ()=>{
 })
 
 app.use('/api/user', userRouter)
+app.use('/api/category', userRouter)
 
