@@ -77,21 +77,20 @@ const Login = () => {
                 <img
                     src={login}
                     width={600}
-                    height={100}
                     alt='logo'
-                    className='hidden lg:block'
+                    className='hidden lg:block ml-20 rounded'
                 />
             </div>
 
-            <div className='bg-primary-light-3 my-4 p-5 w-full max-w-lg mx-auto rounded'>
-                <p className='text-3xl text-white font-bold flex items-center justify-center'>Đăng nhập</p>
+            <div className='bg-white shadow-lg p-5 w-full max-w-lg mx-auto rounded'>
+                <p className='text-3xl text-black font-bold flex items-center justify-center'>Đăng nhập</p>
 
                 <form className="grid gap-5 mt-6" onSubmit={handleSubmit}>
                     <div className='grid gap-1'>
-                        <label htmlFor="email" className='text-white font-semibold'>Email:</label>
+                        <label htmlFor="email" className='text-black font-semibold'>Email:</label>
                         <input type="email"
                             id='email'
-                            className='bg-blue-50 p-2 border rounded font-semibold outline-none'
+                            className='shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light'
                             name='email'
                             placeholder='Vui lòng điền email'
                             value={data.email}
@@ -100,11 +99,11 @@ const Login = () => {
                     </div>
 
                     <div className='grid gap-1'>
-                        <label htmlFor="password" className='text-white font-semibold'>Mật khẩu:</label>
-                        <div className='bg-blue-50 p-2 rounded flex items-center'>
+                        <label htmlFor="password" className='text-black font-semibold'>Mật khẩu:</label>
+                        <div className='bg-blue-50 p-2 rounded flex items-center '>
                             <input type={showPassword ? "text" : "password"}
                                 id='password'
-                                className='w-full font-semibold outline-none'
+                                className='w-full border font-semibold outline-none'
                                 name='password'
                                 placeholder='Vui lòng điền vào mật khẩu'
                                 value={data.password}
@@ -122,17 +121,17 @@ const Login = () => {
 
                             </div>
                         </div>
-                        <Link to={"/forgot-password"} className='block ml-auto p-2 font-bold text-white hover:text-primary-light-2'>Quên mật khẩu?</Link>
+                        <Link to={"/forgot-password"} className='block ml-auto p-2 font-bold text-black hover:text-primary-light-2'>Quên mật khẩu?</Link>
                     </div>
 
 
-                    <button disabled={!valideValid} className={` ${valideValid ? "bg-white hover:bg-slate-300": "bg-gray-400"    } text-black font-bold text-xl
+                    <button disabled={!valideValid} className={` ${valideValid ? "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80  rounded-lg text-sm  text-center ": "bg-gray-400"    } text-black font-bold text-xl
                       mx-20 my-4 p-2 rounded`}>
                         Đăng nhập
                     </button>
                 </form>
 
-                <p className='text-white font-bold flex justify-center gap-2 '>
+                <p className='text-black font-bold flex justify-center gap-2 '>
                     Bạn chưa có tài khoản? <Link to={"/register"} className='hover:text-primary-light-2'>Đăng ký ngay</Link>
                 </p>  
             </div>

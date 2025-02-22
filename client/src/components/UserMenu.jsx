@@ -38,15 +38,26 @@ const UserMenu = ({ close }) => {
   return (
     <div>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
-      <div className='text-sm flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
+      <div className='text-lg flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
         {user.name || user.mobile} 
         <Link onClick={handleClose} to={"/dashboard/profile"}><FiExternalLink /></Link></div>
 
       <div className='p-[0.5px] bg-slate-400 my-2' ></div>
       <div className='text-base font-bold grid gap-3'>
-        <Link onClick={handleClose} to={""} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
-        <Link onClick={handleClose} to={""} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
-        <button onClick={handleLogout} className='text-left hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
+
+        <Link onClick={handleClose} to={"/dashboard/product"} className='hover:text-primary-light hover:bg-gray-100' >Sản phẩm</Link>
+
+        <Link onClick={handleClose} to={"/dashboard/upload-product"} className='hover:text-primary-light hover:bg-gray-100' >Thêm sản phẩm</Link>
+
+        <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm</Link>
+
+        <Link onClick={handleClose} to={"/dashboard/sub-category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm con</Link>
+
+        <Link onClick={handleClose} to={"/dashboard/myorders"} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
+
+        <Link onClick={handleClose} to={"/dashboard/address"} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
+
+        <button onClick={handleLogout} className='text-left text-primary-light-ytb hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
       </div>
     </div>
   )

@@ -64,6 +64,7 @@ const Profile = () => {
             }
         })
     }
+
     return (
         <div>
             {/* avatar */}
@@ -129,7 +130,7 @@ const Profile = () => {
                     />
                 </div>
 
-                <button className='bg-white border font-extralight rounded w-full p-2 my-4 flex items-center justify-center hover:bg-primary-light hover:text-black'>
+                <button className='bg-white border font-extralight rounded w-full p-2 my-10 flex items-center justify-center hover:bg-primary-light-3 hover:text-black'>
                     {
                         loading ? "Loading" : "Lưu"
                     }

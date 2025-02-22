@@ -67,11 +67,11 @@ const forgotPassword = () => {
                     width={600}
                     height={100}
                     alt='logo'
-                    className='hidden lg:block'
+                    className='hidden lg:block ml-20 rounded'
                 />
             </div>
 
-            <div className='bg-primary-light-3 my-4 p-5 w-full max-w-lg mx-auto rounded'>
+            <div className='bg-primary-light-3 p-5 w-full max-w-lg mx-auto rounded'>
                 <p className='text-3xl text-white font-bold flex items-center justify-center'>Đặt lại mật khẩu</p>
 
                 <form className="grid gap-5 mt-6" onSubmit={handleSubmit}>

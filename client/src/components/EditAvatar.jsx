@@ -4,7 +4,8 @@ import SummaryApi from '../common/SummaryApi'
 import Axios from '../utils/Axios'
 import AxiosToastArror from '../utils/AxiosToastError'
 import { updateAvatar } from '../store/userSlice'
-import { IoIosCloseCircleOutline } from "react-icons/io";
+// import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
 const EditAvatar = ({close}) => {
     const user = useSelector(state => state.user)
@@ -45,7 +46,7 @@ const EditAvatar = ({close}) => {
     bg-neutral-900 flex items-center justify-center'>
             <div className='bg-white max-w-sm w-full rounded p-4 flex flex-col items-center justify-center'>
                 <button onClick={close  } className='hover:text-primary-light ml-auto w-fit block my-2'>
-                    <IoIosCloseCircleOutline size={30}/>
+                    <IoClose size={30}/>
                 </button>
                 <div className=' w-20 rounded-full overflow-hidden drop-shadow-2xl flex justify-center items-center mx-auto'>
                     {
