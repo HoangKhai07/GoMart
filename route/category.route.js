@@ -1,9 +1,10 @@
 import { Router} from 'express'
-import auth from '../middleware/auth'
-import { AddCategoryController } from '../controllers/catelory.controller'
+import auth from '../middleware/auth.js'
+import { AddCategoryController, getCategoryController } from '../controllers/catelory.controller.js'
 
 const categoryRouter = Router()
 
 categoryRouter.post("/add-category",auth,AddCategoryController)
+categoryRouter.get("/get", getCategoryController)
 
 export default categoryRouter
