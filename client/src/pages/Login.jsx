@@ -1,144 +1,178 @@
 import React, { useState } from 'react'
-import login from '../assets/login.jpg'
-import { FaEyeSlash } from "react-icons/fa6";
-import { FaEye } from "react-icons/fa6";
-import toast from 'react-hot-toast';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
-import AxiosToastArror from '../utils/AxiosToastError';
-import { Link, useNavigate } from 'react-router-dom';
-import fetchUserDetails from '../utils/fetchUserDetails';
-import { useDispatch } from 'react-redux';
-import { setUserDetails } from '../store/userSlice';
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { FaEye, FaEyeSlash } from "react-icons/fa6"
+import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
+
+import loginImage from '../assets/login.jpg'
+import Axios from '../utils/Axios'
+import SummaryApi from '../common/SummaryApi'
+import fetchUserDetails from '../utils/fetchUserDetails'
+import { setUserDetails } from '../store/userSlice'
+import AxiosToastArror from '../utils/AxiosToastError'
 
 const Login = () => {
-    const [data, setData] = useState({
-        email: "",
-        password: "",
-    })
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  })
+  const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-    const [showPassword, setShowPassword] = useState(false)
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
+  const isValidForm = Object.values(formData).every(val => val.trim())
 
-        setData((preve) => {
-            return {
-                ...preve,
-                [name]: value
-            }
-        })
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!isValidForm) return
+
+    setIsLoading(true)
+    try {
+      const response = await Axios({
+        ...SummaryApi.login,
+        data: formData
+      })
+
+      if (response.data.success) {
+        const { accessToken, refreshToken } = response.data.data
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('refreshToken', refreshToken)
+
+        const userDetails = await fetchUserDetails()
+        dispatch(setUserDetails(userDetails.data))
+        
+        toast.success('Đăng nhập thành công!')
+        navigate("/")
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      AxiosToastArror(error)
+    } finally {
+      setIsLoading(false)
     }
+  }
 
-    const valideValid = Object.values(data).every(el => el)
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl w-full flex gap-8">
+        {/* Left side - Image */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hidden lg:block w-1/2"
+        >
+          <img
+            src={loginImage}
+            alt="Login"
+            className="w-full h-full object-cover rounded-xl shadow-2xl"
+          />
+        </motion.div>
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
+        {/* Right side - Login Form */}
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full lg:w-1/2 space-y-8 bg-white p-10 rounded-xl shadow-lg"
+        >
+          <div>
+            <h2 className="text-center text-3xl font-extrabold text-gray-900">
+              Đăng nhập
+            </h2>
+          </div>
 
-
-       try {
-        const response = await Axios({
-            ...SummaryApi.login ,
-            data: data
-          })
-
-          if(response.data.error){
-            toast.error(response.data.message)
-          }
-
-          if(response.data.success){ 
-            toast.success(response.data.message)
-            localStorage.setItem('accessToken', response.data.data.accessToken)
-            localStorage.setItem('refreshToken', response.data.data.refreshToken)
-
-            const UserDetails = await fetchUserDetails()
-            dispatch(setUserDetails(UserDetails.data))
-
-            setData({
-                email: "",
-                password: "", 
-            })
-            navigate("/")
-          }
-
-          console.log('response', response)
-       } catch (error) {
-            AxiosToastArror(error)
-       }
-    }
-
-
-
-    return (
-        <section className='w-full container mx-auto px-2 py-10 flex justify-between'>
-            <div>
-                <img
-                    src={login}
-                    width={600}
-                    alt='logo'
-                    className='hidden lg:block ml-20 rounded'
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <div className="rounded-md shadow-sm space-y-4">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Nhập email của bạn"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Mật khẩu
+                </label>
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    placeholder="Nhập mật khẩu"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div className='bg-white shadow-lg p-5 w-full max-w-lg mx-auto rounded'>
-                <p className='text-3xl text-black font-bold flex items-center justify-center'>Đăng nhập</p>
-
-                <form className="grid gap-5 mt-6" onSubmit={handleSubmit}>
-                    <div className='grid gap-1'>
-                        <label htmlFor="email" className='text-black font-semibold'>Email:</label>
-                        <input type="email"
-                            id='email'
-                            className='shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light'
-                            name='email'
-                            placeholder='Vui lòng điền email'
-                            value={data.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <div className='grid gap-1'>
-                        <label htmlFor="password" className='text-black font-semibold'>Mật khẩu:</label>
-                        <div className='bg-blue-50 p-2 rounded flex items-center '>
-                            <input type={showPassword ? "text" : "password"}
-                                id='password'
-                                className='w-full border font-semibold outline-none'
-                                name='password'
-                                placeholder='Vui lòng điền vào mật khẩu'
-                                value={data.password}
-                                onChange={handleChange}
-                            />
-
-                            <div onClick={() => setShowPassword(preve => !preve)} className='cursor-pointer'>
-                                {
-                                    showPassword ? (
-                                        <FaEye />
-                                    ) : (
-                                        <FaEyeSlash />
-                                    )
-                                }
-
-                            </div>
-                        </div>
-                        <Link to={"/forgot-password"} className='block ml-auto p-2 font-bold text-black hover:text-primary-light-2'>Quên mật khẩu?</Link>
-                    </div>
-
-
-                    <button disabled={!valideValid} className={` ${valideValid ? "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80  rounded-lg text-sm  text-center ": "bg-gray-400"    } text-black font-bold text-xl
-                      mx-20 my-4 p-2 rounded`}>
-                        Đăng nhập
-                    </button>
-                </form>
-
-                <p className='text-black font-bold flex justify-center gap-2 '>
-                    Bạn chưa có tài khoản? <Link to={"/register"} className='hover:text-primary-light-2'>Đăng ký ngay</Link>
-                </p>  
+            <div className="flex items-center justify-between">
+              <div className="text-sm">
+                <Link to="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Quên mật khẩu?
+                </Link>
+              </div>
             </div>
 
-           
-        </section>
-    )
+            <div>
+              <button
+                type="submit"
+                disabled={!isValidForm || isLoading}
+                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
+                  isValidForm && !isLoading 
+                    ? 'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                    : 'bg-gray-400 cursor-not-allowed'
+                }`}
+              >
+                {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
+              </button>
+            </div>
+          </form>
+
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
+              Chưa có tài khoản?{' '}
+              <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                Đăng ký ngay
+              </Link>
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  )
 }
 
 export default Login

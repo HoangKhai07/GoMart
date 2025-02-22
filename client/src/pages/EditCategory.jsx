@@ -6,10 +6,11 @@ import SummaryApi from '../common/SummaryApi';
 import toast from 'react-hot-toast';
 import AxiosToastArror from '../utils/AxiosToastError';
 
-const UploadCategoryModel = ({ close, fetchData }) => {
+const EditCategory = ({ close, fetchData, data: CategoryData }) => {
     const [data, setData] = useState({
-        name: "",
-        image: ""
+        _id: CategoryData._id,
+        name: CategoryData.name,
+        image: CategoryData.image
     })
 
     const[loading, setLoading] = useState(false)
@@ -31,7 +32,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
         try {
             setLoading(true)
             const response = await Axios({
-                ...SummaryApi.add_category,
+                ...SummaryApi.update_category,
                 data: data
             })
 
@@ -56,9 +57,11 @@ const UploadCategoryModel = ({ close, fetchData }) => {
             return
         }
 
+        setLoading(true)
         const response = await UploadImage(file)
         const { data: ImageResponse } = response
-
+        setLoading(false)
+        
         setData((preve) => {
             return {
                 ...preve,
@@ -78,7 +81,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <div className='grid gap-1'>
-                            <label htmlFor="categoryName">Tên danh mục sản phẩm mới</label>
+                            <label htmlFor="categoryName">Tên danh mục sản phẩm</label>
                             <input
                                 type="text"
                                 id='categoryName'
@@ -111,7 +114,8 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                                     <div className={`
                                     ${!data.name ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
                                     p-2 rounded cursor-pointer border
-                                    `}>Upload
+                                    `}>
+                                        {loading ? "Loading..." : "Upload"}
                                     </div>
 
                                     <input disabled={!data.name} onChange={handleUploadCategoryImage} type="file" id="uploadcategoryimage"
@@ -124,7 +128,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                         <button onSubmit={handleSubmit} className={
                             `${!data.name || !data.image ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
                             flex justify-center cursor-pointer items-center mt-8 p-2 border rounded w-full font-medium text-lg`
-                        }>Thêm danh mục</button>
+                        }>Lưu</button>
                     </form>
                 </div>
             </section>
@@ -132,4 +136,4 @@ const UploadCategoryModel = ({ close, fetchData }) => {
     )
 }
 
-export default UploadCategoryModel
+export default EditCategory
