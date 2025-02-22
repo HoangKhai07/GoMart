@@ -42,6 +42,7 @@ export const AddCategoryController = async(request, response) => {
         })
     }
 }
+
 export const getCategoryController = async (req, res) => {
     try {
         const data = await CategoryModel.find()
@@ -59,3 +60,58 @@ export const getCategoryController = async (req, res) => {
         })
     }
 }
+
+export const updateCategoryController = async (req, res) => {
+    try {
+        const {_id, name, image} = req.body
+
+        if(!name || !image){
+            return res.status(400).json({
+                message: "Vui lòng nhập đầy đủ thông tin của danh mục!",
+                error: true,
+                success: false
+            })
+        }
+
+        const existingCategory = await CategoryModel.findOne({name: name})
+        if(existingCategory){
+            return res.status(400).json({
+                message: "Tên danh mục đã tồn tại, vui lòng chọn tên khác!",
+                error: true,
+                success: false
+            })
+        }
+       
+
+        const update = await CategoryModel.findOneAndUpdate(
+            { _id: _id },
+            {
+                name,
+                image
+            },
+            { new: true }
+        )
+
+        return res.json({
+            message: "Cập nhật danh mục sản phẩm thành công!",
+            error: false,
+            success: true,
+            data: update
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const deleteCategoryController = async (res, rep) => {
+    try {
+    } catch (error) {
+        
+    }
+}
+
+
