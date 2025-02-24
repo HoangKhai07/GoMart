@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import UploadCategoryModel from '../components/UploadCategoryModel'
 import Loading from '../components/Loading'
 import NoData from '../components/NoData.jsx'
+import ConfirmBox from '../components/confirmBox.jsx'
 import SummaryApi from '../common/SummaryApi.js'
 import Axios from '../utils/Axios.js'
 import EditCategory from './EditCategory.jsx'
+import AxiosToastArror from '../utils/AxiosToastError.js'
+import toast from 'react-hot-toast'
+
 
 
 const CategoryPage = () => {
@@ -15,6 +19,11 @@ const CategoryPage = () => {
   const [editData, setEditData] = useState({
     name: "",
     image:""
+  })
+
+  const [openDeleteCategory, setOpenDeleteCategory] = useState(false)
+  const [ deleteCategory, setDeleteCaterogy ] = useState({
+    _id: ""
   })
 
   const fetchCategory = async () => {
@@ -42,6 +51,25 @@ const CategoryPage = () => {
     fetchCategory()
   }, [])
 
+  const handleDeleteCategory = async() => {
+    try {
+      const response = await Axios({
+        ...SummaryApi.delete_category,
+        data: deleteCategory
+      })
+
+      const {data : responseData} = response
+
+      if(responseData.success){
+        toast.success(responseData.message)
+        fetchCategory()
+        setOpenDeleteCategory(false)
+      }
+    } catch (error) {
+      AxiosToastArror(error)
+    }
+  }
+
 
   return (
     <section>
@@ -55,11 +83,11 @@ const CategoryPage = () => {
         )
       }
 
-      <div className='p-4 grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3'>
+      <div className='p-4 grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3'>
         {
           categoryData.map((category, index) => {
             return (
-              <div key={index} className='w-40 h-56 my-4 flex flex-col justify-center items-center object-scale-down overflow-hidden rounded bg-blue-50 shadow-md'>
+              <div key={category._id} className='w-40 h-56 my-4 flex flex-col justify-center items-center object-scale-down overflow-hidden rounded bg-blue-50 shadow-md'>
                 <img
                   src={category.image}
                   alt={category.name}
@@ -69,8 +97,11 @@ const CategoryPage = () => {
                   <button onClick={() => {
                     setOpenEditCategory(true)  
                     setEditData(category)
-                  }} className='bg-primary-light-3 rounded py-1 px-4 hover:bg-primary-light  text-white'>Sửa</button>
-                  <button className='bg-red-500 rounded py-1 px-4 hover:bg-red-600 text-white'>Xóa</button>
+                  }} className='border border-primary-light-3 bg-green-50 rounded py-1 px-4 hover:bg-primary-light text-green-800'>Sửa</button>
+                  <button onClick={() => {
+                    setOpenDeleteCategory(true)
+                    setDeleteCaterogy(category)
+                  }} className='border-red-500 border bg-red-50 rounded py-1 px-4 hover:bg-red-600 text-red-500'>Xóa</button>
                 </div>
               </div>
 
@@ -95,6 +126,12 @@ const CategoryPage = () => {
       {
         openEditCategory && (
           <EditCategory data={editData} close={()=> setOpenEditCategory(false)} fetchData={fetchCategory}/>
+        )
+      }
+
+      {
+        openDeleteCategory && (
+          <ConfirmBox close={() => setOpenDeleteCategory(false)} cancel={() => setOpenDeleteCategory(false)} confirm={() => handleDeleteCategory()}/>
         )
       }
 

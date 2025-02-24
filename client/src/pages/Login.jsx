@@ -19,7 +19,7 @@ const Login = () => {
   })
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -51,7 +51,7 @@ const Login = () => {
 
         const userDetails = await fetchUserDetails()
         dispatch(setUserDetails(userDetails.data))
-        
+
         toast.success('Đăng nhập thành công!')
         navigate("/")
       } else {
@@ -65,67 +65,53 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl w-full flex gap-8">
-        {/* Left side - Image */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="hidden lg:block w-1/2"
-        >
-          <img
-            src={loginImage}
-            alt="Login"
-            className="w-full h-full object-cover rounded-xl shadow-2xl"
-          />
-        </motion.div>
+    <div className="min-h-screen flex">
+      {/* Left side - Image and Text */}
+      <div className="hidden lg:flex lg:w-1/2 bg-white p-12 flex-col justify-between">
+        <img
+          src={loginImage}
+          alt="Login"
+          sizes={60}
+          className="mt-8 rounded-lg"
+        />
+      </div>
 
-        {/* Right side - Login Form */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2 space-y-8 bg-white p-10 rounded-xl shadow-lg"
-        >
+      {/* Right side - Login Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="text-center text-3xl font-extrabold text-gray-900">
-              Đăng nhập
-            </h2>
+            <h2 className="text-3xl font-bold text-gray-900">Chào mừng trở lại!</h2>
+            <p className="mt-2 text-gray-600">Đăng nhập bằng Google hoặc tài khoản của bạn</p>
           </div>
 
+          <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md p-2 hover:bg-gray-50">
+            <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
+            Login with Google
+          </button>
+
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="rounded-md shadow-sm space-y-4">
+            <div className="space-y-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Username</label>
                 <input
-                  id="email"
-                  name="email"
                   type="email"
-                  required
+                  name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Nhập email của bạn"
+                  placeholder="example@gmail.com"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Mật khẩu
-                </label>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
                 <div className="relative">
                   <input
-                    id="password"
-                    name="password"
                     type={showPassword ? "text" : "password"}
-                    required
+                    name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Nhập mật khẩu"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-light-3 focus:border-primary-3"
                   />
                   <button
                     type="button"
@@ -138,38 +124,31 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="text-sm">
-                <Link to="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Quên mật khẩu?
-                </Link>
-              </div>
+            <div className="text-right">
+              <Link to="/forgot-password" className="text-sm text-primary-light-3 hover:text-primary-light">
+                Forgot password?
+              </Link>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={!isValidForm || isLoading}
-                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-                  isValidForm && !isLoading 
-                    ? 'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                    : 'bg-gray-400 cursor-not-allowed'
+            <button
+              type="submit"
+              disabled={!isValidForm || isLoading}
+              className={`w-full py-2 px-4 rounded-md text-white font-medium ${isValidForm && !isLoading
+                  ? 'bg-primary-light-3 hover:bg-primary-light'
+                  : 'bg-gray-300 cursor-not-allowed'
                 }`}
-              >
-                {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
-              </button>
-            </div>
-          </form>
+            >
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
 
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Chưa có tài khoản?{' '}
-              <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <p className="text-center text-sm text-gray-600">
+              Bạn chưa có tài khoản?{' '}
+              <Link to="/register" className="text-primary-light-3 hover:text-primary-light">
                 Đăng ký ngay
               </Link>
             </p>
-          </div>
-        </motion.div>
+          </form>
+        </div>
       </div>
     </div>
   )
