@@ -98,7 +98,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                                         data.image ? (
                                             <img
                                                 src={data.image}
-                                                alt="catelory"
+                                                alt="category"
                                                 className='w-full h-full object-cover'
                                             />
                                         ) : (

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import UploadCategoryModel from '../components/UploadCategoryModel'
 import Loading from '../components/Loading'
 import NoData from '../components/NoData.jsx'
 import ConfirmBox from '../components/confirmBox.jsx'
 import SummaryApi from '../common/SummaryApi.js'
 import Axios from '../utils/Axios.js'
-import EditCategory from './EditCategory.jsx'
+import EditCategory from './EditCategory.jsx' 
 import AxiosToastArror from '../utils/AxiosToastError.js'
 import toast from 'react-hot-toast'
 
@@ -26,30 +27,38 @@ const CategoryPage = () => {
     _id: ""
   })
 
-  const fetchCategory = async () => {
-    try {
-      setLoading(true)
-      const response = await Axios({
-        ...SummaryApi.get_category,
+  const allCategory = useSelector(state => state.product.allCategory)
 
-      })
-      const { data: responseData } = response
-      console.log(responseData)
+   useEffect(() => { 
+    setCategoryData(allCategory)
+  }, [allCategory])
 
-      if (responseData.success) {
-        setCategoryData(responseData.data)
-      }
 
-    } catch (error) {
+  // const fetchCategory = async () => {
+  //   try {
+  //     setLoading(true)
+  //     const response = await Axios({
+  //       ...SummaryApi.get_category,
 
-    } finally {
-      setLoading(false)
-    }
-  }
+  //     })
+  //     const { data: responseData } = response
+  //     console.log(responseData)
 
-  useEffect(() => {
-    fetchCategory()
-  }, [])
+  //     if (responseData.success) {
+  //       setCategoryData(responseData.data)
+  //     }
+
+  //   } catch (error) {
+
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   // 
+  //   setCategoryData(allCategory)
+  // }, [allCategory])
 
   const handleDeleteCategory = async() => {
     try {
