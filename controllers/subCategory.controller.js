@@ -37,3 +37,24 @@ export const AddSubCategoryController = async (req, res) => {
          
     }
 } 
+
+export const getSubCategoryController = async (req, res) => {
+    try {
+        const data = await SubCategoryModel.find()
+            .populate('category')
+            .sort({createdAt: -1});
+
+        return res.json({
+            message: "sub catgory data",
+            data: data,
+            success: true,
+            error: false
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
