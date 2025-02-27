@@ -5,8 +5,9 @@ import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { logout } from '../store/userSlice'
 import toast from 'react-hot-toast'
-import AxiosToastArror from '../utils/AxiosToastError'
+import AxiosToastError from '../utils/AxiosToastError'
 import { FiExternalLink } from "react-icons/fi";
+import isAdmin from '../utils/IsAdmin'
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user)
@@ -26,12 +27,12 @@ const UserMenu = ({ close }) => {
         toast.success(response.data.message)
       }
     } catch (error) {
-      AxiosToastArror(error)
+      AxiosToastError(error)
     }
   }
 
   const handleClose = () => {
-    if(close){
+    if (close) {
       close()
     }
   }
@@ -39,19 +40,35 @@ const UserMenu = ({ close }) => {
     <div>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
       <div className='text-lg flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
-        {user.name || user.mobile} 
+        {user.name || user.mobile} <span className='text-sm text-primary-light'>{user.role === "ADMIN" ? "(Admin)" : ""}</span>
         <Link onClick={handleClose} to={"/dashboard/profile"}><FiExternalLink /></Link></div>
 
       <div className='p-[0.5px] bg-slate-400 my-2' ></div>
       <div className='text-base font-bold grid gap-3'>
 
-        <Link onClick={handleClose} to={"/dashboard/product"} className='hover:text-primary-light hover:bg-gray-100' >Sản phẩm</Link>
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm</Link>
+          )
+        }
 
-        <Link onClick={handleClose} to={"/dashboard/upload-product"} className='hover:text-primary-light hover:bg-gray-100' >Thêm sản phẩm</Link>
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/sub-category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm con</Link>
+          )
+        }
 
-        <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm</Link>
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/product"} className='hover:text-primary-light hover:bg-gray-100' >Sản phẩm</Link>
+          )
+        }
 
-        <Link onClick={handleClose} to={"/dashboard/sub-category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm con</Link>
+
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/upload-product"} className='hover:text-primary-light hover:bg-gray-100' >Thêm sản phẩm</Link>
+          )}
 
         <Link onClick={handleClose} to={"/dashboard/myorders"} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
 

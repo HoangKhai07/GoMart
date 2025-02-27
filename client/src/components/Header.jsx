@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../assets/logo.jpg'
+import logo_icon from '../assets/logo_icon.png'
 import Search from './Search'
 import { Link, Links, useLocation, useNavigate } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
@@ -40,9 +41,14 @@ const Header = () => {
             {/* Logo */}
             <div className='h-full mx-10'>
               <Link to={"/"} className='h-full flex justify-center items-center '>
+              <img
+                  src={logo_icon}
+                  width={60}
+                  height={40}
+                  alt='logo_icon'/>
                 <img
                   src={logo}
-                  width={200}
+                  width={180}
                   height={60}
                   alt='logo'
                   className='hidden lg:block'

@@ -3,7 +3,7 @@ import otp from '../assets/otp.jpg'
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const OtpVerification = () => {
@@ -52,7 +52,7 @@ const OtpVerification = () => {
           }
        } catch (error) {
             console.log("error", error)
-            AxiosToastArror(error)
+            AxiosToastError(error)
        }
     }
 

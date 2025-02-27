@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa6";
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -66,7 +66,7 @@ const Register = () => {
 
           console.log('response', response)
        } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
        }
     }
 

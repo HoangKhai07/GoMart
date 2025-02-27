@@ -7,15 +7,16 @@ import Register from "../pages/Register";
 import ForgotPassword from "../pages/ForgotPassword";
 import OtpVerification from "../pages/OtpVerification";
 import ResetPassword from "../pages/ResetPassword";
-import Dashboard from "../layouts/DashBoard";
+import Dashboard from "../layouts/Dashboard.jsx";
 import Profile from "../pages/Profile";
 import MyOrder from "../pages/MyOrder";
 import Address from "../pages/Address";
-import Product from "../pages/Product";
+// import Product from "../pages/Product";
 import UploadProduct from "../pages/UploadProduct";
 import CategoryPage from "../pages/CategoryPage";
 import SubCategoryPage from "../pages/SubCategoryPage";
 import ProductAdmin from "../pages/ProductAdmin";
+import AdminPermission from "../layouts/AdminPermission.jsx";
 
 
 const router = createBrowserRouter([
@@ -77,22 +78,22 @@ const router = createBrowserRouter([
 
                 {
                     path: "product",
-                    element: <ProductAdmin/>
+                    element: <AdminPermission><ProductAdmin/></AdminPermission>
                 },
 
                 {
                     path: "upload-product",
-                    element: <UploadProduct/>
+                    element: <AdminPermission><UploadProduct/></AdminPermission>
                 },
 
                 {
                     path: "category",
-                    element: <CategoryPage/>
+                    element:<AdminPermission><CategoryPage/></AdminPermission>
                 },
 
                 {
                     path: "sub-category",
-                    element: <SubCategoryPage/>
+                    element: <AdminPermission><SubCategoryPage/></AdminPermission>
                 }
 
             ]

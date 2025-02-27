@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -7,31 +7,75 @@ import { useEffect } from 'react';
 import fetchUserDetails from './utils/fetchUserDetails';
 import { setUserDetails } from './store/userSlice';
 import { useDispatch } from 'react-redux';
+import { setAllCategory } from './store/productSlide';
+import Axios from './utils/Axios';
+import SummaryApi from './common/SummaryApi';
+import AxiosToastArror from './utils/AxiosToastError';
 
 function App() {
-
   const dispatch = useDispatch()
+  const location = useLocation()
 
   const fetchUser = async () => {
     const userData = await fetchUserDetails()
     dispatch(setUserDetails(userData.data))
   }
 
+    const fetchCategory = async () => {
+    try {  
+      const response = await Axios({
+        ...SummaryApi.get_category,
 
-  useEffect(()=>{
+      })
+      const { data: responseData } = response
+      console.log(responseData)
+
+      if (responseData.success) {
+        dispatch(setAllCategory(responseData.data))
+        // setCategoryData(responseData.data)
+      }
+
+    } catch (error) {
+
+    } finally {
+    }
+  }
+
+  // const fetchSubCategory = async () => {
+  //   try {
+  //     const response = await Axios({
+  //       ...SummaryApi.get_category,
+
+  //     })
+
+  //     const { data: responseData } = response
+  //     console.log(responseData)
+  //   } catch (error) {
+      
+  //   } finally {
+
+  //   }
+  // }
+
+
+
+  useEffect(() => {
     fetchUser()
-  },[])
+    fetchCategory()
+  }, [])
+
+  const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
+  const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
 
   return (
     <>
-    <Header/>
-    <main className='min-h-[80vh]'>
-      <Outlet/>
-    </main>
-    <Footer/>
-    <Toaster/>
+      {shouldShowHeaderFooter && <Header />}
+      <main className='min-h-[80vh]'>
+        <Outlet />
+      </main>
+      {shouldShowHeaderFooter && <Footer />}
+      <Toaster />
     </>
-   
   )
 }
 

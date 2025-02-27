@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import UploadImage from '../utils/UploadImage';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
+import Axios from '../utils/Axios.js';
+import SummaryApi from '../common/SummaryApi.js';
 import toast from 'react-hot-toast';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError.js';
 
 const EditCategory = ({ close, fetchData, data: CategoryData }) => {
     const [data, setData] = useState({
@@ -44,7 +44,7 @@ const EditCategory = ({ close, fetchData, data: CategoryData }) => {
                 fetchData()
             }
         } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
         } finally{
             setLoading(false)
         }

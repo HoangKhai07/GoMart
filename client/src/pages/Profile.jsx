@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import EditAvatar from '../components/EditAvatar';
 import SummaryApi from '../common/SummaryApi';
 import Axios from '../utils/Axios';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError';
 import toast from 'react-hot-toast';
 import fetchUserDetails from '../utils/fetchUserDetails';
 import { setUserDetails } from '../store/userSlice';
@@ -47,7 +47,7 @@ const Profile = () => {
                 dispatch(setUserDetails(userData.data))
             }
         } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
         } finally{
             setLoading(false)
         }
