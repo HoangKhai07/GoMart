@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setAllCategory } from './store/productSlide';
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
+import AxiosToastArror from './utils/AxiosToastError';
 
 function App() {
   const dispatch = useDispatch()
@@ -39,6 +40,24 @@ function App() {
     } finally {
     }
   }
+
+  // const fetchSubCategory = async () => {
+  //   try {
+  //     const response = await Axios({
+  //       ...SummaryApi.get_category,
+
+  //     })
+
+  //     const { data: responseData } = response
+  //     console.log(responseData)
+  //   } catch (error) {
+      
+  //   } finally {
+
+  //   }
+  // }
+
+
 
   useEffect(() => {
     fetchUser()

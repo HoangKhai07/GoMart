@@ -5,7 +5,7 @@ import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { logout } from '../store/userSlice'
 import toast from 'react-hot-toast'
-import AxiosToastArror from '../utils/AxiosToastError'
+import AxiosToastError from '../utils/AxiosToastError'
 import { FiExternalLink } from "react-icons/fi";
 import isAdmin from '../utils/IsAdmin'
 
@@ -27,7 +27,7 @@ const UserMenu = ({ close }) => {
         toast.success(response.data.message)
       }
     } catch (error) {
-      AxiosToastArror(error)
+      AxiosToastError(error)
     }
   }
 

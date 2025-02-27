@@ -10,7 +10,7 @@ import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import fetchUserDetails from '../utils/fetchUserDetails'
 import { setUserDetails } from '../store/userSlice'
-import AxiosToastArror from '../utils/AxiosToastError'
+import AxiosToastError from '../utils/AxiosToastError'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const Login = () => {
         toast.error(response.data.message)
       }
     } catch (error) {
-      AxiosToastArror(error)
+      AxiosToastError(error)
     } finally {
       setIsLoading(false)
     }

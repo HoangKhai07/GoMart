@@ -4,7 +4,7 @@ import UploadImage from '../utils/UploadImage';
 import Axios from '../utils/Axios.js';
 import SummaryApi from '../common/SummaryApi.js';
 import toast from 'react-hot-toast';
-import AxiosToastArror from '../utils/AxiosToastError.js';
+import AxiosToastError from '../utils/AxiosToastError.js';
 
 const EditCategory = ({ close, fetchData, data: CategoryData }) => {
     const [data, setData] = useState({
@@ -44,7 +44,7 @@ const EditCategory = ({ close, fetchData, data: CategoryData }) => {
                 fetchData()
             }
         } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
         } finally{
             setLoading(false)
         }

@@ -38,7 +38,7 @@ const Table = ({data, column}) => {
             <tr key={row.id}>   
                 <td className="border border-gray-300 p-2">{index+1}</td>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id} className=" border border-gray-300 p-2">
+                <td key={cell.id} className=" border border-gray-300 p-1">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

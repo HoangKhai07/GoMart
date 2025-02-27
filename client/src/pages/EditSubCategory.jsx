@@ -7,12 +7,13 @@ import SummaryApi from '../common/SummaryApi';
 import AxiosToastError from '../utils/AxiosToastError';
 import toast from 'react-hot-toast';
 
-const UploadSubCategoryModel = ({ close, fetchData }) => {
+const EditSubCategory  = ({ close, fetchData, data }) => {
 
     const [subCategoryData, setSubCategoryData] = useState({
-        name: "",
-        image: "",
-        category: []
+        _id: data._id,
+        name: data.name,
+        image: data.image,
+        category: data.category || []
     })
 
     const allCategory = useSelector(state => state.product.allCategory)
@@ -64,7 +65,7 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
         e.preventDefault()
         try {
             const response = await Axios({
-                ...SummaryApi.create_subcategory,
+                ...SummaryApi.update_subcategory,
                 data: subCategoryData
             })
 
@@ -83,16 +84,18 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
             AxiosToastError(error)
         }
     }
+    
     return (
-        <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
+        <div>
+            <div>
+                <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
     bg-neutral-900 flex items-center justify-center'>
-            <div className='bg-white max-w-4xl w-full p-4 rounded'>
-                <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
-                    <IoClose size={25} />
-                </button>
+                    <div className='bg-white max-w-4xl w-full p-4 rounded'>
+                        <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
+                            <IoClose size={25} />
+                        </button>
 
-
-                <form onSubmit={handleSubmitSubCategory}>
+                        <form onSubmit={handleSubmitSubCategory}>
                     <div className='grid gap-1'>
                         <label htmlFor="categoryName">Tên danh mục sản phẩm con mới</label>
                         <input
@@ -184,11 +187,13 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
                     <button /*onSubmit={handleSubmit}*/ className={
                         `${!subCategoryData?.name && !subCategoryData?.image && !subCategoryData?.category[0]  ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
                             flex justify-center cursor-pointer items-center mt-8 p-2 border rounded w-full font-medium text-lg`
-                    }>Thêm danh mục</button>
+                    }>Lưu</button>
                 </form>
+                    </div>
+                </section>
             </div>
-        </section>
-    )
+            </div>
+            )
 }
 
-export default UploadSubCategoryModel
+export default EditSubCategory

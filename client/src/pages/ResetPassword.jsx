@@ -6,7 +6,7 @@ import { FaEye } from "react-icons/fa6";
 import SummaryApi from '../common/SummaryApi';
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError';
 
 const ResetPassword = () => {
     const location = useLocation()
@@ -75,7 +75,7 @@ const ResetPassword = () => {
 
           console.log('response', response)
        } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
        }
     }
 

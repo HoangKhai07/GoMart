@@ -4,7 +4,7 @@ import UploadImage from '../utils/UploadImage';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import toast from 'react-hot-toast';
-import AxiosToastArror from '../utils/AxiosToastError';
+import AxiosToastError from '../utils/AxiosToastError';
 
 const UploadCategoryModel = ({ close, fetchData }) => {
     const [data, setData] = useState({
@@ -43,7 +43,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                 fetchData()
             }
         } catch (error) {
-            AxiosToastArror(error)
+            AxiosToastError(error)
         } finally{
             setLoading(false)
         }

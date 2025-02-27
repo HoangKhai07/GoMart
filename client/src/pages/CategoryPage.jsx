@@ -7,7 +7,7 @@ import ConfirmBox from '../components/confirmBox.jsx'
 import SummaryApi from '../common/SummaryApi.js'
 import Axios from '../utils/Axios.js'
 import EditCategory from './EditCategory.jsx' 
-import AxiosToastArror from '../utils/AxiosToastError.js'
+import AxiosToastError from '../utils/AxiosToastError.js'
 import toast from 'react-hot-toast'
 
 
@@ -34,31 +34,31 @@ const CategoryPage = () => {
   }, [allCategory])
 
 
-  // const fetchCategory = async () => {
-  //   try {
-  //     setLoading(true)
-  //     const response = await Axios({
-  //       ...SummaryApi.get_category,
+  const fetchCategory = async () => {
+    try {
+      setLoading(true)
+      const response = await Axios({
+        ...SummaryApi.get_category,
 
-  //     })
-  //     const { data: responseData } = response
-  //     console.log(responseData)
+      })
+      const { data: responseData } = response
+      console.log(responseData)
 
-  //     if (responseData.success) {
-  //       setCategoryData(responseData.data)
-  //     }
+      if (responseData.success) {
+        setCategoryData(responseData.data)
+      }
 
-  //   } catch (error) {
+    } catch (error) {
 
-  //   } finally {
-  //     setLoading(false)
-  //   }
-  // }
+    } finally {
+      setLoading(false)
+    }
+  }
 
-  // useEffect(() => {
-  //   // 
-  //   setCategoryData(allCategory)
-  // }, [allCategory])
+  useEffect(() => {
+    // 
+    setCategoryData(allCategory)
+  }, [allCategory])
 
   const handleDeleteCategory = async() => {
     try {
@@ -75,7 +75,7 @@ const CategoryPage = () => {
         setOpenDeleteCategory(false)
       }
     } catch (error) {
-      AxiosToastArror(error)
+      AxiosToastError(error)
     }
   }
 
@@ -106,11 +106,11 @@ const CategoryPage = () => {
                   <button onClick={() => {
                     setOpenEditCategory(true)  
                     setEditData(category)
-                  }} className='border border-primary-light-3 bg-green-50 rounded py-1 px-4 hover:bg-primary-light text-green-800'>Sửa</button>
+                  }} className='border border-primary-light-3 bg-green-50 rounded py-1 px-4 hover:bg-primary-light text-green-800 hover:text-black'>Sửa</button>
                   <button onClick={() => {
                     setOpenDeleteCategory(true)
                     setDeleteCaterogy(category)
-                  }} className='border-red-500 border bg-red-50 rounded py-1 px-4 hover:bg-red-600 text-red-500'>Xóa</button>
+                  }} className='border-red-500 border bg-red-50 rounded py-1 px-4 hover:bg-red-600 text-red-500 hover:text-black'>Xóa</button>
                 </div>
               </div>
 
