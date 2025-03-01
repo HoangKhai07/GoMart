@@ -34,97 +34,79 @@ const Header = () => {
 
 
   return (
-    <header className='h-24 lg:h-20 lg:shadow-md sticky top-0 flex items-center'>
+    <header className='bg-white z-50 h-auto py-3 lg:py-4 shadow-md sticky top-0 flex flex-col lg:flex-row items-center'>
       {
         !(isSearchPage && isMobile) && (
-          <div className='container mx-auto flex items-center px-2 justify-between'>
+          <div className='container mx-auto flex items-center px-4 lg:px-8 justify-between w-full'>
             {/* Logo */}
-            <div className='h-full mx-10'>
-              <Link to={"/"} className='h-full flex justify-center items-center '>
-              <img
+            <div className='flex items-center'>
+              <Link to={"/"} className='flex items-center space-x-2'>
+                <img
                   src={logo_icon}
-                  width={60}
-                  height={40}
-                  alt='logo_icon'/>
-                <img
-                  src={logo}
-                  width={180}
-                  height={60}
-                  alt='logo'
-                  className='hidden lg:block'
+                  className='w-10 h-10 lg:w-12 lg:h-12 object-contain rounded'
+                  alt='logo_icon'
                 />
-
                 <img
                   src={logo}
-                  width={180}
-                  height={60}
+                  className='h-8 lg:h-10 object-contain hidden lg:block'
                   alt='logo'
-                  className='lg:hidden'
                 />
               </Link>
             </div>
 
-            <div className='hidden lg:block'>
+            <div className='hidden lg:block flex-1 max-w-2xl mx-8'>
               <Search />
             </div>
 
-            {/* login and my cart */}
-            <div className=''>
-
-              <div className='hidden lg:flex items-center gap-5'>
-                {
-                  user?._id ? (
-                    <div className='relative'>
-                      <div onClick={() => setOpenUserMenu(preve => !preve)} className='select-none flex items-center gap-1 cursor-pointer'>
-                        {/* <p>Tài khoản</p> */}
-                        <div className='text-bold text-lg text-white'>{user.name || user.mobile}</div>
-                        {
-                          openUserMenu ? (
-                            <FaAngleUp size={18} color='white' />
-                          ) : (
-                            <FaAngleDown size={18} color='white' />
-                          )
-                        }
-                      </div>
-                      {
-                        openUserMenu && (
-                          <div className='absolute right-0 top-10'>
-                            <div className='bg-white rounded p-4 min-w-52 lg:shadow-lg '>
-                              <UserMenu close={handleCloseMenu} />
-                            </div>
-                          </div>
-                        )
-                      }
-
+            {/* Actions */}
+            <div className='flex items-center space-x-4'>
+              <div className='hidden lg:flex items-center space-x-4'>
+                {user?._id ? (
+                  <div className='relative'>
+                    <div 
+                      onClick={() => setOpenUserMenu(prev => !prev)} 
+                      className='flex items-center space-x-2 cursor-pointer hover:bg-gray-100 rounded-full px-4 py-2 transition-all'
+                    >
+                      <span className='font-medium text-gray-700'>{user.name || user.mobile}</span>
+                      {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
                     </div>
-                  ) : (
-                    <button onClick={redirectToLoginPage} className='flex items-center gap-3 px-10 py-3 bg-slate-100 hover:bg-slate-300 rounded-xl border-2 font-medium'>
-                      Login
-                    </button>
-                  )
-                }
-
-
-                <button className='flex items-center gap-3 px-3 py-3 bg-white hover:bg-green-600 rounded-xl text-white'>
-                  <div>
-                    <TiShoppingCart size={28} color='black' />
+                    {openUserMenu && (
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100'>
+                        <UserMenu close={handleCloseMenu} />
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <p className='font-bold text-black'>Giỏ hàng</p>
-                  </div>
+                ) : (
+                  <button 
+                    onClick={redirectToLoginPage} 
+                    className='px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all font-medium'
+                  >
+                    Đăng nhập
+                  </button>
+                )}
+
+                <button className='flex items-center space-x-2 px-4 py-2 bg-primary-light-3 hover:bg-primary-light rounded-full transition-all'>
+                  <TiShoppingCart size={24} className="text-gray-700" />
+                  <span className='font-medium  text-gray-700'>Giỏ hàng</span>
                 </button>
               </div>
-              {/* user icon for mobile */}
-              <button className='text-white rounded p-2 lg:hidden' onClick={handleMobileUser}>
-                <FaUser size={23} />
-              </button>
-            </div>
 
+              {/* Mobile actions */}
+              <div className='flex lg:hidden items-center space-x-3'>
+                <button className='p-2 hover:bg-gray-100 rounded-full transition-all' onClick={handleMobileUser}>
+                  <FaUser size={20} className="text-gray-700" />
+                </button>
+                <button className='p-2 hover:bg-gray-100 rounded-full transition-all'>
+                  <TiShoppingCart size={24} className="text-gray-700" />
+                </button>
+              </div>
+            </div>
           </div>
         )
       }
 
-      <div className='container mx-auto px-2 lg:hidden '>
+      {/* Mobile search */}
+      <div className='w-full px-4 mt-3 lg:hidden'>
         <Search />
       </div>
     </header>

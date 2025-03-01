@@ -49,7 +49,7 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
 
     }
 
-    const handleRemoveCategorySelectetd = (categoryId) => {
+    const handleRemoveCategorySelecteted = (categoryId) => {
                 const index = subCategoryData.category.findIndex(el => el._id === categoryId)
                 console.log("index", index)
                 subCategoryData.category.splice(index, 1)
@@ -85,7 +85,7 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
     }
     return (
         <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
-    bg-neutral-900 flex items-center justify-center'>
+    bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
             <div className='bg-white max-w-4xl w-full p-4 rounded'>
                 <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
                     <IoClose size={25} />
@@ -145,14 +145,13 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
                                         <p key={category._id+"selectValue"}
                                         className='bg-green-100 shadow-md border mx-1 my-1'
                                         >{category.name}
-                                        <button onClick={()=>handleRemoveCategorySelectetd(category._id)} className='mx-1 hover:text-red-600'>
+                                        <button onClick={()=>handleRemoveCategorySelecteted(category._id)} className='mx-1 hover:text-red-600'>
                                             <IoClose size={18}/>
                                         </button>
                                         </p>    
                                     )
                                 })
                             }
-                            
                             </div>
                           
                             <select name="" id="" className='w-full p-2 bg-transparent border'

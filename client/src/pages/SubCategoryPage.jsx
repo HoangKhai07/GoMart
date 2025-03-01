@@ -9,6 +9,7 @@ import { createColumnHelper } from '@tanstack/react-table'
 import ViewImage from '../components/ViewImage'
 import EditSubCategory from './EditSubCategory'
 import ConfirmBox from '../components/confirmBox'
+import { FaPlus } from "react-icons/fa";
 
 const SubCategoryPage = () => {
 
@@ -87,7 +88,7 @@ const SubCategoryPage = () => {
         <img
           src={row.original.image}
           alt=''
-          className='w-8 h-8 cursor-pointer flex justify-center items-center'
+          className='w-10 h-10 cursor-pointer flex justify-center items-center'
           onClick={()=>{
           setImageURL(row.original.image)
           }}
@@ -108,7 +109,7 @@ const SubCategoryPage = () => {
                   return(
                     <p
                      key={c._id+"table"} 
-                     className='shadow-md w-fit border bg-green-50 ml-2'
+                     className='shadow-md w-fit border bg-green-50 ml-2 p-1 rounded-md'
                      >{c.name}</p>
                   )
                 })
@@ -120,7 +121,7 @@ const SubCategoryPage = () => {
     ),
 
     columnHelper.accessor('_id', {
-      header: 'Action',
+      header: 'Chức năng',
       cell: ({ row}) => {
         return (
           <div className='flex justify-center items-center gap-3 bg-white'> 
@@ -148,9 +149,11 @@ const SubCategoryPage = () => {
   console.log('sub', data)
   return (
     <section>
-      <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
+       <div className='font-extralight bg-white shadow-md p-3 flex justify-between '>
         <h1 className=' text-2xl items-center p-1'>Danh mục sản phẩm con</h1>
-        <button onClick={() => setOpenUploadSubCategory(true)} className='text-sm font-semibold border-2 hover:bg-primary-light-3 mx-10 p-2 cursor-pointer rounded'>Thêm danh mục sản phẩm con</button>
+        <button onClick={() => setOpenUploadSubCategory(true)} className='flex justify-center items-center gap-2 text-sm font-semibold bg-primary-light-3 hover:bg-primary-light mx-10 p-2 cursor-pointer rounded-lg'>
+        <FaPlus/>
+          Thêm danh mục sản phẩm con</button>
       </div>
 
       <div>

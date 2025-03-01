@@ -89,7 +89,7 @@ const EditSubCategory  = ({ close, fetchData, data }) => {
         <div>
             <div>
                 <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
-    bg-neutral-900 flex items-center justify-center'>
+    bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
                     <div className='bg-white max-w-4xl w-full p-4 rounded'>
                         <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
                             <IoClose size={25} />

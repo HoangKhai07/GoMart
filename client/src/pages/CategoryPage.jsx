@@ -9,6 +9,7 @@ import Axios from '../utils/Axios.js'
 import EditCategory from './EditCategory.jsx' 
 import AxiosToastError from '../utils/AxiosToastError.js'
 import toast from 'react-hot-toast'
+import { FaPlus } from "react-icons/fa";
 
 
 
@@ -81,10 +82,12 @@ const CategoryPage = () => {
 
 
   return (
-    <section>
-      <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
-        <h1 className=' text-2xl items-center p-1'>Danh mục sản phẩm</h1>
-        <button onClick={() => setOpenUploadCategory(true)} className='text-sm font-semibold border-2 hover:bg-primary-light-3 mx-10 p-2 cursor-pointer rounded'>Thêm danh mục sản phẩm</button>
+    <section className='bg-gray-50'>
+      <div className='font-extralight bg-white shadow-md p-3 flex justify-between '>
+        <h1 className='font-bold text-2xl items-center p-1'>Danh mục sản phẩm</h1>
+        <button onClick={() => setOpenUploadCategory(true)} className='flex justify-center items-center gap-2 text-sm font-semibold bg-primary-light-3 hover:bg-primary-light mx-10 p-2 cursor-pointer rounded-lg'>
+          <FaPlus/>
+          Thêm danh mục sản phẩm</button>
       </div>
       {
         !categoryData[0] && !loading && (
@@ -92,11 +95,11 @@ const CategoryPage = () => {
         )
       }
 
-      <div className='p-4 grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3'>
+      <div className='px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
         {
           categoryData.map((category, index) => {
             return (
-              <div key={category._id} className='w-40 h-56 my-4 flex flex-col justify-center items-center object-scale-down overflow-hidden rounded bg-blue-50 shadow-md'>
+              <div key={category._id} className='w-40 h-56 my-4 flex flex-col justify-center items-center object-scale-down overflow-hidden border rounded-lg bg-white shadow-sm hover:shadow-2xl transition-all duration-300'>
                 <img
                   src={category.image}
                   alt={category.name}
@@ -106,11 +109,11 @@ const CategoryPage = () => {
                   <button onClick={() => {
                     setOpenEditCategory(true)  
                     setEditData(category)
-                  }} className='border border-primary-light-3 bg-green-50 rounded py-1 px-4 hover:bg-primary-light text-green-800 hover:text-black'>Sửa</button>
+                  }} className='  bg-green-100 rounded py-1 px-4 hover:bg-primary-light text-green-800 hover:text-black'>Sửa</button>
                   <button onClick={() => {
                     setOpenDeleteCategory(true)
                     setDeleteCaterogy(category)
-                  }} className='border-red-500 border bg-red-50 rounded py-1 px-4 hover:bg-red-600 text-red-500 hover:text-black'>Xóa</button>
+                  }} className=' bg-red-100 rounded py-1 px-4 hover:bg-red-600 text-red-500 hover:text-black'>Xóa</button>
                 </div>
               </div>
 

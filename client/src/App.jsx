@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import fetchUserDetails from './utils/fetchUserDetails';
 import { setUserDetails } from './store/userSlice';
 import { useDispatch } from 'react-redux';
-import { setAllCategory } from './store/productSlide';
+import { setAllCategory, setAllSubCategory } from './store/productSlide';
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import AxiosToastArror from './utils/AxiosToastError';
@@ -41,27 +41,32 @@ function App() {
     }
   }
 
-  // const fetchSubCategory = async () => {
-  //   try {
-  //     const response = await Axios({
-  //       ...SummaryApi.get_category,
+  const fetchSubCategory = async () => {
+    try {  
+      const response = await Axios({
+        ...SummaryApi.get_subcategory,
 
-  //     })
+      })
+      const { data: responseData } = response
+      console.log(responseData)
 
-  //     const { data: responseData } = response
-  //     console.log(responseData)
-  //   } catch (error) {
-      
-  //   } finally {
+      if (responseData.success) {
+        dispatch(setAllSubCategory(responseData.data))
+        // setCategoryData(responseData.data)
+      }
 
-  //   }
-  // }
+    } catch (error) {
+
+    } finally {
+    }
+  }
 
 
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchUser()
     fetchCategory()
+    fetchSubCategory()
   }, [])
 
   const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
