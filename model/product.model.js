@@ -15,19 +15,19 @@ const productSchema = new mongoose.Schema({
         default: ""
     },
 
-    categoryID: [{
+    category: [{
         type: mongoose.Schema.ObjectId,
         ref: 'category'
     }],
 
-    sub_categoryId: [{
+    sub_category: [{
         type: mongoose.Schema.ObjectId,
         ref: 'subCategory'
     }],
 
     unit: {
         type: String,
-        default: null,
+        default: "",
     },
 
     price: {
