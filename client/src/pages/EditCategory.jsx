@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
+import { CiImageOn } from "react-icons/ci";
 import UploadImage from '../utils/UploadImage';
 import Axios from '../utils/Axios.js';
 import SummaryApi from '../common/SummaryApi.js';
@@ -73,13 +74,19 @@ const EditCategory = ({ close, fetchData, data: CategoryData }) => {
 
     return (
         <div>
-            <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
-    bg-neutral-900 flex items-center justify-center'>
-                <div className='bg-white max-w-4xl w-full p-4 rounded'>
-                    <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
-                        <IoClose size={25} />
-                    </button>
-                    <form onSubmit={handleSubmit}>
+           <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
+    bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
+                <div className='bg-white max-w-4xl w-full p-8 rounded'>
+                    <div className='flex mb-5'>
+                        <h2 className="text-xl font-semibold text-gray-800">Chỉnh Sửa Danh Mục</h2>
+                        <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
+                            <IoClose size={28} />
+                        </button>
+                    </div>
+
+                    <div className='w-full border'></div>
+
+                    <form onSubmit={handleSubmit} className='mt-5'>
                         <div className='grid gap-1'>
                             <label htmlFor="categoryName">Tên danh mục sản phẩm</label>
                             <input
@@ -113,9 +120,9 @@ const EditCategory = ({ close, fetchData, data: CategoryData }) => {
                                 <label htmlFor='uploadcategoryimage'>
                                     <div className={`
                                     ${!data.name ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
-                                    p-2 rounded cursor-pointer border
+                                    p-2 rounded cursor-pointer border flex items-center justify-center
                                     `}>
-                                        {loading ? "Loading..." : "Upload"}
+                                        {loading ? "Loading..." :  "Upload"}
                                     </div>
 
                                     <input disabled={!data.name} onChange={handleUploadCategoryImage} type="file" id="uploadcategoryimage"

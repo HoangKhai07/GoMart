@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   console.log("user dashboard", user)
   return (
-    <section className='bg-white'>
+    <section className='bg-blue-50'>
         <div className='container p-3 mx-auto grid lg:grid-cols-[240px,1fr]'>
             <div className='p-6 top-16 h-[calc(100vh-64px)] w-[240px] overflow-y-auto hidden lg:block border-r'>
                 <UserMenu/>

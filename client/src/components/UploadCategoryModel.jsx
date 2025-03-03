@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
+import { CiImageOn } from "react-icons/ci";
 import UploadImage from '../utils/UploadImage';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
@@ -12,7 +13,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
         image: ""
     })
 
-    const[loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const handleOnChange = (e) => {
         const { name, value } = e.target
@@ -25,7 +26,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
         })
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -35,16 +36,16 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                 data: data
             })
 
-            const {data : responseData} = response
+            const { data: responseData } = response
 
-            if(responseData.success){
+            if (responseData.success) {
                 toast.success(responseData.message)
                 close()
                 fetchData()
             }
         } catch (error) {
             AxiosToastError(error)
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
@@ -62,7 +63,7 @@ const UploadCategoryModel = ({ close, fetchData }) => {
         setData((preve) => {
             return {
                 ...preve,
-                image: ImageResponse.data.url
+                image: [...preve.image, ImageResponse.data.url]
             }
         })
 
@@ -71,12 +72,18 @@ const UploadCategoryModel = ({ close, fetchData }) => {
     return (
         <div>
             <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
-    bg-neutral-900 flex items-center justify-center'>
-                <div className='bg-white max-w-4xl w-full p-4 rounded'>
-                    <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
-                        <IoClose size={25} />
-                    </button>
-                    <form onSubmit={handleSubmit}>
+    bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
+                <div className='bg-white max-w-4xl w-full p-8 rounded'>
+                    <div className='flex mb-5'>
+                        <h2 className="text-xl font-semibold text-gray-800">Thêm Danh Sản Phẩm Mục Mới</h2>
+                        <button onClick={close} className='w-fit block ml-auto hover:text-primary-light-3'>
+                            <IoClose size={28}/>
+                        </button>
+                    </div>
+
+                    <div className='w-full border'></div>
+
+                    <form onSubmit={handleSubmit} className='mt-5'>
                         <div className='grid gap-1'>
                             <label htmlFor="categoryName">Tên danh mục sản phẩm mới</label>
                             <input
@@ -109,9 +116,11 @@ const UploadCategoryModel = ({ close, fetchData }) => {
                                 </div>
                                 <label htmlFor='uploadcategoryimage'>
                                     <div className={`
-                                    ${!data.name ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
-                                    p-2 rounded cursor-pointer border
-                                    `}>Upload
+                                        ${!data.name ? "bg-gray-400" : "border-primary-light-3 hover:bg-primary-light-3"}
+                                        p-2 rounded cursor-pointer border flex justify-center items-center gap-2
+                                        `}>
+                                        <CiImageOn size={20} />
+                                        Tải ảnh lên
                                     </div>
 
                                     <input disabled={!data.name} onChange={handleUploadCategoryImage} type="file" id="uploadcategoryimage"
