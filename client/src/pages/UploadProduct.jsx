@@ -5,6 +5,13 @@ import ViewImage from '../components/ViewImage'
 import { FaTrash } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from 'react-redux';
+import AddField from '../components/AddField';
+import { CiSaveDown2 } from "react-icons/ci";
+import AxiosToastError from '../utils/AxiosToastError';
+import Axios from '../utils/Axios';
+import SummaryApi from '../common/SummaryApi';
+import toast from 'react-hot-toast';
+import successAlert from '../utils/SuccessAlert';
 
 const UploadProduct = () => {
   const [data, setData] = useState({
@@ -23,9 +30,11 @@ const UploadProduct = () => {
 
   const allCategory = useSelector(state => state.product.allCategory)
   const allSubCategory = useSelector(state => state.product.allSubCategory)
-  const [selectedCategory, setSelectedCategory] = useState([])
-  const [selectedSubCategory, setSelectedSubCategory] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("")
   const [selectSubCategory, setSelectSubCategory] = useState("")
+  const [addField, setAddField] = useState([])
+  const [openAddField, setOpenAddField] = useState(false)
+  const [fieldName, setFieldName] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -86,6 +95,45 @@ const UploadProduct = () => {
     })
   }
 
+  const handleAddField = () => {
+    setData((preve) => {
+      return {
+        ...preve,
+        more_details: {
+          ...preve.more_details,
+          [fieldName]: '',
+        }
+      }
+    })
+    setFieldName('')
+    setOpenAddField(false)
+  }
+
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      setLoading(true)
+      const response = await Axios({
+        ...SummaryApi.create_product,
+        data: data
+      })
+
+      const { data: responseData } = response
+      if (responseData.success) {
+        successAlert(responseData.message)
+        close()
+        fetchData()
+      }
+    } catch (error) {
+      AxiosToastError(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section>
       <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
@@ -93,9 +141,8 @@ const UploadProduct = () => {
       </div>
 
       <div className='my-5'>
-        <form className='bg-white shadow-sm rounded-lg p-6 space-y-6'>
+        <form onSubmit={handleSubmit} className='bg-white shadow-sm rounded-lg p-6 space-y-6'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-
             {/* name */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Tên sản phẩm</label>
@@ -111,13 +158,28 @@ const UploadProduct = () => {
               />
             </div>
 
+            {/* branch */}
+            <div className='space-y-2'>
+              <label className='block text-sm font-medium text-gray-700'>Thương hiệu</label>
+              <input
+                type="text"
+                id='branch'
+                placeholder='Điền thương hiệu'
+                name='branch'
+                value={data.branch}
+                onChange={handleChange}
+                required
+                className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+              />
+            </div>
+
             {/* unit */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Đơn vị</label>
               <input
                 type="text"
                 id='unit'
-                placeholder='Đơn vị tính'
+                placeholder='Điền đơn vị (cái, hộp, kg,...)'
                 name='unit'
                 value={data.unit}
                 onChange={handleChange}
@@ -125,36 +187,42 @@ const UploadProduct = () => {
                 className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
               />
             </div>
-           </div>
+          </div>
 
-           <div className='flex justify-stretch'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'>
             {/* price */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Giá bán</label>
-              <input
-                type="number"
-                id='price'
-                placeholder='Điền giá bán'
-                name='price'
-                value={data.price}
-                onChange={handleChange}
-                required
-                className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-              />
+              <div className='relative'>
+                <input
+                  type="number"
+                  id='price'
+                  placeholder='0'
+                  name='price'
+                  value={data.price}
+                  onChange={handleChange}
+                  required
+                  className='w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                />
+                <span className='absolute inset-y-0 left-2 flex items-center text-gray-500'>₫</span>
+              </div>
             </div>
-            
+
             {/* discount */}
-            <div>
+            <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Giảm giá</label>
-              <input
-                type="number"
-                id='discount'
-                placeholder='Điền % giảm giá'
-                name='discount'
-                value={data.discount}
-                onChange={handleChange}
-                className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-              />
+              <div className='relative'>
+                <input
+                  type="number"
+                  id='discount'
+                  placeholder='0'
+                  name='discount'
+                  value={data.discount}
+                  onChange={handleChange}
+                  className='w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                />
+                <span className='absolute inset-y-0 left-2 flex items-center text-gray-500'>%</span>
+              </div>
             </div>
 
 
@@ -164,7 +232,7 @@ const UploadProduct = () => {
               <input
                 type="number"
                 id='stock'
-                placeholder='Điền số lượng tồn kho'
+                placeholder='0'
                 name='stock'
                 value={data.stock}
                 onChange={handleChange}
@@ -172,54 +240,54 @@ const UploadProduct = () => {
                 className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
               />
             </div>
-           </div>
+          </div>
 
-          <div className='flex justify-stretch' >
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6' >
             {/* Category */}
             <div className='grid gap-1'>
               <label className='block text-sm font-medium text-gray-700'>Danh mục</label>
               <div>
                 <select
                   className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                  value={selectedCategory}
+                  value={selectedCategory || ""}
                   onChange={(e) => {
-                    const value = e.target.value
-                    const category = allCategory.find(el => el._id == value)
-                    console.log(category)
+                    const value = e.target.value;
+                    if (!value) return;
+                    const category = allCategory.find(el => el._id === value);
                     setData((preve) => {
                       return {
                         ...preve,
                         category: [...preve.category, category]
                       }
-                    })
-                    setSelectedCategory(" ")
+                    });
+                    setSelectedCategory("");
                   }}
                 >
-                  <option value={""}>
-                    Chọn danh mục</option>
+                  <option value={""}>Chọn danh mục</option>
                   {
                     allCategory.map((c, index) => {
                       return (
-                        <option value={c?._id}>{c.name}</option>
+                        <option key={c._id} value={c._id}>{c.name}</option>
                       )
                     })
                   }
                 </select>
 
-                {
-                  data.category.map((c, index) => {
-                    return (
-                      <div key={c._id + index + "product_section"}
-                        className='bg-green-100 shadow-md border mx-1 my-1 w-fit'
-                      >{c.name}
-
-                        <button onClick={() => handleRemoveCategorySelecteted(index)} className='mx-1 hover:text-red-600'>
-                          <IoClose size={18} />
-                        </button>
-                      </div>
-                    )
-                  })
-                }
+                <div className='flex flex-wrap gap-2 mt-2 min-h-[60px] max-h-[120px] overflow-y-auto p-1'>
+                  {
+                    data.category.map((c, index) => {
+                      return (
+                        <div key={c._id + index + "product_section"}
+                          className='bg-green-100 shadow-md border mx-1 my-1 w-fit h-fit flex items-center'
+                        >{c.name}
+                          <button onClick={() => handleRemoveCategorySelecteted(index)} className='mx-1 hover:text-red-600'>
+                            <IoClose size={18} />
+                          </button>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
               </div>
             </div>
 
@@ -232,7 +300,9 @@ const UploadProduct = () => {
                   value={selectSubCategory}
                   onChange={(e) => {
                     const value = e.target.value
+                    if (!value) return;
                     const subCategory = allSubCategory.find(el => el._id === value)
+                    if (!subCategory) return;
                     setData((preve) => {
                       return {
                         ...preve,
@@ -252,20 +322,23 @@ const UploadProduct = () => {
                   }
                 </select>
 
-                {
-                  data.subCategory.map((sc, index) => {
-                    return (
-                      <div key={sc._id + index + "subcategory_section"}
-                        className='bg-green-100 shadow-md border mx-1 my-1 w-fit'
-                      >
-                        {sc.name}
-                        <button onClick={() => handleRemoveSubCategorySelected(index)} className='mx-1 hover:text-red-600'>
-                          <IoClose size={18} />
-                        </button>
-                      </div>
-                    )
-                  })
-                }
+                <div className='flex flex-wrap gap-2 mt-2 min-h-[60px] max-h-[120px] overflow-y-auto p-1'>
+                  {
+                    data.subCategory.map((sc, index) => {
+                      if (!sc) return null;
+                      return (
+                        <div key={sc._id + index + "subcategory_section"}
+                          className='bg-green-100 shadow-md border mx-1 my-1 w-fit h-fit flex items-center'
+                        >
+                          {sc.name}
+                          <button onClick={() => handleRemoveSubCategorySelected(index)} className='mx-1 hover:text-red-600'>
+                            <IoClose size={18} />
+                          </button>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -307,7 +380,7 @@ const UploadProduct = () => {
 
           </div>
 
-          {/* discription */} 
+          {/* discription */}
           <div className='grid gap-2 p-3'>
             <label className='block text-sm font-medium text-gray-700'>Mô tả sản phẩm</label>
             <textarea
@@ -322,6 +395,54 @@ const UploadProduct = () => {
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:bg-blue-50 focus:border-primary-light block w-full p-2.5'
             />
           </div>
+
+          {/* more details */}
+          <div>
+            {
+              Object?.keys(data?.more_details)?.map((key, index) => {
+                return (
+                  <div className='grid gap-2 p-3'>
+                    <label htmlFor={key} className='block text-sm font-medium text-gray-700'>{key}</label>
+                    <input
+                      type="text"
+                      id={key}
+                      placeholder='Nhập thông tin'
+                      name={key}
+                      value={data?.more_details[key]}
+                      onChange={(e) => {
+                        const value = e.target.value
+                        setData((preve) => {
+                          return {
+                            ...preve,
+                            more_details: {
+                              ...preve.more_details,
+                              [key]: value
+                            }
+                          }
+                        })
+                      }}
+                      required
+                      className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:bg-blue-50 focus:border-primary-light block w-full p-2.5'
+                    />
+                  </div>
+                )
+              })
+            }
+          </div>
+          <div onClick={() => setOpenAddField(true)} className='border cursor-pointer w-fit grid gap-2 p-3 ml-3 rounded-md bg-blue-500 hover:bg-blue-600 font-medium text-sm text-white  '>
+            Thêm thông tin khác
+          </div>
+
+
+          <div className='flex justify-center items-center mt-6'>
+            <div onClick={handleSubmit}
+              className='flex px-8 gap-2 py-2.5 bg-blue-600 text-white rounded-md
+              hover:bg-blue-700 transition-colors duration-200
+              font-medium text-base cursor-pointer'>
+              <CiSaveDown2 size={20} />
+              Lưu
+            </div>
+          </div>
         </form>
       </div>
 
@@ -331,6 +452,16 @@ const UploadProduct = () => {
             url={ImageUrl}
             close={() => setImageUrl('')}
           />
+        )
+      }
+
+      {
+        openAddField && (
+          <AddField
+            value={fieldName}
+            onChange={(e) => setFieldName(e.target.value)}
+            submit={handleAddField}
+            close={() => setOpenAddField(false)} />
         )
       }
 
