@@ -10,6 +10,7 @@ import userRouter from './route/user.route.js'
 import categoryRouter from './route/category.route.js'
 import uploadRouter from './route/upload.route.js'
 import subCategoryRouter from './route/subCategory.route.js'
+import productRouter from './route/product.route.js'
 
 
 const app = express()
@@ -44,4 +45,5 @@ app.use('/api/user', userRouter)
 app.use('/api/category', categoryRouter)
 app.use('/api/file',uploadRouter)
 app.use('/api/subCategory', subCategoryRouter)
+app.use('/api/product', productRouter)
 
