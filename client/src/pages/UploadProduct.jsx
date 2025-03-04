@@ -11,7 +11,7 @@ import AxiosToastError from '../utils/AxiosToastError';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import toast from 'react-hot-toast';
-import successAlert from '../utils/SuccessAlert';
+import successAlert from '../utils/SuccessAlert.js';
 
 const UploadProduct = () => {
   const [data, setData] = useState({
@@ -122,10 +122,25 @@ const UploadProduct = () => {
       })
 
       const { data: responseData } = response
-      if (responseData.success) {
-        successAlert(responseData.message)
-        close()
-        fetchData()
+
+      if(responseData.success) {
+        await successAlert(responseData.message)
+        setData({
+          name: "",
+          image: [],
+          branch: "",
+          category: [],
+          subCategory: [],
+          unit: "",
+          price: "",
+          stock: "",
+          discount: "",
+          description: "",
+          more_details: {},
+        })
+
+        // close()
+        // fetchData()
       }
     } catch (error) {
       AxiosToastError(error)
@@ -133,6 +148,16 @@ const UploadProduct = () => {
       setLoading(false)
     }
   }
+
+  const getFilteredSubCategories = () => {
+    if (data.category.length === 0) return [];
+    
+    return allSubCategory.filter(subCat => {
+      return subCat.category.some(cat => 
+        data.category.some(selectedCat => selectedCat._id === cat._id)
+      );
+    });
+  };
 
   return (
     <section>
@@ -298,11 +323,19 @@ const UploadProduct = () => {
                 <select
                   className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                   value={selectSubCategory}
+                  disabled={data.category.length === 0}
                   onChange={(e) => {
                     const value = e.target.value
                     if (!value) return;
                     const subCategory = allSubCategory.find(el => el._id === value)
                     if (!subCategory) return;
+                    
+                    const isAlreadySelected = data.subCategory.some(sc => sc._id === subCategory._id);
+                    if (isAlreadySelected) {
+                      toast.error('Danh mục con này đã được chọn!');
+                      return;
+                    }
+
                     setData((preve) => {
                       return {
                         ...preve,
@@ -314,7 +347,7 @@ const UploadProduct = () => {
                 >
                   <option value="">Chọn danh mục con</option>
                   {
-                    allSubCategory.map((sc, index) => {
+                    getFilteredSubCategories().map((sc, index) => {
                       return (
                         <option key={sc._id} value={sc._id}>{sc.name}</option>
                       )
