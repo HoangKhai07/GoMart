@@ -28,7 +28,6 @@ function App() {
 
       })
       const { data: responseData } = response
-      console.log(responseData)
 
       if (responseData.success) {
         dispatch(setAllCategory(responseData.data))
@@ -48,7 +47,7 @@ function App() {
 
       })
       const { data: responseData } = response
-      console.log(responseData)
+
 
       if (responseData.success) {
         dispatch(setAllSubCategory(responseData.data))
@@ -69,16 +68,18 @@ function App() {
     fetchSubCategory()
   }, [])
 
-  const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
-  const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
+  // const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
+  // const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
 
   return (
     <>
-      {shouldShowHeaderFooter && <Header />}
+      {/* {shouldShowHeaderFooter && <Header />} */}
+      <Header/>
       <main className='min-h-[80vh]'>
         <Outlet />
       </main>
-      {shouldShowHeaderFooter && <Footer />}
+      {/* {shouldShowHeaderFooter && <Footer />} */}
+      <Footer/>
       <Toaster />
     </>
   )

@@ -17,7 +17,7 @@ const UploadProduct = () => {
   const [data, setData] = useState({
     name: "",
     image: [],
-    branch: "",
+    brand: "",
     category: [],
     subCategory: [],
     unit: "",
@@ -128,7 +128,7 @@ const UploadProduct = () => {
         setData({
           name: "",
           image: [],
-          branch: "",
+          brand: "",
           category: [],
           subCategory: [],
           unit: "",
@@ -183,15 +183,15 @@ const UploadProduct = () => {
               />
             </div>
 
-            {/* branch */}
+            {/* brand */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Thương hiệu</label>
               <input
                 type="text"
-                id='branch'
+                id='brand'
                 placeholder='Điền thương hiệu'
-                name='branch'
-                value={data.branch}
+                name='brand'
+                value={data.brand}
                 onChange={handleChange}
                 required
                 className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
