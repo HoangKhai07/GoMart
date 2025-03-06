@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import fetchUserDetails from './utils/fetchUserDetails';
 import { setUserDetails } from './store/userSlice';
 import { useDispatch } from 'react-redux';
-import { setAllCategory, setAllSubCategory } from './store/productSlide';
+import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/productSlide';
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import AxiosToastArror from './utils/AxiosToastError';
@@ -23,6 +23,7 @@ function App() {
 
     const fetchCategory = async () => {
     try {  
+      dispatch(setLoadingCategory(true))
       const response = await Axios({
         ...SummaryApi.get_category,
 
@@ -37,6 +38,7 @@ function App() {
     } catch (error) {
 
     } finally {
+      dispatch(setLoadingCategory(false))
     }
   }
 
