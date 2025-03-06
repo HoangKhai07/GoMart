@@ -63,6 +63,18 @@ const productSchema = new mongoose.Schema({
     timestamps: true
 })
 
+//tao text index cho cac field co unique = true
+
+productSchema.index({
+    name: "text",
+    brand: "text",
+    description: "text"
+},{
+    name: 10,
+    brand: 10,
+    description: 5
+})
+
 const ProductModel = mongoose.model('product', productSchema)
 
 export default ProductModel

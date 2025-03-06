@@ -2,9 +2,9 @@ import ProductModel from "../model/product.model.js";
 
 export const createProductController = async (req, res) => {
     try {
-        const {name, image, price, description, stock, unit, branch, discount, more_details, category, subCategory, publish} = req.body
+        const {name, image, price, description, stock, unit, brand, discount, more_details, category, subCategory, publish} = req.body
         
-        if(!name ||!image[0] ||!price ||!description ||!stock ||!branch ||!more_details ||!category ||!subCategory[0]){
+        if(!name ||!image[0] ||!price ||!description ||!stock ||!brand ||!more_details ||!category ||!subCategory[0]){
             return res.status(400).json({
                 message: "Vui lòng nhập đầy đủ thông tin của sản phẩm!",
                 error: true,
@@ -19,7 +19,7 @@ export const createProductController = async (req, res) => {
             description,
             stock,
             unit,
-            branch,
+            brand,
             discount,
             more_details,
             category,
@@ -52,3 +52,50 @@ export const createProductController = async (req, res) => {
         })
     }
 } 
+
+export const getProductController = async (req, res)  => {
+    try {
+        let { page, limit, search} = req.body
+
+        if(!page){
+            page = 1
+        }
+
+        if(!limit){
+            limit = 10
+        }
+
+        const query = search ? {
+            $text: {
+                $search: search
+            }
+        } : {}
+
+        const skip = (page - 1) * limit
+
+        const [data, totalCount] = await Promise.all([
+            ProductModel.find(query)
+            .sort({createdAt: -1})
+            .skip(skip)
+            .limit(limit),
+            ProductModel.countDocuments(query)
+        ])
+
+        const totalNoPage = Math.ceil(totalCount / limit)
+
+        return res.json({
+            message: "product data",
+            error: false,
+            success: true,
+            totalCount: totalCount,
+            totalNoPage: Math.ceil(totalCount / limit),
+            data: data
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
