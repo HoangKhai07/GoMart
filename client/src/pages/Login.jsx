@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { FaEye, FaEyeSlash } from "react-icons/fa6"
-import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 
 import loginImage from '../assets/login.jpg'
