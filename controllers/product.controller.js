@@ -99,3 +99,36 @@ export const getProductController = async (req, res)  => {
         })
     }
 }
+
+export const getProductByCategoryController = async (req, res) => {
+    try {
+        const {id} = req.body
+
+        if(!id){
+            return res.status(400).json({
+                message: "provde id category",
+                error: true,
+                success: false
+            })
+        }
+
+        const product = await ProductModel.find({
+            category: { $in: id }
+        }).limit(10)
+
+        return res.json({
+            message: 'product list by category',
+            error: false,
+            success: true,
+            data: product
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            success: false,
+            error: true
+        })
+       
+    }
+}
