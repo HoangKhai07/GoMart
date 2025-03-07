@@ -54,13 +54,13 @@ const refreshAccessToken  = async(refreshToken)=>{
     try {
         const response = await Axios({
             ...SummaryApi.refresh_token,
-            header: {
+            headers: {
                 Authorization: `Bearer ${refreshToken}`
             }
         })
 
         const accessToken = response.data.data.accessToken
-        localStorage.setItem('accesstoken', accessToken)
+        localStorage.setItem('accessToken', accessToken)
         return accessToken
     } catch (error) {
         console.log(error)

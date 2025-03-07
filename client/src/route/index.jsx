@@ -101,13 +101,8 @@ const router = createBrowserRouter([
         },
 
         {
-            path: "category",
-            children: [
-                {
-                    path: ":subCategory",
-                    element: <ProductListPage/>
-                }
-            ]
+            path: "category/:categorySlug/:categoryId/subcategory/:subcategorySlug/:subcategoryId",
+            element: <ProductListPage />
         }
         ]
     }

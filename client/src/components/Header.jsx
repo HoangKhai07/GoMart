@@ -43,12 +43,12 @@ const Header = () => {
               <Link to={"/"} className='flex items-center space-x-2'>
                 <img
                   src={logo_icon}
-                  className='w-10 h-10 lg:w-12 lg:h-12 object-contain rounded'
+                  className='w-10 h-10 lg:w-12 lg:h-12 object-contain rounded-md'
                   alt='logo_icon'
                 />
                 <img
                   src={logo}
-                  className='h-8 lg:h-10 object-contain hidden lg:block'
+                  className='h-8 lg:h-10 object-contain hidden lg:block rounded-md'
                   alt='logo'
                 />
               </Link>
