@@ -240,7 +240,8 @@ const UploadProduct = () => {
                 <input
                   type="number"
                   id='discount'
-                  placeholder='0'
+                  min="0"
+                  max="100"
                   name='discount'
                   value={data.discount}
                   onChange={handleChange}

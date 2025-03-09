@@ -163,7 +163,6 @@ const Home = () => {
         }
       </div>
 
-      {/* New product */}
       {
          categoryData.map((cat, index)=> {
           return (
