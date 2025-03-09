@@ -42,7 +42,9 @@ const productSchema = new mongoose.Schema({
 
     discount: {
         type: Number,
-        default: null,
+        default: 0,
+        min: 0,
+        max: 100
     },
 
     description: {

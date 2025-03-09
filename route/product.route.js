@@ -6,6 +6,6 @@ const productRouter = Router()
 
 productRouter.post('/create_product', auth, createProductController)
 productRouter.get('/get_product', getProductController)
-productRouter.post('get_product_by_category', getProductByCategoryController)
+productRouter.post('/get_product_by_category', getProductByCategoryController)
 
 export default productRouter

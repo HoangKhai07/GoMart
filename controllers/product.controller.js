@@ -114,7 +114,7 @@ export const getProductByCategoryController = async (req, res) => {
 
         const product = await ProductModel.find({
             category: { $in: id }
-        }).limit(10)
+        }).limit(15)
 
         return res.json({
             message: 'product list by category',
