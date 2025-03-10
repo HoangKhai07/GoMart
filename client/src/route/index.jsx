@@ -18,6 +18,7 @@ import SubCategoryPage from "../pages/SubCategoryPage";
 import ProductAdmin from "../pages/ProductAdmin";
 import AdminPermission from "../layouts/AdminPermission.jsx";
 import ProductListPage from "../pages/ProductListPage.jsx";
+import ProductDisplayPage from "../components/ProductDisplayPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -103,7 +104,14 @@ const router = createBrowserRouter([
         {
             path: "category/:categorySlug/:categoryId/subcategory/:subcategorySlug/:subcategoryId",
             element: <ProductListPage />
+        },
+
+        {
+            path: "product/:productSlug/:productId",
+            element: <ProductDisplayPage/>
         }
+
+    
         ]
     }
 ])

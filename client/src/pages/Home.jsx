@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
-import { FaAngleLeft } from "react-icons/fa6";
-import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { ValideUrlConvert } from '../utils/ValideUrlConvert';
-import { useNavigate }  from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import banner_1 from '../assets/banner/banner_1.jpg';
 import banner_2 from '../assets/banner/banner_2.jpg';
 import banner_3 from '../assets/banner/banner_3.jpg';
 import banner_4 from '../assets/banner/banner_4.jpg';
+
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay';
 const banners = [banner_1, banner_2, banner_3, banner_4];
 
@@ -51,7 +51,7 @@ const Home = () => {
         return;
     }
 
-    // Hàm chuyển đổi text thành slug URL
+ 
     const createSlug = (text) => {
         return text
             .toLowerCase()
@@ -64,11 +64,10 @@ const Home = () => {
             .replace(/^-|-$/g, '');
     };
 
-    // Tạo slug cho category và subcategory
+ 
     const categorySlug = createSlug(cat);
     const subcategorySlug = createSlug(subcategory.name);
 
-    // Tạo URL với format mới
     const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
     
     console.log('Navigating to:', url);
@@ -76,103 +75,136 @@ const Home = () => {
   }
 
   return (
-    <section>
-      {/* banner */}
-      <div className='bg-white mx-10 mt-6 rounded-lg'>
-        <div className='container mx-auto rounded-md'>
-          <div className="w-full min-h-48 bg-white rounded-md flex items-center relative overflow-hidden">
-            {/* Previous button */}
-            <button 
-              onClick={prviousSlide}
-              className="absolute left-6 z-10"
-            >
-              <FaAngleLeft size={30} className='text-gray-300 hover:bg-gray-400 hover:text-white rounded-full p-1 transition-colors' />
-            </button>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section with  Banner */}
+      <section className="relative pt-4 pb-8 bg-gradient-to-b from-blue-50 to-transparent">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-8 items-center">
+            {/* Banner Slider */}
+            <div className="lg:w-2/3 w-full">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(-${currentBanner * 100}%)` }}
+                >
+                  {banners.map((banner, index) => (
+                    <img
+                      key={index}
+                      src={banner}
+                      alt={`Banner ${index + 1}`}
+                      className="w-full h-[400px] object-cover"
+                    />
+                  ))}
+                </div>
 
-            {/* Banner container*/}
-            <div className="w-full relative overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-out"
-                style={{ transform: `translateX(-${currentBanner * 100}%)` }}
-              >
-                {banners.map((banner, index) => (
-                  <img
-                    key={index}
-                    src={banner}
-                    alt={`Banner ${index + 1}`}
-                    className='w-full object-cover h-64 rounded-lg shadow-lg flex-shrink-0'
-                  />
-                ))}
+                {/* navigate control */}
+                <button 
+                  onClick={prviousSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/50 transition-all"
+                >
+                  <FaAngleLeft size={24} className="text-white" />
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/50 transition-all"
+                >
+                  <FaAngleRight size={24} className="text-white" />
+                </button>
+
+                {/* Indicators được thiết kế lại */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                  {banners.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentBanner(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentBanner 
+                          ? 'bg-white w-8' 
+                          : 'bg-white/50 hover:bg-white/80'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Next button */}
-            <button 
-              onClick={nextSlide}
-              className="absolute right-6 z-10"
-            >
-              <FaAngleRight size={30} className='text-gray-300 hover:bg-gray-400 hover:text-white rounded-full p-1 transition-colors' />
-            </button>
-
-            {/* Indicators */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {banners.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentBanner(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentBanner ? 'bg-blue-600' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
+            {/* Quick Categories Preview */}
+            <div className="lg:w-1/3 w-full">
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">Danh mục nổi bật</h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {!loadingCategory && categoryData.slice(0, 4).map((cat, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.05 }}
+                      className="group cursor-pointer"
+                      onClick={() => handleDirectory(cat._id, cat.name)}
+                    >
+                      <div className="relative overflow-hidden rounded-xl">
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="w-full h-24 object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <p className="absolute bottom-2 left-2 text-white font-medium">{cat.name}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Category */}
-      <div className='container mx-auto px-10 mt-10 my-2 grid gap-4 grid-cols-4 md:grid-cols-4 lg:grid-cols-10'>
-        {
-          loadingCategory ? (
-            new Array(10).fill(null).map((c, index)=> {
-              return (
-                <div key={index} 
-                className='bg-white rouded p-4 min-h-36 grid gap-2 shadow'>
-                  <div className='bg-blue-100 min-h-24 rounded '></div>
-                  <div className='bg-blue-100 h-8 rounded'></div>
+      {/* Categories Grid */}
+      <section className="py-5 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl rounded font-bold text-black mb-8 text-center">Khám phá danh mục</h2>
+          <div className="grid grid-cols-2 md:grid-cols-8 lg:grid-cols-12 gap-2 p-2">
+            {loadingCategory ? (
+              // Loading skeleton
+              Array(12).fill(null).map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-gray-200 h-32 rounded-xl mb-3" />
+                  <div className="bg-gray-200 h-4 w-2/3 mx-auto rounded" />
                 </div>
-              )
-            })
-          ) : (
-            categoryData.map((cat, index) => {
-              return (
-              <div key={index} onClick={() => handleDirectory(cat._id, cat.name)} className='bg-white rounded-lg p-2 shadow hover:shadow-lg transition-all duration-300'>
-                <div className=' flex justify-center w-full h-16 overflow-hidden rounded-lg'>
+              ))
+            ) : (
+              categoryData.map((cat, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => handleDirectory(cat._id, cat.name)}
+                >
+                  <div className="aspect-square rounded-xl overflow-hidden mb-4">
                     <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className='w-50 h-full object-cover'
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />
-                </div>
-                <h3 className='text-center mt-2 font-medium text-gray-800'>{cat.name}</h3>
-              </div>
-              )
-            })
-          )
-         
-        }
-      </div>
+                  </div>
+                  <h3 className="text-center font-medium text-gray-800">{cat.name}</h3>
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+      </section>
 
-      {
-         categoryData.map((cat, index)=> {
-          return (
-            <CategoryWiseProductDisplay key={index+"categorywiseproductdisplay"} id={cat?._id} name={cat?.name}/>
-          )
-        })
-      }
-     
-     
-    </section>
+      {/* Product Sections */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          {categoryData.map((cat, index) => (
+            <div key={index + "categorywiseproductdisplay"} className="mb-12 last:mb-0">
+              <CategoryWiseProductDisplay id={cat?._id} name={cat?.name} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
 
