@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import AxiosToastError from '../utils/AxiosToastError';
@@ -6,9 +6,33 @@ import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import CardLoading from './CardLoading';
 import CardProduct from './CardProduct';
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6"; 
 const CategoryWiseProductDisplay = ({ id, name }) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
+  
+  const scrollContainerRef = useRef(null)
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200 * 5; 
+      const container = scrollContainerRef.current;
+      
+      if (direction === 'left') {
+        container.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      } else {
+        container.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
   const fetchData = async () => {
     try {
       setLoading(true)
@@ -38,30 +62,55 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
 
   const loadingCardNumber = new Array(6).fill(null)
   return (
-    <div className='container mx-auto px-10 mt-10 gap-4 grid-cols-4 md:grid-cols-4 lg:grid-cols-10'>
-      <div className='flex justify-between'>
-        <h3 className='font-normal text-lg text-gray-800'>{name}</h3>
-        <div className='flex justify-center items-center gap-2'>
-          <div><Link to="" className='text-primary-light-3 font-medium'>Xem tất cả</Link></div>
-          <div className='text-primary-light-3'><FaLongArrowAltRight /></div>
-        </div>
+    <div className='container mx-auto px-4 md:px-6 lg:px-8 py-8'>
+      <div className='flex justify-between items-center mb-6'>
+        <h3 className='font-semibold text-xl text-gray-800'>{name}</h3>
+        <Link 
+          to="" 
+          className='flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200'
+        >
+          <span className='font-medium'>Xem tất cả</span>
+          <FaLongArrowAltRight />
+        </Link>
       </div>
 
-      <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6 lg:gap-8'>
-       
-        {loading ? (
-          loadingCardNumber.map((_, index) => (
-            <CardLoading key={"cardproductbycategory" + index} />
-          ))
-        ) : (
-            data.map((product, index) => (
-              <CardProduct 
-                data={product} 
-                key={product._id + "productbycategory" + index} 
-              />
+      <div className='relative'>
+        <div 
+          ref={scrollContainerRef}
+          className='flex overflow-x-auto gap-4 scroll-smooth no-scrollbar'
+        >
+          {loading ? (
+            loadingCardNumber.map((_, index) => (
+              <div className='min-w-[200px]' key={"cardproductbycategory" + index}>
+                <CardLoading />
+              </div>
             ))
-          ) 
-      }
+          ) : (
+            data.map((product, index) => (
+              <div className='min-w-[200px]' key={product._id + "productbycategory" + index}>
+                <CardProduct 
+                  data={product}
+                />
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="hidden md:block">
+          <button 
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100 transition-colors duration-200"
+          >
+            <FaAngleLeft size={20} className="text-gray-600"/>
+          </button>
+          <button 
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100 transition-colors duration-200"
+          >
+            <FaAngleRight size={20} className="text-gray-600"/>
+          </button>
+        </div>
       </div>
     </div>
   )

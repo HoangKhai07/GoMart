@@ -1,8 +1,12 @@
 import React from 'react'
 import { convertVND } from '../utils/ConvertVND'
 import { IoCart } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+
 
 const CardProduct = ({ data }) => {
+  const navigate = useNavigate();
+
   const calculateDiscountedPrice = (originalPrice, discountPrice) => {
     const discount = (originalPrice * discountPrice) / 100
     return originalPrice - discount
@@ -11,8 +15,27 @@ const CardProduct = ({ data }) => {
   const discountedPrice = data.discount ? calculateDiscountedPrice(data.price, data.discount)
     : data.price
 
+    const handleProductClick = () => {
+      const createSlug = (text) => {
+        return text
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd')
+          .replace(/Đ/g, 'D')
+          .replace(/[^a-zA-Z0-9]/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+      }
+  
+      const productSlug = createSlug(data.name)
+      navigate(`/product/${productSlug}/${data._id}`)
+    }
+
   return (
-    <div className='bg-white shadow-md rounded-sm p-3 max-w-[280px] hover:shadow-lg transition-shadow duration-300'>
+    <div 
+    onClick={handleProductClick}
+    className='bg-white cursor-pointer shadow-md rounded-sm p-3 max-w-[280px] hover:shadow-lg transition-shadow duration-300 mt-3'>
       {/* Image Container with Discount Badge */}
       <div className='relative aspect-square w-full mb-3 rounded-lg overflow-hidden group'>
         <img
@@ -61,6 +84,8 @@ const CardProduct = ({ data }) => {
             <IoCart className='text-gray-600' size={20} />
           </button>
         </div>
+
+        
       </div>
     </div>
   )
