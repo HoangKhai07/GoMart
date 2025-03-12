@@ -76,13 +76,13 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section with  Banner */}
-      <section className="relative pt-4 pb-8 bg-gradient-to-b from-blue-50 to-transparent">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-8 items-center">
+      {/* Hero Section with Banner */}
+      <section className="relative pt-2 sm:pt-4 pb-4 sm:pb-8 bg-gradient-to-b from-blue-50 to-transparent">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 items-center">
             {/* Banner Slider */}
             <div className="lg:w-2/3 w-full">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl">
                 <div 
                   className="flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${currentBanner * 100}%)` }}
@@ -92,7 +92,7 @@ const Home = () => {
                       key={index}
                       src={banner}
                       alt={`Banner ${index + 1}`}
-                      className="w-full h-[400px] object-cover"
+                      className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover"
                     />
                   ))}
                 </div>
@@ -100,26 +100,26 @@ const Home = () => {
                 {/* navigate control */}
                 <button 
                   onClick={prviousSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/50 transition-all"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white/50 transition-all"
                 >
-                  <FaAngleLeft size={24} className="text-white" />
+                  <FaAngleLeft size={20} sm:size={24} className="text-white" />
                 </button>
                 <button 
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/50 transition-all"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white/50 transition-all"
                 >
-                  <FaAngleRight size={24} className="text-white" />
+                  <FaAngleRight size={20} sm:size={24} className="text-white" />
                 </button>
 
-                {/* Indicators được thiết kế lại */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                {/* Indicators */}
+                <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
                   {banners.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentBanner(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300 ${
                         index === currentBanner 
-                          ? 'bg-white w-8' 
+                          ? 'bg-white w-6 sm:w-8' 
                           : 'bg-white/50 hover:bg-white/80'
                       }`}
                     />
@@ -129,10 +129,10 @@ const Home = () => {
             </div>
 
             {/* Quick Categories Preview */}
-            <div className="lg:w-1/3 w-full">
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Danh mục nổi bật</h2>
-                <div className="grid grid-cols-2 gap-4">
+            <div className="lg:w-1/3 w-full mt-4 lg:mt-0">
+              <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md sm:shadow-lg">
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Danh mục nổi bật</h2>
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {!loadingCategory && categoryData.slice(0, 4).map((cat, index) => (
                     <motion.div
                       key={index}
@@ -140,11 +140,11 @@ const Home = () => {
                       className="group cursor-pointer"
                       onClick={() => handleDirectory(cat._id, cat.name)}
                     >
-                      <div className="relative overflow-hidden rounded-xl">
+                      <div className="relative overflow-hidden rounded-lg sm:rounded-xl">
                         <img
                           src={cat.image}
                           alt={cat.name}
-                          className="w-full h-24 object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="w-full h-16 sm:h-24 object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <p className="absolute bottom-2 left-2 text-white font-medium">{cat.name}</p>
