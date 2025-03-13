@@ -43,7 +43,7 @@ export const getSubCategoryController = async (req, res) => {
     try {
         const data = await SubCategoryModel.find()
             .populate('category')
-            .sort({createdAt: -1});
+            .sort({createdAt: 1});
 
         return res.json({
             message: "sub catgory data",

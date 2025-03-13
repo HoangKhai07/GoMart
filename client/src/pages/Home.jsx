@@ -63,14 +63,11 @@ const Home = () => {
             .replace(/-+/g, '-')
             .replace(/^-|-$/g, '');
     };
-
- 
     const categorySlug = createSlug(cat);
     const subcategorySlug = createSlug(subcategory.name);
 
     const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
     
-    console.log('Navigating to:', url);
     navigate(url);
   }
 
