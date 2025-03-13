@@ -81,7 +81,6 @@ export const getProductController = async (req, res)  => {
             ProductModel.countDocuments(query)
         ])
 
-        const totalNoPage = Math.ceil(totalCount / limit)
 
         return res.json({
             message: "product data",
@@ -130,5 +129,58 @@ export const getProductByCategoryController = async (req, res) => {
             error: true
         })
        
+    }
+}
+
+export const getProductByCategoryAndSubCategoryController = async (req, res) => {
+    try {
+        let { categoryId, subCategoryId, page, limit } = req.body
+        
+        if(!categoryId || !subCategoryId){
+            return res.status(400).json({
+                message: "provide id category and id subcategory",
+                error: true,
+                success: false
+            })
+        }
+
+        if(!page){
+            page = 1
+        }
+
+        if(!limit){
+            limit = 10
+        }
+
+        const skip = (page - 1) * limit
+
+        const query = {
+            category : { $in : categoryId },
+            subCategory : { $in : subCategoryId }
+        }
+
+        const [ data, totalCount ] = await Promise.all([
+            ProductModel.find(query)
+            .sort({createdAt: -1})
+            .skip(skip)
+            .limit(limit),
+            ProductModel.countDocuments(query)
+        ])
+
+        return res.json({
+            message: "Product list by category and subcategory",
+            error: false,
+            success: true,
+            totalCount: totalCount,
+            totalNuPage: Math.ceil( totalCount / limit ),
+            data: data
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
     }
 }

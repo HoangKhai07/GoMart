@@ -86,14 +86,32 @@ const UploadProduct = () => {
     })
   }
 
-  const handleRemoveSubCategorySelected = async (index) => {
-    data.subCategory.splice(index, 1)
-    setData((preve) => {
-      return {
-        ...preve
-      }
-    })
-  }
+  const handleSubCategoryChange = (e) => {
+    const value = e.target.value;
+    if (!value) return;
+    
+    const subCategory = allSubCategory.find(el => el._id === value);
+    if (!subCategory) return;
+    
+    const isAlreadySelected = data.subCategory.includes(subCategory._id);
+    if (isAlreadySelected) {
+      toast.error('Danh mục con này đã được chọn!');
+      return;
+    }
+
+    setData(prev => ({
+      ...prev,
+      subCategory: [...prev.subCategory, subCategory._id]
+    }));
+    setSelectSubCategory("");
+  };
+
+  const handleRemoveSubCategorySelected = (index) => {
+    setData(prev => ({
+      ...prev,
+      subCategory: prev.subCategory.filter((_, i) => i !== index)
+    }));
+  };
 
   const handleAddField = () => {
     setData((preve) => {
