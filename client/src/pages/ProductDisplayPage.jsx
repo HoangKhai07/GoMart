@@ -3,7 +3,7 @@ import React from 'react'
 const ProductDisplayPage = () => {
   return (
     <section>
-       details product
+       dvdưvbp
     </section>
   )
 }
