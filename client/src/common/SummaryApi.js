@@ -119,7 +119,12 @@ const SummaryApi = {
     get_product_details: {
         url: "/api/product/get_product_details",
         method: "post"
-    }
+    },
+
+    // get_related_product: {
+    //     url: "/api/product/get_related_product",
+    //     method: "post"
+    // }
 
 
 }

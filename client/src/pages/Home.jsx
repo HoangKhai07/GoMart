@@ -69,6 +69,8 @@ const Home = () => {
     const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
     
     navigate(url);
+
+    window.scrollTo(0, 0);
   }
 
   return (

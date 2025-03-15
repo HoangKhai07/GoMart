@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import AxiosToastError from '../utils/AxiosToastError'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { FaAngleLeft, FaAngleRight, FaCheck } from "react-icons/fa6";
 import { convertVND } from '../utils/ConvertVND'
 import { IoCart } from "react-icons/io5"
-import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay'
+import Loading from '../components/Loading'
+import CardProduct from '../components/CardProduct'
+
 
 import image_1 from '../assets/best-price.png'
 import image_2 from '../assets/time_delivery.jpg'
-import { useSelector } from 'react-redux'
+
 
 const ProductDisplayPage = () => {
   const params = useParams()
@@ -20,13 +23,14 @@ const ProductDisplayPage = () => {
     image: []
   })
 
+  const [relatedProducts, setRelatedProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState(0)
   const imageContainer = useRef()
 
   const fetchProductDetails = async () => {
     try {
-
+      setLoading(true)
       const response = await Axios({
         ...SummaryApi.get_product_details,
         data: {
@@ -38,20 +42,47 @@ const ProductDisplayPage = () => {
 
       if (responseData.success) {
         setData(responseData.data)
+        
+        if (responseData.data.category && responseData.data.subCategory) {
+          fetchRelatedProducts(responseData.data.category, responseData.data.subCategory)
+        }
       }
-
 
     } catch (error) {
       AxiosToastError(error)
     } finally {
       setLoading(false)
     }
+  }
 
+  const fetchRelatedProducts = async (categoryId, subCategoryId) => {
+    try {
+      const response = await Axios({
+        ...SummaryApi.get_product_by_category_and_subcategory,
+        data: {
+          categoryId: [categoryId],
+          subCategoryId: [subCategoryId],
+          page: 1,
+          limit: 6
+        }
+      })
+
+      const { data: responseData } = response
+
+      if (responseData.success) {
+        const filteredProducts = responseData.data.filter(product => product._id !== productId)
+        setRelatedProducts(filteredProducts)
+      }
+    } catch (error) {
+      AxiosToastError(error)
+    }
   }
 
   useEffect(() => {
     fetchProductDetails()
   }, [params])
+
+
 
   const handleScrollRight = () => {
     imageContainer.current.scrollBy({
@@ -75,10 +106,11 @@ const ProductDisplayPage = () => {
   const discountedPrice = data.discount ? calculateDiscountedPrice(data.price, data.discount)
     : data.price
 
+
   return (
-    <section className='container mx-auto p-4 my-8'>
-      <div className='grid lg:grid-cols-4 gap-8'>
-        <div className='col-span-2'>
+    <section className='container mx-auto p-4'>
+      <div className='grid lg:grid-cols-6 gap-2 mx-10'>
+        <div className='col-span-4'>
           {/* Main Image Section */}
           <div className='bg-white relative lg:min-h-[70vh] lg:max-h-[70vh] md:min-h-[40vh] min-h-56 max-h-56 w-full h-full rounded-lg shadow-lg overflow-hidden'>
             <img
@@ -127,7 +159,7 @@ const ProductDisplayPage = () => {
         </div>
 
         {/* Product Details Section */}
-        <div className='col-span-2 bg-white p-8 rounded-lg shadow-lg'>
+        <div className='col-span-2 bg-white p-8 rounded-lg shadow-lg '>
           {/* name */}
           <h1 className='text-3xl font-bold mb-4 text-gray-800'>{data.name}</h1>
 
@@ -167,8 +199,8 @@ const ProductDisplayPage = () => {
 
           {/* Button add product */}
           <div className='mt-8'>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="w-full text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-3.5 text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               <IoCart className="text-white" />
@@ -179,7 +211,7 @@ const ProductDisplayPage = () => {
           {/* Additional Information */}
           <div className="mt-12 border-t pt-6 border-gray-200">
             <h3 className="text-xl font-semibold mb-4 text-gray-800">Thông tin sản phẩm</h3>
-            
+
             <div className='flex items-center gap-4 my-6 bg-gray-50 p-4 rounded-lg transition-all hover:shadow-md'>
               <img
                 src={image_1}
@@ -220,16 +252,21 @@ const ProductDisplayPage = () => {
       {/* Related Products Section */}
       <div className='mt-12'>
         <h2 className='text-2xl font-bold mb-6 text-gray-800 border-b pb-2'>Sản phẩm liên quan</h2>
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4'>
-          {/* Placeholder for related products */}
-          {data?.category?._id && (
-            <CategoryWiseProductDisplay 
-              id={data.category._id} 
-              name={data.category.name} 
-            />
-          )}
-        </div>
+
+        {loading ? (
+          <Loading />
+        ) : relatedProducts.length > 0 ? (
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-4'>
+            {relatedProducts.map((product) => (
+              <CardProduct key={product._id} data={product} />
+            ))}
+          </div>
+        ) : (
+          <p className='text-gray-500 text-center py-8'>Không có sản phẩm liên quan</p>
+        )}
       </div>
+
+      {/* Comment and rating */}
     </section>
   )
 }

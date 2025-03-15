@@ -30,6 +30,8 @@ const CardProduct = ({ data }) => {
 
     const productSlug = createSlug(data.name)
     navigate(`/product/${productSlug}/${data._id}`)
+
+    window.scrollTo(0, 0);
   }
 
   return (
