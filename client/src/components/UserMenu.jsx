@@ -37,7 +37,7 @@ const UserMenu = ({ close }) => {
     }
   }
   return (
-    <div className='p-1'>
+    <div className='p-4 '>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
       <div className='text-lg flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
         {user.name || user.mobile} <span className='text-sm text-primary-light'>{user.role === "ADMIN" ? "(Admin)" : ""}</span>

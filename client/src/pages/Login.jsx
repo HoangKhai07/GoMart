@@ -64,19 +64,23 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex">
+    <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
+    bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
+
+    <div className=" bg-white min-h-[60vh] flex rounded-md p-5 px-10">
       {/* Left side - Image and Text */}
-      <div className="hidden lg:flex lg:w-1/2 bg-white p-12 flex-col justify-between">
+
+      {/* <div className="hidden  p-12 flex-col justify-between">
         <img
           src={loginImage}
           alt="Login"
-          sizes={60}
-          className="mt-8 rounded-lg"
+          sizes={30}
+          className="mt-15 rounded-lg"
         />
-      </div>
+      </div> */}
 
       {/* Right side - Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+      <div className="w-full flex items-center justify-center p-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <h2 className="text-3xl font-bold text-gray-900">Chào mừng trở lại!</h2>
@@ -150,6 +154,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+
+    </section>
   )
 }
 

@@ -15,27 +15,29 @@ const CardProduct = ({ data }) => {
   const discountedPrice = data.discount ? calculateDiscountedPrice(data.price, data.discount)
     : data.price
 
-    const handleProductClick = () => {
-      const createSlug = (text) => {
-        return text
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .replace(/đ/g, 'd')
-          .replace(/Đ/g, 'D')
-          .replace(/[^a-zA-Z0-9]/g, '-')
-          .replace(/-+/g, '-')
-          .replace(/^-|-$/g, '');
-      }
-  
-      const productSlug = createSlug(data.name)
-      navigate(`/product/${productSlug}/${data._id}`)
+  const handleProductClick = () => {
+    const createSlug = (text) => {
+      return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .replace(/[^a-zA-Z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
     }
 
+    const productSlug = createSlug(data.name)
+    navigate(`/product/${productSlug}/${data._id}`)
+
+    window.scrollTo(0, 0);
+  }
+
   return (
-    <div 
-    onClick={handleProductClick}
-    className='bg-white cursor-pointer shadow-md rounded-sm p-3 max-w-[280px] hover:shadow-lg transition-shadow duration-300 mt-3'>
+    <div
+      onClick={handleProductClick}
+      className='bg-white cursor-pointer shadow-md rounded-sm p-3 max-w-[280px] hover:shadow-lg transition-shadow duration-300 mt-3'>
       {/* Image Container with Discount Badge */}
       <div className='relative aspect-square w-full mb-3 rounded-lg overflow-hidden group'>
         <img
@@ -43,11 +45,11 @@ const CardProduct = ({ data }) => {
           alt={data.name}
           className='w-full h-full object-contain'
         />
-        {data.discount > 0 && (
-          <div className='absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm font-semibold'>
-            -{data.discount}%
-          </div>
-        )}
+          {data.discount > 0 && (
+            <div className='absolute top-2 left-2 bg-red-300 text-white px-2 py-1 rounded-md text-sm font-semibold'>
+              -{data.discount}%
+            </div>
+          )}
       </div>
 
       {/* Product Info */}
@@ -85,7 +87,7 @@ const CardProduct = ({ data }) => {
           </button>
         </div>
 
-        
+
       </div>
     </div>
   )

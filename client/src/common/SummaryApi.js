@@ -114,7 +114,17 @@ const SummaryApi = {
     get_product_by_category_and_subcategory: {
         url: "/api/product/get_product_by_category_and_subcategory",
         method: "post"
-    }
+    },
+
+    get_product_details: {
+        url: "/api/product/get_product_details",
+        method: "post"
+    },
+
+    // get_related_product: {
+    //     url: "/api/product/get_related_product",
+    //     method: "post"
+    // }
 
 
 }

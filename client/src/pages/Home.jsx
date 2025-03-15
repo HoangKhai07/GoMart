@@ -5,10 +5,10 @@ import { ValideUrlConvert } from '../utils/ValideUrlConvert';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import banner_1 from '../assets/banner/banner_1.jpg';
-import banner_2 from '../assets/banner/banner_2.jpg';
-import banner_3 from '../assets/banner/banner_3.jpg';
-import banner_4 from '../assets/banner/banner_4.jpg';
+import banner_1 from '../assets/banner/banner_1.jpg'
+import banner_2 from '../assets/banner/banner_2.jpg'
+import banner_3 from '../assets/banner/banner_3.jpg'
+import banner_4 from '../assets/banner/banner_4.jpg'
 
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay';
 const banners = [banner_1, banner_2, banner_3, banner_4];
@@ -69,6 +69,8 @@ const Home = () => {
     const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
     
     navigate(url);
+
+    window.scrollTo(0, 0);
   }
 
   return (
