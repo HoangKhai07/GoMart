@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import UploadCategoryModel from '../components/UploadCategoryModel'
 import Loading from '../components/Loading'
 import NoData from '../components/NoData.jsx'
-import ConfirmBox from '../components/confirmBox.jsx'
+import ConfirmBox from '../components/ConfirmBox.jsx'
 import SummaryApi from '../common/SummaryApi.js'
 import Axios from '../utils/Axios.js'
 import EditCategory from './EditCategory.jsx' 
@@ -57,7 +57,6 @@ const CategoryPage = () => {
   }
 
   useEffect(() => {
-    // 
     setCategoryData(allCategory)
   }, [allCategory])
 

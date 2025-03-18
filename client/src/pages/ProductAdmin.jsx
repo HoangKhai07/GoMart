@@ -106,7 +106,7 @@ const ProductAdmin = () => {
               productData.map((p, index) => {
                 return (
                   <div key={p._id}>
-                  <ProductCardAdmin data={p} 
+                  <ProductCardAdmin data={p} fetchData={fetchData}
                   className="object-scale-down"
                   />
                   

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { ValideUrlConvert } from '../utils/ValideUrlConvert';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -19,9 +19,11 @@ const Home = () => {
   const categoryData = useSelector(state => state.product.allCategory)
   const subCategoryData = useSelector(state => state.product.allSubCategory)
   const navigate = useNavigate()
+  const [categoryScroll, setCategoryScroll] = useState(0);
+  const categoryContainerRef = useRef(null);
 
   const prviousSlide = () => {
-    setCurrentBanner((prev) => prev > 0? prev - 1 : banners.length - 1)
+    setCurrentBanner((prev) => prev > 0 ? prev - 1 : banners.length - 1)
   }
 
   const nextSlide = () => {
@@ -29,49 +31,66 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(()=> {
+    const interval = setInterval(() => {
       nextSlide()
     }, 5000)
 
     return () => {
       clearInterval(interval)
     }
-  },[currentBanner])
+  }, [currentBanner])
 
   const handleDirectory = (id, cat) => {
     const subcategory = subCategoryData.find(sub => {
-        const filterData = sub.category.some(c => {
-            return c._id == id;
-        });
-        return filterData ? true : null;
+      const filterData = sub.category.some(c => {
+        return c._id == id;
+      });
+      return filterData ? true : null;
     });
 
     if (!subcategory) {
-        console.error('Không tìm thấy subcategory');
-        return;
+      console.error('Không tìm thấy subcategory');
+      return;
     }
 
- 
+
     const createSlug = (text) => {
-        return text
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/đ/g, 'd')
-            .replace(/Đ/g, 'D')
-            .replace(/[^a-zA-Z0-9]/g, '-')
-            .replace(/-+/g, '-')
-            .replace(/^-|-$/g, '');
+      return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .replace(/[^a-zA-Z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
     };
     const categorySlug = createSlug(cat);
     const subcategorySlug = createSlug(subcategory.name);
 
     const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
-    
+
     navigate(url);
 
     window.scrollTo(0, 0);
   }
+
+
+  const handleCategoryScroll = (direction) => {
+    const container = categoryContainerRef.current;
+    if (!container) return;
+
+    const scrollAmount = 500;
+    const newScroll = direction === 'left'
+      ? categoryScroll - scrollAmount
+      : categoryScroll + scrollAmount;
+
+    container.scrollTo({
+      left: newScroll,
+      behavior: 'smooth'
+    });
+    setCategoryScroll(newScroll);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -82,7 +101,7 @@ const Home = () => {
             {/* Banner Slider */}
             <div className="lg:w-2/3 w-full">
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl">
-                <div 
+                <div
                   className="flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${currentBanner * 100}%)` }}
                 >
@@ -97,13 +116,13 @@ const Home = () => {
                 </div>
 
                 {/* navigate control */}
-                <button 
+                <button
                   onClick={prviousSlide}
                   className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white/50 transition-all"
                 >
                   <FaAngleLeft size={20} sm:size={24} className="text-white" />
                 </button>
-                <button 
+                <button
                   onClick={nextSlide}
                   className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white/50 transition-all"
                 >
@@ -116,11 +135,10 @@ const Home = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentBanner(index)}
-                      className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300 ${
-                        index === currentBanner 
-                          ? 'bg-white w-6 sm:w-8' 
+                      className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300 ${index === currentBanner
+                          ? 'bg-white w-6 sm:w-8'
                           : 'bg-white/50 hover:bg-white/80'
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
@@ -130,7 +148,7 @@ const Home = () => {
             {/* Quick Categories Preview */}
             <div className="lg:w-1/3 w-full mt-4 lg:mt-0">
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md sm:shadow-lg">
-                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Danh mục nổi bật</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sản phẩm được mua nhiều nhất</h2>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {!loadingCategory && categoryData.slice(0, 4).map((cat, index) => (
                     <motion.div
@@ -157,38 +175,63 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories Grid */}
+      {/* Categories Grid - Updated */}
       <section className="py-5 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl rounded font-bold text-black mb-8 text-center">Khám phá danh mục</h2>
-          <div className="grid grid-cols-2 md:grid-cols-8 lg:grid-cols-12 gap-2 p-2">
-            {loadingCategory ? (
-              // Loading skeleton
-              Array(12).fill(null).map((_, index) => (
-                <div key={index} className="animate-pulse">
-                  <div className="bg-gray-200 h-32 rounded-xl mb-3" />
-                  <div className="bg-gray-200 h-4 w-2/3 mx-auto rounded" />
-                </div>
-              ))
-            ) : (
-              categoryData.map((cat, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => handleDirectory(cat._id, cat.name)}
-                >
-                  <div className="aspect-square rounded-xl overflow-hidden mb-4">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                    />
+          <h2 className="text-3xl rounded font-bold text-black mb-8 text-center">
+            Danh mục sản phẩm
+          </h2>
+
+          <div className="relative">
+            <button
+              onClick={() => handleCategoryScroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
+              style={{ display: categoryScroll <= 0 ? 'none' : 'block' }}
+            >
+              <FaChevronLeft size={24} />
+            </button>
+
+            <div
+              ref={categoryContainerRef}
+              className="flex overflow-x-auto scrollbar-hide gap-4 px-2 scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {loadingCategory ? (
+                // Loading skeleton
+                Array(8).fill(null).map((_, index) => (
+                  <div key={index} className="animate-pulse flex-shrink-0 w-[200px]">
+                    <div className="bg-gray-200 h-32 rounded-xl mb-3" />
+                    <div className="bg-gray-200 h-4 w-2/3 mx-auto rounded" />
                   </div>
-                  <h3 className="text-center font-medium text-gray-800">{cat.name}</h3>
-                </motion.div>
-              ))
-            )}
+                ))
+              ) : (
+                categoryData.map((cat, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ y: -5 }}
+                    className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[200px]"
+                    onClick={() => handleDirectory(cat._id, cat.name)}
+                  >
+                    <div className="aspect-square rounded-xl overflow-hidden mb-4">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="text-center font-medium text-gray-800">{cat.name}</h3>
+                  </motion.div>
+                ))
+              )}
+            </div>
+
+            {/* Nút scroll phải */}
+            <button
+              onClick={() => handleCategoryScroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
+            >
+              <FaChevronRight size={24} />
+            </button>
           </div>
         </div>
       </section>

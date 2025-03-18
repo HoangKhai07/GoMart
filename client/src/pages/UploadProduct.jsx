@@ -182,10 +182,11 @@ const UploadProduct = () => {
       <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
         <h1 className=' text-2xl items-center p-1'>Thêm sản phẩm</h1>
       </div>
+      
 
       <div className='my-5'>
         <form onSubmit={handleSubmit} className='bg-white shadow-sm rounded-lg p-6 space-y-6'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-3 border rounded-md'>
             {/* name */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Tên sản phẩm</label>
@@ -232,7 +233,7 @@ const UploadProduct = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 bg-gray-50 p-3 border rounded-md'>
             {/* price */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Giá bán</label>
@@ -286,9 +287,9 @@ const UploadProduct = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6' >
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-3 border rounded-md' >
             {/* Category */}
-            <div className='grid gap-1'>
+            <div className='grid gap-1 bg-gray-50 p-3 border rounded-md'>
               <label className='block text-sm font-medium text-gray-700'>Danh mục</label>
               <div>
                 <select
@@ -336,7 +337,7 @@ const UploadProduct = () => {
             </div>
 
             {/* SubCategory */}
-            <div className='grid gap-1'>
+            <div className='grid gap-1 bg-gray-50 p-3 border rounded-md'>
               <label className='block text-sm font-medium text-gray-700'>Danh mục con</label>
               <div>
                 <select
@@ -396,7 +397,7 @@ const UploadProduct = () => {
           </div>
 
           {/* image */}
-          <div className='grid gap-2 p-3'>
+          <div className='grid gap-2 p-3 bg-gray-50 border rounded-md'>
             <label htmlFor='productImage' className='block text-sm font-medium text-gray-700'>Ảnh
               <div className='flex justify-center flex-col items-center border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-blue-500 transition-colors cursor-pointer'>
                 <IoMdCloudUpload size={60} />
@@ -433,7 +434,7 @@ const UploadProduct = () => {
           </div>
 
           {/* discription */}
-          <div className='grid gap-2 p-3'>
+          <div className='grid gap-2 bg-gray-50 p-3 border rounded-md'>
             <label className='block text-sm font-medium text-gray-700'>Mô tả sản phẩm</label>
             <textarea
               type="text"
@@ -444,7 +445,7 @@ const UploadProduct = () => {
               onChange={handleChange}
               required
               rows={5}
-              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:bg-blue-50 focus:border-primary-light block w-full p-2.5'
+              className='bg-white border ouline-none text-gray-900 text-sm rounded-lg focus:bg-white focus:border-primary-light block w-full p-2.5'
             />
           </div>
 
@@ -497,6 +498,7 @@ const UploadProduct = () => {
           </div>
         </form>
       </div>
+      
 
       {
         ImageUrl && (
@@ -516,6 +518,8 @@ const UploadProduct = () => {
             close={() => setOpenAddField(false)} />
         )
       }
+
+
 
     </section>
   )
