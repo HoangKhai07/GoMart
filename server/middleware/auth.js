@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-const auth = async(request, response, next)=>{
+const auth = async (request, response, next)=>{
     try {
         const token = request.cookies.accessToken || request?.header?.authorization?.split(" ")[1]
         

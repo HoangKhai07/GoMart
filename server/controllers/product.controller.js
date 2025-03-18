@@ -77,7 +77,8 @@ export const getProductController = async (req, res)  => {
             ProductModel.find(query)
             .sort({createdAt: -1})
             .skip(skip)
-            .limit(limit),
+            .limit(limit)
+            .populate('category subCategory'),
             ProductModel.countDocuments(query)
         ])
 
@@ -246,3 +247,68 @@ export const getProductDetailsController = async (req, res) => {
 //     }
     
 // }
+export const updateProductController = async (req, res) => {
+    try {
+        const {_id} = req.body
+        
+        if(!_id){
+            return res.status(400).json({
+                message: "Provide product _id!",
+                error: true,
+                success: false
+         })
+        }
+
+        const update = await ProductModel.updateOne(
+            {_id: _id},
+            {
+                ...req.body
+            }
+        )
+
+        return res.json({
+            message: "Cập nhật sản phẩm thành công!",
+            data: update,
+            success: true,
+            error: false
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+    
+}
+
+export const deleteProductController = async (req, res) => {
+    try {
+        const {_id} = req.body
+
+        if(!_id){
+            return res.status(400).json({
+                message: "Provide product _id!",
+                error: true,
+                success: false
+         })
+        }
+
+        const checkProduct = await ProductModel.deleteOne({_id: _id})
+           
+        return res.json({
+            message: "Xóa sản phẩm thành công!",
+            data: checkProduct,
+            success: true,
+            error: false
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
