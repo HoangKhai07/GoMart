@@ -18,7 +18,6 @@ const EditSubCategory  = ({ close, fetchData, data }) => {
 
     const allCategory = useSelector(state => state.product.allCategory)
 
-    console.log("all category", allCategory)
 
     const handleOnChange = (e) => {
         const { name, value } = e.target
@@ -50,9 +49,8 @@ const EditSubCategory  = ({ close, fetchData, data }) => {
 
     }
 
-    const handleRemoveCategorySelectetd = (categoryId) => {
+    const handleRemoveCategorySelecteted = (categoryId) => {
                 const index = subCategoryData.category.findIndex(el => el._id === categoryId)
-                console.log("index", index)
                 subCategoryData.category.splice(index, 1)
                 setSubCategoryData((preve)=>{
                     return{
@@ -148,7 +146,7 @@ const EditSubCategory  = ({ close, fetchData, data }) => {
                                         <p key={category._id+"selectValue"}
                                         className='bg-green-100 shadow-md border mx-1 my-1'
                                         >{category.name}
-                                        <button onClick={()=>handleRemoveCategorySelectetd(category._id)} className='mx-1 hover:text-red-600'>
+                                        <button onClick={()=>handleRemoveCategorySelecteted(category._id)} className='mx-1 hover:text-red-600'>
                                             <IoClose size={18}/>
                                         </button>
                                         </p>    

@@ -121,10 +121,17 @@ const SummaryApi = {
         method: "post"
     },
 
-    // get_related_product: {
-    //     url: "/api/product/get_related_product",
-    //     method: "post"
-    // }
+    update_product: {
+        url: "/api/product/update_product",
+        method: "put"
+    },
+
+    delete_product: {
+        url: "/api/product/delete_product",
+        method: "delete"
+    },
+
+   
 
 
 }
