@@ -131,6 +131,11 @@ const SummaryApi = {
         method: "delete"
     },
 
+    search_product: {
+        url: "/api/product/search_product",
+        method: "post"
+    }
+
    
 
 

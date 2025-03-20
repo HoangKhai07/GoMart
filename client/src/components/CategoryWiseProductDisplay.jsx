@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { useSelector } from 'react-redux'
 import { FaLongArrowAltRight } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import AxiosToastError from '../utils/AxiosToastError';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
@@ -8,9 +8,15 @@ import CardLoading from './CardLoading';
 import CardProduct from './CardProduct';
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6"; 
+import { useNavigate } from 'react-router-dom';
+
 const CategoryWiseProductDisplay = ({ id, name }) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const loadingCategory = useSelector(state => state.product.loadingCategory)
+  const categoryData = useSelector(state => state.product.allCategory)
+  const subCategoryData = useSelector(state => state.product.allSubCategory)
   
   const scrollContainerRef = useRef(null)
 
@@ -61,17 +67,56 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
   }, [])
 
   const loadingCardNumber = new Array(6).fill(null)
+
+  const handleDirectory = (id, cat) => {
+    const subcategory = subCategoryData.find(sub => {
+      const filterData = sub.category.some(c => {
+        return c._id == id;
+      });
+      return filterData ? true : null;
+    });
+
+    if (!subcategory) {
+      console.error('Không tìm thấy subcategory');
+      return;
+    }
+
+
+    const createSlug = (text) => {
+      return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .replace(/[^a-zA-Z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    };
+    const categorySlug = createSlug(cat);
+    const subcategorySlug = createSlug(subcategory.name);
+
+    const url = `/category/${categorySlug}/${id}/subcategory/${subcategorySlug}/${subcategory._id}`;
+
+    navigate(url);
+
+    window.scrollTo(0, 0);
+  }
   return (
-    <div className='container mx-auto px-4 md:px-6 lg:px-8 py-8'>
+    <div className='container mx-auto px-4 md:px-2 lg:px-8 py-8'>
       <div className='flex justify-between items-center mb-6'>
         <h3 className='font-semibold text-xl text-gray-800'>{name}</h3>
-        <Link 
-          to="" 
-          className='flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200'
-        >
-          <span className='font-medium'>Xem tất cả</span>
-          <FaLongArrowAltRight />
-        </Link>
+        {!loadingCategory && categoryData.slice(0, 1).map((cat, index) => (
+          <div
+          className='flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200'>
+          <button
+          onClick={() => handleDirectory(cat._id, cat.name)}
+          className='hover:text-green-500 font-medium transition duration-500'>Xem tất cả</button>
+          {/* <FaLongArrowAltRight /> */}
+        </div>
+        )
+
+        )}
       </div>
 
       <div className='relative'>
