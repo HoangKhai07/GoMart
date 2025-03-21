@@ -1,4 +1,5 @@
 import ProductModel from "../model/product.model.js";
+import { normalizeString } from '../utils/normalizeString.js';
 
 export const createProductController = async (req, res) => {
     try {
@@ -247,6 +248,7 @@ export const getProductDetailsController = async (req, res) => {
 //     }
     
 // }
+
 export const updateProductController = async (req, res) => {
     try {
         const {_id} = req.body
@@ -310,5 +312,52 @@ export const deleteProductController = async (req, res) => {
             error: true,
             success: false
         })
+    }
+}
+
+export const searchProductController = async (req, res) => {
+    try {
+        const { search, page = 1, limit = 10 } = req.body;
+        const skip = (page - 1) * limit;
+
+       
+        const searchTerms = [
+            search, 
+            search.toLowerCase(), 
+            normalizeString(search),
+        ];
+
+        const query = {
+            $or: [
+                ...searchTerms.map(term => ({ name: { $regex: term, $options: 'i' } })),
+                ...searchTerms.map(term => ({ brand: { $regex: term, $options: 'i' } })),
+                ...searchTerms.map(term => ({ description: { $regex: term, $options: 'i' } }))
+            ],
+            publish: true
+        };
+
+        const [products, total] = await Promise.all([
+            ProductModel.find(query)
+                .skip(skip)
+                .limit(limit)
+                .sort({ createdAt: -1 }),
+            ProductModel.countDocuments(query)
+        ]);
+
+        return res.json({
+            success: true,
+            error: false,
+            data: products,
+            total,
+            page: parseInt(page),
+            totalPage: Math.ceil(total / limit)
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        });
     }
 }
