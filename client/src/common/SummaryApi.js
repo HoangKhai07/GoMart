@@ -134,10 +134,17 @@ const SummaryApi = {
     search_product: {
         url: "/api/product/search_product",
         method: "post"
+    },
+
+    add_to_cart: {
+        url: "/api/cart/create",
+        method: "post" 
+    },
+
+    get_cart: {
+        url: "/api/cart/get",
+        method: "get"
     }
-
-   
-
 
 }
 

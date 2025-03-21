@@ -53,7 +53,6 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
       if (responseData.success) {
         setData(responseData.data)
       }
-      console.log(responseData)
 
     } catch (error) {
       AxiosToastError(error)
@@ -108,6 +107,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
         <h3 className='font-semibold text-xl text-gray-800'>{name}</h3>
         {!loadingCategory && categoryData.slice(0, 1).map((cat, index) => (
           <div
+          key={"data"+index}
           className='flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200'>
           <button
           onClick={() => handleDirectory(cat._id, cat.name)}

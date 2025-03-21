@@ -11,6 +11,7 @@ import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/p
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import AxiosToastArror from './utils/AxiosToastError';
+import { handleAddToCart } from './store/cartProduct'
 
 function App() {
   const dispatch = useDispatch()
@@ -21,8 +22,8 @@ function App() {
     dispatch(setUserDetails(userData.data))
   }
 
-    const fetchCategory = async () => {
-    try {  
+  const fetchCategory = async () => {
+    try {
       dispatch(setLoadingCategory(true))
       const response = await Axios({
         ...SummaryApi.get_category,
@@ -32,7 +33,6 @@ function App() {
 
       if (responseData.success) {
         dispatch(setAllCategory(responseData.data))
-        // setCategoryData(responseData.data)
       }
 
     } catch (error) {
@@ -43,7 +43,7 @@ function App() {
   }
 
   const fetchSubCategory = async () => {
-    try {  
+    try {
       const response = await Axios({
         ...SummaryApi.get_subcategory,
 
@@ -53,7 +53,6 @@ function App() {
 
       if (responseData.success) {
         dispatch(setAllSubCategory(responseData.data))
-        // setCategoryData(responseData.data)
       }
 
     } catch (error) {
@@ -62,12 +61,33 @@ function App() {
     }
   }
 
+  const fetchCartItem = async () => {
+    try {
+      const response = await Axios({
+        ...SummaryApi.get_cart
+      })
+
+      const { data: responseData } = response
+
+      if(responseData.success){
+        dispatch( handleAddToCart(responseData.data))
+        console.log(responseData)
+      }
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
-  useEffect(() => { 
+
+
+
+  useEffect(() => {
     fetchUser()
     fetchCategory()
     fetchSubCategory()
+    fetchCartItem()
   }, [])
 
   // const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
@@ -76,12 +96,12 @@ function App() {
   return (
     <>
       {/* {shouldShowHeaderFooter && <Header />} */}
-      <Header/>
+      <Header />
       <main className='min-h-[80vh]'>
         <Outlet />
       </main>
       {/* {shouldShowHeaderFooter && <Footer />} */}
-      <Footer/>
+      <Footer />
       <Toaster />
     </>
   )

@@ -7,6 +7,7 @@ import SummaryApi from '../common/SummaryApi'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useLocation } from 'react-router-dom'
 import { normalizeString } from '../utils/normalizeString'
+import noResult from '../assets/no_result.png'
 
 const SearchPage = () => {
   const [data, setData] = useState([])
@@ -15,7 +16,7 @@ const SearchPage = () => {
   const [page, setPage] = useState(1)
   const [totalPage, setTotalPage] = useState(1)
   const params = useLocation()
-  const searchText = normalizeString(params?.search?.slice(3))
+  const searchText = decodeURIComponent(params?.search?.slice(3) || '')
 
   const fetchData = async () => {
     try {
@@ -64,8 +65,8 @@ const SearchPage = () => {
   }
 
   return (
-    <section className=''>
-      <div className='containe mx-auto p-4'>
+    <section className='min-h-[90vh]'>
+      <div className='container mx-auto p-4'>
         <p className='text-gray-500'>Kết quả tìm kiếm: {data.length} sản phẩm phù hợp</p>
 
         <InfiniteScroll
@@ -83,8 +84,6 @@ const SearchPage = () => {
               })
             }
 
-
-
             {
               loading && (
                 loadingArrayCard.map((items, index) => {
@@ -101,6 +100,20 @@ const SearchPage = () => {
 
           </div>
         </InfiniteScroll>
+
+        {
+              !data[0] && !loading && (
+                <div className='flex flex-col justify-center items-center'>
+                  <img
+                  src={noResult}
+                  className='w-60'
+                  />
+                  <p className='text-xl font-medium'>Không tìm thấy sản phẩm nào</p>
+                  <p className='text-gray-500 text-lg mt-2'>Hãy sử dụng những từ khoá chung chung hơn</p>
+                </div>
+              )
+            }
+
       </div>
 
     </section>
