@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { convertVND } from '../utils/ConvertVND'
 import { IoCart } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import SummaryApi from '../common/SummaryApi';
+import AxiosToastError from '../utils/AxiosToastError.js'
+import Axios from '../utils/Axios.js'
+import toast from 'react-hot-toast';
 
 
 const CardProduct = ({ data }) => {
   const navigate = useNavigate();
+  const [ loading, setLoading ] = useState(false)
 
   const calculateDiscountedPrice = (originalPrice, discountPrice) => {
     const discount = (originalPrice * discountPrice) / 100
@@ -32,6 +37,32 @@ const CardProduct = ({ data }) => {
     navigate(`/product/${productSlug}/${data._id}`)
 
     window.scrollTo(0, 0);
+  }
+
+  const handleAddToCart = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    try {
+      setLoading(true)
+      const response = await Axios({
+        ...SummaryApi.add_to_cart,
+        data: {
+          productId: data?._id 
+        }
+      })
+
+      const { data : responseData } = response
+      if(responseData.success){
+        toast.success(responseData.message)
+      }
+
+      
+    } catch (error) {
+      AxiosToastError(error)
+    }finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -82,7 +113,9 @@ const CardProduct = ({ data }) => {
           <button className='flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px- rounded-lg transition-colors duration-200 text-sm font-medium'>
             Mua ngay
           </button>
-          <button className='p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200'>
+          <button 
+          onClick={handleAddToCart}
+          className='p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200'>
             <IoCart className='text-gray-600' size={20} />
           </button>
         </div>

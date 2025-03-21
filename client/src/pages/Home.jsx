@@ -175,7 +175,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories Grid - Updated */}
+      {/* Categories Grid*/}
       <section className="py-5 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl rounded font-bold text-black mb-8 text-center">

@@ -210,7 +210,7 @@ const ProductDisplayPage = () => {
 
           {/* Additional Information */}
           <div className="mt-12 border-t pt-6 border-gray-200">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">Thông tin sản phẩm</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-800">Sản phẩm tại GoMart</h3>
 
             <div className='flex items-center gap-4 my-6 bg-gray-50 p-4 rounded-lg transition-all hover:shadow-md'>
               <img
@@ -246,6 +246,13 @@ const ProductDisplayPage = () => {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Thông tin sản phẩm</h3>
+        <div>
+          {data.description}  
         </div>
       </div>
 

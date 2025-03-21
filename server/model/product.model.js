@@ -72,9 +72,13 @@ productSchema.index({
     brand: "text",
     description: "text"
 },{
-    name: 10,
-    brand: 10,
-    description: 5
+    weights: {
+        name: 10,
+        brand: 10,
+        description: 5
+    },
+    default_language: "none",
+    language_override: "none"
 })
 
 const ProductModel = mongoose.model('product', productSchema)

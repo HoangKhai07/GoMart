@@ -22,7 +22,11 @@ const Search = () => {
     navigate("/search")
   }
 
-  // console.log("search", isSearchPage)
+  const handleOnChange = (e) => {
+    const value = e.target.value
+    const url = `/search?q=${value}`
+    navigate(url)
+  }
 
   return (
     <div className='w-full min-w-[20px] lg:min-w-[800px] h11 lg:h-12 rounded-lg 
@@ -75,6 +79,7 @@ const Search = () => {
                 placeholder='Tìm kiếm...'
                 autoFocus
                 className='bg-transparent w-full h-full outline-none'
+                onChange={handleOnChange}
               />
             </div>
 
