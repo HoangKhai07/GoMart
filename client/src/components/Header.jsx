@@ -9,6 +9,7 @@ import useMobile from '../hook/useMobile';
 import { useSelector } from 'react-redux';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import UserMenu from './UserMenu';
+import DisplayCartItem from './DisplayCartItem'
 
 const Header = () => {
   const [isMobile] = useMobile()
@@ -20,7 +21,7 @@ const Header = () => {
   const cartItem = useSelector(state => state.cartItem.cart)
   const [ totalPrice, setTotalPrice ] = useState(0)
   const [ totalQuantity, setTotalQuantity ] = useState(0)
-  console.log("cart", cartItem)
+  const [ openCartSection, setOpenCartSection ] = useState(false)
 
   const redirectToLoginPage = () => {
     navigate("/login")
@@ -89,7 +90,7 @@ const Header = () => {
                   </button>
                 )}
 
-                <button className='relative flex items-center space-x-2 px-4 py-2 bg-primary-light-3 hover:bg-primary-light rounded-full transition-all'>
+                <button onClick={()=> setOpenCartSection(true)} className='relative flex items-center space-x-2 px-4 py-2 bg-primary-light-3 hover:bg-primary-light rounded-full transition-all'>
                   <TiShoppingCart size={24} className="text-white" />
                   {cartItem[0] ? (
                     <div className='absolute -top-2 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-medium'>
@@ -119,7 +120,14 @@ const Header = () => {
       <div className='w-full px-4 mt-3 lg:hidden'>
         <Search />
       </div>
+      {
+      openCartSection && (
+        <DisplayCartItem  close={()=> setOpenCartSection(false)}/>
+      )
+    }
     </header>
+
+   
   )
 }
 

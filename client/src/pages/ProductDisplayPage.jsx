@@ -13,6 +13,7 @@ import CardProduct from '../components/CardProduct'
 
 import image_1 from '../assets/best-price.png'
 import image_2 from '../assets/time_delivery.jpg'
+import AddToCartButton from '../components/AddToCartButton'
 
 
 const ProductDisplayPage = () => {
@@ -199,13 +200,17 @@ const ProductDisplayPage = () => {
 
           {/* Button add product */}
           <div className='mt-8'>
-            <button
+            {/* <button
               type="button"
               className="w-full text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-3.5 text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               <IoCart className="text-white" />
               Thêm vào giỏ hàng
-            </button>
+            </button> */}
+
+            <div> 
+            <AddToCartButton data={data}/>
+            </div>
           </div>
 
           {/* Additional Information */}
