@@ -10,8 +10,8 @@ import { useDispatch } from 'react-redux';
 import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/productSlide';
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
-import AxiosToastArror from './utils/AxiosToastError';
-import { handleAddToCart } from './store/cartProduct'
+import GlobalProvider from './provider/GlobalProvider'
+
 
 function App() {
   const dispatch = useDispatch()
@@ -61,23 +61,7 @@ function App() {
     }
   }
 
-  const fetchCartItem = async () => {
-    try {
-      const response = await Axios({
-        ...SummaryApi.get_cart
-      })
 
-      const { data: responseData } = response
-
-      if(responseData.success){
-        dispatch( handleAddToCart(responseData.data))
-        console.log(responseData)
-      }
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
 
@@ -87,14 +71,14 @@ function App() {
     fetchUser()
     fetchCategory()
     fetchSubCategory()
-    fetchCartItem()
+    // fetchCartItem()
   }, [])
 
   // const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
   // const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
 
   return (
-    <>
+    <GlobalProvider>
       {/* {shouldShowHeaderFooter && <Header />} */}
       <Header />
       <main className='min-h-[80vh]'>
@@ -103,7 +87,7 @@ function App() {
       {/* {shouldShowHeaderFooter && <Footer />} */}
       <Footer />
       <Toaster />
-    </>
+    </GlobalProvider>
   )
 }
 

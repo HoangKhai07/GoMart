@@ -144,7 +144,17 @@ const SummaryApi = {
     get_cart: {
         url: "/api/cart/get",
         method: "get"
-    }
+    },
+
+    update_qty_cart: {
+        url: "/api/cart/update_qty",
+        method: "put"
+    },
+
+    delete_cart: {
+        url: "/api/cart/delete",
+        method: "delete"
+    }   
 
 }
 
