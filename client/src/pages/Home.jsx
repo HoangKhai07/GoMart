@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
 import { FaAngleLeft, FaAngleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { GoArrowRight } from "react-icons/go";
 import { ValideUrlConvert } from '../utils/ValideUrlConvert';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -148,7 +149,7 @@ const Home = () => {
             {/* Quick Categories Preview */}
             <div className="lg:w-1/3 w-full mt-4 lg:mt-0">
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md sm:shadow-lg">
-                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sản phẩm được mua nhiều nhất</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sản phẩm bán chạy</h2>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {!loadingCategory && categoryData.slice(0, 4).map((cat, index) => (
                     <motion.div
@@ -164,7 +165,10 @@ const Home = () => {
                           className="w-full h-16 sm:h-24 object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <p className="absolute bottom-2 left-2 text-white font-medium">{cat.name}</p>
+                        <div className=''>
+                        <p className="absolute bottom-5 left-2 text-white font-medium">{cat.name}</p>
+                        <p className='absolute bottom-1 ml-2 text-gray-300 font-sm text-xs'>Xem ngay </p>
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -175,14 +179,57 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories Grid*/}
-      <section className="py-5 bg-white">
+       {/* Promo Banners */}
+       <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl rounded font-bold text-black mb-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-blue-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-blue-100 p-3 rounded-full mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800">Thanh toán an toàn</h3>
+                <p className="text-sm text-gray-600">Bảo mật thông tin khách hàng</p>
+              </div>
+            </div>
+            <div className="bg-green-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-green-100 p-3 rounded-full mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800">Đảm bảo chất lượng</h3>
+                <p className="text-sm text-gray-600">Sản phẩm chính hãng 100%</p>
+              </div>
+            </div>
+            <div className="bg-amber-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-amber-100 p-3 rounded-full mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800">Giao hàng nhanh chóng</h3>
+                <p className="text-sm text-gray-600">Vận chuyển trong 24h</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Grid*/}
+      <section className="py-5 bg-gray-50">
+        <div className="container mx-auto px-4">
+        <div className='flex justify-center items-center'>
+          <h2 className=" bg-green-500 p-2 inline-block text-3xl rounded font-bold text-black mb-8 text-center">
             Danh mục sản phẩm
           </h2>
+        </div>
 
-          <div className="relative">
+          <div className="relative bg-white p-2">
             <button
               onClick={() => handleCategoryScroll('left')}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
@@ -209,7 +256,7 @@ const Home = () => {
                   <motion.div
                     key={index}
                     whileHover={{ y: -5 }}
-                    className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[200px]"
+                    className="bg-white border mb-2 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[200px]"
                     onClick={() => handleDirectory(cat._id, cat.name)}
                   >
                     <div className="aspect-square rounded-xl overflow-hidden mb-4">
@@ -236,14 +283,57 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Featured Products Banner */}
+      <section className="mt-8 ml-5 mr-5 sm:hidden lg:block py-10 bg-gradient-to-r from-green-600 to-indigo-500 text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Sản phẩm nổi bật tháng này</h2>
+              <p className="text-blue-100 mb-6 max-w-md">Khám phá những sản phẩm chất lượng cao với giá ưu đãi đặc biệt. Chỉ trong thời gian giới hạn!</p>
+              <button className="bg-white gap-2 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition-all inline-flex items-center">
+                Xem ngay
+                <GoArrowRight size={20}/>
+              </button>
+            </div>
+            <div className="md:w-1/2 flex justify-center">
+              <img 
+                src="" 
+                alt="" 
+                className="rounded-xl shadow-lg max-w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Sections */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-1 bg-gray-50">
         <div className="container mx-auto px-4">
           {categoryData.map((cat, index) => (
-            <div key={index + "categorywiseproductdisplay"} className="mb-12 last:mb-0">
+            <div key={index + "categorywiseproductdisplay"}>
               <CategoryWiseProductDisplay id={cat?._id} name={cat?.name} />
             </div>
           ))}
+        </div>
+      </section>
+
+       {/* Newsletter Section */}
+       <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Đăng ký nhận thông tin ưu đãi</h2>
+            <p className="text-gray-600 mb-8">Nhận thông báo về các sản phẩm mới và ưu đãi đặc biệt</p>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center">
+              <input 
+                type="email" 
+                placeholder="Nhập email của bạn" 
+                className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow max-w-md"
+              />
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                Đăng ký
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

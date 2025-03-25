@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect} from "react"
 import Axios from "../utils/Axios"
 import SummaryApi from "../common/SummaryApi"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { handleAddToCart } from "../store/cartProduct"
 import AxiosToastError from '../utils/AxiosToastError'
 import toast from "react-hot-toast"
@@ -13,6 +13,8 @@ export const useGlobalContext = () => useContext(GlobalContext)
 export const GlobalProvider = ({ children }) => {
 
     const dispatch = useDispatch()
+    const cartItems = useSelector((state) => state.cartItem.cart)
+    const user = useSelector((state) => state?.user)
 
     const fetchCartItem = async () => {
         try {
@@ -24,7 +26,6 @@ export const GlobalProvider = ({ children }) => {
     
           if(responseData.success){
             dispatch( handleAddToCart(responseData.data))
-            console.log(responseData)
           }
           
         } catch (error) {
@@ -73,16 +74,43 @@ export const GlobalProvider = ({ children }) => {
         AxiosToastError(error)
       }
     }
-    
-    const notDiscountPrice = cartItem
+
+    const notDiscountPrice = cartItems.reduce((preve, curr)=> {
+      return preve + (curr?.productId?.price * curr.quantity)
+    }, 0)
+  
+    const calculateTotal = () => {
+      if (!cartItems || cartItems.length === 0) return 0;
+      return cartItems.reduce((total, item) => {
+        const discountedPrice = item.productId.discount 
+          ? item.productId.price - (item.productId.price * item.productId.discount / 100) 
+          : item.productId.price;
+        return total + (discountedPrice * item.quantity);
+      }, 0);
+    };
+
+    const savePrice = () => {
+      const totalSave = notDiscountPrice - calculateTotal()
+      return totalSave
+    }
+
+      
       useEffect(()=> {
         fetchCartItem()
-      },[])
+        handleLogout()
+      },[user])
+
+      const handleLogout = () => {
+        localStorage.clear()
+        dispatch(handleAddToCart([]))
+      }
     return (
         <GlobalContext.Provider value={{
             fetchCartItem,
             updateCartItem,
-            deleteCartItem
+            deleteCartItem,
+            calculateTotal,
+            savePrice
         }}>
             {children}
         </GlobalContext.Provider>
