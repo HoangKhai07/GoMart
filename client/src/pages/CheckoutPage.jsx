@@ -18,52 +18,19 @@ const CheckoutPage = () => {
   const { calculateTotal, savePrice } = useGlobalContext()
   const [loading, setLoading] = useState(false)
   const [openAddress, setOpenAddress]= useState(false)
-  const [addresses, setAddresses] = useState([])
+  const addressList = useSelector(state => state.address.addressList)
   const [selectedAddress, setSelectedAddress] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('COD')
 
-  useEffect(() => {
-    if (!user?._id) {
-      toast.error('Vui lòng đăng nhập để tiếp tục')
-      navigate('/')
-      return
-    }
-
-    if (!cartItems || cartItems.length === 0) {
-      toast.error('Giỏ hàng của bạn đang trống')
-      navigate('/')
-      return
-    }
-
-    fetchAddresses()
-  }, [user, cartItems, navigate])
-
-  const fetchAddresses = async () => {
-    try {
-      setLoading(true)
-      const response = await Axios({
-        ...SummaryApi.get_user_addresses
-      })
-
-      if (response.data.success) {
-        setAddresses(response.data.data)
-        if (response.data.data.length > 0) {
-          // Set default selected address to the first one
-          setSelectedAddress(response.data.data[0]._id)
-        }
-      }
-    } catch (error) {
-      AxiosToastError(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
+  console.log("addressList", addressList)
+ 
+  
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {
       toast.error('Vui lòng chọn địa chỉ giao hàng')
       return
     }
+
 
     try {
       setLoading(true)
@@ -96,9 +63,7 @@ const CheckoutPage = () => {
     }
   }
 
-  // const handleAddNewAddress = () => {
-  //   navigate('/dashboard/address')
-  // }
+  
 
   if (loading) {
     return <Loading />
@@ -173,9 +138,9 @@ const CheckoutPage = () => {
                 </button>
               </div>
               
-              {addresses.length > 0 ? (
+              {addressList?.length > 0 ? (
                 <div className="space-y-3">
-                  {addresses.map((address) => (
+                  {addressList.map((address) => (
                     <div 
                       key={address._id} 
                       className={`border rounded-lg p-4 cursor-pointer transition-all ${
@@ -195,9 +160,9 @@ const CheckoutPage = () => {
                         />
                         <div>
                           <p className="font-medium text-gray-800">{address.name}</p>
-                          <p className="text-gray-600 mt-1">{address.phone}</p>
+                          <p className="text-gray-600 mt-1">{address.mobile}</p>
                           <p className="text-gray-600 mt-1">
-                            {address.street}, {address.ward}, {address.district}, {address.city}
+                            {address.specific_address}, {address.ward}, {address.district}, {address.province}
                           </p>
                         </div>
                       </div>
@@ -320,7 +285,9 @@ const CheckoutPage = () => {
 
       {
         openAddress && (
-          <AddAddress close={() => setOpenAddress(false)}/>
+          <AddAddress close={() => setOpenAddress(false)}
+          // fetchAddress={fetchAddresses}
+          />
         )
       }
     </div>

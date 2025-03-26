@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { handleAddToCart } from "../store/cartProduct"
 import AxiosToastError from '../utils/AxiosToastError'
 import toast from "react-hot-toast"
+import { handleAddAddress } from "../store/addressSlide"
 
 export const GlobalContext = createContext(null)
 
@@ -87,17 +88,34 @@ export const GlobalProvider = ({ children }) => {
           : item.productId.price;
         return total + (discountedPrice * item.quantity);
       }, 0);
-    };
+    }
 
     const savePrice = () => {
       const totalSave = notDiscountPrice - calculateTotal()
       return totalSave
     }
 
+    const fetchAddress = async () => {
+      try {
+        const response = await Axios({
+          ...SummaryApi.get_address
+        })
+
+        const { data: responseData } = response
+
+        if(responseData.success){
+          dispatch(handleAddAddress(responseData.data))
+        }
+      } catch (error) {
+        AxiosToastError(error)
+      }
+    }
+
       
       useEffect(()=> {
         fetchCartItem()
         handleLogout()
+        fetchAddress()
       },[user])
 
       const handleLogout = () => {
@@ -109,6 +127,7 @@ export const GlobalProvider = ({ children }) => {
             fetchCartItem,
             updateCartItem,
             deleteCartItem,
+            fetchAddress, 
             calculateTotal,
             savePrice
         }}>
