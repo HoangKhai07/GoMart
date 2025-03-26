@@ -34,6 +34,11 @@ const addressSchema = new mongoose.Schema({
     status: {
         type: Boolean,
         default: true
+    },
+
+    userId: {
+        type: mongoose.Schema.ObjectId,
+        default: ""
     }
 
 },{
