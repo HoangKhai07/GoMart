@@ -81,3 +81,69 @@ export const getCartItemsController = async (req, res) => {
         })
     }
 }
+
+export const updateCardQtyItemController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const { _id, qty } = req.body
+
+        if(!_id || !qty){
+            return res.status(400).json({
+                message: "Provide id and quantity",
+                error: true,
+                success: false
+            })
+        }
+
+        const updateCartItem = await CartProductModel.updateOne({
+            _id: _id
+        }, {
+            quantity: qty
+        })
+
+        return res.json({
+            message: "Đã thêm sản phẩm vào giỏ hàng",
+            error: false,
+            success: true,
+            data: updateCartItem
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            success: false,
+            error: true
+        })
+    }
+}
+
+export const deleteCartItemController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const { _id } = req.body
+
+        if(!_id){
+            return res.status(400).json({
+                message: "privid id",
+                error: true,
+                success: false
+            })
+        }
+
+        const deleteCartItem = await CartProductModel.deleteOne({_id: _id, userId: userId})
+
+        return res.json({
+            message: "Đã xóa sản phẩm khỏi giỏ hàng",
+            error: false,
+            success: true,
+            data: deleteCartItem
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            success: false,
+            error: true
+        })
+    }
+}
