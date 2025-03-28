@@ -69,3 +69,57 @@ export const getAddressController = async (req, res) => {
         })
     }
 }
+
+export const updateAddressController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const {_id, name, province, district, ward, specific_address, mobile, is_default} = req.body
+
+        const updateAddress = await AddressModel.updateOne({_id: _id, userId: userId},{
+            name, 
+            province, 
+            district, 
+            ward, 
+            specific_address, 
+            mobile, 
+            is_default
+        })
+
+        return res.json({
+            message: "Địa chỉ đã được cập nhật thành công!",
+            error: false,
+            success: true,
+            data: updateAddress
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const deleteAddressController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const {_id } = req.body
+
+        const deleteAddress = await AddressModel.deleteOne({_id: _id})
+        
+        return res.json({
+            message:"Đã xoá địa chỉ",
+            error: false,
+            success: true,
+            data: deleteAddress
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+    
+}

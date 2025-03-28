@@ -190,7 +190,7 @@ export async function loginController(request, response){
 //logout controller
 export async function logoutController(request, response){
     try{
-        const userid = request.userId
+        const userId = request.userId
 
         const cookiesOption = {
             httpOnly: true,
@@ -201,13 +201,14 @@ export async function logoutController(request, response){
         response.clearCookie('accessToken', cookiesOption)
         response.clearCookie('refreshToken', cookiesOption) 
 
-        const removeRefreshToken = await UserModel.findByIdAndUpdate(userid,{
+        const removeRefreshToken = await UserModel.findByIdAndUpdate(userId,{
             refresh_token: ""
         })
         return response.json({
             message: "Đăng xuất thành công!",
             error: false,
-            success: true
+            success: true,
+            data: removeRefreshToken
         })
 
 
@@ -477,11 +478,11 @@ export async function resetPassword(request, response){
 //refresh token
 export async function refreshTokenController(request, response){
     try {
-        const refreshToken = request.cookies.refreshToken || request?.header?.authorization?.split(" ")[1]
+        const refreshToken = request.cookies.refreshToken || request?.headers?.authorization?.split(" ")[1]
 
         if(!refreshToken){
             return response.status(401).json({
-                message: "Unauthorrized access",
+                message: "Unauthorized access",
                 error: true,
                 success: false
             })
@@ -509,7 +510,7 @@ export async function refreshTokenController(request, response){
             sameSite: "None"    
         }   
 
-        response.cookie('accesstoken', newAccessToken,cookiesOption)
+        response.cookie('accessToken', newAccessToken, cookiesOption)
 
         return response.json({
             message: "New Access token generated",
@@ -520,11 +521,10 @@ export async function refreshTokenController(request, response){
             }
         })
     } catch (error) {
-        return response(500).json({
+        return response.status(500).json({
             message: error.message || error,
             error: true,
             success: false
         })
-        
     }
 }
