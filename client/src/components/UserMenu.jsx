@@ -24,7 +24,11 @@ const UserMenu = ({ close }) => {
         close()
         dispatch(logout())
         localStorage.clear()
-        toast.success(response.data.message)
+        navigate('/')
+          
+        setTimeout(() => {
+          toast.success(response.data.message)
+        }, 100)
       }
     } catch (error) {
       AxiosToastError(error)
