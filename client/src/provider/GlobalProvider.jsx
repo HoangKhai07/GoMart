@@ -96,6 +96,9 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchAddress = async () => {
+      // const token = localStorage.getItem('accessToken')
+      // if (!token) return
+      
       try {
         const response = await Axios({
           ...SummaryApi.get_address
@@ -114,8 +117,8 @@ export const GlobalProvider = ({ children }) => {
       
       useEffect(()=> {
         fetchCartItem()
-        handleLogout()
         fetchAddress()
+        handleLogout()
       },[user])
 
       const handleLogout = () => {

@@ -15,58 +15,41 @@ const CheckoutPage = () => {
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { calculateTotal, savePrice } = useGlobalContext()
+  const { calculateTotal, savePrice, fetchCartItem } = useGlobalContext()
   const [loading, setLoading] = useState(false)
   const [openAddress, setOpenAddress]= useState(false)
   const addressList = useSelector(state => state.address.addressList)
-  const [selectedAddress, setSelectedAddress] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('COD')
-
-  console.log("addressList", addressList)
- 
-  
-  const handlePlaceOrder = async () => {
-    if (!selectedAddress) {
-      toast.error('Vui lòng chọn địa chỉ giao hàng')
-      return
-    }
+  const [selectedAddress, setSelectedAddress] = useState(0)
 
 
+
+  const handleCashOnDelivery = async () => {
     try {
       setLoading(true)
-      const orderData = {
-        addressId: selectedAddress,
-        paymentMethod: paymentMethod,
-        items: cartItems.map(item => ({
-          productId: item.productId._id,
-          quantity: item.quantity,
-          price: item.productId.discount 
-            ? item.productId.price - (item.productId.price * item.productId.discount / 100) 
-            : item.productId.price
-        })),
-        totalAmount: calculateTotal()
-      }
-
       const response = await Axios({
-        ...SummaryApi.create_order,
-        data: orderData
+        ...SummaryApi.cash_on_delivery_payment,
+        data: {
+          list_items: cartItems,
+          totalAmt: calculateTotal(),
+          addressId: selectedAddress,
+          subTotalAmt: calculateTotal() + savePrice()
+        }
       })
 
-      if (response.data.success) {
-        toast.success('Đặt hàng thành công')
-        navigate('/dashboard/myorders')
+      const { data: responseData } = response
+      if(responseData.success){
+        toast.success(responseData.message)
+        if(fetchCartItem){
+          fetchCartItem()
+        }
+        navigate('/')
       }
+      
     } catch (error) {
       AxiosToastError(error)
     } finally {
       setLoading(false)
     }
-  }
-
-  
-
-  if (loading) {
-    return <Loading />
   }
 
   return (
@@ -138,7 +121,7 @@ const CheckoutPage = () => {
                 </button>
               </div>
               
-              {addressList?.length > 0 ? (
+              {addressList.length > 0 ? (
                 <div className="space-y-3">
                   {addressList.map((address) => (
                     <div 
@@ -183,7 +166,7 @@ const CheckoutPage = () => {
             </div>
             
             {/* Payment Methods */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            {/* <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-semibold mb-4 text-gray-700">Phương thức thanh toán</h2>
               
               <div className="space-y-3">
@@ -233,7 +216,7 @@ const CheckoutPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           
           {/* Right column - Order summary */}
@@ -263,8 +246,9 @@ const CheckoutPage = () => {
                 <p className="text-xl font-bold text-green-600">{convertVND(calculateTotal())}</p>
               </div>
               
+              <div className='flex flex-col gap-3 '>
               <button
-                onClick={handlePlaceOrder}
+                onClick={handleCashOnDelivery} 
                 disabled={!selectedAddress || loading}
                 className={`w-full py-3 rounded-md font-medium text-white ${
                   !selectedAddress || loading
@@ -272,8 +256,21 @@ const CheckoutPage = () => {
                     : 'bg-green-600 hover:bg-green-700 transition-colors'
                 }`}
               >
-                {loading ? 'Đang xử lý...' : 'Đặt hàng'}
+                {loading ? 'Đang xử lý...' : 'Thanh toán khi nhận hàng'}
               </button>
+
+              <button
+               
+                disabled={!selectedAddress || loading}
+                className={`w-full py-3 rounded-md font-medium text-white ${
+                  !selectedAddress || loading
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-green-600 hover:bg-green-700 transition-colors'
+                }`}
+              >
+                {loading ? 'Đang xử lý...' : 'Thanh toán online'}
+              </button>
+              </div>
               
               <p className="text-sm text-gray-500 mt-4 text-center">
                 Bằng cách đặt hàng, bạn đồng ý với các điều khoản và điều kiện của chúng tôi.
