@@ -74,17 +74,17 @@ function App() {
     // fetchCartItem()
   }, [])
 
-  // const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
-  // const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
+  const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
+  const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
 
   return (
     <GlobalProvider>
-      {/* {shouldShowHeaderFooter && <Header />} */}
-      <Header />
+      {shouldShowHeaderFooter && <Header />}
+      {/* <Header /> */}
       <main className='min-h-[80vh]'>
         <Outlet />
       </main>
-      {/* {shouldShowHeaderFooter && <Footer />} */}
+      {shouldShowHeaderFooter && <Footer />}
       <Footer />
       <Toaster />
     </GlobalProvider>
