@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
        ref: "product"
     },
 
-    productDetails:{
+    product_details:{
         _id: String,
         name: String,
         image: Array 
@@ -31,6 +31,12 @@ const orderSchema = new mongoose.Schema({
     payment_status: {
         type: String,
         default: ""
+    },
+
+    order_status: {
+        type: String,
+        enum: ['Preparing order', 'Shipping', 'Out for delivery', 'Delivered'],
+        default: 'Preparing order'
     },
 
     delivery_address: {
