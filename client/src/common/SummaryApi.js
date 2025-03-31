@@ -180,6 +180,16 @@ const SummaryApi = {
     cash_on_delivery_payment: {
         url: "/api/order/cash-on-delivery",
         method: "post"
+    },
+
+    checkout_with_stripe:{
+        url: "api/order/checkout",
+        method: "post"
+    },
+
+    get_order: {
+        url: "/api/order/order-list",
+        method: "get"
     }
 
 }

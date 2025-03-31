@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const initialValue = {
-    addressList: []
+    addressList: [],
+    selectedAddress: "0"
 }
 
 const addressSlice = createSlice({
@@ -10,11 +11,15 @@ const addressSlice = createSlice({
     reducers: {
         handleAddAddress: (state, action) => {
             state.addressList = [...action.payload]
+        },
+
+        setSelectedAddress: (state, action) => {
+            state.selectedAddress = action.payload
         }
     }
 })
 
-export const { handleAddAddress } = addressSlice.actions
+export const { handleAddAddress, setSelectedAddress } = addressSlice.actions
 
 export default addressSlice.reducer
 

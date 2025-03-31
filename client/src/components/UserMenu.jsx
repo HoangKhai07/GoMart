@@ -68,11 +68,16 @@ const UserMenu = ({ close }) => {
           )
         }
 
-
         {
           isAdmin(user.role) && (
             <Link onClick={handleClose} to={"/dashboard/upload-product"} className='hover:text-primary-light hover:bg-gray-100' >Thêm sản phẩm</Link>
           )}
+
+          {
+            isAdmin(user.role) && (
+              <Link onClick={handleClose} to={"/dashboard/admin-orders"} className='hover:text-primary-light hover:bg-gray-100' >Quản lý đơn hàng</Link>
+            )
+          }
 
         <Link onClick={handleClose} to={"/dashboard/myorders"} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
 
