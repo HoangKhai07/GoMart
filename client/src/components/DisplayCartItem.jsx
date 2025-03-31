@@ -12,7 +12,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../provider/GlobalProvider';
 
 const DisplayCartItem = ({ close }) => {
-    const cartItems = useSelector((state) => state.cartItem.cart);
+    const cartItems = useSelector((state) => state.cartItem?.cart) || [];
     const user = useSelector((state) => state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch();

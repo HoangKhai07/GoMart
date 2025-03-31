@@ -21,6 +21,10 @@ import ProductListPage from "../pages/ProductListPage.jsx";
 import ProductDisplayPage from "../pages/ProductDisplayPage.jsx";
 import CartMobile from "../pages/CartMobile.jsx";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
+import PaymentSuccess from "../pages/PaymentSuccess.jsx";
+import Cancel from "../pages/Cancel.jsx";
+import OnlinePaymentMethod from "../pages/OnlinePaymentMethod.jsx";
+import AdminOrders from "../pages/AdminOrders.jsx";
 
 
 const router = createBrowserRouter([
@@ -98,6 +102,11 @@ const router = createBrowserRouter([
                 {
                     path: "sub-category",
                     element: <AdminPermission><SubCategoryPage/></AdminPermission>
+                },
+
+                {
+                    path: "admin-orders",
+                    element: <AdminOrders/>
                 }
 
             ]
@@ -121,7 +130,24 @@ const router = createBrowserRouter([
         {
             path: "checkout",
             element: <CheckoutPage/>
-        }
+        },
+
+        {
+            path: "payment-success",
+            element: <PaymentSuccess/>
+        },
+
+        {
+            path: "cancel",
+            element: <Cancel/>
+        },
+
+        {
+            path: "online-payment",
+            element: <OnlinePaymentMethod/>
+        },
+
+        
 
     
         ]

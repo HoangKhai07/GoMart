@@ -9,18 +9,19 @@ import SummaryApi from '../common/SummaryApi'
 import AxiosToastError from '../utils/AxiosToastError'
 import Loading from '../components/Loading'
 import AddAddress from '../components/AddAddress'
+import { setSelectedAddress } from '../store/addressSlide'
 
 const CheckoutPage = () => {
-  const cartItems = useSelector((state) => state.cartItem.cart)
-  const user = useSelector((state) => state.user)
+  const cartItems = useSelector((state) => state.cartItem?.cart) || []
+  const user = useSelector((state) => state.user) || {}
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { calculateTotal, savePrice, fetchCartItem } = useGlobalContext()
+  const { calculateTotal, savePrice, fetchCartItem, fetchOrder } = useGlobalContext()
   const [loading, setLoading] = useState(false)
   const [openAddress, setOpenAddress]= useState(false)
   const addressList = useSelector(state => state.address.addressList)
-  const [selectedAddress, setSelectedAddress] = useState(0)
-
+  const selectedAddress = useSelector(state => state.address.selectedAddress)
+  const [paymentMethod, setPaymentMethod] = useState('COD')
 
 
   const handleCashOnDelivery = async () => {
@@ -42,15 +43,40 @@ const CheckoutPage = () => {
         if(fetchCartItem){
           fetchCartItem()
         }
-        navigate('/')
+
+      if(fetchOrder){
+        fetchOrder()
+      }
+        
+        navigate('/payment-success',{
+          state: {
+            text: "Đặt hàng"  
+          }
+        })
       }
       
-    } catch (error) {
+    } catch(error) {
       AxiosToastError(error)
     } finally {
       setLoading(false)
     }
   }
+
+  const handlePaymentOnline = () => {
+    navigate('/online-payment')
+     }
+
+  const handlePayment = () => {
+    if(paymentMethod === "COD"){
+      handleCashOnDelivery()
+    }else{
+      handlePaymentOnline()
+    }
+  }
+
+  const handleAddressSelect = (addressId) => {
+    dispatch(setSelectedAddress(addressId));
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen py-8">
@@ -131,15 +157,16 @@ const CheckoutPage = () => {
                           ? 'border-green-500 bg-green-50' 
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
-                      onClick={() => setSelectedAddress(address._id)}
+                      onClick={() => handleAddressSelect(address._id)}
                     >
                       <div className="flex items-start">
                         <input
                           type="radio"
                           name="address"
+                          value={address._id}
                           checked={selectedAddress === address._id}
-                          onChange={() => setSelectedAddress(address._id)}
-                          className="mt-1 mr-3"
+                          onChange={(e) => handleAddressSelect(e.target.value)}
+                          className="mr-3"
                         />
                         <div>
                           <p className="font-medium text-gray-800">{address.name}</p>
@@ -166,7 +193,7 @@ const CheckoutPage = () => {
             </div>
             
             {/* Payment Methods */}
-            {/* <div className="bg-white rounded-lg shadow-md p-6">
+             <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-semibold mb-4 text-gray-700">Phương thức thanh toán</h2>
               
               <div className="space-y-3">
@@ -216,7 +243,7 @@ const CheckoutPage = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div> 
           </div>
           
           {/* Right column - Order summary */}
@@ -248,7 +275,7 @@ const CheckoutPage = () => {
               
               <div className='flex flex-col gap-3 '>
               <button
-                onClick={handleCashOnDelivery} 
+                onClick={handlePayment} 
                 disabled={!selectedAddress || loading}
                 className={`w-full py-3 rounded-md font-medium text-white ${
                   !selectedAddress || loading
@@ -256,19 +283,7 @@ const CheckoutPage = () => {
                     : 'bg-green-600 hover:bg-green-700 transition-colors'
                 }`}
               >
-                {loading ? 'Đang xử lý...' : 'Thanh toán khi nhận hàng'}
-              </button>
-
-              <button
-               
-                disabled={!selectedAddress || loading}
-                className={`w-full py-3 rounded-md font-medium text-white ${
-                  !selectedAddress || loading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-green-600 hover:bg-green-700 transition-colors'
-                }`}
-              >
-                {loading ? 'Đang xử lý...' : 'Thanh toán online'}
+                {loading ? 'Đang xử lý...' : 'Đặt hàng'}
               </button>
               </div>
               

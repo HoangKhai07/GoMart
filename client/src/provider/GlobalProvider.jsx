@@ -6,6 +6,7 @@ import { handleAddToCart } from "../store/cartProduct"
 import AxiosToastError from '../utils/AxiosToastError'
 import toast from "react-hot-toast"
 import { handleAddAddress } from "../store/addressSlide"
+import { setOrder } from "../store/orderSlide"
 
 export const GlobalContext = createContext(null)
 
@@ -114,11 +115,29 @@ export const GlobalProvider = ({ children }) => {
       }
     }
 
+    const fetchOrder = async () => {
+      try {
+        const response = await Axios({
+          ...SummaryApi.get_order,
+        })
+
+        const { data: responseData } = response
+
+        if(responseData.success){
+            dispatch(setOrder(responseData.data))
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
       
       useEffect(()=> {
         fetchCartItem()
         fetchAddress()
         handleLogout()
+        fetchOrder()
       },[user])
 
       const handleLogout = () => {
@@ -131,6 +150,7 @@ export const GlobalProvider = ({ children }) => {
             updateCartItem,
             deleteCartItem,
             fetchAddress, 
+            fetchOrder,
             calculateTotal,
             savePrice
         }}>

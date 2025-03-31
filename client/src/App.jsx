@@ -11,6 +11,7 @@ import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/p
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import GlobalProvider from './provider/GlobalProvider'
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
 
   return (
     <GlobalProvider>
+      <ScrollToTop />
       {shouldShowHeaderFooter && <Header />}
       {/* <Header /> */}
       <main className='min-h-[80vh]'>
