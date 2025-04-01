@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux'
 import AxiosToastError from '../utils/AxiosToastError'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
-import { FaAngleLeft, FaAngleRight, FaCheck } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight, FaCheck, FaStar } from "react-icons/fa6";
 import { convertVND } from '../utils/ConvertVND'
+import { FaCheckCircle } from "react-icons/fa";
 import { IoCart } from "react-icons/io5"
 import Loading from '../components/Loading'
 import CardProduct from '../components/CardProduct'
@@ -28,6 +29,10 @@ const ProductDisplayPage = () => {
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState(0)
   const imageContainer = useRef()
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
+
 
   const fetchProductDetails = async () => {
     try {
@@ -83,7 +88,46 @@ const ProductDisplayPage = () => {
     fetchProductDetails()
   }, [params])
 
+  useEffect(() => {
+    if (data?._id) {
+      fetchProductReviews(data._id);
+    }
+  }, [data]);
+  
+  const fetchProductReviews = async (productId) => {
+    try {
+      setLoading(true)
+      const response = await Axios({
+        ...SummaryApi.get_review,
+        params: {
+          productId: productId
+        }
+      })
 
+      console.log("response", response)
+
+      const { data: responseData } = response
+      if(responseData.success){
+        setReviews(responseData.data.reviews)
+        setAverageRating(responseData.data.averageRating)
+        setTotalReviews(responseData.data.total)
+      }
+      
+    } catch (error) {
+      AxiosToastError(error)
+    } finally {
+      setLoading(false)
+    }
+  };
+  
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, index) => (
+      <FaStar 
+        key={index}
+        className={index < rating ? "text-yellow-400" : "text-gray-300"}
+      />
+    ));
+  };
 
   const handleScrollRight = () => {
     imageContainer.current.scrollBy({
@@ -279,6 +323,56 @@ const ProductDisplayPage = () => {
       </div>
 
       {/* Comment and rating */}
+      <div className="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">Đánh giá sản phẩm</h2>
+        
+        <div className="flex items-center mb-6">
+          <div className="flex items-center mr-4">
+            {renderStars(Math.round(averageRating))}
+          </div>
+          <div className="text-lg font-medium">
+            {averageRating.toFixed(1)} / 5 ({totalReviews} đánh giá)
+          </div>
+        </div>
+
+        
+        {reviews.length === 0 ? (
+          <div className="text-center py-8 text-gray-500">
+            Chưa có đánh giá nào cho sản phẩm này
+          </div>
+        ) : (
+          <div className="space-y-6 border p-5 rounded flex flex-col ">
+            {reviews.map((review) => (
+              <div key={review._id} className="border-b pb-6">
+                <div className="flex items-center mb-2">
+                  <img 
+                    src={review.userInfo.avatar} 
+                    alt={review.userInfo.name} 
+                    className="w-10 h-10 rounded-full mr-3"
+                  />
+                  <div>
+                    <div className='flex gap-8 justify-center items-center'>
+                      <div className="font-medium">{review.userInfo.name}</div>
+                      <div className='flex gap-1 text-green-500 justify-center items-center'> <FaCheckCircle size={14}/> Đã mua sản phẩm tại GoMart </div>
+
+                    </div>
+                    
+                    <div className="text-sm text-gray-500">
+                      {new Date(review.createdAt).toLocaleDateString('vi-VN')}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex my-2">
+                  {renderStars(review.rating)}
+                </div>
+                
+                <p className="text-gray-700 mt-5">{review.comment}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   )
 }

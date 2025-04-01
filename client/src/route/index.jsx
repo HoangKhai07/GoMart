@@ -25,6 +25,7 @@ import PaymentSuccess from "../pages/PaymentSuccess.jsx";
 import Cancel from "../pages/Cancel.jsx";
 import OnlinePaymentMethod from "../pages/OnlinePaymentMethod.jsx";
 import AdminOrders from "../pages/AdminOrders.jsx";
+import ReviewProduct from "../pages/ReviewProduct.jsx";
 
 
 const router = createBrowserRouter([
@@ -146,6 +147,11 @@ const router = createBrowserRouter([
             path: "online-payment",
             element: <OnlinePaymentMethod/>
         },
+
+        {
+            path: "review-product/:orderId/:productId",
+            element: <ReviewProduct/>
+        }
 
         
 

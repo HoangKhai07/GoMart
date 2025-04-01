@@ -190,6 +190,16 @@ const SummaryApi = {
     get_order: {
         url: "/api/order/order-list",
         method: "get"
+    },
+
+    create_review: {
+        url: "/api/review/create",
+        method: "post"
+    },
+
+    get_review: {
+        url: "/api/review/get-review",
+        method: "get"
     }
 
 }
