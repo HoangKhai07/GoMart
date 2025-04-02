@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { CiImageOn } from "react-icons/ci";
-import UploadImage from '../utils/UploadImage';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
+import UploadImage from '../../utils/UploadImage';
+import Axios from '../../utils/Axios';
+import SummaryApi from '../../common/SummaryApi';
 import toast from 'react-hot-toast';
-import AxiosToastError from '../utils/AxiosToastError';
+import AxiosToastError from '../../utils/AxiosToastError';
 
 const UploadCategoryModel = ({ close, fetchData }) => {
     const [data, setData] = useState({

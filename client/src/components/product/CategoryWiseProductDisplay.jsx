@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { FaLongArrowAltRight } from "react-icons/fa";
-import AxiosToastError from '../utils/AxiosToastError';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
-import CardLoading from './CardLoading';
-import CardProduct from './CardProduct';
+import AxiosToastError from '../../utils/AxiosToastError';
+import Axios from '../../utils/Axios';
+import SummaryApi from '../../common/SummaryApi';
+import CardLoading from '../ui/CardLoading';
+import CardProduct from '../product/CardProduct';
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6"; 
 import { useNavigate } from 'react-router-dom';

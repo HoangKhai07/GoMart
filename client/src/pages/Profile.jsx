@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaUserCircle } from "react-icons/fa";
-import EditAvatar from '../components/EditAvatar';
+import EditAvatar from '../components/user/EditAvatar';
 import SummaryApi from '../common/SummaryApi';
 import Axios from '../utils/Axios';
 import AxiosToastError from '../utils/AxiosToastError';

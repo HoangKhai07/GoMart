@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
-import AddField from './AddField';
+import AddField from '../forms/AddField';
 import { useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import { IoMdCloudUpload } from "react-icons/io";
 import { CiSaveDown2 } from "react-icons/ci";
-import AxiosToastError from '../utils/AxiosToastError';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
-import successAlert from '../utils/SuccessAlert';
+import AxiosToastError from '../../utils/AxiosToastError';
+import Axios from '../../utils/Axios';
+import SummaryApi from '../../common/SummaryApi';
+import successAlert from '../../utils/SuccessAlert';
 
 const EditProductAdmin = ({ close, data : propsData, fetchData }) => {
     const [data, setData] = useState({

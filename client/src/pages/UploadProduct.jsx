@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { IoMdCloudUpload } from "react-icons/io";
 import UploadImage from '../utils/UploadImage';
-import ViewImage from '../components/ViewImage'
+import ViewImage from '../components/ui/ViewImage.jsx'
 import { FaTrash } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from 'react-redux';
-import AddField from '../components/AddField';
+import AddField from '../components/forms/AddField'
 import { CiSaveDown2 } from "react-icons/ci";
 import AxiosToastError from '../utils/AxiosToastError';
 import Axios from '../utils/Axios';

@@ -5,7 +5,6 @@ import { FaBox, FaTruck, FaCheckCircle, FaShippingFast, FaStar } from 'react-ico
 import { MdPendingActions } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import Axios from '../utils/Axios'
-import AxiosToastError from '../utils/AxiosToastError'
 
 const MyOrder = () => {
   const orders = useSelector(state => state.orders?.order) || []

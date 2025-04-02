@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
-import UploadImage from '../utils/UploadImage';
+import UploadImage from '../../utils/UploadImage';
 import { useSelector } from 'react-redux';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
-import AxiosToastError from '../utils/AxiosToastError';
+import Axios from '../../utils/Axios';
+import SummaryApi from '../../common/SummaryApi';
+import AxiosToastError from '../../utils/AxiosToastError';
 import toast from 'react-hot-toast';
 
 const UploadSubCategoryModel = ({ close, fetchData }) => {

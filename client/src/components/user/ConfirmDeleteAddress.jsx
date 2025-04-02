@@ -1,9 +1,9 @@
 import React from 'react'
 import { IoClose } from "react-icons/io5"
-import AxiosToastError from '../utils/AxiosToastError'
-import Axios from '../utils/Axios'
-import SummaryApi from '../common/SummaryApi'
-import { useGlobalContext } from '../provider/GlobalProvider'
+import AxiosToastError from '../../utils/AxiosToastError'
+import Axios from '../../utils/Axios'
+import SummaryApi from '../../common/SummaryApi'
+import { useGlobalContext } from '../../provider/GlobalProvider'
 import toast from 'react-hot-toast'
 
 

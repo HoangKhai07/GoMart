@@ -1,20 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import AxiosToastError from '../utils/AxiosToastError'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { FaAngleLeft, FaAngleRight, FaCheck, FaStar } from "react-icons/fa6";
 import { convertVND } from '../utils/ConvertVND'
 import { FaCheckCircle } from "react-icons/fa";
-import { IoCart } from "react-icons/io5"
-import Loading from '../components/Loading'
-import CardProduct from '../components/CardProduct'
-
-
+import Loading from '../components/ui/Loading'
+import CardProduct from '../components/product/CardProduct'
 import image_1 from '../assets/best-price.png'
 import image_2 from '../assets/time_delivery.jpg'
-import AddToCartButton from '../components/AddToCartButton'
+import AddToCartButton from '../components/product/AddToCartButton'
 
 
 const ProductDisplayPage = () => {

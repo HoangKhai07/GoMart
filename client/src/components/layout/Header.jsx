@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import logo from '../assets/logo.jpg'
-import logo_icon from '../assets/logo_icon.png'
-import Search from './Search'
+import logo from '../../assets/logo.jpg'
+import logo_icon from '../../assets/logo_icon.png'
+import Search from '../forms/Search'
 import { Link, Links, useLocation, useNavigate } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-import useMobile from '../hook/useMobile';
+import useMobile from '../../hook/useMobile';
 import { useSelector } from 'react-redux';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import UserMenu from './UserMenu';
-import DisplayCartItem from './DisplayCartItem'
+import UserMenu from '../layout/UserMenu';
+import DisplayCartItem from '../cart/DisplayCartItem'
 
 const Header = () => {
   const [isMobile] = useMobile()

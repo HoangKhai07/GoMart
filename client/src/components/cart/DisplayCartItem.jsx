@@ -2,14 +2,14 @@ import React from 'react'
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { convertVND } from '../utils/ConvertVND';
+import { convertVND } from '../../utils/ConvertVND';
 import { FaPlus, FaMinus, FaTrash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import Axios from '../utils/Axios';
-import SummaryApi from '../common/SummaryApi';
-import { handleAddToCart } from '../store/cartProduct';
+// import Axios from '../../utils/Axios';
+// import SummaryApi from '../../common/SummaryApi';
+// import { handleAddToCart } from '../../store/cartProduct';
 import { useContext } from 'react';
-import { GlobalContext } from '../provider/GlobalProvider';
+import { GlobalContext } from '../../provider/GlobalProvider';
 
 const DisplayCartItem = ({ close }) => {
     const cartItems = useSelector((state) => state.cartItem?.cart) || [];
@@ -106,19 +106,19 @@ const DisplayCartItem = ({ close }) => {
 
                                     <div className='flex justify-between items-end mt-2'>
                                         <div>
-                                            {item.productId.discount > 0 ? (
+                                            {item.productId?.discount > 0 ? (
                                                 <>
                                                     <p className='text-xs text-gray-500 line-through'>
-                                                        {convertVND(item.productId.price)}
+                                                        {convertVND(item.productId?.price || 0)}
                                                     </p>
                                                     <p className='text-green-600 font-medium'>
-                                                        {convertVND(item.productId.price - (item.productId.price * item.productId.discount / 100))}
+                                                        {convertVND((item.productId?.price || 0) - ((item.productId?.price || 0) * (item.productId?.discount || 0) / 100))}
                                                     </p>
                                                 </>
                                             ) : (
                                                 <div>
                                                 <p className='text-green-600 font-medium'>
-                                                    {convertVND(item.productId.price)}
+                                                    {convertVND(item.productId?.price || 0)}
                                                 </p>
                                                 {/* <p>{item.productId.unit}</p> */}
                                                 </div>
@@ -135,12 +135,12 @@ const DisplayCartItem = ({ close }) => {
                                                 <FaMinus size={10} />
                                             </button>
                                             <div className='w-10 h-8 flex items-center justify-center border-t border-b border-gray-300 bg-white'>
-                                                {item.quantity}
+                                                {item.quantity || 0}
                                             </div>
                                             <button
                                                 onClick={() => handleIncreaseQuantity(item._id)}
                                                 className='w-8 h-8 flex items-center justify-center border border-gray-300 rounded-r bg-gray-100 hover:bg-gray-200'
-                                                disabled={item.quantity >= item.productId.stock}
+                                                disabled={item.quantity >= (item.productId?.stock || 0)}
                                             >
                                                 <FaPlus size={10} />
                                             </button>
