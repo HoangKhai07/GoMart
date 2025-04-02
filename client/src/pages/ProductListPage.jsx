@@ -3,8 +3,8 @@ import AxiosToastError from '../utils/AxiosToastError'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { useNavigate, useParams } from 'react-router-dom'
-import Loading from '../components/Loading'
-import CardProduct from '../components/CardProduct'
+import Loading from '../components/ui/Loading'
+import CardProduct from '../components/product/CardProduct'
 import { useSelector } from 'react-redux'
 
 

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 import fetchUserDetails from './utils/fetchUserDetails';
@@ -11,7 +11,7 @@ import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/p
 import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import GlobalProvider from './provider/GlobalProvider'
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/layout/ScrollToTop'
 
 
 function App() {
@@ -87,7 +87,7 @@ function App() {
         <Outlet />
       </main>
       {shouldShowHeaderFooter && <Footer />}
-      <Footer />
+      {/* <Footer /> */}
       <Toaster />
     </GlobalProvider>
   )

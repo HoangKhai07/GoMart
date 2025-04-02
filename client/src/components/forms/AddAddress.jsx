@@ -1,11 +1,11 @@
 import React, {useState, useEffect } from 'react'
 import { IoClose } from "react-icons/io5"
-import AxiosToastError from '../utils/AxiosToastError.js'
-import Axios from '../utils/Axios.js'
-import SummaryApi from '../common/SummaryApi';
+import AxiosToastError from '../../utils/AxiosToastError.js'
+import Axios from '../../utils/Axios.js'
+import SummaryApi from '../../common/SummaryApi.js';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
-import { useGlobalContext } from '../provider/GlobalProvider.jsx';
+import { useGlobalContext } from '../../provider/GlobalProvider.jsx';
 
 const AddAddress = ({ close }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();

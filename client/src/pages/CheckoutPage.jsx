@@ -7,8 +7,7 @@ import toast from 'react-hot-toast'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import AxiosToastError from '../utils/AxiosToastError'
-import Loading from '../components/Loading'
-import AddAddress from '../components/AddAddress'
+import AddAddress from '../components/forms/AddAddress'
 import { setSelectedAddress } from '../store/addressSlide'
 
 const CheckoutPage = () => {
@@ -22,6 +21,7 @@ const CheckoutPage = () => {
   const addressList = useSelector(state => state.address.addressList)
   const selectedAddress = useSelector(state => state.address.selectedAddress)
   const [paymentMethod, setPaymentMethod] = useState('COD')
+
 
 
   const handleCashOnDelivery = async () => {
@@ -76,7 +76,13 @@ const CheckoutPage = () => {
 
   const handleAddressSelect = (addressId) => {
     dispatch(setSelectedAddress(addressId));
-  };
+  }
+
+  useEffect(() => {
+    if (addressList.length > 0 && selectedAddress === "0") {
+      dispatch(setSelectedAddress(addressList[0]._id));
+    }
+  }, [addressList, dispatch, selectedAddress])
 
   return (
     <div className="bg-gray-50 min-h-screen py-8">

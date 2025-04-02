@@ -1,11 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import AddAddress from '../components/AddAddress'
+import AddAddress from '../components/forms/AddAddress'
 import { FaTrash } from "react-icons/fa6";
 import { MdEdit } from "react-icons/md";
-import EditAddressDetails from '../components/EditAddressDetails';
-import ConfirmDeleteAddress from '../components/ConfirmDeleteAddress';
+import EditAddressDetails from '../components/user/EditAddressDetails';
+import ConfirmDeleteAddress from '../components/user/ConfirmDeleteAddress';
 
 const Address = () => {
   const [openAddress, setOpenAddress] = useState(false)

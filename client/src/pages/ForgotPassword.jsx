@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import login from '../assets/login.jpg'
 import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';

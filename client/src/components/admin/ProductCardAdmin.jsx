@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import EditProductAdmin from './EditProductAdmin'
-import AxiosToastError from '../utils/AxiosToastError'
-import Axios from '../utils/Axios'
+import EditProductAdmin from '../admin/EditProductAdmin'
+import AxiosToastError from '../../utils/AxiosToastError'
+import Axios from '../../utils/Axios'
 import toast from 'react-hot-toast'
 import { IoClose } from "react-icons/io5";
 import { IoWarningOutline } from "react-icons/io5";
-import SummaryApi from '../common/SummaryApi'
+import SummaryApi from '../../common/SummaryApi'
 
 const ProductCardAdmin = ({data, fetchData}) => {
   const [ openEditProduct, setOpenEditProduct ] = useState(false)

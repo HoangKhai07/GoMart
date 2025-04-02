@@ -3,7 +3,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import { FaArrowLeft } from "react-icons/fa";
-import useMobile from '../hook/useMobile';
+import useMobile from '../../hook/useMobile';
 
 const Search = () => {
 

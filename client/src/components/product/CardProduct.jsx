@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { convertVND } from '../utils/ConvertVND'
+import { convertVND } from '../../utils/ConvertVND.js'
 import { useNavigate } from 'react-router-dom';
-import SummaryApi from '../common/SummaryApi';
-import AxiosToastError from '../utils/AxiosToastError.js'
-import Axios from '../utils/Axios.js'
+import SummaryApi from '../../common/SummaryApi.js';
+import AxiosToastError from '../../utils/AxiosToastError.js'
+import Axios from '../../utils/Axios.js'
 import toast from 'react-hot-toast';
-import { useGlobalContext } from '../provider/GlobalProvider'
+import { useGlobalContext } from '../../provider/GlobalProvider.jsx'
 import AddToCartButton from './AddToCartButton.jsx';
 
 

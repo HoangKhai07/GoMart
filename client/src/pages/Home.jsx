@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
 import { FaAngleLeft, FaAngleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
-import { ValideUrlConvert } from '../utils/ValideUrlConvert';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -11,7 +10,7 @@ import banner_2 from '../assets/banner/banner_2.jpg'
 import banner_3 from '../assets/banner/banner_3.jpg'
 import banner_4 from '../assets/banner/banner_4.jpg'
 
-import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay';
+import CategoryWiseProductDisplay from '../components/product/CategoryWiseProductDisplay';
 const banners = [banner_1, banner_2, banner_3, banner_4];
 
 const Home = () => {

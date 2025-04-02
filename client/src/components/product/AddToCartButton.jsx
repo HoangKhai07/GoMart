@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { IoCart } from "react-icons/io5";
-import { useGlobalContext } from '../provider/GlobalProvider';
-import SummaryApi from '../common/SummaryApi';
-import AxiosToastError from '../utils/AxiosToastError';
-import Axios from '../utils/Axios';
+import { useGlobalContext } from '../../provider/GlobalProvider';
+import SummaryApi from '../../common/SummaryApi';
+import AxiosToastError from '../../utils/AxiosToastError';
+import Axios from '../../utils/Axios';
 import toast from 'react-hot-toast';
-import Loading from './Loading';
+import Loading from '../ui/Loading';
 import { useSelector } from 'react-redux';
 import { FaMinus, FaPlus } from "react-icons/fa";
 

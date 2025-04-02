@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import CardLoading from '../components/CardLoading'
-import CardProduct from '../components/CardProduct'
+import CardLoading from '../components/ui/CardLoading'
+import CardProduct from '../components/product/CardProduct'
 import AxiosToastError from '../utils/AxiosToastError'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useLocation } from 'react-router-dom'
-import { normalizeString } from '../utils/normalizeString'
 import noResult from '../assets/no_result.png'
 
 const SearchPage = () => {

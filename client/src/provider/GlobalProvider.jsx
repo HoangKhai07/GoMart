@@ -15,11 +15,19 @@ export const useGlobalContext = () => useContext(GlobalContext)
 export const GlobalProvider = ({ children }) => {
 
     const dispatch = useDispatch()
-    const cartItems = useSelector((state) => state.cartItem.cart)
+    const cartItems = useSelector((state) => state.cartItem?.cart) || []
     const user = useSelector((state) => state?.user)
 
     const fetchCartItem = async () => {
+    
         try {
+          const accessToken = localStorage.getItem('accessToken')
+          if(!accessToken){
+            dispatch(handleAddToCart([]))
+            return
+          }
+         
+          
           const response = await Axios({
             ...SummaryApi.get_cart
           })
@@ -97,8 +105,8 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchAddress = async () => {
-      // const token = localStorage.getItem('accessToken')
-      // if (!token) return
+      const accessToken = localStorage.getItem('accessToken')
+      if (!accessToken) return
       
       try {
         const response = await Axios({
@@ -116,6 +124,9 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchOrder = async () => {
+      const accessToken = localStorage.getItem('accessToken')
+      if (!accessToken) return
+      
       try {
         const response = await Axios({
           ...SummaryApi.get_order,
@@ -136,13 +147,14 @@ export const GlobalProvider = ({ children }) => {
       useEffect(()=> {
         fetchCartItem()
         fetchAddress()
-        handleLogout()
         fetchOrder()
       },[user])
 
       const handleLogout = () => {
-        localStorage.clear()
-        dispatch(handleAddToCart([]))
+        if (!user?._id) {
+          localStorage.clear()
+          dispatch(handleAddToCart([]))
+        }
       }
     return (
         <GlobalContext.Provider value={{

@@ -1,6 +1,6 @@
 import React from 'react'
-import nothing_here from '../assets/nothing_here.jpg'
-import login from '../assets/login.jpg'
+import nothing_here from '../../assets/nothing_here.jpg'
+import login from '../../assets/login.jpg'
 
 const NoData= () => {
   return (

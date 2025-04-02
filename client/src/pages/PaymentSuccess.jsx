@@ -36,7 +36,7 @@ const PaymentSuccess = () => {
                             Trang chủ
                         </button>
                         <button 
-                            onClick={() => navigate('/orders')}
+                            onClick={() => navigate('/dashboard/myorders')}
                             className='flex items-center justify-center gap-2 border border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 rounded-lg w-full sm:w-auto transition-all duration-300 font-medium'
                         >
                             <RiFileListLine size={20} />
