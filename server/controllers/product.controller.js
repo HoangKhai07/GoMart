@@ -211,43 +211,6 @@ export const getProductDetailsController = async (req, res) => {
     
 }
 
-// export const getRelatedProductController = async (req, res) => {
-//     try {
-//         const { productId, subCategoryId, limit = 8} = req.body
-
-//         if(!subCategoryId){
-//             return res.status(400).json({
-//             message: "Provide ID",
-//             error: true,
-//             success: false
-//             })
-//         }
-
-//         const query = {
-//             subCategory: { $in: subCategoryId},
-//             _id: { $ne: productId}
-//         }
-
-//         const relatedProduct = await ProductModel.findById(query)
-//         .sort({createdAt: -1})
-//         .limit(limit)
-
-//         return res.json({
-//             message: "Related Product",
-//             error: false,
-//             success: true,
-//             data: relatedProduct
-//         })
-
-//     } catch (error) {
-//         return res.status(500).json({
-//             message: error.message || error,
-//             error: true,
-//             success: false
-//         })
-//     }
-    
-// }
 
 export const updateProductController = async (req, res) => {
     try {
