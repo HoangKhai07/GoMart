@@ -79,6 +79,12 @@ const UserMenu = ({ close }) => {
             )
           }
 
+          {
+            isAdmin(user.role) && (
+              <Link onClick={handleClose} to={"/dashboard/admin-chat"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Chat với khách hàng</Link>
+            )
+          }
+
         <Link onClick={handleClose} to={"/dashboard/myorders"} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
 
         <Link onClick={handleClose} to={"/dashboard/address"} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>

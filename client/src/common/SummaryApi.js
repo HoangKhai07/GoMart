@@ -200,6 +200,37 @@ const SummaryApi = {
     get_review: {
         url: "/api/review/get-review",
         method: "get"
+    },
+
+    // Chat endpoints
+    send_message: {
+        url: "/api/chat/send",
+        method: "post"
+    },
+    
+    get_chats: {
+        url: "/api/chat/chats",
+        method: "get"
+    },
+    
+    get_messages: {
+        url: "/api/chat/messages",
+        method: "get"
+    },
+    
+    mark_messages_read: {
+        url: "/api/chat/read",
+        method: "put"
+    },
+    
+    get_admin_chat: {
+        url: "/api/chat/admin-chat",
+        method: "get"
+    },
+    
+    get_all_admin_chats: {
+        url: "/api/chat/admin/all-chats",
+        method: "get"
     }
 
 }

@@ -12,15 +12,18 @@ import Axios from './utils/Axios';
 import SummaryApi from './common/SummaryApi';
 import GlobalProvider from './provider/GlobalProvider'
 import ScrollToTop from './components/layout/ScrollToTop'
+import ChatBubble from './components/chat/ChatBubble'
 
 
 function App() {
   const dispatch = useDispatch()
   const location = useLocation()
 
-  const fetchUser = async () => {
+  const fetchUser = async () => { 
     const userData = await fetchUserDetails()
-    dispatch(setUserDetails(userData.data))
+    if (userData && userData.data) {
+      dispatch(setUserDetails(userData.data))
+    }
   }
 
   const fetchCategory = async () => {
@@ -63,11 +66,6 @@ function App() {
   }
 
 
-
-
-
-
-
   useEffect(() => {
     fetchUser()
     fetchCategory()
@@ -89,6 +87,7 @@ function App() {
       {shouldShowHeaderFooter && <Footer />}
       {/* <Footer /> */}
       <Toaster />
+      <ChatBubble />
     </GlobalProvider>
   )
 }

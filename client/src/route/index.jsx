@@ -26,6 +26,7 @@ import Cancel from "../pages/Cancel.jsx";
 import OnlinePaymentMethod from "../pages/OnlinePaymentMethod.jsx";
 import AdminOrders from "../pages/AdminOrders.jsx";
 import ReviewProduct from "../pages/ReviewProduct.jsx";
+import AdminChatPage from "../pages/admin/AdminChatPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -108,6 +109,11 @@ const router = createBrowserRouter([
                 {
                     path: "admin-orders",
                     element: <AdminOrders/>
+                },
+
+                {
+                    path: "admin-chat",
+                    element: <AdminPermission><AdminChatPage/></AdminPermission>
                 }
 
             ]
