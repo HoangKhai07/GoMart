@@ -14,6 +14,9 @@ import productRouter from './route/product.route.js'
 import cartRouter from './route/cart.route.js'
 import addressRouter from './route/address.route.js'
 import orderRouter from './route/order.route.js'
+import reviewRouter from './route/review.route.js'
+import chatRouter from './route/chat.route.js'
+import { initSocket } from './config/socket.js'
 
 const app = express()
 app.use(cors({
@@ -37,11 +40,14 @@ app.get("/",(request, response)=> {
     })
 }) 
 
-connectDB();
-
-app.listen(PORT, ()=>{ 
+const server = app.listen(PORT, ()=>{ 
     console.log("Server is running", PORT)
 })
+
+// Khởi tạo Socket.IO
+initSocket(server)
+
+connectDB();
 
 app.use('/api/user', userRouter)
 app.use('/api/category', categoryRouter)
@@ -51,4 +57,5 @@ app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/address', addressRouter)
 app.use('/api/order', orderRouter)
-
+app.use('/api/review', reviewRouter)
+app.use('/api/chat', chatRouter)

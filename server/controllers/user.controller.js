@@ -528,3 +528,35 @@ export async function refreshTokenController(request, response){
         })
     }
 }
+
+export const getAdminIdController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const adminUser = await UserModel.findOne({ role: 'ADMIN' });
+        if (!adminUser) {
+            return res.status(404).json({
+                message: "Admin not found",
+                success: false,
+                error: true
+            });
+        }
+        
+        return res.json({
+            message: "Admin found successfully",
+            success: true,
+            error: false,
+            data: {
+                _id: adminUser._id,
+                name: adminUser.name,
+                email: adminUser.email,
+                role: adminUser.role
+            }
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            success: false,
+            error: true
+        });
+    }
+}
