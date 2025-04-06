@@ -30,6 +30,8 @@ export const initSocket = (server) => {
 
     //handle user conect information
     const connectedUsers = new Map()
+    const userRooms = new Map() // Track which rooms users are in
+    
     io.on('connection', (socket)=> {
         const userId = socket.userId
 
@@ -47,6 +49,7 @@ export const initSocket = (server) => {
         socket.on('typing', ({chatId, isTyping}) => {
             // Get all users in the chat
             const roomName = `chat_${chatId}`
+            console.log(`User ${userId} is ${isTyping ? 'typing' : 'stopped typing'} in ${roomName}`)
             // Broadcast to all users in the chat except the sender
             socket.to(roomName).emit('userTyping', {userId, isTyping})
         })
@@ -54,6 +57,13 @@ export const initSocket = (server) => {
         // Handle join chat room
         socket.on('joinChatRoom', (chatId) => {
             const roomName = `chat_${chatId}`
+            
+            // Keep track of user's rooms
+            if (!userRooms.has(userId)) {
+                userRooms.set(userId, new Set())
+            }
+            userRooms.get(userId).add(roomName)
+            
             socket.join(roomName)
             console.log(`User ${userId} joined chat room: ${roomName}`)
         })
@@ -61,6 +71,12 @@ export const initSocket = (server) => {
         // Handle leave chat room
         socket.on('leaveChatRoom', (chatId) => {
             const roomName = `chat_${chatId}`
+            
+            // Update user's rooms
+            if (userRooms.has(userId)) {
+                userRooms.get(userId).delete(roomName)
+            }
+            
             socket.leave(roomName)
             console.log(`User ${userId} left chat room: ${roomName}`)
         })
@@ -68,6 +84,15 @@ export const initSocket = (server) => {
         // Handle user disconnect
         socket.on('disconnect', ()=> {
             console.log(`User disconnected: ${userId}`)
+            
+            // Leave all rooms
+            if (userRooms.has(userId)) {
+                for (const room of userRooms.get(userId)) {
+                    socket.leave(room)
+                }
+                userRooms.delete(userId)
+            }
+            
             connectedUsers.delete(userId)
             io.emit('userStatus', {userId, status: 'offline'})
         })
