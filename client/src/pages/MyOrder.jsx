@@ -58,12 +58,10 @@ const MyOrder = () => {
     setReviewedOrders(reviewStatusMap)
   }
 
-  if (orders.length > 0) {
-    checkReviewedOrders()
-  }
-
   useEffect(() => {
-    checkReviewedOrders()
+    if (orders.length > 0) {
+      checkReviewedOrders()
+    }
   }, [orders])
 
   const handleReviewClick = (order) => {

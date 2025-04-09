@@ -3,12 +3,13 @@ import AdminChat from '../../components/admin/AdminChat';
 
 const AdminChatPage = () => {
   return (
-    <section>
-      <div className="container mx-auto">
+
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold mb-6">Trò chuyện với khách hàng</h1>
         <AdminChat />
       </div>
-    </section>
+
   );
 };
 
-export default AdminChatPage; 
+export default AdminChatPage

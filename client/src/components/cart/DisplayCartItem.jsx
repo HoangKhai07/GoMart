@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -16,9 +16,22 @@ const DisplayCartItem = ({ close }) => {
     const user = useSelector((state) => state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const { updateCartItem, deleteCartItem, fetchCartItem, calculateTotal, savePrice } = useContext(GlobalContext);
+    const { updateCartItem, deleteCartItem, fetchCartItem, calculateTotal, savePrice, setIsCartOpen } = useContext(GlobalContext);
 
+    // Set cart open state when component mounts
+    useEffect(() => {
+        setIsCartOpen(true)
+        return () => {
+            setIsCartOpen(false)
+        }
+    }, [setIsCartOpen])
 
+    const handleCloseCart = () => {
+        setIsCartOpen(false)
+        if (close) {
+            close()
+        }
+    }
 
     const handleIncreaseQuantity = async (itemId) => {
         try {
@@ -75,10 +88,10 @@ const DisplayCartItem = ({ close }) => {
                 <div className='flex justify-between px-5 pt-5 pb-3 shadow-lg'>
                     <p className='font-semibold text-lg'>Giỏ hàng của bạn</p>
 
-                    <Link to={'/'} className='lg:hidden'>
+                    <Link to={'/'} className='lg:hidden' onClick={handleCloseCart}>
                         <IoClose size={23} className='hover:text-red-500' />
                     </Link>
-                    <button onClick={close}>
+                    <button onClick={handleCloseCart}>
                         <IoClose size={23} className='hover:text-red-500 hidden lg:block' />
                     </button>
                 </div>

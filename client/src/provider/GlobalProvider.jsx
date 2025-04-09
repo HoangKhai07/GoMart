@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect} from "react"
+import { createContext, useContext, useEffect, useState} from "react"
 import Axios from "../utils/Axios"
 import SummaryApi from "../common/SummaryApi"
 import { useDispatch, useSelector } from "react-redux"
@@ -17,6 +17,7 @@ export const GlobalProvider = ({ children }) => {
     const dispatch = useDispatch()
     const cartItems = useSelector((state) => state.cartItem?.cart) || []
     const user = useSelector((state) => state?.user)
+    const [isCartOpen, setIsCartOpen] = useState(false)
 
     const fetchCartItem = async () => {
     
@@ -145,16 +146,19 @@ export const GlobalProvider = ({ children }) => {
 
       
       useEffect(()=> {
-        fetchCartItem()
-        fetchAddress()
-        fetchOrder()
+        const accessToken = localStorage.getItem('accessToken')
+        if (accessToken) {
+          fetchCartItem()
+          fetchAddress()
+          fetchOrder()
+        } else {
+          handleLogout()
+        }
       },[user])
 
       const handleLogout = () => {
-        if (!user?._id) {
-          localStorage.clear()
-          dispatch(handleAddToCart([]))
-        }
+        localStorage.clear()
+        dispatch(handleAddToCart([]))
       }
     return (
         <GlobalContext.Provider value={{
@@ -164,7 +168,9 @@ export const GlobalProvider = ({ children }) => {
             fetchAddress, 
             fetchOrder,
             calculateTotal,
-            savePrice
+            savePrice,
+            isCartOpen,
+            setIsCartOpen
         }}>
             {children}
         </GlobalContext.Provider>

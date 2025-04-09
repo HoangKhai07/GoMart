@@ -20,6 +20,9 @@ function App() {
   const location = useLocation()
 
   const fetchUser = async () => { 
+    const accessToken = localStorage.getItem('accessToken')
+    if (!accessToken) return
+    
     const userData = await fetchUserDetails()
     if (userData && userData.data) {
       dispatch(setUserDetails(userData.data))
