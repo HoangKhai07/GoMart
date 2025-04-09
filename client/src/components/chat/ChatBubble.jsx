@@ -6,6 +6,8 @@ import SummaryApi from '../../common/SummaryApi';
 import toast from 'react-hot-toast';
 import AxiosToastError from '../../utils/AxiosToastError';
 import { initSocket, getSocket, joinChatRoom, sendTypingStatus } from '../../utils/socketService';
+import { useContext } from 'react';
+import { GlobalContext } from '../../provider/GlobalProvider';
 
 const ChatBubble = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +21,14 @@ const ChatBubble = () => {
   const typingTimeoutRef = useRef(null);
   const user = useSelector((state) => state.user);
   const isAuthenticated = !!user._id;
+  const { isCartOpen } = useContext(GlobalContext);
+
+  // If cart is opened, close the chat
+  useEffect(() => {
+    if (isCartOpen && isOpen) {
+      setIsOpen(false);
+    }
+  }, [isCartOpen]);
 
   // Fetch or create admin chat when the component mounts
   useEffect(() => {
@@ -161,7 +171,7 @@ const ChatBubble = () => {
 
       if (response.data.success) {
         // Add message to the messages array immediately
-        const newMessage = response.data.data.message;
+        const newMessage = response.data.data.message
         setMessages((prev) => [...prev, newMessage]);
         setMessage('');
       }
@@ -193,35 +203,59 @@ const ChatBubble = () => {
     setIsOpen(!isOpen);
   };
 
-  if (user.role === 'ADMIN') return null;
+  if (user.role === 'ADMIN' || isCartOpen) return null;
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {isOpen ? (
-        <div className="bg-white shadow-lg rounded-lg w-80 sm:w-96 flex flex-col h-[450px] border border-gray-200">
-          <div className="bg-primary-light text-white p-3 rounded-t-lg flex justify-between items-center">
-            <h3 className="font-semibold">Chat với quản trị viên</h3>
-            <button onClick={toggleChat} className="text-white hover:text-gray-200">
-              <IoClose size={24} />
-            </button>
+        <div className="bg-white mb-16 shadow-lg rounded-2xl w-96 sm:w-96 flex flex-col h-[680px] border border-gray-200 overflow-hidden">
+          {/* Header */}
+          <div className="bg-green-600 text-white py-6 px-5 flex flex-col">
+            <div className="flex justify-between items-center mb-1">
+              <div className="flex items-center">
+                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2">
+                  <IoChatbubblesOutline size={20} />
+                </div>
+                <h3 className="font-medium text-sm">GoMart</h3>
+              </div>
+              <div className="flex">
+                <div className="w-8 h-8 rounded-full overflow-hidden ml-1">
+                  <img src="/src/assets/logo_icon.png" alt="admin" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            
+            <h2 className="text-2xl font-medium mt-2">Hi {user.name || 'User'} 👋</h2>
+            <p className="text-xl">Bạn cần hỗ trợ?</p>
+            
           </div>
 
-          <div className="flex-1 overflow-y-auto p-3 bg-gray-50">
-            {loading && <div className="text-center py-2">Đang tải...</div>}
+          {/* Recent Message Box */}
+          <div>
+            <div className="border border-gray-100 rounded-lg p-3 text-gray-700 flex justify-between items-center">
+              <span>Chat với CSKH</span>
+              <span className="text-green-600">↗</span>
+            </div>
+          </div>
+
+          {/* Messages Area */}
+          <div className="flex-1 overflow-y-auto p-4 bg-white">
+            {loading && <div className="text-center py-2">Loading...</div>}
 
             {messages.length === 0 && !loading && (
               <div className="text-center text-gray-500 py-10">
-                Gửi tin nhắn cho chúng tôi để được hỗ trợ
+                Hãy gửi cho chúng tôi một tin nhắn để hỗ trợ bạn
               </div>
             )}
 
             {messages.map((msg, index) => (
               <div
                 key={msg._id || index}
-                className={`mb-2 max-w-[80%] ${msg.senderId === user._id
-                    ? 'ml-auto bg-primary-light text-white rounded-l-lg rounded-tr-lg'
-                    : 'mr-auto bg-gray-200 text-gray-800 rounded-r-lg rounded-tl-lg'
-                  } p-2 px-3 break-words`}
+                className={`mb-3 max-w-[80%] ${msg.senderId === user._id
+                  ? 'ml-auto bg-green-600 text-white rounded-2xl rounded-br-none'
+                  : 'mr-auto bg-gray-100 text-gray-800 rounded-2xl rounded-bl-none'
+                  } p-3 px-4 break-words`}
               >
                 {msg.content}
                 <div
@@ -241,37 +275,51 @@ const ChatBubble = () => {
 
             {adminTyping && (
               <div className="text-gray-500 text-sm italic ml-2">
-                Quản trị viên đang nhập...
+                Admin đang soạn tin...
               </div>
             )}
 
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="border-t border-gray-200 p-2 flex">
-            <input
-              type="text"
-              value={message}
-              onChange={handleInputChange}
-              placeholder="Nhập tin nhắn..."
-              className="flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-1 focus:ring-primary-light"
-              disabled={!isAuthenticated || !chatId}
-            />
-            <button
-              type="submit"
-              className="bg-primary-light text-white px-3 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
-              disabled={!message.trim() || !isAuthenticated || !chatId}
-            >
-              <IoSendSharp size={20} />
-            </button>
-          </form>
+          {/* Bottom Navigation */}
+          <div className="border-t border-gray-100">
+            <form onSubmit={handleSubmit} className="p-3 flex">
+              <input
+                type="text"
+                value={message}
+                onChange={handleInputChange}
+                placeholder="Type a message..."
+                className="flex-1 border border-gray-200 rounded-full p-2 px-4 focus:outline-none focus:ring-1 focus:ring-green-500"
+                disabled={!isAuthenticated || !chatId}
+              />
+              <button
+                type="submit"
+                className="bg-green-600 text-white p-2 rounded-full ml-2 hover:bg-green-700 focus:outline-none disabled:bg-gray-400"
+                disabled={!message.trim() || !isAuthenticated || !chatId}
+              >
+                <IoSendSharp size={20} />
+              </button>
+            </form>
+          </div>
         </div>
+        
       ) : (
         <button
           onClick={toggleChat}
-          className="bg-primary-light text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-colors duration-300 focus:outline-none"
+          className="bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-colors duration-300 focus:outline-none"
         >
           <IoChatbubblesOutline size={28} />
+        </button>
+      )}
+      
+     
+      {isOpen && (
+        <button
+          onClick={toggleChat}
+          className="fixed bottom-4 right-4 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-colors duration-300 focus:outline-none"
+        >
+          <IoClose size={28} />
         </button>
       )}
     </div>

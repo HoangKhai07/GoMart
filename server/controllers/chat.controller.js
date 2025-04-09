@@ -120,7 +120,14 @@ export const sendMessageController = async (req, res) => {
         // Gửi tin nhắn real-time với Socket.IO
         const io = getIO()
         
-        // Broadcast đến room riêng của user
+        // Broadcast đến room chat chung
+        io.to(`chat_${chat._id}`).emit('newMessage', {
+            senderId,
+            message: saveData,
+            chat: chat._id
+        })
+        
+        // Broadcast đến room riêng của user nếu họ không ở trong chat_room
         io.to(`user_${receiverId}`).emit('newMessage', {
             senderId,
             message: saveData,

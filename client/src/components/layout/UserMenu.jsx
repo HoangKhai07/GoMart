@@ -21,7 +21,9 @@ const UserMenu = ({ close }) => {
       })
 
       if (response.data.success) {
-        close()
+        if(close){
+          close()
+        }
         dispatch(logout())
         localStorage.clear()
         navigate('/')

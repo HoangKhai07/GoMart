@@ -19,21 +19,26 @@ const AdminChat = () => {
   const [userTyping, setUserTyping] = useState({});
   const messagesEndRef = useRef(null);
   const typingTimeoutRef = useRef(null);
+  const socketInitialized = useRef(false);
   const user = useSelector((state) => state.user);
 
   // Initialize socket when component mounts
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
-    if (token) {
+    if (token && !socketInitialized.current) {
       initSocket(token);
-
+      socketInitialized.current = true;
+      
       const socket = getSocket();
       
+      // Clean up previous listeners to avoid duplicates
+      socket.off('newMessage');
+      socket.off('userTyping');
+      socket.off('messagesRead');
+      
+      // Add new listeners
       socket.on('newMessage', handleNewMessage);
-      
       socket.on('userTyping', handleUserTyping);
-      
-      // Listen for read messages
       socket.on('messagesRead', handleMessagesRead);
       
       return () => {
@@ -49,13 +54,23 @@ const AdminChat = () => {
     getAdminChats();
   }, []);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  // Join chat room when chat is selected
   useEffect(() => {
     if (selectedChat) {
       if (selectedChat._id) {
+        // Leave previous chat room if there was one
+        if (selectedChat._id !== selectedChat._id) {
+          leaveChatRoom(selectedChat._id);
+        }
+        
         joinChatRoom(selectedChat._id);
         loadMessages(selectedChat._id);
       }
@@ -68,16 +83,23 @@ const AdminChat = () => {
     };
   }, [selectedChat]);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handleNewMessage = (data) => {
+    console.log('Admin received new message:', data);
+    
+    // If message belongs to the selected chat, add it to messages
     if (selectedChat && data.chat === selectedChat._id) {
-      setMessages((prev) => [...prev, data.message]);
+      setMessages((prev) => {
+        // Check if message already exists to avoid duplicates
+        const exists = prev.some(msg => msg._id === data.message._id);
+        if (exists) return prev;
+        return [...prev, data.message];
+      });
+      
+      // Mark messages as read immediately
       markMessagesAsRead(selectedChat._id);
     }
     
+    // Update the chats list with new last message
     setChats((prevChats) => {
       return prevChats.map((chat) => {
         if (chat._id === data.chat) {
@@ -85,7 +107,7 @@ const AdminChat = () => {
             ...chat,
             lastMessage: data.message.content,
             lastMessageTime: data.message.createdAt,
-            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 : chat.unreadCount + 1
+            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 : (chat.unreadCount || 0) + 1
           };
         }
         return chat;
@@ -194,7 +216,8 @@ const AdminChat = () => {
       });
 
       if (response.data.success) {
-        setMessages((prev) => [...prev, response.data.data.message]);
+        const newMessage = response.data.data.message;
+        setMessages((prev) => [...prev, newMessage]);
         
         setChats((prevChats) => {
           return prevChats.map((chat) => {
