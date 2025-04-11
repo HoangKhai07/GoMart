@@ -231,7 +231,26 @@ const SummaryApi = {
     get_all_admin_chats: {
         url: "/api/chat/admin/all-chats",
         method: "get"
+    },
+
+    add_to_favorite: {
+        url: "/api/favorite/add",
+        method: "post"
+    },
+
+    get_favorite: {
+        url: "/api/favorite/get",
+        method: "get"
+    },
+
+    remove_favorite: {
+        url: "/api/favorite/remove",
+        method: "delete"
     }
+
+
+    
+    
 
 }
 

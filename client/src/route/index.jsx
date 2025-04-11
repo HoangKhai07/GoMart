@@ -27,6 +27,7 @@ import OnlinePaymentMethod from "../pages/OnlinePaymentMethod.jsx";
 import AdminOrders from "../pages/AdminOrders.jsx";
 import ReviewProduct from "../pages/ReviewProduct.jsx";
 import AdminChatPage from "../pages/admin/AdminChatPage.jsx";
+import FavoritePage from "../pages/FavoritePage.jsx";
 
 
 const router = createBrowserRouter([
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
 
         {
             path: "dashboard",
-            element: <Dashboard />,
+            element: <Dashboard/>,
             children: [
                 {
                     path: "profile",
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
                 {
                     path: "address",
                     element: <Address/>
+                },
+
+                {
+                    path: "favorite",
+                    element: <FavoritePage/>
                 },
 
                 {

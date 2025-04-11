@@ -11,6 +11,7 @@ import CardProduct from '../components/product/CardProduct'
 import image_1 from '../assets/best-price.png'
 import image_2 from '../assets/time_delivery.jpg'
 import AddToCartButton from '../components/product/AddToCartButton'
+import FavoriteButton from '../components/product/FavoriteButton'
 
 
 const ProductDisplayPage = () => {
@@ -202,7 +203,10 @@ const ProductDisplayPage = () => {
         {/* Product Details Section */}
         <div className='col-span-2 bg-white p-8 rounded-lg shadow-lg '>
           {/* name */}
-          <h1 className='text-3xl font-bold mb-4 text-gray-800'>{data.name}</h1>
+          <div className='flex justify-between mb-4 items-center'>
+          <h1 className='text-2xl font-bold text-gray-800'>{data.name}</h1>
+          <FavoriteButton productId={data._id} productData={data}/>
+          </div>
 
           {/* price */}
           <div className='flex items-center mb-6'>
