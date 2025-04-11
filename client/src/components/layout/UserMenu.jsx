@@ -91,6 +91,8 @@ const UserMenu = ({ close }) => {
 
         <Link onClick={handleClose} to={"/dashboard/address"} className='hover:text-primary-light hover:bg-gray-100'>Địa chỉ nhận hàng</Link>
 
+        <Link onClick={handleClose} to={"/dashboard/favorite"} className='hover:text-primary-light hover:bg-gray-100'>Danh sách yêu thích</Link>
+
         <button onClick={handleLogout} className='text-left text-primary-light-ytb hover:text-primary-light hover:bg-gray-100'>Đăng xuất</button>
       </div>
     </div>
