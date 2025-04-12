@@ -28,7 +28,7 @@ import AdminOrders from "../pages/AdminOrders.jsx";
 import ReviewProduct from "../pages/ReviewProduct.jsx";
 import AdminChatPage from "../pages/admin/AdminChatPage.jsx";
 import FavoritePage from "../pages/FavoritePage.jsx";
-
+import AdminStatistics from "../pages/admin/AdminStatistic.jsx";
 
 const router = createBrowserRouter([
     {
@@ -120,6 +120,11 @@ const router = createBrowserRouter([
                 {
                     path: "admin-chat",
                     element: <AdminPermission><AdminChatPage/></AdminPermission>
+                },
+
+                {
+                    path: "admin-statistics",
+                    element: <AdminPermission><AdminStatistics/></AdminPermission>
                 }
 
             ]

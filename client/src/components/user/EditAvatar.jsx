@@ -48,13 +48,13 @@ const EditAvatar = ({close}) => {
                 <button onClick={close} className='hover:text-primary-light ml-auto w-fit block my-2'>
                     <IoClose size={30}/>
                 </button>
-                <div className=' w-20 rounded-full overflow-hidden drop-shadow-2xl flex justify-center items-center mx-auto'>
+                <div className='flex justify-center items-center'>
                     {
                         user.avatar ? (
                             <img
                                 alt={user.name}
                                 src={user.avatar}
-                                className='w-full h-full'
+                                className='object-contain w-auto h-auto'
                             />
                         ) : (
                             <FaUserCircle size={80}/>

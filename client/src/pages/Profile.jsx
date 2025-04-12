@@ -21,15 +21,15 @@ const Profile = () => {
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         setUserData({
             name: user.name,
             email: user.email,
             mobile: user.mobile
         })
-    },[user])
+    }, [user])
 
-    const handleSubmit = async (e) =>  {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -39,40 +39,43 @@ const Profile = () => {
                 data: userData
             })
 
-            const {data : responseData} = response
+            const { data: responseData } = response
 
-            if(responseData.success){
+            if (responseData.success) {
                 toast.success(responseData.message)
                 const userData = await fetchUserDetails()
                 dispatch(setUserDetails(userData.data))
             }
         } catch (error) {
             AxiosToastError(error)
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
-    
+
 
     const handleOnChange = (e) => {
-        const {name, value} = e.target
+        const { name, value } = e.target
 
-        setUserData((preve)=>{
-            return{
+        setUserData((preve) => {
+            return {
                 ...preve,
-                [name]: value 
+                [name]: value
             }
         })
     }
 
     return (
-        <div className="max-w-3xl mx-auto p-6">
+        <div className="container mx-auto">
             {/* Header Section */}
-            <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                 <h1 className="text-2xl font-semibold mb-6">Thông tin cá nhân</h1>
-                
-                {/* Avatar Section */}
-                <div className="flex items-center space-x-4 mb-6">
+                <div className='border mb-5'></div>
+
+
+            <div className='grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 justify-center items-center'>
+
+            {/* Avatar Section */}
+            <div className="bg-white flex border justify-center items-center gap-2 rounded-lg shadow-md p-6">
                     <div className='w-24 h-24 rounded-full overflow-hidden drop-shadow-md border-4 border-gray-100'>
                         {user.avatar ? (
                             <img
@@ -84,28 +87,23 @@ const Profile = () => {
                             <FaUserCircle className="w-full h-full text-gray-400" />
                         )}
                     </div>
-                    
-                    <button 
-                        onClick={() => setOpenProfileAvatarEdit(true)} 
+
+                    <button
+                        onClick={() => setOpenProfileAvatarEdit(true)}
                         className="px-4 py-2 bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 transition-colors duration-200"
                     >
                         Thay đổi ảnh đại diện
                     </button>
-                </div>
-
-                {openProfileAvatarEdit && (
-                    <EditAvatar close={() => setOpenProfileAvatarEdit(false)} />
-                )}
             </div>
 
             {/* Form Section */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white border rounded-lg shadow-md p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-700">Họ và tên</label>
-                        <input 
+                        <input
                             type="text"
-                            placeholder="Nhập họ và tên của bạn" 
+                            placeholder="Nhập họ và tên của bạn"
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             value={userData.name}
                             name="name"
@@ -116,9 +114,9 @@ const Profile = () => {
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-700">Email</label>
-                        <input 
+                        <input
                             type="email"
-                            placeholder="Nhập email của bạn" 
+                            placeholder="Nhập email của bạn"
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             value={userData.email}
                             name="email"
@@ -129,9 +127,9 @@ const Profile = () => {
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-700">Số điện thoại</label>
-                        <input 
+                        <input
                             type="text"
-                            placeholder="Nhập số điện thoại của bạn" 
+                            placeholder="Nhập số điện thoại của bạn"
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             value={userData.mobile}
                             name="mobile"
@@ -140,13 +138,19 @@ const Profile = () => {
                         />
                     </div>
 
-                <button className='border rounded w-full p-2 my-10 flex items-center justify-center bg-primary-light-3 hover:bg-primary-light text-white font-medium text-lg '>
-                    {
-                        loading ? "Loading" : "Lưu"
-                    }
+                    <button className='border rounded w-full p-2 my-10 flex items-center justify-center bg-primary-light-3 hover:bg-primary-light text-white font-medium text-lg '>
+                        {
+                            loading ? "Loading" : "Lưu"
+                        }
                     </button>
                 </form>
             </div>
+
+            </div>
+
+            {openProfileAvatarEdit && (
+                <EditAvatar close={() => setOpenProfileAvatarEdit(false)} />
+            )}
         </div>
     )
 }

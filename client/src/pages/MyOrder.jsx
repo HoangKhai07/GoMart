@@ -78,8 +78,7 @@ const MyOrder = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto ">
-        <h1 className="text-2xl bg-white shadow-sm p-2 font-bold text-gray-800 mb-6">Đơn hàng của tôi</h1>
-
+        <h1 className="text-2xl bg-white shadow-sm p-2 font-bold text-gray-800 mb-2">Đơn hàng của tôi</h1>
         {orders.length === 0 ? (
           <div className=" rounded-lg  p-8 text-center">
             <img

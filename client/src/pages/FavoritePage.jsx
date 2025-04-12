@@ -33,7 +33,8 @@ function FavoritePage() {
     }, [])
   return (
     <div className='container mx-auto'>
-        <h1 className='text-2xl shadow-md p-2 font-bold'>Danh sách sản phẩm yêu thích</h1>
+        <h1 className='text-2xl p-2 font-bold'>Danh sách sản phẩm yêu thích</h1>
+        <div className='border'></div>
       
         { loading ? (
             <div className='flex justify-center items-center min-h-[70vh]'>
