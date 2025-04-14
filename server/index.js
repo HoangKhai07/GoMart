@@ -18,7 +18,7 @@ import reviewRouter from './route/review.route.js'
 import chatRouter from './route/chat.route.js'
 import { initSocket } from './config/socket.js'
 import favoriteRouter from './route/favorite.route.js'
-
+import statisticRouter from './route/statistic.route.js'
 const app = express()
 app.use(cors({
     credentials: true,
@@ -61,3 +61,4 @@ app.use('/api/order', orderRouter)
 app.use('/api/review', reviewRouter)
 app.use('/api/chat', chatRouter)
 app.use('/api/favorite', favoriteRouter)
+app.use('/api/statistic', statisticRouter)
