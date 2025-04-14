@@ -21,13 +21,13 @@ const UserMenu = ({ close }) => {
       })
 
       if (response.data.success) {
-        if(close){
+        if (close) {
           close()
         }
         dispatch(logout())
         localStorage.clear()
         navigate('/')
-          
+
         setTimeout(() => {
           toast.success(response.data.message)
         }, 100)
@@ -54,6 +54,18 @@ const UserMenu = ({ close }) => {
 
         {
           isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/admin-statistics"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Thống kê</Link>
+          )
+        }
+
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/admin-orders"} className='hover:text-primary-light hover:bg-gray-100' >Quản lý đơn hàng</Link>
+          )
+        }
+
+        {
+          isAdmin(user.role) && (
             <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm</Link>
           )
         }
@@ -75,17 +87,15 @@ const UserMenu = ({ close }) => {
             <Link onClick={handleClose} to={"/dashboard/upload-product"} className='hover:text-primary-light hover:bg-gray-100' >Thêm sản phẩm</Link>
           )}
 
-          {
-            isAdmin(user.role) && (
-              <Link onClick={handleClose} to={"/dashboard/admin-orders"} className='hover:text-primary-light hover:bg-gray-100' >Quản lý đơn hàng</Link>
-            )
-          }
+        
 
-          {
-            isAdmin(user.role) && (
-              <Link onClick={handleClose} to={"/dashboard/admin-chat"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Chat với khách hàng</Link>
-            )
-          }
+        {
+          isAdmin(user.role) && (
+            <Link onClick={handleClose} to={"/dashboard/admin-chat"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Chat với khách hàng</Link>
+          )
+        }
+
+       
 
         <Link onClick={handleClose} to={"/dashboard/myorders"} className='hover:text-primary-light hover:bg-gray-100' >Đơn mua</Link>
 

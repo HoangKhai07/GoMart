@@ -246,7 +246,12 @@ const SummaryApi = {
     remove_favorite: {
         url: "/api/favorite/remove",
         method: "delete"
-    }
+    },
+
+    get_statistics: {
+        url: '/api/statistic/admin/statistics',
+        method: 'GET'
+      },
 
 
     

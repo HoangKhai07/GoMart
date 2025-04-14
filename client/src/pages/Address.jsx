@@ -11,15 +11,16 @@ const Address = () => {
   const [openAddress, setOpenAddress] = useState(false)
   const addressList = useSelector(state => state.address.addressList)
   const [openEdit, setOpenEdit] = useState(false)
-  const [editData, setEditData ] = useState({})
+  const [editData, setEditData] = useState({})
   const [openConfirmDeleteAddress, setOpenConfirmDeleteAddress] = useState(false)
   const [deleteData, setDeleteData] = useState(null)
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-700">Địa chỉ giao hàng</h2>
+     
+        <div className="flex justify-between  items-center p-2 mb-3">
+          <h2 className="text-2xl font-bold text-gray-700">Địa chỉ giao hàng</h2>
+          
           <button
             onClick={() => setOpenAddress(true)}
             className="text-sm text-blue-600 hover:text-blue-800 font-medium"
@@ -27,14 +28,15 @@ const Address = () => {
             + Thêm địa chỉ mới
           </button>
         </div>
+        <div className='border mb-5'></div>
 
         {addressList.length > 0 ? (
           <div className="gap-3 grid grid-cols-1">
             {addressList.map((address) => (
 
               <div
-              key={address._id}
-              className="flex justify-between border p-3 rounded-lg items-start">
+                key={address._id}
+                className="flex justify-between border p-3 rounded-lg items-start">
                 <div>
                   <p className="font-medium text-gray-800">{address.name}</p>
                   <p className="text-gray-600 mt-1">{address.mobile}</p>
@@ -43,24 +45,26 @@ const Address = () => {
                   </p>
                 </div>
                 <div className='grid grid-cols-1 gap-8 mt-3 '>
-                  <button onClick={()=> {
-                    setOpenEdit(true) 
+                  <button onClick={() => {
+                    setOpenEdit(true)
                     setEditData(address)
-                    }}>
-                  <MdEdit size={20} className='cursor-pointer hover:text-gray-400'/>
+                  }}>
+                    <MdEdit size={20} className='cursor-pointer hover:text-gray-400' />
                   </button>
 
-                  <button 
-                onClick={()=> {{
-                  setOpenConfirmDeleteAddress(true)
-                  setDeleteData(address)
-                }}}
-                  
+                  <button
+                    onClick={() => {
+                      {
+                        setOpenConfirmDeleteAddress(true)
+                        setDeleteData(address)
+                      }
+                    }}
+
                   >
-                  <FaTrash size={20} className='cursor-pointer hover:text-gray-400'/>
+                    <FaTrash size={20} className='cursor-pointer hover:text-gray-400' />
                   </button>
-                  
-                
+
+
                 </div>
               </div>
             ))}
@@ -77,7 +81,7 @@ const Address = () => {
             </button>
           </div>
         )}
-      </div>
+      
       {
         openAddress && (
           <AddAddress close={() => setOpenAddress(false)}
@@ -87,13 +91,13 @@ const Address = () => {
 
       {
         openEdit && (
-          <EditAddressDetails data={editData} close={() => setOpenEdit(false)}/>
+          <EditAddressDetails data={editData} close={() => setOpenEdit(false)} />
         )
       }
 
       {
         openConfirmDeleteAddress && (
-          <ConfirmDeleteAddress data={deleteData} close={() => setOpenConfirmDeleteAddress(false)}/>
+          <ConfirmDeleteAddress data={deleteData} close={() => setOpenConfirmDeleteAddress(false)} />
         )
       }
     </div>
