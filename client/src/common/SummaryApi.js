@@ -192,6 +192,11 @@ const SummaryApi = {
         method: "get"
     },
 
+    get_order_detail: {
+        url: "/api/order/detail",
+        method: "get"
+    },
+
     create_review: {
         url: "/api/review/create",
         method: "post"
@@ -251,7 +256,7 @@ const SummaryApi = {
     get_statistics: {
         url: '/api/statistic/admin/statistics',
         method: 'GET'
-      },
+    },
 
 
     

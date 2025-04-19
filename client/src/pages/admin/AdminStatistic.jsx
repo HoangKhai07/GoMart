@@ -199,7 +199,7 @@ const AdminStatistics = () => {
   const currentRevenueData = getCurrentRevenueData();
 
   return (
-    <div className="p-4">
+    <div className="p-4 overflow-y-scroll max-h-[90vh] no-scrollbar">
       <h1 className="text-2xl font-bold mb-6">Thống kê</h1>
       
       {/* Total statistics card */}

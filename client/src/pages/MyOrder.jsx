@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { convertVND } from '../utils/ConvertVND'
 import { FaBox, FaTruck, FaCheckCircle, FaShippingFast, FaStar } from 'react-icons/fa'
+import { AiFillSchedule } from "react-icons/ai";
 import { MdPendingActions } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import Axios from '../utils/Axios'
@@ -29,40 +30,40 @@ const MyOrder = () => {
   const getOrderStatusIcon = (status) => {
     switch (status) {
       case 'Preparing order':
-        return <FaBox className="text-blue-500" size={20} />
+        return <FaBox className="text-blue-500" size={15} />
       case 'Shipping':
-        return <FaTruck className="text-orange-500" size={20} />
+        return <FaTruck className="text-orange-500" size={15} />
       case 'Out for delivery':
-        return <FaShippingFast className="text-purple-500" size={20} />
+        return <FaShippingFast className="text-purple-500" size={15} />
       case 'Delivered':
-        return <FaCheckCircle className="text-green-500" size={20} />
+        return <FaCheckCircle className="text-green-500" size={15} />
       default:
         return <FaBox className="text-blue-500" size={20} />
     }
   }
 
-  const checkReviewedOrders = async () => {
-    const delivered = orders.filter(order => order.order_status === 'Delivered')
+  // const checkReviewedOrders = async () => {
+  //   const delivered = orders.filter(order => order.order_status === 'Delivered')
 
-    const reviewStatusMap = {}
+  //   const reviewStatusMap = {}
 
-    for (const order of delivered) {
-      try {
-        const res = await Axios.get(`/api/review/check/${order.orderId}/${order.product_details._id}`)
-        reviewStatusMap[order.orderId] = res.data.data.hasReviewed
-      } catch (error) {
+  //   for (const order of delivered) {
+  //     try {
+  //       const res = await Axios.get(`/api/review/check/${order.orderId}/${order.product_details._id}`)
+  //       reviewStatusMap[order.orderId] = res.data.data.hasReviewed
+  //     } catch (error) {
        
-      }
-    }
+  //     }
+  //   }
 
-    setReviewedOrders(reviewStatusMap)
-  }
+  //   setReviewedOrders(reviewStatusMap)
+  // }
 
-  useEffect(() => {
-    if (orders.length > 0) {
-      checkReviewedOrders()
-    }
-  }, [orders])
+  // useEffect(() => {
+  //   if (orders.length > 0) {
+  //     checkReviewedOrders()
+  //   }
+  // }, [orders])
 
   const handleReviewClick = (order) => {
     navigate(`/review-product/${order.orderId}/${order.productId}`, {
@@ -73,6 +74,10 @@ const MyOrder = () => {
         orderId: order.orderId
       }
     })
+  }
+
+  const handleOrderDetails = (order) => {
+    navigate(`/order-detail/${order.orderId}`)
   }
 
   return (
@@ -136,6 +141,16 @@ const MyOrder = () => {
                               order.order_status === "Delivered" ? "Đã giao" : ""
                       }</span>
                       </div>
+                    </div>
+
+                    {/* Order details button */}
+                    <div>
+                      <button 
+                      onClick={() => handleOrderDetails(order)}
+                      className='flex items-center gap-1 bg-gray-400 hover:bg-gray-500 text-white px-3 py-1 rounded-md text-sm transition-colors'>
+                        <AiFillSchedule size={15}/>
+                        Chi tiết đơn hàng
+                      </button>
                     </div>
 
                     {/* review buuton */}

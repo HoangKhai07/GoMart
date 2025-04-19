@@ -11,7 +11,6 @@ import Dashboard from "../layouts/Dashboard.jsx";
 import Profile from "../pages/Profile";
 import MyOrder from "../pages/MyOrder";
 import Address from "../pages/Address";
-// import Product from "../pages/Product";
 import UploadProduct from "../pages/UploadProduct";
 import CategoryPage from "../pages/CategoryPage";
 import SubCategoryPage from "../pages/SubCategoryPage";
@@ -29,6 +28,7 @@ import ReviewProduct from "../pages/ReviewProduct.jsx";
 import AdminChatPage from "../pages/admin/AdminChatPage.jsx";
 import FavoritePage from "../pages/FavoritePage.jsx";
 import AdminStatistics from "../pages/admin/AdminStatistic.jsx";
+import OrderDetail from "../pages/OrderDetail.jsx";
 
 const router = createBrowserRouter([
     {
@@ -81,6 +81,7 @@ const router = createBrowserRouter([
                     path: "myorders",
                     element: <MyOrder/>
                 },
+
 
                 {
                     path: "address",
@@ -168,7 +169,12 @@ const router = createBrowserRouter([
         {
             path: "review-product/:orderId/:productId",
             element: <ReviewProduct/>
-        }
+        },
+
+        {
+            path: "order-detail/:orderId",
+            element: <OrderDetail/>
+        },
 
         
 

@@ -300,8 +300,14 @@ const ProductDisplayPage = () => {
 
       <div>
         <h3 className="text-xl font-semibold mb-4 text-gray-800">Thông tin sản phẩm</h3>
-        <div>
-          {data.description}  
+        <div className="prose max-w-none text-gray-700">
+          {data.description?.split('\n').map((paragraph, index) => (
+            paragraph.trim() ? (
+              <p key={index} className="mb-4">
+                {paragraph}
+              </p>
+            ) : <br key={index} />
+          ))}
         </div>
       </div>
 

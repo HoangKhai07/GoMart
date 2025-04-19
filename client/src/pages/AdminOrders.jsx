@@ -68,7 +68,7 @@ const AdminOrders = () => {
   return (
     <div className="min-h-screen">
       <div className="max-w-full">
-        <div className="flex justify-between shadow-md p-2 items-center mb-6">
+        <div className="flex justify-between p-2 items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Quản lý đơn hàng</h1>
           <button 
             onClick={fetchAllOrders}

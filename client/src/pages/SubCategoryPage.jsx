@@ -150,13 +150,13 @@ const SubCategoryPage = () => {
   return (
     <section>
        <div className='font-extralight bg-white shadow-md p-3 flex justify-between '>
-        <h1 className=' text-2xl items-center p-1'>Danh mục sản phẩm con</h1>
+        <h1 className=' text-2xl font-bold items-center p-1'>Danh mục sản phẩm con</h1>
         <button onClick={() => setOpenUploadSubCategory(true)} className='flex justify-center items-center gap-2 text-sm font-semibold bg-primary-light-3 hover:bg-primary-light mx-10 p-2 cursor-pointer rounded-lg'>
         <FaPlus/>
           Thêm danh mục sản phẩm con</button>
       </div>
 
-      <div>
+      <div className='overflow-y-scroll max-h-[75vh]'>
         <Table
           data={data}
           column={column}
