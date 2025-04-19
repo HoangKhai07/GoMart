@@ -5,15 +5,16 @@ import Axios from '../utils/Axios';
 import AxiosToastError from '../utils/AxiosToastError';
 import toast from 'react-hot-toast';
 import SummaryApi from '../common/SummaryApi';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const ReviewProduct = () => {
   const { orderId, productId } = useParams();
-  console.log("orderId",orderId)
-  console.log("productId",productId)    
+  console.log("orderId", orderId)
+  console.log("productId", productId)
   const location = useLocation();
   const navigate = useNavigate();
   const { productName, productImage } = location.state || {};
-  
+
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [hover, setHover] = useState(0);
@@ -21,29 +22,29 @@ const ReviewProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (rating < 1) {
       toast.error('Vui lòng chọn số sao đánh giá');
       return;
     }
-    
+
     if (!comment.trim()) {
       toast.error('Vui lòng nhập nội dung đánh giá');
       return;
     }
-    
+
     try {
       setLoading(true);
       const response = await Axios({
         ...SummaryApi.create_review,
         data: {
-            orderId,
-            productId,
-            rating,
-            comment
+          orderId,
+          productId,
+          rating,
+          comment
         }
       })
-      
+
       if (response.data.success) {
         toast.success('Đánh giá sản phẩm thành công!');
         navigate('/dashboard/myorders');
@@ -58,8 +59,16 @@ const ReviewProduct = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Đánh giá sản phẩm</h1>
-        
+      <div>
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-gray-500 font-medium hover:text-green-600"
+        >
+          <FaArrowLeft className="mr-2" /> Quay lại
+        </button>
+      </div>
+        <h1 className="text-2xl mt-3 font-bold text-gray-800 mb-6">Đánh giá sản phẩm</h1>
+
         <div className="flex items-center space-x-4 mb-6">
           <img
             src={productImage}
@@ -71,7 +80,7 @@ const ReviewProduct = () => {
             <p className="text-sm text-gray-500">Mã đơn hàng: {orderId}</p>
           </div>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -101,7 +110,7 @@ const ReviewProduct = () => {
               })}
             </div>
           </div>
-          
+
           <div>
             <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-2">
               Nhận xét của bạn
@@ -116,7 +125,7 @@ const ReviewProduct = () => {
               required
             />
           </div>
-          
+
           <div className="flex justify-end space-x-4">
             <button
               type="button"

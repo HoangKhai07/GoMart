@@ -283,3 +283,27 @@ export async function getAllOrdersController(req, res) {
         })
     }
 }
+
+export async function getDetailsController(req, res) {
+    try {
+        const userId = req.userId
+        const {orderId} = req.params
+
+        
+        const order = await OrderModel.findOne({userId: userId, orderId: orderId}).populate('delivery_address')
+       
+        return res.json({
+            message: "Order details",
+            success: true,
+            error: false,
+            data: order
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+
+        })
+    }
+}

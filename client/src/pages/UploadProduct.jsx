@@ -184,7 +184,7 @@ const UploadProduct = () => {
       </div>
       
 
-      <div className='my-5'>
+      <div className='my-5 overflow-y-scroll max-h-[75vh] no-scrollbar'>
         <form onSubmit={handleSubmit} className='bg-white shadow-sm rounded-lg p-6 space-y-6'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-3 border rounded-md'>
             {/* name */}

@@ -223,7 +223,7 @@ const Home = () => {
       <section className="py-5 bg-gray-50">
         <div className="container mx-auto px-4">
         <div className='flex justify-center items-center'>
-          <h2 className=" bg-green-500 p-2 inline-block text-3xl rounded font-bold text-black mb-8 text-center">
+          <h2 className=" p-2 inline-block text-3xl rounded font-bold text-gray-600 mb-8 text-center">
             Danh mục sản phẩm
           </h2>
         </div>
