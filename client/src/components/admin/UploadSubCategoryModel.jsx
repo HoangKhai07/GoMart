@@ -17,8 +17,6 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
 
     const allCategory = useSelector(state => state.product.allCategory)
 
-    console.log("all category", allCategory)
-
     const handleOnChange = (e) => {
         const { name, value } = e.target
 
