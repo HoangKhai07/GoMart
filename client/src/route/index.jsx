@@ -29,6 +29,8 @@ import AdminChatPage from "../pages/admin/AdminChatPage.jsx";
 import FavoritePage from "../pages/FavoritePage.jsx";
 import AdminStatistics from "../pages/admin/AdminStatistic.jsx";
 import OrderDetail from "../pages/OrderDetail.jsx";
+import VoucherManagementPage from "../pages/VoucherManagementPage.jsx";
+import Vouchers from "../pages/Vouchers.jsx";
 
 const router = createBrowserRouter([
     {
@@ -94,6 +96,11 @@ const router = createBrowserRouter([
                 },
 
                 {
+                    path: "vouchers",
+                    element: <Vouchers/>
+                },
+
+                {
                     path: "product",
                     element: <AdminPermission><ProductAdmin/></AdminPermission>
                 },
@@ -126,7 +133,12 @@ const router = createBrowserRouter([
                 {
                     path: "admin-statistics",
                     element: <AdminPermission><AdminStatistics/></AdminPermission>
-                }
+                },
+
+                {
+                    path: "voucher-management",
+                    element: <AdminPermission><VoucherManagementPage/></AdminPermission>
+                },
 
             ]
         },
@@ -174,9 +186,9 @@ const router = createBrowserRouter([
         {
             path: "order-detail/:orderId",
             element: <OrderDetail/>
-        },
+        }
 
-        
+       
 
     
         ]

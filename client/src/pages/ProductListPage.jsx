@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import AxiosToastError from '../utils/AxiosToastError'
-import Axios from '../utils/Axios'
-import SummaryApi from '../common/SummaryApi'
-import { useNavigate, useParams } from 'react-router-dom'
-import Loading from '../components/ui/Loading'
-import CardProduct from '../components/product/CardProduct'
 import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import SummaryApi from '../common/SummaryApi'
+import CardProduct from '../components/product/CardProduct'
+import Loading from '../components/ui/Loading'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
 
 
 const ProductListPage = () => {
@@ -91,89 +91,84 @@ const ProductListPage = () => {
     setDisplaySubCategory(filteredSubCategories)
   }, [params.categoryId, allSubCategory])
 
-  // useEffect(()=>{
-  //     const sub = allSubCategory.filter(p => {
-  //       const filterData = p.category.some(el => {
-  //         return el._id === params.categoryId
-  //       })
-  //       return filterData ? filterData : false
-  //     })
-  //     setDisplaySubCategory(sub)
-  // },[params, allSubCategory])
-
-
-
   return (
-    <section className='sticky top-h-24 lg:top-20' >
-      <div className='container mx-auto grid grid-cols-[100px,1fr] md:grid-cols-[200px,1fr] lg:grid-cols-[250px,1fr]'>
-        {/* subcategory */}
-        <div className=' min-h-[80vh] max-h-[80vh] overflow-y-scroll srollBarCustom'>
-          <h2 className='font-medium text-lg p-2 shadow-sm bg-white'>Các loại sản phẩm</h2>
-          {
-            displaySubCategory.map((su, index) => {
-              return (
-                <div
-                  key={su._id_ + "subcategory" + index}
-                  className={`flex items-center p-1 hover:bg-green-100 cursor-pointer ${params.subcategoryId === su._id ? "bg-green-300   " : "bg-white"}`}
-                  onClick={() => handleSubCategoryClick(su)}
-                >
-                  <img
-                    src={su.image}
-                    alt='subcategory'
-                    className='w-14 h-14 p-2 object-scale-down'
-                  />
-                  <p className='text-base font-light'>{su.name}</p>
-                </div>
-              )
-            })
-          }
+    <section className='sticky top-h-24 lg:top-20 bg-gray-50'>
+      <div className='container mx-auto grid grid-cols-[100px,1fr] md:grid-cols-[220px,1fr] lg:grid-cols-[280px,1fr] gap-6 p-4'>
+        {/* subcategory sidebar */}
+        <div className='bg-white rounded-lg shadow-sm min-h-[150vh] max-h-[15 0vh] overflow-y-scroll srollBarCustom'>
+          <h2 className='font-semibold text-xl p-4 border-b border-gray-100'>
+            Danh mục sản phẩm
+          </h2>
+          <div className='p-2'>
+            {displaySubCategory.map((su, index) => (
+              <div
+                key={su._id_ + "subcategory" + index}
+                className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-green-50 cursor-pointer ${
+                  params.subcategoryId === su._id 
+                    ? "bg-green-100 shadow-sm" 
+                    : "hover:shadow-sm"
+                }`}
+                onClick={() => handleSubCategoryClick(su)}
+              >
+                <img
+                  src={su.image}
+                  alt={su.name}
+                  className='w-12 h-12 object-contain p-2 bg-gray-50 rounded-lg'
+                />
+                <p className='text-base text-gray-700'>{su.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* product  */}
-        <div className=' bg-gray-50 min-h-[80vh] max-h-[80vh] overflow-y-auto'>
-          <h2 className='mx-10 font-medium text-lg p-2 '>Sản phẩm</h2>
-          <div>
-            {
-              data.length == 0 && !loading ? (
-                <div className='text-center text-gray-500 mt-10'>
-                  Không có sản phẩm
-                </div>
-              ) : (
-                <div className='bg-gray-100 p-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3'>
-                  {
-                    data.map((p, index) => (
-                      <CardProduct
-                        data={p}
-                        key={p._id + "productbycategory1" + index}
-                      />
-                    ))}
-                </div>
-              )
-            }
+        {/* product section */}
+        <div className='bg-white rounded-lg shadow-sm min-h-[80vh] max-h-[80vh] overflow-y-auto'>
+          <h2 className='font-semibold text-xl p-4 border-b border-gray-100'>
+            Sản phẩm
+          </h2>
+          
+          {data.length == 0 && !loading ? (
+            <div className='flex flex-col items-center justify-center h-[60vh] text-gray-500'>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+              <p className='text-lg'>Không có sản phẩm</p>
+            </div>
+          ) : (
+            <div className='p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
+              {data.map((p, index) => (
+                <CardProduct
+                  data={p}
+                  key={p._id + "productbycategory1" + index}
+                />
+              ))}
+            </div>
+          )}
 
-            {
-              loading && (
-                <Loading />
-              )
-            }
-
+          {loading && <Loading />}
+          
+          {/* Pagination */}
+          <div className='flex items-center justify-center gap-4 p-4 border-t border-gray-100'>
+            <button 
+              onClick={handlePreviousPage} 
+              disabled={page <= 1}
+              className='px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
+            >
+              Trang trước
+            </button>
+            <span className='text-sm text-gray-600'>
+              Trang {page} / {totalPageCount}
+            </span>
+            <button 
+              onClick={handleNextPage}
+              disabled={page >= totalPageCount}
+              className='px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
+            >
+              Trang sau
+            </button>
           </div>
         </div>
       </div>
-      <div className='flex justify-center p-5'>
-          <button 
-            onClick={handlePreviousPage} 
-            className='bg-blue-500 p-2 hover:bg-blue-700 rounded-sm border px-5 py-0.5 font-medium'
-          >Trước
-
-          </button>
-          <button 
-            onClick={handleNextPage}
-            className='bg-blue-500 p-3 hover:bg-blue-700 rounded-sm border px-6 py-0.5 font-medium' 
-          >Sau
-          </button>
-          <span className='ml-10 font-normal'>{page}/{totalPageCount}</span>
-        </div>
     </section>
   )
 }

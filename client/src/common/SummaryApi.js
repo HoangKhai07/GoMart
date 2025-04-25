@@ -207,7 +207,6 @@ const SummaryApi = {
         method: "get"
     },
 
-    // Chat endpoints
     send_message: {
         url: "/api/chat/send",
         method: "post"
@@ -255,12 +254,28 @@ const SummaryApi = {
 
     get_statistics: {
         url: '/api/statistic/admin/statistics',
-        method: 'GET'
+        method: 'get'
     },
 
+    create_voucher: {
+        url: '/api/voucher/create',
+        method: 'post'
+    },
 
+    get_vouchers: {
+        url: '/api/voucher/get',
+        method: 'get'
+    },
     
-    
+    apply_voucher: {
+        url: "/api/voucher/apply",
+        method: 'post'
+    },
+
+    delete_voucher: {
+        url: '/api/voucher/delete',
+        method: 'delete'
+    }
 
 }
 
