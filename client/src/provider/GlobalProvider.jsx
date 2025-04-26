@@ -18,6 +18,8 @@ export const GlobalProvider = ({ children }) => {
     const cartItems = useSelector((state) => state.cartItem?.cart) || []
     const user = useSelector((state) => state?.user)
     const [isCartOpen, setIsCartOpen] = useState(false)
+    const [loading,  setLoading] = useState(false)
+    const [vouchers, setVouchers] = useState([])
 
     const fetchCartItem = async () => {
     
@@ -144,6 +146,31 @@ export const GlobalProvider = ({ children }) => {
       }
     }
 
+    const fetchVouchers = async () => {
+      try {
+        const accessToken = localStorage.getItem('accessToken')
+        if (!accessToken) return
+          setLoading(true)
+          const response = await Axios({
+              ...SummaryApi.get_vouchers
+          })
+
+          if (response.data.success) {
+              setVouchers(response.data.data || [])
+          }
+      } catch (error) {
+          AxiosToastError(error)
+      } finally {
+          setLoading(false)
+      }
+    }
+
+    const activeVouchers = vouchers.filter(voucher => {
+      const now = new Date()
+      const endDate = new Date(voucher.end_date)
+      return voucher.is_active && endDate > now && (voucher.quantity > voucher.used || !voucher.used)
+    })
+
       
       useEffect(()=> {
         const accessToken = localStorage.getItem('accessToken')
@@ -151,6 +178,7 @@ export const GlobalProvider = ({ children }) => {
           fetchCartItem()
           fetchAddress()
           fetchOrder()
+          fetchVouchers()
         } else {
           handleLogout()
         }
@@ -167,8 +195,10 @@ export const GlobalProvider = ({ children }) => {
             deleteCartItem,
             fetchAddress, 
             fetchOrder,
+            fetchVouchers,
             calculateTotal,
             savePrice,
+            activeVouchers,
             isCartOpen,
             setIsCartOpen
         }}>
