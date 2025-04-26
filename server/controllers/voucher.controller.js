@@ -83,16 +83,15 @@ export const applyVoucherController = async (req, res) => {
             code,
             is_active: true,
             start_date: { $lte: new Date()},
-            end_date: { $gte: new Date()},
-            used: { $lt: $quantity}
+            end_date: { $gte: new Date()}
         })
 
-        if(!voucher){
-           return res.status(400).json({
-            message: "Voucher không hợp lệ hoặc đã hết hạn!",
-            error: true,
-            success: false
-           })
+        if(!voucher || voucher.used >= voucher.quantity){
+            return res.status(400).json({
+                message: "Voucher không hợp lệ hoặc đã hết hạn!",
+                error: true,
+                success: false
+            })
         }
 
         if(orderAmount < voucher.min_order_value){
@@ -104,12 +103,12 @@ export const applyVoucherController = async (req, res) => {
         }
 
         let discountAmount
-        if(voucher.type === "percent"){
-            discountAmount = (orderAmount * voucher.discount_value) / 1
-        }
-        if(voucher.max_discount){
-            discountAmount = Math.min(discountAmount, voucher.max_discount )
-        }  else {
+        if(voucher.discount_type === "percent"){
+            discountAmount = (orderAmount * voucher.discount_value) / 100
+            if(voucher.max_discount){
+                discountAmount = Math.min(discountAmount, voucher.max_discount)
+            }
+        } else {
             discountAmount = voucher.discount_value
         }
          return res.json({
