@@ -1,9 +1,9 @@
-import OrderModel from "../model/order.model.js"
-import UserModel from "../model/user.model.js"
-import CartProductModel from "../model/cartproduct.model.js"
-import VoucherModel from "../model/voucher.model.js"
 import mongoose from "mongoose"
 import Stripe from '../config/stripe.js'
+import CartProductModel from "../model/cartproduct.model.js"
+import OrderModel from "../model/order.model.js"
+import UserModel from "../model/user.model.js"
+import VoucherModel from "../model/voucher.model.js"
 
 export async function CashOnDeliveryPaymentController(req,res){
     try {
@@ -170,7 +170,45 @@ const getOrderProductItems = async ({
     return productList
 }
 
+export const deleteOrderController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const { orderId } = req.body
 
+        const order = await OrderModel.findOne({orderId: orderId, userId: userId})
+
+        if(!order){
+            return res.status(400).json({
+                message: 'Không tìm thấy đơn hàng',
+                error: true,
+                success: false
+            })
+        }
+
+        if(order.order_status !== "Preparing order"){
+            return res.status(400).json({
+                message: "Hiện tại bạn không thể huỷ đơn hàng, hãy liên hệ với CSKH",
+                error: true,
+                success: false
+            })
+        }
+
+        const deleteOrder = await OrderModel.deleteOne({orderId: orderId})
+
+        return res.json({
+            message: "Đã huỷ đơn hàng thành công",
+            error: false,
+            success: true,
+            data: deleteOrder
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }    
+}
 //http://localhost:8080/api/order/webhook
 
 export async function webhookStripe( req,res){
