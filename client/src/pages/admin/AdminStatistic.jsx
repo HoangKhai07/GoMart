@@ -246,11 +246,11 @@ const AdminStatistics = () => {
       </div>
       
       {/* Chart */}
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-4">Trạng thái đơn hàng</h2>
-          <div className="flex justify-center" style={{ height: '400px' }}>
+          <div className="flex justify-center" style={{ height: '380px' }}>
             {orderStatusChartData && <Pie data={orderStatusChartData} />}
           </div>
         </div>

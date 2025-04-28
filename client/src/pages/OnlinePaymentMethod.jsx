@@ -1,21 +1,24 @@
+import { loadStripe } from '@stripe/stripe-js'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
-import { useGlobalContext } from '../provider/GlobalProvider'
+import { useLocation } from 'react-router-dom'
+import visa from '../assets/visa.webp'
 import vnpay_logo from '../assets/vnpay-logo.jpg'
 import zalopay from '../assets/zalopay.png'
-import visa from '../assets/visa.webp'
-import AxiosToastError from '../utils/AxiosToastError'
-import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
-import { loadStripe } from '@stripe/stripe-js'
-import toast from 'react-hot-toast'
+import { useGlobalContext } from '../provider/GlobalProvider'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
 
 
 function OnlinePaymentMethod() {
+    const location = useLocation()
     const cartItems = useSelector((state) => state.cartItem.cart)
     const selectedAddress = useSelector(state => state.address.selectedAddress)
-    const { calculateTotal, savePrice, fetchCartItem, fetchOrder } = useGlobalContext()
-
+    const { calculateTotal, savePrice, fetchCartItem, fetchOrder, acticeVouchers } = useGlobalContext()
+    const [voucherSelected, setVoucherSelected] = useState(location.state?.voucherSelected || '')
+    const [discountAmount, setDiscountAmount] = useState(location.state?.discountAmount || 0)
 
     const handleOnlinePayment = async () => {
         try {
@@ -27,9 +30,11 @@ function OnlinePaymentMethod() {
                 ...SummaryApi.checkout_with_stripe,
                 data: {
                     list_items: cartItems,
-                    totalAmt: calculateTotal(),
+                    totalAmt: calculateTotal() - discountAmount,
                     addressId: selectedAddress,
-                    subTotalAmt: calculateTotal() + savePrice()
+                    subTotalAmt: calculateTotal() + savePrice(),
+                    voucherId: voucherSelected || null,
+                    discountAmount: discountAmount
 
                 }
             })
@@ -45,8 +50,6 @@ function OnlinePaymentMethod() {
             if(fetchOrder){
                 fetchOrder()
             }
-
-
 
         } catch (error) {
             AxiosToastError(error)

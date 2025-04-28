@@ -1,8 +1,9 @@
-import OrderModel from "../model/order.model.js"
-import UserModel from "../model/user.model.js"
-import CartProductModel from "../model/cartproduct.model.js"
 import mongoose from "mongoose"
 import Stripe from '../config/stripe.js'
+import CartProductModel from "../model/cartproduct.model.js"
+import OrderModel from "../model/order.model.js"
+import UserModel from "../model/user.model.js"
+import VoucherModel from "../model/voucher.model.js"
 
 export async function CashOnDeliveryPaymentController(req,res){
     try {
@@ -60,7 +61,7 @@ export const priceWithDiscount = (price,discount) => {
 export async function paymentController(req, res){
     try {
         const userId = req.userId
-        const { list_items, totalAmt, addressId, subTotalAmt } = req.body
+        const { list_items, totalAmt, addressId, subTotalAmt, voucherId, discountAmount } = req.body
 
         const user = await UserModel.findById(userId)
         
@@ -85,6 +86,21 @@ export async function paymentController(req, res){
             }
         })
 
+        let discount_options = {}
+        if(discountAmount && discountAmount > 0 ){
+            const coupon = await Stripe.coupons.create({
+                amount_off: discountAmount,
+                currency: 'vnd',
+                name: 'Voucher'
+            })
+
+            discount_options = {
+                discounts: [{
+                    coupon: coupon.id,
+                }]
+            }
+        }
+
         const params = {
             submit_type: "pay",
             mode: "payment",
@@ -92,11 +108,14 @@ export async function paymentController(req, res){
             customer_email: user.email,
             metadata: {
                 userId: userId,
-                addressId: addressId
+                addressId: addressId,
+                voucherId: voucherId || '',
+                discountAmount: discountAmount || 0
             },
             line_items: line_items,
             success_url: `${process.env.FRONTEND_URL}/payment-success`,
-            cancel_url: `${process.env.FRONTEND_URL}/cancel`
+            cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+            ...discount_options
 
         }
 
@@ -118,6 +137,8 @@ const getOrderProductItems = async ({
     addressId,
     paymentId,
     payment_status,
+    voucherId,
+    discountAmount
 }) => {
     const productList = []
 
@@ -137,7 +158,9 @@ const getOrderProductItems = async ({
             payment_status: payment_status,
             delivery_address: addressId,
             subTotalAmt: Number(item.amount_subtotal),
-            totalAmt: Number(item.amount_total)
+            totalAmt: Number(item.amount_total),
+            voucherId: voucherId || null,
+            discountAmount: discountAmount || 0
             }
 
             productList.push(payload)
@@ -147,6 +170,45 @@ const getOrderProductItems = async ({
     return productList
 }
 
+export const deleteOrderController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const { orderId } = req.body
+
+        const order = await OrderModel.findOne({orderId: orderId, userId: userId})
+
+        if(!order){
+            return res.status(400).json({
+                message: 'Không tìm thấy đơn hàng',
+                error: true,
+                success: false
+            })
+        }
+
+        if(order.order_status !== "Preparing order"){
+            return res.status(400).json({
+                message: "Hiện tại bạn không thể huỷ đơn hàng, hãy liên hệ với CSKH",
+                error: true,
+                success: false
+            })
+        }
+
+        const deleteOrder = await OrderModel.deleteOne({orderId: orderId})
+
+        return res.json({
+            message: "Đã huỷ đơn hàng thành công",
+            error: false,
+            success: true,
+            data: deleteOrder
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }    
+}
 //http://localhost:8080/api/order/webhook
 
 export async function webhookStripe( req,res){
@@ -167,6 +229,8 @@ export async function webhookStripe( req,res){
             addressId: session.metadata.addressId,
             paymentId: session.payment_intent,
             payment_status: session.payment_status,
+            voucherId: session.metadata.voucherId,
+            discountAmount: session.metadata.discountAmount
             })
 
         const order = await OrderModel.insertMany(orderProduct)
@@ -177,6 +241,13 @@ export async function webhookStripe( req,res){
             })
 
             const removeCartProduct = await CartProductModel.deleteMany({userId: userId})
+
+            if (session.metadata.voucherId) {
+                await VoucherModel.findByIdAndUpdate(
+                    session.metadata.voucherId,
+                    { $inc: { used: 1 } }
+                )
+            }
         }
         break;
       default:

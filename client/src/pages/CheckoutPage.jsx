@@ -1,28 +1,60 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { convertVND } from '../utils/ConvertVND'
-import { useGlobalContext } from '../provider/GlobalProvider'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import Axios from '../utils/Axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import SummaryApi from '../common/SummaryApi'
-import AxiosToastError from '../utils/AxiosToastError'
 import AddAddress from '../components/forms/AddAddress'
+import { useGlobalContext } from '../provider/GlobalProvider'
 import { setSelectedAddress } from '../store/addressSlide'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
+import { convertVND } from '../utils/ConvertVND'
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cartItem?.cart) || []
   const user = useSelector((state) => state.user) || {}
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { calculateTotal, savePrice, fetchCartItem, fetchOrder } = useGlobalContext()
+  const { calculateTotal, savePrice, fetchCartItem, fetchOrder, activeVouchers } = useGlobalContext()
   const [loading, setLoading] = useState(false)
   const [openAddress, setOpenAddress]= useState(false)
   const addressList = useSelector(state => state.address.addressList)
   const selectedAddress = useSelector(state => state.address.selectedAddress)
   const [paymentMethod, setPaymentMethod] = useState('COD')
+  const [voucherSelected, setVoucherSelected] = useState('')
+  const [discountAmount, setDiscountAmount] = useState(0)
+  const [showVouchers, setShowVouchers] = useState(false)
 
 
+  const applyVoucher = async (voucher) => {
+    try {
+      setLoading(true)
+      const response = await Axios({
+        ...SummaryApi.apply_voucher,
+        data: {
+          code: voucher.code,
+          orderAmount: calculateTotal()
+        }
+      })
+
+      const { data: responseData } = response
+      if(responseData.success) {
+        setVoucherSelected(voucher._id)
+        setDiscountAmount(responseData.data.discountAmount)
+        toast.success(response.data.message)
+        setShowVouchers(false)
+      }
+    } catch(error) {
+      AxiosToastError(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const removeVoucher = () => {
+    setVoucherSelected('')
+    setDiscountAmount(0)
+  }
 
   const handleCashOnDelivery = async () => {
     try {
@@ -31,9 +63,11 @@ const CheckoutPage = () => {
         ...SummaryApi.cash_on_delivery_payment,
         data: {
           list_items: cartItems,
-          totalAmt: calculateTotal(),
+          totalAmt: calculateTotal() - discountAmount,
           addressId: selectedAddress,
-          subTotalAmt: calculateTotal() + savePrice()
+          subTotalAmt: calculateTotal() + savePrice(),
+          voucherId: voucherSelected || null,
+          discountAmount: discountAmount
         }
       })
 
@@ -63,8 +97,13 @@ const CheckoutPage = () => {
   }
 
   const handlePaymentOnline = () => {
-    navigate('/online-payment')
-     }
+    navigate('/online-payment', {
+      state: {
+        voucherSelected: voucherSelected,
+        discountAmount: discountAmount
+      }
+    });
+  }
 
   const handlePayment = () => {
     if(paymentMethod === "COD"){
@@ -198,6 +237,73 @@ const CheckoutPage = () => {
               )}
             </div>
             
+            {/* Vouchers */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">Voucher</h2>
+              
+              {voucherSelected ? (
+                <div className="flex justify-between items-center border rounded-lg p-4">
+                  <div>
+                    <p className="font-medium text-gray-800">
+                      {activeVouchers.find(v => v._id === voucherSelected)?.discount_type === 'percent' 
+                        ? `Giảm ${activeVouchers.find(v => v._id === voucherSelected)?.discount_value}%` 
+                        : `Giảm ${convertVND(activeVouchers.find(v => v._id === voucherSelected)?.discount_value)}`}
+                    </p>
+                    <p className="text-sm text-gray-500">Mã: {activeVouchers.find(v => v._id === voucherSelected)?.code}</p>
+                  </div>
+                  <button 
+                    onClick={removeVoucher}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    Xóa
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button 
+                    onClick={() => setShowVouchers(!showVouchers)}
+                    className="w-full py-2 border border-dashed border-blue-500 rounded-lg text-blue-600 hover:bg-blue-50 transition-colors"
+                  >
+                    {showVouchers ? 'Ẩn voucher' : 'Chọn voucher'}
+                  </button>
+                  
+                  {showVouchers && (
+                    <div className="mt-4 space-y-3">
+                      {activeVouchers.length > 0 ? (
+                        activeVouchers.map((voucher) => (
+                          <div 
+                            key={voucher._id} 
+                            className="border rounded-lg p-4 cursor-pointer hover:border-green-500 transition-all"
+                            
+                          >
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <p className="font-medium text-gray-800">
+                                  {voucher.discount_type === 'percent' 
+                                    ? `Giảm ${voucher.discount_value}% (tối đa ${convertVND(voucher.max_discount)})` 
+                                    : `Giảm ${convertVND(voucher.discount_value)}`}
+                                </p>
+                                <p className="text-sm text-gray-500">Đơn tối thiểu {convertVND(voucher.min_order_value)}</p>
+                                <p className="text-xs text-gray-400 mt-1">Mã: {voucher.code}</p>
+                              </div>
+                              <button 
+                              onClick={() => applyVoucher(voucher)}
+                                className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                              >
+                                Áp dụng
+                              </button>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="text-center py-4 text-gray-500">Không có voucher nào phù hợp</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            
             {/* Payment Methods */}
              <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-semibold mb-4 text-gray-700">Phương thức thanh toán</h2>
@@ -264,9 +370,16 @@ const CheckoutPage = () => {
                 </div>
                 
                 <div className="flex justify-between">
-                  <p className="text-gray-600">Giảm giá:</p>
+                  <p className="text-gray-600">Giảm giá sản phẩm:</p>
                   <p className="font-medium text-green-600">- {convertVND(savePrice())}</p>
                 </div>
+                
+                {discountAmount > 0 && (
+                  <div className="flex justify-between">
+                    <p className="text-gray-600">Giảm giá voucher:</p>
+                    <p className="font-medium text-green-600">- {convertVND(discountAmount)}</p>
+                  </div>
+                )}
                 
                 <div className="flex justify-between">
                   <p className="text-gray-600">Phí vận chuyển:</p>
@@ -276,7 +389,7 @@ const CheckoutPage = () => {
               
               <div className="flex justify-between items-center mb-6">
                 <p className="text-lg font-semibold text-gray-700">Tổng thanh toán:</p>
-                <p className="text-xl font-bold text-green-600">{convertVND(calculateTotal())}</p>
+                <p className="text-xl font-bold text-green-600">{convertVND(calculateTotal() - discountAmount)}</p>
               </div>
               
               <div className='flex flex-col gap-3 '>

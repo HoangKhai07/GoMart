@@ -197,6 +197,11 @@ const SummaryApi = {
         method: "get"
     },
 
+    delete_order: {
+        url: '/api/order/delete',
+        method: "delete"
+    },
+
     create_review: {
         url: "/api/review/create",
         method: "post"

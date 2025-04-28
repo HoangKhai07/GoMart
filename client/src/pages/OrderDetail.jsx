@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { FaArrowLeft, FaBox, FaCheckCircle, FaShippingFast, FaTruck } from 'react-icons/fa';
+import { useNavigate, useParams } from 'react-router-dom';
+import SummaryApi from '../common/SummaryApi';
+import Loading from '../components/ui/Loading';
+import Timeline from '../components/ui/Timeline';
 import Axios from '../utils/Axios';
 import AxiosToastError from '../utils/AxiosToastError';
-import SummaryApi from '../common/SummaryApi';
-import Loading from '../components/ui/Loading'
-import { FaBox, FaTruck, FaCheckCircle, FaShippingFast, FaArrowLeft } from 'react-icons/fa';
 import { convertVND } from '../utils/ConvertVND';
-import Timeline from '../components/ui/Timeline';
+import toast from 'react-hot-toast'
+import ConfirmDeleteOrder from '../components/user/ConfirmDeleteOrder';
 
 
 const OrderDetail = () => {
   const { orderId } = useParams()
   const [orderDetail, setOrderDetail] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [data, setData] = useState([])
   const navigate = useNavigate()
+  const [confirmDeleteOrder, setConfirmDeleteOrder] = useState(false)
 
   const fetchOrderDetail = async () => {
     try {
       setLoading(true)
       const response = await Axios.get(`${SummaryApi.get_order_detail.url}/${orderId}`)
+      
       if (response.data?.success) {
         setOrderDetail(response.data.data)
       }
@@ -161,8 +166,28 @@ const OrderDetail = () => {
               <span className="text-green-600">{convertVND(orderDetail.totalAmt)}</span>
             </div>
           </div>
+
+          <div className='flex justify-center mt-10'>
+            {
+              orderDetail.order_status === 'Preparing order' && (
+                <button
+                onClick={() => setConfirmDeleteOrder(true)}
+                className='bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors flex items-center'
+                
+                >Huỷ đơn hàng
+                  
+                </button>
+              )
+            }
+          </div>
+
         </div>
       </div>
+      {
+        confirmDeleteOrder && (
+        <ConfirmDeleteOrder data={{orderId:orderDetail.orderId}} close={() => setConfirmDeleteOrder(false)}/>
+        )
+      }
     </div>
   )
 }
