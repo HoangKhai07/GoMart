@@ -15,7 +15,7 @@ function AddToCartButton({ data }) {
     const cartItem = useSelector(state => state.cartItem.cart)
     const [isAvailableCart, setIsAvailableCart] = useState(false)
     const [qty, setQty] = useState(0)
-    const [cartItemDetails, setCartItemDetails ] = useState()
+    const [cartItemDetails, setCartItemDetails] = useState()
 
 
     const handleAddToCart = async (e) => {
@@ -58,19 +58,19 @@ function AddToCartButton({ data }) {
     const increseQty = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        updateCartItem(cartItemDetails?._id, qty+1)
+        updateCartItem(cartItemDetails?._id, qty + 1)
 
     }
 
     const decreseQty = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        if(qty == 1){
+        if (qty == 1) {
             deleteCartItem(cartItemDetails?._id)
-        } else{
-            updateCartItem(cartItemDetails?._id, qty-1)
-        } 
-      
+        } else {
+            updateCartItem(cartItemDetails?._id, qty - 1)
+        }
+
     }
 
 
@@ -79,18 +79,18 @@ function AddToCartButton({ data }) {
             {
                 isAvailableCart ? (
                     <div className="flex items-center space-x-2 bg-white border border-gray-300 rounded-lg p-1 shadow-sm">
-                        <button 
+                        <button
                             onClick={decreseQty}
                             className="w-5 h-5 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200"
                         >
-                            <FaMinus className="text-gray-600" size={14}/>
+                            <FaMinus className="text-gray-600" size={14} />
                         </button>
                         <p className="w-8 text-center font-medium">{qty}</p>
-                        <button 
+                        <button
                             onClick={increseQty}
                             className="w-5 h-5 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200"
                         >
-                            <FaPlus className="text-gray-600" size={14}/>
+                            <FaPlus className="text-gray-600" size={14} />
                         </button>
                     </div>
                 ) : (
@@ -98,8 +98,13 @@ function AddToCartButton({ data }) {
                         onClick={handleAddToCart}
                         className="w-full text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-3 text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
-                        <span>Thêm vào giỏ</span>
-                        {loading ? <Loading /> : <IoCart className="text-white" size={20} />}
+                        {
+                            loading ? null : <span className=''>Thêm vào giỏ</span>
+                        }
+
+                        {
+                            loading ? <Loading /> : <IoCart className="text-white hidden lg:flex" size={20} />
+                        }
                     </button>
                 )
             }

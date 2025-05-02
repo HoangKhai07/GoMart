@@ -115,8 +115,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
           {/* <FaLongArrowAltRight /> */}
         </div>
         )
-
-        )}
+      )}
       </div>
 
       <div className='relative'>
@@ -132,7 +131,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
             ))
           ) : (
             data.map((product, index) => (
-              <div className='min-w-[200px]' key={product._id + "productbycategory" + index}>
+              <div className='min-w-[170px] lg:min-w-[200px] ' key={product._id + "productbycategory" + index}>
                 <CardProduct 
                   data={product}
                 />

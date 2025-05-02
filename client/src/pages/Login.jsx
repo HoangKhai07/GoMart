@@ -66,7 +66,7 @@ const Login = () => {
     <section className='fixed bg-opacity-60 top-0 bottom-0 left-0 right-0
     bg-neutral-900 flex items-center justify-center backdrop-blur-sm'>
 
-      <div className=" bg-white min-h-[60vh] w-full md:max-w-lg lg:max-w-lg flex rounded-md p-5 px-8">
+      <div className=" bg-white min-h-[60vh] mx-2 w-full md:max-w-lg lg:max-w-lg flex rounded-md p-5 px-8">
 
         {/* Right side - Login Form */}
         <div className=" w-full flex items-center justify-center p-3">

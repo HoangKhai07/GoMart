@@ -79,6 +79,9 @@ function App() {
   const noHeaderFooterRoutes = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
   const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname)
 
+  const noBublleChat = ['/login', '/register', '/forgot-password', '/verification-otp', '/reset-password']
+  const shouldNoBulleChat = !noBublleChat.includes(location.pathname)
+
   return (
     <GlobalProvider>
       <ScrollToTop />
@@ -90,7 +93,7 @@ function App() {
       {shouldShowHeaderFooter && <Footer />}
       {/* <Footer /> */}
       <Toaster />
-      <ChatBubble />
+      {shouldNoBulleChat && <ChatBubble />}
     </GlobalProvider>
   )
 }

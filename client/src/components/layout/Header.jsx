@@ -104,10 +104,30 @@ const Header = () => {
 
               {/* Mobile actions */}
               <div className='flex lg:hidden items-center space-x-3'>
-                <button className='p-2 hover:bg-gray-100 rounded-full transition-all' onClick={handleMobileUser}>
+              {user?._id ? (
+                  <div className='relative'>
+                    <div 
+                      onClick={() => setOpenUserMenu(prev => !prev)} 
+                      className='flex items-center space-x-2 cursor-pointer hover:bg-gray-100 rounded-full px-4 py-2 transition-all'
+                    >
+                      <span className='font-medium text-gray-700'>{user.name || user.mobile}</span>
+                      {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
+                    </div>
+                    {openUserMenu && (
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100'>
+                        <UserMenu close={handleCloseMenu} />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button className='p-2 hover:bg-gray-100 rounded-full transition-all' onClick={handleMobileUser}>
                   <FaUser size={20} className="text-gray-700" />
                 </button>
-                <button className='p-2 hover:bg-gray-100 rounded-full transition-all'>
+                )}
+                
+                <button 
+                onClick={()=> setOpenCartSection(true)}
+                className='p-2 hover:bg-gray-100 rounded-full transition-all'>
                   <TiShoppingCart size={24} className="text-gray-700" />
                 </button>
               </div>

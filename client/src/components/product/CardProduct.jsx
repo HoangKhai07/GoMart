@@ -41,7 +41,7 @@ const CardProduct = ({ data }) => {
   return (
     <div
       onClick={handleProductClick}
-      className='bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-green-300  p-4 max-w-[280px] transition-all duration-300 mt-3 flex flex-col h-full'>
+      className='bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-green-300  p-4 max-w-[280px] transition-all duration-300 flex flex-col h-full'>
       {/* Image Container with Discount Badge */}
       <div className='relative aspect-square w-full mb-4 rounded-lg overflow-hidden group'>
         <img

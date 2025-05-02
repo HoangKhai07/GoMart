@@ -280,6 +280,11 @@ const SummaryApi = {
     delete_voucher: {
         url: '/api/voucher/delete',
         method: 'delete'
+    },
+
+    update_voucher: {
+        url: '/api/voucher/update',
+        method: 'put'
     }
 
 }
