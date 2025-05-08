@@ -128,3 +128,54 @@ export const applyVoucherController = async (req, res) => {
         })
     }
 }
+
+export const updateVoucherController = async (req, res) => {
+    try {
+        const {_id, code, discount_type, discount_value, max_discount, min_order_value, quantity,
+            used, start_date, end_date, is_active, description} = req.body
+
+        if (!_id) {
+            return res.status(400).json({
+                message: "Vui lòng cung cấp ID voucher!",
+                error: true,
+                success: false
+            });
+        }
+
+        const updateVoucher = await VoucherModel.findByIdAndUpdate(_id, {
+            code,  
+            discount_type,  
+            discount_value,  
+            max_discount,  
+            min_order_value, 
+            quantity,
+            used, 
+            start_date,  
+            end_date, 
+            is_active, 
+            description
+        }, { new: true });
+
+        if (!updateVoucher) {
+            return res.status(404).json({
+                message: "Không tìm thấy voucher!",
+                error: true,
+                success: false
+            });
+        }
+
+        return res.json({
+            message: "Cập nhật voucher thành công",
+            error: false,
+            success: true,
+            data: updateVoucher
+        });
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        });
+    }
+}

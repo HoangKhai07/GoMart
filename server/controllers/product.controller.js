@@ -56,20 +56,33 @@ export const createProductController = async (req, res) => {
 
 export const getProductController = async (req, res)  => {
     try {
-        let { page, limit, search} = req.body
+        let { page, limit, search } = req.query
+
+        if (!search) {
+            search = ''
+        }
 
         if(!page){
             page = 1
         }
 
         if(!limit){
-            limit = 10
+            limit = 21
         }
 
+        const searchTerms = [
+            search, 
+            search.toLowerCase(), 
+            normalizeString(search),
+        ];
+
         const query = search ? {
-            $text: {
-                $search: search
-            }
+            $or: [
+                ...searchTerms.map(term => ({ name: { $regex: term, $options: 'i' } })),
+                ...searchTerms.map(term => ({ brand: { $regex: term, $options: 'i' } })),
+                // ...searchTerms.map(term => ({ description: { $regex: term, $options: 'i' } }))
+            ]
+            
         } : {}
 
         const skip = (page - 1) * limit
