@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Axios from '../../utils/Axios'
@@ -13,6 +13,14 @@ const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(()=> {
+    setIsVisible(true)
+    return () => {
+      setIsVisible(false)
+    }
+  }, [])
 
   const handleLogout = async () => {
     try {
@@ -43,7 +51,7 @@ const UserMenu = ({ close }) => {
     }
   }
   return (
-    <div className='p-4 '>
+    <div className={`p-4 transition-all duration-300 ease-linear ${isVisible ? 'transform translate-y-0': 'transform -translate-y-5' }`}>
       <div className='font-bold gap-3'>Tài khoản của tôi</div>
       <div className='text-lg flex items-center justify-between hover:text-primary-light hover:bg-gray-100 text-ellipsis line-clamp-1'>
         {user.name || user.mobile} <span className='text-sm text-primary-light'>{user.role === "ADMIN" ? "(Admin)" : ""}</span>

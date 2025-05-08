@@ -75,7 +75,7 @@ const CardProduct = ({ data }) => {
               </div>
             </div>
           ) : (
-            <div className='text-lg font-bold text-green-600'>
+            <div className='text-lg font-bold mt-5 text-green-600'>
               {convertVND(data.price)}
             </div>
           )}

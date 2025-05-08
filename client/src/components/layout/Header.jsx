@@ -76,7 +76,7 @@ const Header = () => {
                       {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
                     </div>
                     {openUserMenu && (
-                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100'>
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100 transition-all duration-200 ease-in-out overflow-hidden'>
                         <UserMenu close={handleCloseMenu} />
                       </div>
                     )}
@@ -114,7 +114,7 @@ const Header = () => {
                       {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
                     </div>
                     {openUserMenu && (
-                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100'>
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100 transition-all duration-200 ease-in-out overflow-hidden'>
                         <UserMenu close={handleCloseMenu} />
                       </div>
                     )}

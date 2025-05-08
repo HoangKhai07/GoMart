@@ -96,6 +96,7 @@ const UploadSubCategoryModel = ({ close, fetchData }) => {
                         <input
                             type="text"
                             id='name'
+                            autoFocus
                             placeholder='Tên danh mục'
                             value={subCategoryData.name}
                             name='name'

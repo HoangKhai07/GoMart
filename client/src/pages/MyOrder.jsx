@@ -88,7 +88,7 @@ const MyOrder = () => {
       <div className="container mx-auto ">
         <h1 className="text-2xl bg-white shadow-sm p-2 font-bold text-gray-800 mb-2">Đơn hàng của tôi</h1>
         {orders.length === 0 ? (
-          <div className=" rounded-lg  p-8 text-center">
+          <div className=" rounded-lg p-8 text-center">
             <img
               src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
               alt="Empty Orders"
@@ -102,7 +102,7 @@ const MyOrder = () => {
               <div key={order.orderId} className="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
                 <div className="flex justify-between items-start mb-4">
                   <div className='flex gap-1'>
-                    <p className="text-sm text-gray-500 mb-1">Mã đơn hàng: </p>
+                    <p className="text-xs lg:text-sm text-gray-500 mb-1">Mã đơn hàng: </p>
                     <p className="text-sm text-gray-500 ">{order.orderId}</p>
                   </div>
                   <div className="flex items-center gap-2">

@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import { IoSearchOutline } from "react-icons/io5"
 import SummaryApi from '../common/SummaryApi'
-import AxiosToastError from '../utils/AxiosToastError'
-import Axios from '../utils/Axios'
-import Loading from '../components/ui/Loading'
 import ProductCardAdmin from '../components/admin/ProductCardAdmin'
-import { IoSearchOutline } from "react-icons/io5";
+import Loading from '../components/ui/Loading'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
 
 const ProductAdmin = () => {
   const [productData, setProductData] = useState([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
   const [totalPageCount, setTotalPageCount] = useState(1)
-  const [ search, setSearch ] = useState("")
+  const [search, setSearch] = useState("")
 
   const fetchData = async () => {
     try {
       setLoading(true)
       const response = await Axios({
         ...SummaryApi.get_product,
-        data: {
-          page: page,
-          limit: 12,
-          search: search
-        }
+        url: `${SummaryApi.get_product.url}?page=${page}&limit=21${search ? `&search=${search}` : ''}`
       })
 
       const { data: responseData } = response
@@ -63,7 +59,7 @@ const ProductAdmin = () => {
 
   useEffect(() => {
     let flag = true
-    const interval = setTimeout(()=> {
+    const interval = setTimeout(() => {
       if (flag) {
         fetchData()
         flag = false
@@ -81,57 +77,61 @@ const ProductAdmin = () => {
     <section>
       <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
         <h1 className=' text-2xl items-center p-1 font-medium'>Sản phẩm</h1>
-        <div className='flex justify-center items-center gap-2'>
-          <IoSearchOutline size={24} className="text-gray-500"/>
-          <input 
-          type="text"
-          placeholder='Tìm kiếm sản phẩm...'
-          className='bg-blue-50 p-2 outline-none'
-          autoFocus
-          value={search}
-          onChange={handleOnChange}
+        <div className='flex border justify-center items-center gap-2'>
+          <IoSearchOutline size={24} className="text-gray-500" />
+          <input
+            type="text"
+            placeholder='Tìm kiếm sản phẩm...'
+            className='bg-blue-50 p-2 outline-none'
+            autoFocus
+            value={search}
+            onChange={handleOnChange}
           />
         </div>
       </div>
 
       {
-        loading && (
+        loading ? (
           <Loading />
+        ) : (
+          <div className='bg-blue-50 overflow-y-scroll max-h-[75vh] no-scrollbar'>
+            <div className='b'>
+              <div className='p-3 mt-3 px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3'>
+                {
+                  productData.map((p, index) => {
+                    return (
+                      <div key={p._id}>
+                        <ProductCardAdmin data={p} fetchData={fetchData}
+                          className="object-scale-down"
+                        />
+
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+
+            <div className='flex justify-center items-center gap-2 p-5'>
+        <button
+          onClick={handlePreviousPage}
+          className='bg-white p-2 hover:bg-blue-200 rounded-sm border px-5 py-0.5 font-medium'
+        >Trước
+        </button>
+
+        <div className='font-normal'>{page}/{totalPageCount}</div>
+
+        <button
+          onClick={handleNextPage}
+          className='bg-white p-3 hover:bg-blue-200 rounded-sm border px-6 py-0.5 font-medium'
+        >Sau
+        </button>
+      </div>
+          </div>
         )
       }
-      <div className='bg-blue-50'>
-        <div className='b'>
-          <div className='p-3 mt-3 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6  gap-6'>
-            {
-              productData.map((p, index) => {
-                return (
-                  <div key={p._id}>
-                  <ProductCardAdmin data={p} fetchData={fetchData}
-                  className="object-scale-down"
-                  />
-                  
-                  </div>
-                )
-              })
-            }
-          </div>
-        </div>
 
-        <div className='flex justify-center p-5'>
-          <button 
-            onClick={handlePreviousPage} 
-            className='bg-blue-500 p-2 hover:bg-blue-700 rounded-sm border px-5 py-0.5 font-medium'
-          >Trước
-
-          </button>
-          <button 
-            onClick={handleNextPage}
-            className='bg-blue-500 p-3 hover:bg-blue-700 rounded-sm border px-6 py-0.5 font-medium' 
-          >Sau
-          </button>
-          <span className='ml-10 font-normal'>{page}/{totalPageCount}</span>
-        </div>
-      </div>
+      
 
 
     </section>

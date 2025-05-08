@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaAngleLeft, FaAngleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
-import banner_1 from '../assets/banner/banner_1.jpg'
-import banner_2 from '../assets/banner/banner_2.jpg'
-import banner_3 from '../assets/banner/banner_3.jpg'
-import banner_4 from '../assets/banner/banner_4.jpg'
+import banner_1 from '../assets/banner/banner_1.jpg';
+import banner_2 from '../assets/banner/banner_2.jpg';
+import banner_3 from '../assets/banner/banner_3.jpg';
+import banner_4 from '../assets/banner/banner_4.jpg';
+import google_play_icon from '../assets/google_play.webp'
+import app_store_icon from '../assets/apple.png'
 
 import CategoryWiseProductDisplay from '../components/product/CategoryWiseProductDisplay';
 const banners = [banner_1, banner_2, banner_3, banner_4];
@@ -258,7 +260,7 @@ const Home = () => {
                     className="bg-white border mb-2 rounded-xl p-2 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 lg:w-[150px] w-[90px]"
                     onClick={() => handleDirectory(cat._id, cat.name)}
                   >
-                    <div className="aspect-square rounded-xl overflow-hidden mb-4">
+                    <div className="aspect-square rounded-xl cursor-pointer overflow-hidden mb-4">
                       <img
                         src={cat.image}
                         alt={cat.name}
@@ -283,7 +285,7 @@ const Home = () => {
       </section>
 
       {/* Featured Products Banner */}
-      <section className="mt-8 mx-2 sm:hidden rounded-lg lg:block py-4 lg:py-10 bg-gradient-to-r from-green-600 to-indigo-500 text-white">
+      <section className="mt-8 mr-5 ml-5 sm:hidden rounded-lg lg:block py-4 lg:py-10 bg-gradient-to-r from-green-600 to-indigo-500 text-white">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0 pl-5 lg:pl-10">
@@ -316,25 +318,54 @@ const Home = () => {
         </div>
       </section>
 
-       {/* Newsletter Section */}
-       <section className="py-12 bg-gray-50">
+       {/* Link download */}
+      <section className="py-8 mt-5 border ml-5 mr-5 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Đăng ký nhận thông tin ưu đãi</h2>
-            <p className="text-gray-600 mb-8">Nhận thông báo về các sản phẩm mới và ưu đãi đặc biệt</p>
-            <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <input 
-                type="email" 
-                placeholder="Nhập email của bạn" 
-                className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow max-w-md"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                Đăng ký
-              </button>
-            </div>
+          <div className="flex flex-col items-center text-center mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Tải ứng dụng GoMart</h2>
+            <p className="text-gray-600 max-w-lg">Trải nghiệm mua sắm tốt hơn với ứng dụng của chúng tôi. Tải ngay!</p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a 
+              href="https://play.google.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
+            >
+              <div className="mr-3">
+               <img
+               src={google_play_icon}
+               className='w-10'
+               />
+              </div>
+              <div className="text-left">
+                <div className="text-xs">GET IT ON</div>
+                <div className="text-xl font-semibold">Google Play</div>
+              </div>
+            </a>
+            
+            <a 
+              href="https://apple.com/vn/app-store/"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
+            >
+              <div className="mr-3">
+               <img
+               src={app_store_icon}
+               className='w-10'
+               />
+              </div>
+              <div className="text-left">
+                <div className="text-xs">DOWNLOAD ON THE</div>
+                <div className="text-xl font-semibold">App Store</div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
+      
     </div>
   )
 }
