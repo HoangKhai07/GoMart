@@ -118,7 +118,7 @@ const AddAddress = ({ close }) => {
 
     return (
         <section className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
-            <div className='bg-white max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-xl'>
+            <div className='bg-white mx-2 max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-xl'>
                 <div className='sticky top-0 bg-white p-6 border-b z-10'>
                     <div className='flex items-center'>
                         <h2 className="text-xl font-bold text-gray-800">Thêm địa chỉ mới</h2>

@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
+import { FaAngleDown, FaAngleUp, FaUser } from "react-icons/fa"
+import { TiShoppingCart } from "react-icons/ti"
+import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.jpg'
 import logo_icon from '../../assets/logo_icon.png'
-import Search from '../forms/Search'
-import { Link, Links, useLocation, useNavigate } from 'react-router-dom'
-import { FaUser } from "react-icons/fa";
-import { TiShoppingCart } from "react-icons/ti";
-import useMobile from '../../hook/useMobile';
-import { useSelector } from 'react-redux';
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import UserMenu from '../layout/UserMenu';
+import useMobile from '../../hook/useMobile'
 import DisplayCartItem from '../cart/DisplayCartItem'
+import Search from '../forms/Search'
+import { CiSearch } from "react-icons/ci";
+import UserMenu from '../layout/UserMenu'
+import useScrollDirection from '../../utils/useScrollDirection'
 
 const Header = () => {
   const [isMobile] = useMobile()
@@ -22,9 +23,14 @@ const Header = () => {
   const [ totalPrice, setTotalPrice ] = useState(0)
   const [ totalQuantity, setTotalQuantity ] = useState(0)
   const [ openCartSection, setOpenCartSection ] = useState(false)
+  const { scrollDirection, isScrolled } = useScrollDirection();
 
   const redirectToLoginPage = () => {
     navigate("/login")
+  }
+
+  const redirectToSearchPage = () => {
+    navigate("/search")
   }
 
   const handleCloseMenu = () => {
@@ -39,7 +45,9 @@ const Header = () => {
 
 
   return (
-    <header className='bg-white z-50 h-auto py-3 lg:py-4 shadow-md sticky top-0 flex flex-col lg:flex-row items-center'>
+    <header className={`bg-white z-50 h-auto py-3 lg:py-4 shadow-md sticky top-0 flex flex-col lg:flex-row items-center transition-transform duration-500 ${
+      scrollDirection === "down" && isScrolled ? "-translate-y-full" : "translate-y-0"
+    }`}>
       {
         !(isSearchPage && isMobile) && (
           <div className='container mx-auto flex items-center px-4 lg:px-8 justify-between w-full'>
@@ -63,6 +71,7 @@ const Header = () => {
               <Search />
             </div>
 
+
             {/* Actions */}
             <div className='flex items-center space-x-4'>
               <div className='hidden lg:flex items-center space-x-4'>
@@ -76,7 +85,7 @@ const Header = () => {
                       {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
                     </div>
                     {openUserMenu && (
-                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100'>
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100 transition-all duration-200 ease-in-out overflow-hidden'>
                         <UserMenu close={handleCloseMenu} />
                       </div>
                     )}
@@ -104,10 +113,30 @@ const Header = () => {
 
               {/* Mobile actions */}
               <div className='flex lg:hidden items-center space-x-3'>
-                <button className='p-2 hover:bg-gray-100 rounded-full transition-all' onClick={handleMobileUser}>
+              {user?._id ? (
+                  <div className='relative'>
+                    <div 
+                      onClick={() => setOpenUserMenu(prev => !prev)} 
+                      className='flex items-center space-x-2 cursor-pointer hover:bg-gray-100 rounded-full px-4 py-2 transition-all'
+                    >
+                      <span className='font-medium text-gray-700'>{user.name || user.mobile}</span>
+                      {openUserMenu ? <FaAngleUp className="text-gray-600" /> : <FaAngleDown className="text-gray-600" />}
+                    </div>
+                    {openUserMenu && (
+                      <div className='absolute right-0 top-12 w-64 bg-white rounded-lg shadow-xl border border-gray-100 transition-all duration-200 ease-in-out overflow-hidden'>
+                        <UserMenu close={handleCloseMenu} />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button className='p-2 hover:bg-gray-100 rounded-full transition-all' onClick={handleMobileUser}>
                   <FaUser size={20} className="text-gray-700" />
                 </button>
-                <button className='p-2 hover:bg-gray-100 rounded-full transition-all'>
+                )}
+                
+                <button 
+                onClick={()=> setOpenCartSection(true)}
+                className='p-2 hover:bg-gray-100 rounded-full transition-all'>
                   <TiShoppingCart size={24} className="text-gray-700" />
                 </button>
               </div>
@@ -117,8 +146,8 @@ const Header = () => {
       }
 
       {/* Mobile search */}
-      <div className='w-full px-4 mt-3 lg:hidden'>
-        <Search />
+      <div className='w-full px-4 mt-3 lg:hidden' onClick={redirectToSearchPage}>
+        <Search />  
       </div>
       {
       openCartSection && (

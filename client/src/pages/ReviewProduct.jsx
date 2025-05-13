@@ -58,15 +58,15 @@ const ReviewProduct = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-      <div>
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-gray-500 font-medium hover:text-green-600"
-        >
-          <FaArrowLeft className="mr-2" /> Quay lại
-        </button>
-      </div>
+      <div className="max-w-2xl mx-5 bg-white rounded-lg shadow-md p-6">
+        <div>
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center text-gray-500 font-medium hover:text-green-600"
+          >
+            <FaArrowLeft className="mr-2" /> Quay lại
+          </button>
+        </div>
         <h1 className="text-2xl mt-3 font-bold text-gray-800 mb-6">Đánh giá sản phẩm</h1>
 
         <div className="flex items-center space-x-4 mb-6">

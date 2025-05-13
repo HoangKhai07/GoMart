@@ -93,9 +93,11 @@ const ProductListPage = () => {
 
   return (
     <section className='sticky top-h-24 lg:top-20 bg-gray-50'>
+
+      {/* windows screen */}
       <div className='container mx-auto grid grid-cols-[100px,1fr] md:grid-cols-[220px,1fr] lg:grid-cols-[280px,1fr] gap-6 p-4'>
         {/* subcategory sidebar */}
-        <div className='bg-white rounded-lg shadow-sm min-h-[150vh] max-h-[15 0vh] overflow-y-scroll srollBarCustom'>
+        <div className='bg-white hidden lg:block rounded-lg shadow-sm min-h-[150vh] max-h-[15 0vh] overflow-y-scroll srollBarCustom'>
           <h2 className='font-semibold text-xl p-4 border-b border-gray-100'>
             Danh mục sản phẩm
           </h2>
@@ -122,7 +124,7 @@ const ProductListPage = () => {
         </div>
 
         {/* product section */}
-        <div className='bg-white rounded-lg shadow-sm min-h-[80vh] max-h-[80vh] overflow-y-auto'>
+        <div className='bg-white hidden lg:block rounded-lg shadow-sm min-h-[80vh] max-h-[80vh] overflow-y-auto'>
           <h2 className='font-semibold text-xl p-4 border-b border-gray-100'>
             Sản phẩm
           </h2>
@@ -169,6 +171,79 @@ const ProductListPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile screen */}
+      <div className='lg:hidden'> 
+        {/* Subcategories scroll horizontal */}
+        <div className='px-2 py-2 bg-white mb-4'>
+          <div className='flex overflow-x-auto gap-4 no-scrollbar'>
+            {displaySubCategory.map((su, index) => (
+              <div
+                key={su._id_ + "subcategory" + index}
+                className={`flex flex-col items-center min-w-[80px] p-2 rounded-lg transition-all duration-200 hover:bg-green-50 cursor-pointer ${
+                  params.subcategoryId === su._id 
+                    ? "bg-green-100 shadow-sm" 
+                    : "hover:shadow-sm"
+                }`}
+                onClick={() => handleSubCategoryClick(su)}
+              >
+                <img
+                  src={su.image}
+                  alt={su.name}
+                  className='w-12 h-12 object-contain p-2 bg-gray-50 rounded-lg mb-1'
+                />
+                <p className='text-xs text-center text-gray-700 line-clamp-2'>{su.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Products Grid */}
+        <div className='bg-white px-4 py-2'>
+          <h2 className='font-semibold text-lg mb-4 border-b border-gray-100 pb-2'>
+            Sản phẩm
+          </h2>
+          
+          {data.length === 0 && !loading ? (
+            <div className='flex flex-col items-center justify-center py-10 text-gray-500'>
+              <p className='text-base'>Không có sản phẩm</p>
+            </div>
+          ) : (
+            <div className='grid grid-cols-2 gap-3'>
+              {data.map((p, index) => (
+                <CardProduct
+                  data={p}
+                  key={p._id + "productbycategory1" + index}
+                />
+              ))}
+            </div>
+          )}
+
+          {loading && <Loading />}
+          
+          {/* Pagination for mobile */}
+          <div className='flex items-center justify-center gap-3 py-4 mt-4 border-t border-gray-100'>
+            <button 
+              onClick={handlePreviousPage} 
+              disabled={page <= 1}
+              className='px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
+            >
+              Trước
+            </button>
+            <span className='text-sm text-gray-600'>
+              {page}/{totalPageCount}
+            </span>
+            <button 
+              onClick={handleNextPage}
+              disabled={page >= totalPageCount}
+              className='px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
+            >
+              Sau
+            </button>
+          </div>
+        </div>
+      </div>
+
     </section>
   )
 }

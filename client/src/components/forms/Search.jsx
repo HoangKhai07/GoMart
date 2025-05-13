@@ -22,6 +22,10 @@ const Search = () => {
     navigate("/search")
   }
 
+  const redirectToBack = () => {
+    navigate(-1)
+  }
+
   const handleOnChange = (e) => {
     const value = e.target.value
     const url = `/search?q=${value}`
@@ -29,16 +33,16 @@ const Search = () => {
   }
 
   return (
-    <div className='w-full min-w-[20px] lg:min-w-[800px] h11 lg:h-12 rounded-lg 
+    <div className='w-full min-w-[20px] lg:min-w-[800px] h-10 lg:h-12 rounded-lg 
     border-2 p-1 overflow-hidden flex items-center  text-neutral-500
      bg-slate-50 focus-within:border-primary-light' >
       <div>
 
         {
           (isMobile && isSearchPage) ? (
-            <Link to={"/"} className='flex justify-center items-center h-full p-2 m-1 group-focus-within: text-primary-light bg-white shadow-md rounded-md'>
+            <div onClick={redirectToBack} className='flex justify-center items-center h-full p-2 m-1 group-focus-within: text-primary-light bg-white shadow-md rounded-md'>
               <FaArrowLeft />
-            </Link>
+            </div>
           ) : (
             <button className='flex justify-center items-center h-full p-3 group-focus-within: text-primary-light'>
               <IoSearchOutline size={25} />
@@ -48,10 +52,10 @@ const Search = () => {
 
       </div>
 
-      <div className='w-full h-full'>
+      <div className='w-full lg:block h-full'>
         {
           !isSearchPage ? (
-            <div onClick={redirectToSearchPage} className='w-full h-full flex items-center font-medium' >
+            <div onClick={redirectToSearchPage} className='w-full h-full hidden lg:flex items-center font-medium' >
               <TypeAnimation
                 sequence={[
                   'Tìm kiếm "ngũ cốc dinh dưỡng"',
@@ -71,6 +75,7 @@ const Search = () => {
 
               />
             </div>
+            
 
           ) : (
             <div className='w-full h-full'>
@@ -78,7 +83,7 @@ const Search = () => {
                 type='text'
                 placeholder='Tìm kiếm...'
                 autoFocus
-                className='bg-transparent w-full h-full outline-none'
+                className='bg-transparent w-full ml-2 h-full outline-none'
                 onChange={handleOnChange}
               />
             </div>

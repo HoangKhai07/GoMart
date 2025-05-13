@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Line, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import Axios from '../../utils/Axios'
-import SummaryApi from '../../common/SummaryApi';
-import AxiosToastError from '../../utils/AxiosToastError'
-import { convertVND } from '../../utils/ConvertVND'
+import Axios from '../utils/Axios'
+import SummaryApi from '../common/SummaryApi';
+import AxiosToastError from '../utils/AxiosToastError'
+import { convertVND } from '../utils/ConvertVND'
 
 // Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);

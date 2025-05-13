@@ -103,7 +103,7 @@ const OtpVerification = () => {
                                                                 inputRef.current[index+1].focus()
                                                             }
                                                         }}
-                                                        className='w-14 h-16 mb-3 bg-blue-50 border border-gray-300 rounded-md shadow-sm text-center font-semibold text-lg focus:outline-none focus:ring-emerald-500 focus:border-emerald-500'
+                                                        className='w-12 h-14 mb-3 bg-blue-50 border border-gray-300 rounded-md shadow-sm text-center font-semibold text-lg focus:outline-none focus:ring-emerald-500 focus:border-emerald-500'
                                                     />
                                                 )
                                             })

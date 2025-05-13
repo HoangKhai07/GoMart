@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { IoChatbubblesOutline, IoClose, IoSendSharp } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
-import { IoChatbubblesOutline, IoSendSharp, IoClose } from 'react-icons/io5';
-import Axios from '../../utils/Axios';
 import SummaryApi from '../../common/SummaryApi';
-import toast from 'react-hot-toast';
-import AxiosToastError from '../../utils/AxiosToastError';
-import { initSocket, getSocket, joinChatRoom, sendTypingStatus } from '../../utils/socketService';
-import { useContext } from 'react';
 import { GlobalContext } from '../../provider/GlobalProvider';
+import Axios from '../../utils/Axios';
+import AxiosToastError from '../../utils/AxiosToastError';
+import { getSocket, initSocket, joinChatRoom, sendTypingStatus } from '../../utils/socketService';
 
 const ChatBubble = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +20,7 @@ const ChatBubble = () => {
   const user = useSelector((state) => state.user);
   const isAuthenticated = !!user._id;
   const { isCartOpen } = useContext(GlobalContext);
+  const [showFAQ, setShowFAQ] = useState(false)
 
   // If cart is opened, close the chat
   useEffect(() => {
@@ -153,26 +152,37 @@ const ChatBubble = () => {
     if (!message.trim() || !chatId) return;
 
     try {
-      const admin = messages.length > 0
-        ? messages[0].senderId === user._id
+      let adminId
+
+      if (messages.length > 0) {
+        adminId = messages[0].senderId === user._id
           ? messages[0].receiverId
           : messages[0].senderId
-        : null;
+      } else {
+        const response = await Axios({
+          ...SummaryApi.get_admin_chat
+        })
 
-      if (!admin) return;
+        if (response.data.success) {
+          const participants = response.data.data.participants
+          adminId = participants.find(id => id !== user._id)
+        }
+      }
+
+      if (!adminId) return;
 
       const response = await Axios({
         ...SummaryApi.send_message,
         data: {
-          receiverId: admin,
+          receiverId: adminId,
           content: message,
         },
       });
 
       if (response.data.success) {
         // Add message to the messages array immediately
-        const newMessage = response.data.data.message
-        setMessages((prev) => [...prev, newMessage]);
+        // const newMessage = response.data.data.message
+        // setMessages((prev) => [...prev, newMessage]);
         setMessage('');
       }
     } catch (error) {
@@ -205,31 +215,37 @@ const ChatBubble = () => {
 
   if (user.role === 'ADMIN' || isCartOpen) return null;
 
+
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {isOpen ? (
         <div className="bg-white mb-16 shadow-lg rounded-2xl w-96 sm:w-96 flex flex-col h-[680px] border border-gray-200 overflow-hidden">
           {/* Header */}
-          <div className="bg-green-600 text-white py-6 px-5 flex flex-col">
-            <div className="flex justify-between items-center mb-1">
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2">
-                  <IoChatbubblesOutline size={20} />
-                </div>
-                <h3 className="font-medium text-sm">GoMart</h3>
-              </div>
-              <div className="flex">
-                <div className="w-8 h-8 rounded-full overflow-hidden ml-1">
-                  <img src="/src/assets/logo_icon.png" alt="admin" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
 
-            
-            <h2 className="text-2xl font-medium mt-2">Hi {user.name || 'User'} 👋</h2>
-            <p className="text-xl">Bạn cần hỗ trợ?</p>
-            
-          </div>
+          {
+            messages.length === 0 ? (
+              <div className="bg-green-600 text-white py-6 px-5 flex flex-col">
+                <div className="flex justify-between items-center mb-1">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2">
+                      <IoChatbubblesOutline size={20} />
+                    </div>
+                    <h3 className="font-medium text-sm">GoMart</h3>
+                  </div>
+                  <div className="flex">
+                    <div className="w-8 h-8 rounded-full overflow-hidden ml-1">
+                      <img src="/src/assets/logo_icon.png" alt="admin" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+                <h2 className="text-2xl font-medium mt-2">Hi {user.name || 'User'} 👋</h2>
+                <p className="text-xl">Bạn cần hỗ trợ?</p>
+              </div>
+            ) : (
+              <div className='hidden'></div>
+            )
+          }
 
           {/* Recent Message Box */}
           <div>
@@ -248,6 +264,9 @@ const ChatBubble = () => {
                 Hãy gửi cho chúng tôi một tin nhắn để hỗ trợ bạn
               </div>
             )}
+
+            {/* FAQ templates */}
+
 
             {messages.map((msg, index) => (
               <div
@@ -303,7 +322,7 @@ const ChatBubble = () => {
             </form>
           </div>
         </div>
-        
+
       ) : (
         <button
           onClick={toggleChat}
@@ -312,8 +331,8 @@ const ChatBubble = () => {
           <IoChatbubblesOutline size={28} />
         </button>
       )}
-      
-     
+
+
       {isOpen && (
         <button
           onClick={toggleChat}

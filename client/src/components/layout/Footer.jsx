@@ -11,7 +11,7 @@ import { FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="bg-primary-light-3 text-white">
+        <footer className="bg-primary-light-3 mt-20 text-white">
             <div className="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 
                 {/* Thông tin công ty */}

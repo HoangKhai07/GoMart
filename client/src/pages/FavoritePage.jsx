@@ -42,7 +42,7 @@ function FavoritePage() {
             </div>
         ) : (
             favorites.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <div className="mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                     {favorites.map((favorite)=>(
                         <div key={favorite._id} data={favorite.productDetails}>
                             <CardProduct
@@ -58,7 +58,7 @@ function FavoritePage() {
                     ))}
                 </div>
             ) : (
-                <div className='flex justify-center items-center'>
+                <div className='flex mt-5 justify-center items-center'>
                 Bạn chưa có sản phẩm yêu thích nào
                 </div>
             )

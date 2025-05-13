@@ -76,7 +76,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
     });
 
     if (!subcategory) {
-      console.error('Không tìm thấy subcategory');
+      console.error('Không tìm thấy danh mục');
       return;
     }
 
@@ -105,18 +105,17 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
     <div className='container mx-auto px-4 md:px-2 lg:px-8 py-8'>
       <div className='flex justify-between items-center mb-6'>
         <h3 className='font-semibold text-xl text-gray-800'>{name}</h3>
-        {!loadingCategory && categoryData.slice(0, 1).map((cat, index) => (
+        {!loadingCategory && (
           <div
-          key={"data"+index}
+        
           className='flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200'>
           <button
-          onClick={() => handleDirectory(cat._id, cat.name)}
+          onClick={() => handleDirectory(id, name)}
           className='hover:text-green-500 font-medium transition duration-500'>Xem tất cả</button>
           {/* <FaLongArrowAltRight /> */}
         </div>
         )
-
-        )}
+      }
       </div>
 
       <div className='relative'>
@@ -132,7 +131,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
             ))
           ) : (
             data.map((product, index) => (
-              <div className='min-w-[200px]' key={product._id + "productbycategory" + index}>
+              <div className='min-w-[170px] lg:min-w-[200px] ' key={product._id + "productbycategory" + index}>
                 <CardProduct 
                   data={product}
                 />

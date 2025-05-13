@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import { IoMdCloudUpload } from "react-icons/io";
-import UploadImage from '../utils/UploadImage';
-import ViewImage from '../components/ui/ViewImage.jsx'
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { CiSaveDown2 } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
+import { IoMdCloudUpload } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from 'react-redux';
-import AddField from '../components/forms/AddField'
-import { CiSaveDown2 } from "react-icons/ci";
-import AxiosToastError from '../utils/AxiosToastError';
-import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
-import toast from 'react-hot-toast';
+import AddField from '../components/forms/AddField';
+import ViewImage from '../components/ui/ViewImage.jsx';
+import Axios from '../utils/Axios';
+import AxiosToastError from '../utils/AxiosToastError';
 import successAlert from '../utils/SuccessAlert.js';
+import UploadImage from '../utils/UploadImage';
 
 const UploadProduct = () => {
   const [data, setData] = useState({
@@ -48,19 +48,24 @@ const UploadProduct = () => {
   }
 
   const handleUploadProductImage = async (e) => {
-    const file = e.target.files[0]
-
-    if (!file) {
+    const files = e.target.files
+    
+    if (!files || files.length === 0) {
       return
     }
-
-    const response = await UploadImage(file)
-    const { data: ImageResponse } = response
-
-    setData(preve => {
+    
+    const uploadPromises = Array.from(files).map(async (file) => {
+      const response = await UploadImage(file)
+      return response.data?.data?.url
+    })
+    
+    const uploadedUrls = await Promise.all(uploadPromises)
+    const validUrls = uploadedUrls.filter(url => url)
+    
+    setData(prev => {
       return {
-        ...preve,
-        image: [...preve.image, ImageResponse.data.url]
+        ...prev,
+        image: [...prev.image, ...validUrls]
       }
     })
   }
@@ -404,6 +409,7 @@ const UploadProduct = () => {
                 <p>Tải hình ảnh lên</p>
                 <input
                   type='file'
+                  multiple
                   id='productImage'
                   onChange={handleUploadProductImage}
                   className='hidden'

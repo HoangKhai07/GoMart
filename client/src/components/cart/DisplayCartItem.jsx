@@ -1,22 +1,18 @@
-import React, { useEffect } from 'react'
-import { IoClose } from "react-icons/io5";
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { convertVND } from '../../utils/ConvertVND';
-import { FaPlus, FaMinus, FaTrash } from 'react-icons/fa';
+import React, { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
-// import Axios from '../../utils/Axios';
-// import SummaryApi from '../../common/SummaryApi';
-// import { handleAddToCart } from '../../store/cartProduct';
-import { useContext } from 'react';
+import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
+import { IoClose } from "react-icons/io5";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../provider/GlobalProvider';
+import { convertVND } from '../../utils/ConvertVND';
 
 const DisplayCartItem = ({ close }) => {
     const cartItems = useSelector((state) => state.cartItem?.cart) || [];
     const user = useSelector((state) => state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const { updateCartItem, deleteCartItem, fetchCartItem, calculateTotal, savePrice, setIsCartOpen } = useContext(GlobalContext);
+    const { updateCartItem, deleteCartItem, fetchCartItem, calculateTotal, savePrice,isCartOpen, setIsCartOpen } = useContext(GlobalContext);
 
     // Set cart open state when component mounts
     useEffect(() => {
@@ -83,16 +79,15 @@ const DisplayCartItem = ({ close }) => {
     }
 
     return (
-        <section className='bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 bg-opacity-70 z-50'>
-            <div className='bg-white w-full max-w-sm min-h-screen max-h-screen ml-auto flex flex-col'>
+        <section className={`bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 bg-opacity-70 z-50 transition-opacity duration-300 ${isCartOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`bg-white mb-2 rounded-md w-full max-w-sm min-h-screen max-h-screen ml-auto flex flex-col transition-transform duration-300 ease-in-out ${
+                isCartOpen ? 'translate-x-0' : 'translate-x-full'
+                }`}>
                 <div className='flex justify-between px-5 pt-5 pb-3 shadow-lg'>
                     <p className='font-semibold text-lg'>Giỏ hàng của bạn</p>
 
-                    <Link to={'/'} className='lg:hidden' onClick={handleCloseCart}>
-                        <IoClose size={23} className='hover:text-red-500' />
-                    </Link>
                     <button onClick={handleCloseCart}>
-                        <IoClose size={23} className='hover:text-red-500 hidden lg:block' />
+                        <IoClose size={23} className='hover:text-red-500 lg:block' />
                     </button>
                 </div>
 

@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { FaPlus, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
-import AddVoucher from '../components/admin/AddVoucher';
-import AxiosToastError from '../utils/AxiosToastError';
-import SummaryApi from '../common/SummaryApi';
-import { convertVND } from '../utils/ConvertVND'
-import Loading from '../components/ui/Loading'
-import Axios from '../utils/Axios'
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import SummaryApi from '../common/SummaryApi';
+import AddVoucher from '../components/admin/AddVoucher';
+import EditVoucher from '../components/admin/EditVoucher';
+import Loading from '../components/ui/Loading';
+import Axios from '../utils/Axios';
+import AxiosToastError from '../utils/AxiosToastError';
+import { convertVND } from '../utils/ConvertVND';
 
 const VoucherManagementPage = () => {
     const [vouchers, setVouchers] = useState([])
     const [loading, setLoading] = useState(false)
     const [createVoucherOpen, setCreateVoucherOpen] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
+    const [openEditVoucher, setOpenEditVoucher] = useState(false)
+    const [selectedVoucher, setSelectedVoucher] = useState(null)
 
     const fetchVouchers = async () => {
         try {
@@ -61,6 +64,10 @@ const VoucherManagementPage = () => {
         }
     }
 
+    const handleEditVoucher = (voucher) => {
+        setSelectedVoucher(voucher);
+        setOpenEditVoucher(true);
+    }
 
     return (
         <div>
@@ -129,12 +136,12 @@ const VoucherManagementPage = () => {
                                                 </span>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                {/* <button
+                                                <button
                                                     onClick={() => handleEditVoucher(voucher)}
                                                     className="text-indigo-600 hover:text-indigo-900 mr-3"
                                                 >
                                                     <FaEdit />
-                                                </button> */}
+                                                </button>
                                                 <button
                                                     onClick={() => handleDeleteVoucher(voucher._id)}
                                                     className="text-red-600 hover:text-red-900"
@@ -160,6 +167,18 @@ const VoucherManagementPage = () => {
             {
                 createVoucherOpen &&
                 <AddVoucher close={() => setCreateVoucherOpen(false)} fetchData={fetchVouchers}/>
+            }
+
+            {
+                openEditVoucher && 
+                <EditVoucher 
+                    close={() => {
+                        setOpenEditVoucher(false);
+                        setSelectedVoucher(null);
+                    }} 
+                    fetchData={fetchVouchers}
+                    voucherData={selectedVoucher}
+                />
             }
         </div>
 

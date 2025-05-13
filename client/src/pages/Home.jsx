@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaAngleLeft, FaAngleRight, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
-import banner_1 from '../assets/banner/banner_1.jpg'
-import banner_2 from '../assets/banner/banner_2.jpg'
-import banner_3 from '../assets/banner/banner_3.jpg'
-import banner_4 from '../assets/banner/banner_4.jpg'
+import banner_1 from '../assets/banner/banner_1.jpg';
+import banner_2 from '../assets/banner/banner_2.jpg';
+import banner_3 from '../assets/banner/banner_3.jpg';
+import banner_4 from '../assets/banner/banner_4.jpg';
+import google_play_icon from '../assets/google_play.webp'
+import app_store_icon from '../assets/apple.png'
 
 import CategoryWiseProductDisplay from '../components/product/CategoryWiseProductDisplay';
 const banners = [banner_1, banner_2, banner_3, banner_4];
@@ -179,7 +181,7 @@ const Home = () => {
       </section>
 
        {/* Promo Banners */}
-       <section className="py-8 bg-white">
+       <section className="hidden lg:flex py-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-blue-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow">
@@ -220,10 +222,10 @@ const Home = () => {
       </section>
 
       {/* Categories Grid*/}
-      <section className="py-5 bg-gray-50">
+      <section className="py-1 bg-gray-50">
         <div className="container mx-auto px-4">
         <div className='flex justify-center items-center'>
-          <h2 className=" p-2 inline-block text-3xl rounded font-bold text-gray-600 mb-8 text-center">
+          <h2 className=" p-2 inline-block text-2xl lg:text-3xl rounded font-bold text-gray-600 mb-2 text-center">
             Danh mục sản phẩm
           </h2>
         </div>
@@ -231,8 +233,8 @@ const Home = () => {
           <div className="relative bg-white p-2">
             <button
               onClick={() => handleCategoryScroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
-              style={{ display: categoryScroll <= 0 ? 'none' : 'block' }}
+              className="absolute hidden lg:flex left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
+              style={{ display: categoryScroll <= 0 ? 'none' : null }}
             >
               <FaChevronLeft size={24} />
             </button>
@@ -255,17 +257,17 @@ const Home = () => {
                   <motion.div
                     key={index}
                     whileHover={{ y: -5 }}
-                    className="bg-white border mb-2 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[200px]"
+                    className="bg-white border mb-2 rounded-xl p-2 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 lg:w-[150px] w-[90px]"
                     onClick={() => handleDirectory(cat._id, cat.name)}
                   >
-                    <div className="aspect-square rounded-xl overflow-hidden mb-4">
+                    <div className="aspect-square rounded-xl cursor-pointer overflow-hidden mb-4">
                       <img
                         src={cat.image}
                         alt={cat.name}
                         className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-center font-medium text-gray-800">{cat.name}</h3>
+                    <h3 className="text-center font-light text-sm lg:text-lg lg:font-light text-gray-800">{cat.name}</h3>
                   </motion.div>
                 ))
               )}
@@ -274,7 +276,7 @@ const Home = () => {
             {/* Nút scroll phải */}
             <button
               onClick={() => handleCategoryScroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
+              className="absolute hidden lg:flex right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2"
             >
               <FaChevronRight size={24} />
             </button>
@@ -283,10 +285,10 @@ const Home = () => {
       </section>
 
       {/* Featured Products Banner */}
-      <section className="mt-8 ml-5 mr-5 sm:hidden lg:block py-10 bg-gradient-to-r from-green-600 to-indigo-500 text-white">
-        <div className="container mx-auto px-4">
+      <section className="mt-8 mr-5 ml-5 sm:hidden rounded-lg lg:block py-4 lg:py-10 bg-gradient-to-r from-green-600 to-indigo-500 text-white">
+        <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-1/2 mb-8 md:mb-0">
+            <div className="md:w-1/2 mb-8 md:mb-0 pl-5 lg:pl-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Sản phẩm nổi bật tháng này</h2>
               <p className="text-blue-100 mb-6 max-w-md">Khám phá những sản phẩm chất lượng cao với giá ưu đãi đặc biệt. Chỉ trong thời gian giới hạn!</p>
               <button className="bg-white gap-2 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition-all inline-flex items-center">
@@ -306,7 +308,7 @@ const Home = () => {
       </section>
 
       {/* Product Sections */}
-      <section className="py-1 bg-gray-50">
+      <section className=" bg-gray-50">
         <div className="container mx-auto px-4">
           {categoryData.map((cat, index) => (
             <div key={index + "categorywiseproductdisplay"}>
@@ -316,25 +318,54 @@ const Home = () => {
         </div>
       </section>
 
-       {/* Newsletter Section */}
-       <section className="py-12 bg-gray-50">
+       {/* Link download */}
+      <section className="py-8 mt-5 border ml-5 mr-5 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Đăng ký nhận thông tin ưu đãi</h2>
-            <p className="text-gray-600 mb-8">Nhận thông báo về các sản phẩm mới và ưu đãi đặc biệt</p>
-            <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <input 
-                type="email" 
-                placeholder="Nhập email của bạn" 
-                className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow max-w-md"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                Đăng ký
-              </button>
-            </div>
+          <div className="flex flex-col items-center text-center mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Tải ứng dụng GoMart</h2>
+            <p className="text-gray-600 max-w-lg">Trải nghiệm mua sắm tốt hơn với ứng dụng của chúng tôi. Tải ngay!</p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a 
+              href="https://play.google.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
+            >
+              <div className="mr-3">
+               <img
+               src={google_play_icon}
+               className='w-10'
+               />
+              </div>
+              <div className="text-left">
+                <div className="text-xs">GET IT ON</div>
+                <div className="text-xl font-semibold">Google Play</div>
+              </div>
+            </a>
+            
+            <a 
+              href="https://apple.com/vn/app-store/"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
+            >
+              <div className="mr-3">
+               <img
+               src={app_store_icon}
+               className='w-10'
+               />
+              </div>
+              <div className="text-left">
+                <div className="text-xs">DOWNLOAD ON THE</div>
+                <div className="text-xl font-semibold">App Store</div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
+      
     </div>
   )
 }
