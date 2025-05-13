@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import UploadSubCategoryModel from '../components/UploadSubCategoryModel'
+import UploadSubCategoryModel from '../components/admin/UploadSubCategoryModel'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import toast from 'react-hot-toast'
 import AxiosToastError from '../utils/AxiosToastError'
-import Table from '../components/Table'
+import Table from '../components/ui/Table'
 import { createColumnHelper } from '@tanstack/react-table'
-import ViewImage from '../components/ViewImage'
+import ViewImage from '../components/ui/ViewImage'
 import EditSubCategory from './EditSubCategory'
-import ConfirmBox from '../components/confirmBox'
+import ConfirmBox from '../components/ui/ConfirmBox'
 import { FaPlus } from "react-icons/fa";
 
 const SubCategoryPage = () => {
@@ -150,13 +150,13 @@ const SubCategoryPage = () => {
   return (
     <section>
        <div className='font-extralight bg-white shadow-md p-3 flex justify-between '>
-        <h1 className=' text-2xl items-center p-1'>Danh mục sản phẩm con</h1>
+        <h1 className=' text-2xl font-bold items-center p-1'>Danh mục sản phẩm con</h1>
         <button onClick={() => setOpenUploadSubCategory(true)} className='flex justify-center items-center gap-2 text-sm font-semibold bg-primary-light-3 hover:bg-primary-light mx-10 p-2 cursor-pointer rounded-lg'>
         <FaPlus/>
           Thêm danh mục sản phẩm con</button>
       </div>
 
-      <div>
+      <div className='overflow-y-scroll max-h-[75vh]'>
         <Table
           data={data}
           column={column}

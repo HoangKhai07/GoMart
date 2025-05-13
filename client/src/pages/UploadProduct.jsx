@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import { IoMdCloudUpload } from "react-icons/io";
-import UploadImage from '../utils/UploadImage';
-import ViewImage from '../components/ViewImage'
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { CiSaveDown2 } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
+import { IoMdCloudUpload } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from 'react-redux';
-import AddField from '../components/AddField';
-import { CiSaveDown2 } from "react-icons/ci";
-import AxiosToastError from '../utils/AxiosToastError';
-import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
-import toast from 'react-hot-toast';
-import successAlert from '../utils/SuccessAlert';
+import AddField from '../components/forms/AddField';
+import ViewImage from '../components/ui/ViewImage.jsx';
+import Axios from '../utils/Axios';
+import AxiosToastError from '../utils/AxiosToastError';
+import successAlert from '../utils/SuccessAlert.js';
+import UploadImage from '../utils/UploadImage';
 
 const UploadProduct = () => {
   const [data, setData] = useState({
     name: "",
     image: [],
-    branch: "",
+    brand: "",
     category: [],
     subCategory: [],
     unit: "",
@@ -48,19 +48,24 @@ const UploadProduct = () => {
   }
 
   const handleUploadProductImage = async (e) => {
-    const file = e.target.files[0]
-
-    if (!file) {
+    const files = e.target.files
+    
+    if (!files || files.length === 0) {
       return
     }
-
-    const response = await UploadImage(file)
-    const { data: ImageResponse } = response
-
-    setData(preve => {
+    
+    const uploadPromises = Array.from(files).map(async (file) => {
+      const response = await UploadImage(file)
+      return response.data?.data?.url
+    })
+    
+    const uploadedUrls = await Promise.all(uploadPromises)
+    const validUrls = uploadedUrls.filter(url => url)
+    
+    setData(prev => {
       return {
-        ...preve,
-        image: [...preve.image, ImageResponse.data.url]
+        ...prev,
+        image: [...prev.image, ...validUrls]
       }
     })
   }
@@ -86,14 +91,32 @@ const UploadProduct = () => {
     })
   }
 
-  const handleRemoveSubCategorySelected = async (index) => {
-    data.subCategory.splice(index, 1)
-    setData((preve) => {
-      return {
-        ...preve
-      }
-    })
-  }
+  const handleSubCategoryChange = (e) => {
+    const value = e.target.value;
+    if (!value) return;
+    
+    const subCategory = allSubCategory.find(el => el._id === value);
+    if (!subCategory) return;
+    
+    const isAlreadySelected = data.subCategory.includes(subCategory._id);
+    if (isAlreadySelected) {
+      toast.error('Danh mục con này đã được chọn!');
+      return;
+    }
+
+    setData(prev => ({
+      ...prev,
+      subCategory: [...prev.subCategory, subCategory._id]
+    }));
+    setSelectSubCategory("");
+  };
+
+  const handleRemoveSubCategorySelected = (index) => {
+    setData(prev => ({
+      ...prev,
+      subCategory: prev.subCategory.filter((_, i) => i !== index)
+    }));
+  };
 
   const handleAddField = () => {
     setData((preve) => {
@@ -122,10 +145,25 @@ const UploadProduct = () => {
       })
 
       const { data: responseData } = response
-      if (responseData.success) {
-        successAlert(responseData.message)
-        close()
-        fetchData()
+
+      if(responseData.success) {
+        await successAlert(responseData.message)
+        setData({
+          name: "",
+          image: [],
+          brand: "",
+          category: [],
+          subCategory: [],
+          unit: "",
+          price: "",
+          stock: "",
+          discount: "",
+          description: "",
+          more_details: {},
+        })
+
+        // close()
+        // fetchData()
       }
     } catch (error) {
       AxiosToastError(error)
@@ -134,15 +172,26 @@ const UploadProduct = () => {
     }
   }
 
+  const getFilteredSubCategories = () => {
+    if (data.category.length === 0) return [];
+    
+    return allSubCategory.filter(subCat => {
+      return subCat.category.some(cat => 
+        data.category.some(selectedCat => selectedCat._id === cat._id)
+      );
+    });
+  };
+
   return (
     <section>
       <div className='font-extralight bg-white shadow-md p-2 flex justify-between '>
         <h1 className=' text-2xl items-center p-1'>Thêm sản phẩm</h1>
       </div>
+      
 
-      <div className='my-5'>
+      <div className='my-5 overflow-y-scroll max-h-[75vh] no-scrollbar'>
         <form onSubmit={handleSubmit} className='bg-white shadow-sm rounded-lg p-6 space-y-6'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-3 border rounded-md'>
             {/* name */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Tên sản phẩm</label>
@@ -158,15 +207,15 @@ const UploadProduct = () => {
               />
             </div>
 
-            {/* branch */}
+            {/* brand */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Thương hiệu</label>
               <input
                 type="text"
-                id='branch'
+                id='brand'
                 placeholder='Điền thương hiệu'
-                name='branch'
-                value={data.branch}
+                name='brand'
+                value={data.brand}
                 onChange={handleChange}
                 required
                 className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
@@ -189,7 +238,7 @@ const UploadProduct = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 bg-gray-50 p-3 border rounded-md'>
             {/* price */}
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>Giá bán</label>
@@ -215,7 +264,8 @@ const UploadProduct = () => {
                 <input
                   type="number"
                   id='discount'
-                  placeholder='0'
+                  min="0"
+                  max="100"
                   name='discount'
                   value={data.discount}
                   onChange={handleChange}
@@ -242,9 +292,9 @@ const UploadProduct = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6' >
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-3 border rounded-md' >
             {/* Category */}
-            <div className='grid gap-1'>
+            <div className='grid gap-1 bg-gray-50 p-3 border rounded-md'>
               <label className='block text-sm font-medium text-gray-700'>Danh mục</label>
               <div>
                 <select
@@ -292,17 +342,25 @@ const UploadProduct = () => {
             </div>
 
             {/* SubCategory */}
-            <div className='grid gap-1'>
+            <div className='grid gap-1 bg-gray-50 p-3 border rounded-md'>
               <label className='block text-sm font-medium text-gray-700'>Danh mục con</label>
               <div>
                 <select
                   className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                   value={selectSubCategory}
+                  disabled={data.category.length === 0}
                   onChange={(e) => {
                     const value = e.target.value
                     if (!value) return;
                     const subCategory = allSubCategory.find(el => el._id === value)
                     if (!subCategory) return;
+                    
+                    const isAlreadySelected = data.subCategory.some(sc => sc._id === subCategory._id);
+                    if (isAlreadySelected) {
+                      toast.error('Danh mục con này đã được chọn!');
+                      return;
+                    }
+
                     setData((preve) => {
                       return {
                         ...preve,
@@ -314,7 +372,7 @@ const UploadProduct = () => {
                 >
                   <option value="">Chọn danh mục con</option>
                   {
-                    allSubCategory.map((sc, index) => {
+                    getFilteredSubCategories().map((sc, index) => {
                       return (
                         <option key={sc._id} value={sc._id}>{sc.name}</option>
                       )
@@ -344,13 +402,14 @@ const UploadProduct = () => {
           </div>
 
           {/* image */}
-          <div className='grid gap-2 p-3'>
+          <div className='grid gap-2 p-3 bg-gray-50 border rounded-md'>
             <label htmlFor='productImage' className='block text-sm font-medium text-gray-700'>Ảnh
               <div className='flex justify-center flex-col items-center border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-blue-500 transition-colors cursor-pointer'>
                 <IoMdCloudUpload size={60} />
                 <p>Tải hình ảnh lên</p>
                 <input
                   type='file'
+                  multiple
                   id='productImage'
                   onChange={handleUploadProductImage}
                   className='hidden'
@@ -381,7 +440,7 @@ const UploadProduct = () => {
           </div>
 
           {/* discription */}
-          <div className='grid gap-2 p-3'>
+          <div className='grid gap-2 bg-gray-50 p-3 border rounded-md'>
             <label className='block text-sm font-medium text-gray-700'>Mô tả sản phẩm</label>
             <textarea
               type="text"
@@ -392,7 +451,7 @@ const UploadProduct = () => {
               onChange={handleChange}
               required
               rows={5}
-              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:bg-blue-50 focus:border-primary-light block w-full p-2.5'
+              className='bg-white border ouline-none text-gray-900 text-sm rounded-lg focus:bg-white focus:border-primary-light block w-full p-2.5'
             />
           </div>
 
@@ -445,6 +504,7 @@ const UploadProduct = () => {
           </div>
         </form>
       </div>
+      
 
       {
         ImageUrl && (
@@ -464,6 +524,8 @@ const UploadProduct = () => {
             close={() => setOpenAddField(false)} />
         )
       }
+
+
 
     </section>
   )

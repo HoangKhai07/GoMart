@@ -16,3 +16,27 @@ body {
     font-weight: 100;
     font-style: bold;
 } 
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@layer utilities {
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+    }
+  }
+
+.srollBarCustom::-webkit-scrollbar {
+    width: 7px;
+    @apply bg-gray-100;
+}
+
+.srollBarCustom::-webkit-scrollbar-thumb{
+    @apply bg-gray-400 rounded-full
+
+}

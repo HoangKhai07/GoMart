@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import UploadCategoryModel from '../components/UploadCategoryModel'
-import Loading from '../components/Loading'
-import NoData from '../components/NoData.jsx'
-import ConfirmBox from '../components/confirmBox.jsx'
+import UploadCategoryModel from '../components/admin/UploadCategoryModel.jsx'
+import Loading from '../components/ui/Loading.jsx'
+import NoData from '../components/ui/NoData.jsx'
+import ConfirmBox from '../components/ui/ConfirmBox.jsx'
 import SummaryApi from '../common/SummaryApi.js'
 import Axios from '../utils/Axios.js'
 import EditCategory from './EditCategory.jsx' 
@@ -57,7 +57,6 @@ const CategoryPage = () => {
   }
 
   useEffect(() => {
-    // 
     setCategoryData(allCategory)
   }, [allCategory])
 
@@ -95,7 +94,7 @@ const CategoryPage = () => {
         )
       }
 
-      <div className='px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
+      <div className='px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6 overflow-y-scroll max-h-[75vh] no-scrollbar'>
         {
           categoryData.map((category, index) => {
             return (

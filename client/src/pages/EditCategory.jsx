@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
-import { CiImageOn } from "react-icons/ci";
 import UploadImage from '../utils/UploadImage';
 import Axios from '../utils/Axios.js';
 import SummaryApi from '../common/SummaryApi.js';
