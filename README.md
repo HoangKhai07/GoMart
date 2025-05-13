@@ -11,6 +11,7 @@ GoMart là một nền tảng thương mại điện tử hiện đại được
 - 🔍 Tìm kiếm và lọc sản phẩm nâng cao
 - 📱 Giao diện responsive trên mọi thiết bị
 - 🛍️ Quản lý đơn hàng và lịch sử mua hàng
+- Reponsive tương đối hoàn chỉnh
 
 ### Dành cho Admin
 - 📊 Dashboard quản lý với biểu đồ thống kê
@@ -18,6 +19,7 @@ GoMart là một nền tảng thương mại điện tử hiện đại được
 - 👥 Quản lý người dùng
 - 💬 Hệ thống chat hỗ trợ khách hàng
 - 📈 Theo dõi đơn hàng và doanh số
+- Hệ thống Voucher
 - 🔐 Phân quyền admin
 
 ## 🔧 Công nghệ sử dụng
@@ -52,6 +54,14 @@ npm install
 npm run dev
 ```
 
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
 ### Cài đặt Backend
 ```bash
 cd server
@@ -59,13 +69,22 @@ npm install
 npm run dev
 ```
 
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+
 ### Cấu hình môi trường
 Tạo file `.env` trong thư mục client và server:
 
 #### Client `.env`
 ```env
-VITE_API_URL=http://localhost:5000
-VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
+VITE_API_URL= ...
+VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key = ...
 ```
 
 #### Server `.env`
@@ -92,7 +111,6 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 ## 💳 Hệ thống Thanh toán
 
 - Tích hợp Stripe cho thanh toán an toàn
-- Hỗ trợ nhiều phương thức thanh toán
 - Xử lý hoàn tiền tự động
 - Lịch sử giao dịch chi tiết
 
