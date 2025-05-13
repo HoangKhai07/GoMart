@@ -1,7 +1,7 @@
 import { Router} from 'express'
 import auth from '../middleware/auth.js'
 import { AddSubCategoryController, deleteSubCategoryController, getSubCategoryController, updateSubCategoryController } from '../controllers/subcategory.controller.js'
-import { deleteCategoryController } from '../controllers/category.controller.js'
+
 
 const subCategoryRouter = Router()
 
