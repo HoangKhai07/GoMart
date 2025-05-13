@@ -14,7 +14,7 @@ const MyOrder = () => {
   const [reviewedOrders, setReviewedOrders] = useState({})
   const navigate = useNavigate()
 
-  
+
   const getStatusIcon = (status) => {
     switch (status) {
       case 'CASH ON DELIVERY':
@@ -55,7 +55,7 @@ const MyOrder = () => {
   //       const res = await Axios.get(`/api/review/check/${order.orderId}/${order.product_details._id}`)
   //       reviewStatusMap[order.orderId] = res.data.data.hasReviewed
   //     } catch (error) {
-       
+
   //     }
   //   }
 
@@ -99,10 +99,10 @@ const MyOrder = () => {
         ) : (
           <div className="space-y-4 overflow-y-scroll max-h-[75vh]">
             {orders.map((order) => (
-              <div key={order.orderId} className="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-                <div className="flex justify-between items-start mb-4">
+              <div key={order.orderId} className="bg-white rounded-lg ml-1 lg:ml-6 pl-2 lg:pl-6 pt-2 pb-2 shadow-md transition-all hover:shadow-lg">
+                <div className=" justify-between hidden lg:flex items-start mb-4">
                   <div className='flex gap-1'>
-                    <p className="text-xs lg:text-sm text-gray-500 mb-1">Mã đơn hàng: </p>
+                    <p className="text-xs text-gray-500 mb-1">Mã đơn hàng: </p>
                     <p className="text-sm text-gray-500 ">{order.orderId}</p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -129,12 +129,8 @@ const MyOrder = () => {
                       </p>
                     </div>
                   </div>
-                </div>
-
-                <div className="flex justify-between items-center mt-4">
-                  <div className="flex items-center gap-8">
-                    <div className='flex gap-1'>
-                    <span className="text-sm font-medium text-gray-600">Trạng thái:</span>
+                  <div className='flex sm:hidden gap-2 mt-2'>
+                    <span className="text-sx  font-medium text-gray-600">Trạng thái:</span>
                     <div className="flex items-center gap-1">
                       {getOrderStatusIcon(order.order_status)}
                       <span className="text-sm font-medium">{
@@ -143,15 +139,39 @@ const MyOrder = () => {
                             order.order_status === "Out for delivery" ? "Đang giao hàng" :
                               order.order_status === "Delivered" ? "Đã giao" : ""
                       }</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center mt-2 gap-3">
+                    <div className="bg-gray-100 rounded-md">
+                      <p className="text-xs p-1 text-gray-600">
+                       Ngày giao hàng {new Date(order.createdAt).toLocaleDateString('vi-VN')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center mt-4">
+                  <div className="flex items-center gap-8">
+                    <div className='hidden lg:flex gap-1'>
+                      <span className="text-sx font-medium text-gray-600">Trạng thái:</span>
+                      <div className="flex items-center gap-1">
+                        {getOrderStatusIcon(order.order_status)}
+                        <span className="text-sm font-medium">{
+                          order.order_status === "Preparing order" ? "Đang chuẩn bị hàng" :
+                            order.order_status === "Shipping" ? "Đang vận chuyển" :
+                              order.order_status === "Out for delivery" ? "Đang giao hàng" :
+                                order.order_status === "Delivered" ? "Đã giao" : ""
+                        }</span>
                       </div>
                     </div>
 
                     {/* Order details button */}
                     <div>
-                      <button 
-                      onClick={() => handleOrderDetails(order)}
-                      className='flex items-center gap-1 bg-gray-400 hover:bg-gray-500 text-white px-3 py-1 rounded-md text-sm transition-colors'>
-                        <AiFillSchedule size={15}/>
+                      <button
+                        onClick={() => handleOrderDetails(order)}
+                        className='flex items-center gap-1 bg-gray-400 hover:bg-gray-500 text-white px-3 py-1 rounded-md text-sm transition-colors'>
+                        <AiFillSchedule size={15} />
                         Chi tiết đơn hàng
                       </button>
                     </div>
@@ -176,15 +196,13 @@ const MyOrder = () => {
                   </div>
 
 
-                  <div className="flex items-center gap-3">
+                  {/* <div className="hidden lg:flex items-center gap-3">
                     <div className="bg-gray-100 px-3 py-1 rounded-full">
                       <p className="text-xs text-gray-600">
                         {new Date(order.createdAt).toLocaleDateString('vi-VN')}
                       </p>
                     </div>
-
-
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

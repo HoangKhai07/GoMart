@@ -157,7 +157,7 @@ const ProductDisplayPage = () => {
 
   return (
     <section className='min-h-screen p-4'>
-      <div className='container mx-auto px-2 sm:px-4'>
+      <div className='container mx-auto'>
 
         <div className='mb-2 text-sm hidden lg:flex text-gray-500 gap-2'>
           <span onClick={haneleReturnHome} className='cursor-pointer' >Trang chủ</span>
@@ -188,7 +188,7 @@ const ProductDisplayPage = () => {
             <div className='mt-4 relative'>
               <div
                 ref={imageContainer}
-                className='flex gap-3 p-2 sm:p-3 mx-5 overflow-x-auto no-scrollbar scroll-smooth'
+                className='flex gap-3 p-2 sm:p-3 mx-2 overflow-x-auto no-scrollbar scroll-smooth'
               >
                 {data.image.map((i, index) => (
                   <div

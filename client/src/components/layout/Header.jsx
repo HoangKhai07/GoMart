@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
+import { FaAngleDown, FaAngleUp, FaUser } from "react-icons/fa"
+import { TiShoppingCart } from "react-icons/ti"
+import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.jpg'
 import logo_icon from '../../assets/logo_icon.png'
-import Search from '../forms/Search'
-import { Link, Links, useLocation, useNavigate } from 'react-router-dom'
-import { FaUser } from "react-icons/fa";
-import { TiShoppingCart } from "react-icons/ti";
-import useMobile from '../../hook/useMobile';
-import { useSelector } from 'react-redux';
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import UserMenu from '../layout/UserMenu';
+import useMobile from '../../hook/useMobile'
 import DisplayCartItem from '../cart/DisplayCartItem'
+import Search from '../forms/Search'
+import { CiSearch } from "react-icons/ci";
+import UserMenu from '../layout/UserMenu'
+import useScrollDirection from '../../utils/useScrollDirection'
 
 const Header = () => {
   const [isMobile] = useMobile()
@@ -22,9 +23,14 @@ const Header = () => {
   const [ totalPrice, setTotalPrice ] = useState(0)
   const [ totalQuantity, setTotalQuantity ] = useState(0)
   const [ openCartSection, setOpenCartSection ] = useState(false)
+  const { scrollDirection, isScrolled } = useScrollDirection();
 
   const redirectToLoginPage = () => {
     navigate("/login")
+  }
+
+  const redirectToSearchPage = () => {
+    navigate("/search")
   }
 
   const handleCloseMenu = () => {
@@ -39,7 +45,9 @@ const Header = () => {
 
 
   return (
-    <header className='bg-white z-50 h-auto py-3 lg:py-4 shadow-md sticky top-0 flex flex-col lg:flex-row items-center'>
+    <header className={`bg-white z-50 h-auto py-3 lg:py-4 shadow-md sticky top-0 flex flex-col lg:flex-row items-center transition-transform duration-500 ${
+      scrollDirection === "down" && isScrolled ? "-translate-y-full" : "translate-y-0"
+    }`}>
       {
         !(isSearchPage && isMobile) && (
           <div className='container mx-auto flex items-center px-4 lg:px-8 justify-between w-full'>
@@ -62,6 +70,7 @@ const Header = () => {
             <div className='hidden lg:block flex-1 max-w-2xl mx-8'>
               <Search />
             </div>
+
 
             {/* Actions */}
             <div className='flex items-center space-x-4'>
@@ -137,8 +146,8 @@ const Header = () => {
       }
 
       {/* Mobile search */}
-      <div className='w-full px-4 mt-3 lg:hidden'>
-        <Search />
+      <div className='w-full px-4 mt-3 lg:hidden' onClick={redirectToSearchPage}>
+        <Search />  
       </div>
       {
       openCartSection && (
