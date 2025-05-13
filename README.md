@@ -1,90 +1,140 @@
-# GoMart - Nền tảng Thương mại điện tử
+<div align="center">
+  <h1>🛒 GoMart - Modern E-commerce Platform</h1>
+  
+  ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+  ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+  ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+  ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
+</div>
 
-GoMart là một nền tảng thương mại điện tử hiện đại được xây dựng với công nghệ MERN Stack (MongoDB, Express.js, React.js, Node.js), cung cấp trải nghiệm mua sắm trực tuyến mượt mà và an toàn.
+## 📝 Overview
 
-## 🌟 Tính năng chính
+GoMart is a modern e-commerce platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js), providing a seamless and secure online shopping experience. The platform features real-time communication, secure payments, and a comprehensive admin dashboard.
 
-### Dành cho Khách hàng
-- 🛒 Mua sắm trực tuyến với giao diện thân thiện
-- 💳 Thanh toán an toàn qua Stripe
-- 💬 Chat trực tiếp với nhân viên hỗ trợ
-- 🔍 Tìm kiếm và lọc sản phẩm nâng cao
-- 📱 Giao diện responsive trên mọi thiết bị
-- 🛍️ Quản lý đơn hàng và lịch sử mua hàng
-- Reponsive tương đối hoàn chỉnh
+## ✨ Key Features
 
-### Dành cho Admin
-- 📊 Dashboard quản lý với biểu đồ thống kê
-- 📦 Quản lý sản phẩm và danh mục
-- 👥 Quản lý người dùng
-- 💬 Hệ thống chat hỗ trợ khách hàng
-- 📈 Theo dõi đơn hàng và doanh số
-- Hệ thống Voucher
-- 🔐 Phân quyền admin
+### 🛍️ Customer Features
+- **Shopping Experience**
+  - Intuitive and responsive user interface
+  - Advanced product search and filtering
+  - Real-time shopping cart updates
+  - Wishlist management
+  - Product reviews and ratings
 
-## 🔧 Công nghệ sử dụng
+- **Account Management**
+  - Secure user authentication
+  - Order history and tracking
+  - Profile customization
+  - Address management
+
+- **Payment & Security**
+  - Secure Stripe payment integration
+  - Multiple payment methods
+  - SSL encryption
+  - Order confirmation emails
+
+- **Communication**
+  - Real-time chat with support
+  - Order notifications
+  - Email notifications
+  - "Typing..." indicators
+
+### 👨‍💼 Admin Features
+- **Dashboard**
+  - Real-time analytics
+  - Sales statistics
+  - User activity monitoring
+  - Revenue reports
+
+- **Management Tools**
+  - Product management
+  - Category management
+  - User management
+  - Order processing
+  - Voucher system
+  - Inventory tracking
+
+- **Support System**
+  - Customer chat management
+  - Ticket system
+  - Customer feedback monitoring
+
+## 🛠️ Technology Stack
 
 ### Frontend
-- React.js với Vite
-- Redux Toolkit cho state management
-- TailwindCSS và Material UI cho styling
-- Socket.IO Client cho real-time features
-- Chart.js cho data visualization
-- React Router DOM cho routing
-- Framer Motion cho animations
+<div align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
+  <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" alt="material-ui" width="40" height="40"/>
+</div>
+
+- React.js with Vite
+- Redux Toolkit for state management
+- TailwindCSS & Material UI
+- Socket.IO Client
+- Chart.js
+- React Router DOM
+- Framer Motion
 
 ### Backend
-- Node.js với Express.js
-- MongoDB với Mongoose
-- Socket.IO cho real-time communication
-- JWT cho authentication
-- Stripe cho payment processing
+<div align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="nodejs" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="express" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="mongodb" width="40" height="40"/>
+  <img src="https://www.vectorlogo.zone/logos/socketio/socketio-icon.svg" alt="socket.io" width="40" height="40"/>
+</div>
 
-## 🚀 Cài đặt và Chạy dự án
+- Node.js with Express.js
+- MongoDB with Mongoose
+- Socket.IO
+- JWT Authentication
+- Stripe API
+- Nodemailer
 
-### Yêu cầu hệ thống
-- Node.js (version 14 trở lên)
+## 🚀 Installation & Setup
+
+### Prerequisites
+- Node.js (v14 or higher)
 - MongoDB
-- npm hoặc yarn
+- npm or yarn
+- Git
 
-### Cài đặt Frontend
+### Frontend Setup
 ```bash
+# Navigate to client directory
 cd client
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
+### Backend Setup
 ```bash
-npm install
-```
-
-```bash
-npm run dev
-```
-
-### Cài đặt Backend
-```bash
+# Navigate to server directory
 cd server
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
-```bash
-npm install
-```
-
-```bash
-npm run dev
-```
-
-
-### Cấu hình môi trường
-Tạo file `.env` trong thư mục client và server:
+### Environment Configuration
 
 #### Client `.env`
 ```env
-VITE_API_URL= ...
-VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key = ...
+VITE_API_URL=your_api_url
+VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 ```
 
 #### Server `.env`
@@ -95,26 +145,49 @@ JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
-## 📱 Tính năng Real-time
+## 🔄 Real-time Features
 
 ### Chat System
-- Chat trực tiếp giữa khách hàng và admin
-- Hiển thị trạng thái "đang nhập..."
-- Thông báo tin nhắn mới
-- Đánh dấu tin nhắn đã đọc
+- Live customer-admin chat
+- Typing indicators
+- New message notifications
+- Read receipts
+- Online status indicators
 
 ### Notifications
-- Cập nhật trạng thái đơn hàng real-time
-- Thông báo khi có tin nhắn mới
-- Cập nhật giỏ hàng real-time
+- Real-time order status updates
+- New message alerts
+- Cart updates
+- Price change alerts
 
-## 💳 Hệ thống Thanh toán
+## 💳 Payment System
 
-- Tích hợp Stripe cho thanh toán an toàn
-- Xử lý hoàn tiền tự động
-- Lịch sử giao dịch chi tiết
+- Secure Stripe integration
+- Multiple payment methods
+  - Credit/Debit cards
+  - Digital wallets
+- Automatic refund processing
+- Detailed transaction history
+- Payment status tracking
 
+## 📱 Responsive Design
+- Mobile-first approach
+- Tablet optimized
+- Desktop responsive
+- Cross-browser compatibility
 
-## Cảm ơn bạn đã ghé qua :3
+## 🔐 Security Features
+- JWT authentication
+- Password encryption
+- Role-based access control
+- API rate limiting
+- XSS protection
+- CSRF protection
 
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
+---
+<div align="center">
+  Made with ❤️ by Khai
+</div>
