@@ -5,7 +5,6 @@
   ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
   ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
   ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
   ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
   ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
   ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
@@ -69,9 +68,8 @@ GoMart is a modern e-commerce platform built with the MERN stack (MongoDB, Expre
 <div align="center">
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/>
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
   <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" alt="material-ui" width="40" height="40"/>
+ 
 </div>
 
 - React.js with Vite
@@ -95,7 +93,7 @@ GoMart is a modern e-commerce platform built with the MERN stack (MongoDB, Expre
 - Socket.IO
 - JWT Authentication
 - Stripe API
-- Nodemailer
+- Resend API
 
 ## 🚀 Installation & Setup
 
@@ -139,10 +137,11 @@ VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 
 #### Server `.env`
 ```env
-PORT=5000
+PORT=your_port
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
+...
 ```
 
 ## 🔄 Real-time Features
