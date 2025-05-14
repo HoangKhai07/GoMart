@@ -138,6 +138,7 @@ const AdminOrders = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {convertVND(order.totalAmt)}
                     </td>
+
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         {getOrderStatusIcon(order.order_status)}
@@ -149,6 +150,7 @@ const AdminOrders = () => {
                           }</span>
                       </div>
                     </td>
+                    
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <select 
                         className="border border-gray-300 rounded-md px-2 py-1 text-sm"

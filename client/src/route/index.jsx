@@ -31,6 +31,7 @@ import AdminStatistics from "../pages/AdminStatistic.jsx";
 import OrderDetail from "../pages/OrderDetail.jsx";
 import VoucherManagementPage from "../pages/VoucherManagementPage.jsx";
 import Vouchers from "../pages/Vouchers.jsx";
+import UserManagementPage from "../pages/UserManagementPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -100,6 +101,11 @@ const router = createBrowserRouter([
                     element: <Vouchers/>
                 },
 
+                {
+                    path: "user-management",
+                    element: <AdminPermission><UserManagementPage/></AdminPermission>
+                },
+                   
                 {
                     path: "product",
                     element: <AdminPermission><ProductAdmin/></AdminPermission>

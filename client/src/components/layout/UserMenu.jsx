@@ -21,6 +21,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
+import { RiAccountCircleLine } from "react-icons/ri";
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user)
@@ -78,6 +79,16 @@ const UserMenu = ({ close }) => {
             <div className='flex gap-2 items-center'>
               < IoBarChartOutline size={15}/>
                <Link onClick={handleClose} to={"/dashboard/admin-statistics"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Thống kê</Link>
+            </div>
+           
+          )
+        }
+
+{
+          isAdmin(user.role) && (
+            <div className='flex gap-2 items-center'>
+              < RiAccountCircleLine size={15}/>
+               <Link onClick={handleClose} to={"/dashboard/user-management"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Tài khoản</Link>
             </div>
            
           )

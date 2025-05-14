@@ -51,6 +51,26 @@ const SummaryApi = {
         method: 'put'
     },
 
+    get_all_users: {
+        url: "api/user/get-all-user",
+        method: 'get'
+    },
+
+    update_user_role: {
+        url: "api/user/update-role",
+        method: 'put'
+    },
+
+    update_user_status: {
+        url: "api/user/update-status",
+        method: 'put'
+    },
+
+    delete_user: {
+        url: "api/user/delete-account",
+        method: "delete"
+    },
+
     add_category: {
         url: '/api/category/add-category',
         method: 'post'

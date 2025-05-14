@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import UploadSubCategoryModel from '../components/admin/UploadSubCategoryModel'
-import Axios from '../utils/Axios'
-import SummaryApi from '../common/SummaryApi'
-import toast from 'react-hot-toast'
-import AxiosToastError from '../utils/AxiosToastError'
-import Table from '../components/ui/Table'
 import { createColumnHelper } from '@tanstack/react-table'
-import ViewImage from '../components/ui/ViewImage'
-import EditSubCategory from './EditSubCategory'
+import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import { FaPlus } from "react-icons/fa"
+import SummaryApi from '../common/SummaryApi'
+import UploadSubCategoryModel from '../components/admin/UploadSubCategoryModel'
 import ConfirmBox from '../components/ui/ConfirmBox'
-import { FaPlus } from "react-icons/fa";
+import Table from '../components/ui/Table'
+import ViewImage from '../components/ui/ViewImage'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
+import EditSubCategory from './EditSubCategory'
 
 const SubCategoryPage = () => {
 
@@ -133,7 +133,7 @@ const SubCategoryPage = () => {
             </button>
             <button className='border-red-500 border bg-red-50 rounded hover:bg-red-600 text-red-500 text-sm p-1 hover:text-black py-0.5'
             onClick={()=> {
-              setOpenDeleteSubCategory(true)
+              setl(true)
               setDeleteSubCategory(row.original)
             }}
             >
