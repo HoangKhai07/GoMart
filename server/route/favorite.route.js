@@ -5,7 +5,7 @@ import { addToFavorite, getFavorite, removeFavorite } from '../controllers/favor
 const favoriteRouter = Router()
 
 favoriteRouter.post('/add', auth, addToFavorite)
-favoriteRouter.get('/get', auth, getFavorite)
+favoriteRouter.get('/get', getFavorite)
 favoriteRouter.delete('/remove', auth, removeFavorite)
 
 export default favoriteRouter

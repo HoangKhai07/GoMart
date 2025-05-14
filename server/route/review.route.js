@@ -5,6 +5,6 @@ import { createReviewController, getProductReviewsController } from '../controll
 const reviewRouter = Router()
 
 reviewRouter.post("/create", auth, createReviewController)
-reviewRouter.get("/get-review", auth, getProductReviewsController)
+reviewRouter.get("/get-review", getProductReviewsController)
 
 export default reviewRouter

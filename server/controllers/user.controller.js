@@ -1,13 +1,13 @@
-import verifyEmailTemplate from '../utils/VerifyEmailTemplate.js'
-import UserModel from '../model/user.model.js'
 import bcryptjs from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 import sendEmail from '../config/sendEmail.js'
+import UserModel from '../model/user.model.js'
+import forgotPasswordTemplate from '../utils/forgotPasswordOtp.js'
 import generatedAccessToken from '../utils/generatedAccessToken.js'
+import generatedOtp from '../utils/generatedOtp.js'
 import generatedRefreshToken from '../utils/generatedRefreshToken.js'
 import uploadImageCloudinary from '../utils/uploadImageCloudinary.js'
-import generatedOtp from '../utils/generatedOtp.js'
-import forgotPasswordTemplate from '../utils/forgotPasswordOtp.js'
-import jwt from 'jsonwebtoken'
+import verifyEmailTemplate from '../utils/VerifyEmailTemplate.js'
 
 //register controller
 export async function registerUserController(request, response){
@@ -558,5 +558,139 @@ export const getAdminIdController = async (req, res) => {
             success: false,
             error: true
         });
+    }
+}
+
+// management fot admin
+export const getAllUsersController = async (req, res) => {
+    try {
+        const userId = req.userId
+        const users = await UserModel.find()
+            .select('-password -refresh_token -forgot_password_otp -forgot_password_expiry')
+            .sort({created: -1})
+
+        res.json({
+            message: "Get user completelly",
+            error: false,
+            success: true,
+            data: users
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }    
+}
+
+export const updateUserRoleController = async (req, res) => {
+    try {
+        const {_id, role} = req.body
+
+        if (!role || !['ADMIN', 'USER'].includes(role)) {
+            return res.status(400).json({
+                message: "Role not available",
+                error: true,
+                success: false
+            })
+        }
+
+        const user = await UserModel.findById(_id)
+
+        user.role = role
+        await user.save()
+
+        return res.json({
+            message: "Thay đổi quyền cho người dùng thành công",
+            error: false,
+            success: true,
+            data: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const updateUserStatusController = async (req, res) => {
+    try {
+        const {_id, status} = req.body
+
+        if(!status || ! ['Active', 'Inactive'].includes(status)){
+            return res.status(400).json({
+                message: "Status not available",
+                error: true,
+                success: false
+            })
+        }
+
+        const user = await UserModel.findById(_id)
+
+        user.status = status
+        await user.save()
+
+        return res.json({
+            message: "Thay đổi trạng thái cho người dùng thành công",
+            error: false,
+            success: true,
+            data: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                status: user.status
+            }
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const deleteUserController = async (req, res) => {
+    try {
+        const {_id} = req.body
+
+        const user = await UserModel.findById(_id)
+
+        if(user.role === "ADMIN"){
+            const adminCount = await UserModel.countDocuments({role: "ADMIN"})
+                if(adminCount <= 1){
+                    return res.status(400).json({
+                        message: "Must be one acount is Admin",
+                        error: true,
+                        success: false
+                    })
+                }
+        }
+
+        const deleteAccount = await UserModel.findByIdAndDelete(_id) 
+
+        return res.json({
+            message: "Xoá người dùng thành công",
+            error: false,
+            success: true,
+            data: deleteAccount
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
     }
 }

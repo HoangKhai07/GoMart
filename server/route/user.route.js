@@ -1,4 +1,4 @@
-import { forgotPasswordController, getAdminIdController, loginController, logoutController, refreshTokenController, registerUserController, resetPassword, updateUserDetails, uploadAvatar, userDetails, verifyEmailController, verifyForgotPasswordOtp } from "../controllers/user.controller.js"
+import { deleteUserController, forgotPasswordController, getAdminIdController, getAllUsersController, loginController, logoutController, refreshTokenController, registerUserController, resetPassword, updateUserDetails, updateUserRoleController, updateUserStatusController, uploadAvatar, userDetails, verifyEmailController, verifyForgotPasswordOtp } from "../controllers/user.controller.js"
 import { Router} from 'express'
 import auth from '../middleware/auth.js'
 import upload from "../middleware/multer.js"
@@ -18,8 +18,15 @@ userRouter.put('/reset-password', resetPassword)
 userRouter.post('/refresh-token', refreshTokenController)
 userRouter.get('/user-details',auth, userDetails)
 
-// Route get admin id
+//admin management
+userRouter.get('/get-all-user', auth, getAllUsersController)
+userRouter.put('/update-role', auth, updateUserRoleController)
+userRouter.put('/update-status', auth, updateUserStatusController)
+userRouter.delete("/delete-account", auth, deleteUserController)
+
+// Route get admin id for chat
 userRouter.get('/admin', auth, getAdminIdController)
+
 
 export default userRouter
 
