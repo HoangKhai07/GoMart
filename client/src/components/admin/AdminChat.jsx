@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { IoSendSharp } from 'react-icons/io5';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaCircle } from 'react-icons/fa';
-import Axios from '../../utils/Axios';
+import { IoSendSharp } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 import SummaryApi from '../../common/SummaryApi';
-import toast from 'react-hot-toast';
+import Axios from '../../utils/Axios';
 import AxiosToastError from '../../utils/AxiosToastError';
-import { initSocket, getSocket, joinChatRoom, leaveChatRoom, sendTypingStatus } from '../../utils/socketService';
+import { getSocket, initSocket, joinChatRoom, leaveChatRoom, sendTypingStatus } from '../../utils/socketService';
 
 const AdminChat = () => {
   const [chats, setChats] = useState([]);
@@ -86,20 +85,16 @@ const AdminChat = () => {
   const handleNewMessage = (data) => {
     console.log('Admin received new message:', data);
     
-    // If message belongs to the selected chat, add it to messages
     if (selectedChat && data.chat === selectedChat._id) {
       setMessages((prev) => {
-        // Check if message already exists to avoid duplicates
         const exists = prev.some(msg => msg._id === data.message._id);
         if (exists) return prev;
         return [...prev, data.message];
       });
       
-      // Mark messages as read immediately
       markMessagesAsRead(selectedChat._id);
     }
     
-    // Update the chats list with new last message
     setChats((prevChats) => {
       return prevChats.map((chat) => {
         if (chat._id === data.chat) {
@@ -107,7 +102,8 @@ const AdminChat = () => {
             ...chat,
             lastMessage: data.message.content,
             lastMessageTime: data.message.createdAt,
-            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 : (chat.unreadCount || 0) + 1
+            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 : 
+                        (data.message.senderId !== user._id ? (chat.unreadCount || 0) + 1 : chat.unreadCount || 0)
           };
         }
         return chat;
