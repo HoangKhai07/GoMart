@@ -20,17 +20,17 @@ export const GlobalProvider = ({ children }) => {
     const [isCartOpen, setIsCartOpen] = useState(false)
     const [loading,  setLoading] = useState(false)
     const [vouchers, setVouchers] = useState([])
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+    useEffect(()=> {
+      const accessToken = localStorage.getItem('accessToken')
+      setIsAuthenticated(!!accessToken && accessToken !== 'undefined')
+    }, [user])
 
     const fetchCartItem = async () => {
+      if(!isAuthenticated) return
     
         try {
-          const accessToken = localStorage.getItem('accessToken')
-          if(!accessToken){
-            dispatch(handleAddToCart([]))
-            return
-          }
-         
-          
           const response = await Axios({
             ...SummaryApi.get_cart
           })
@@ -87,10 +87,6 @@ export const GlobalProvider = ({ children }) => {
         AxiosToastError(error)
       }
     }
-
-    const notDiscountPrice = cartItems.reduce((preve, curr)=> {
-      return preve + (curr?.productId?.price * curr.quantity)
-    }, 0)
   
     const calculateTotal = () => {
       if (!cartItems || cartItems.length === 0) return 0;
@@ -108,8 +104,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchAddress = async () => {
-      const accessToken = localStorage.getItem('accessToken')
-      if (!accessToken) return
+      if(!isAuthenticated) return
       
       try {
         const response = await Axios({
@@ -127,8 +122,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchOrder = async () => {
-      const accessToken = localStorage.getItem('accessToken')
-      if (!accessToken) return
+      if(!isAuthenticated) return
       
       try {
         const response = await Axios({
@@ -147,9 +141,8 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const fetchVouchers = async () => {
+      if(!isAuthenticated) return
       try {
-        const accessToken = localStorage.getItem('accessToken')
-        if (!accessToken) return
           setLoading(true)
           const response = await Axios({
               ...SummaryApi.get_vouchers
@@ -164,6 +157,10 @@ export const GlobalProvider = ({ children }) => {
           setLoading(false)
       }
     }
+
+    const notDiscountPrice = cartItems.reduce((preve, curr)=> {
+      return preve + (curr?.productId?.price * curr.quantity)
+    }, 0)
 
     const activeVouchers = vouchers.filter(voucher => {
       const now = new Date()

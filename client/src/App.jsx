@@ -1,18 +1,18 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import './App.css'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
-import fetchUserDetails from './utils/fetchUserDetails';
-import { setUserDetails } from './store/userSlice';
+import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/productSlide';
-import Axios from './utils/Axios';
+import { Outlet, useLocation } from 'react-router-dom';
+import './App.css';
 import SummaryApi from './common/SummaryApi';
-import GlobalProvider from './provider/GlobalProvider'
-import ScrollToTop from './components/layout/ScrollToTop'
-import ChatBubble from './components/chat/ChatBubble'
+import ChatBubble from './components/chat/ChatBubble';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
+import ScrollToTop from './components/layout/ScrollToTop';
+import GlobalProvider from './provider/GlobalProvider';
+import { setAllCategory, setAllSubCategory, setLoadingCategory } from './store/productSlide';
+import { setUserDetails } from './store/userSlice';
+import Axios from './utils/Axios';
+import fetchUserDetails from './utils/fetchUserDetails';
 
 
 function App() {
@@ -21,7 +21,9 @@ function App() {
 
   const fetchUser = async () => { 
     const accessToken = localStorage.getItem('accessToken')
-    if (!accessToken) return
+    if (!accessToken || accessToken === "undefined") {
+      return
+    }
     
     const userData = await fetchUserDetails()
     if (userData && userData.data) {
