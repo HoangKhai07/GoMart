@@ -27,6 +27,16 @@ const messageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    isFromAI: {
+        type: Boolean,
+        default: false
+    },
+
+    needsAdminAttention: {
+        type: Boolean,
+        default: false
+    }
 },
 { timestamps: true}
 )

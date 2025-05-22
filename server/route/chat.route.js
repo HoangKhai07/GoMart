@@ -6,6 +6,7 @@ import {
     getAllChatsController, 
     getChatsController, 
     getMessagesController, 
+    getMessagesNeedingAttentionController, 
     markMessagesAsReadController, 
     sendMessageController 
 } from '../controllers/chat.controller.js'
@@ -18,5 +19,5 @@ chatRouter.get('/messages/:chatId', auth, getMessagesController)
 chatRouter.put('/read/:chatId', auth, markMessagesAsReadController)
 chatRouter.get('/admin-chat', auth, getAdminChatController)
 chatRouter.get('/admin/all-chats', auth, admin, getAllChatsController)
-
+chatRouter.get('/admin/attention-needed', auth, admin, getMessagesNeedingAttentionController)
 export default chatRouter
