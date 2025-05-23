@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaCircle } from 'react-icons/fa';
-import { IoSendSharp } from 'react-icons/io5';
+import { BiSolidSend } from "react-icons/bi";
 import { useSelector } from 'react-redux';
 import SummaryApi from '../../common/SummaryApi';
 import Axios from '../../utils/Axios';
@@ -267,11 +267,11 @@ const AdminChat = () => {
   };
 
   return (
-    <div className="h-[calc(96vh-80px)] flex bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="h-[calc(98vh-98px)] border flex bg-white rounded-lg shadow-md overflow-hidden">
       {/* Chat list sidebar */}
-      <div className="w-full md:w-1/3 lg:w-1/4 border-r border-gray-200 bg-gray-50">
+      <div className="w-full md:w-1/3 lg:w-1/4 border-r border-gray-200 bg-gray-300">
         <div className="p-4 border-b border-gray-200">
-          <h2 className="text-lg pb-1 font-semibold">Tin nhắn từ khách hàng</h2>
+          <h2 className="text-base pb-1 font-semibold">Tin nhắn từ khách hàng</h2>
         </div>
         
         <div className="overflow-y-auto h-[calc(100%-64px)]">
@@ -346,7 +346,7 @@ const AdminChat = () => {
                   <img
                     src={selectedChat.participants.find(p => p._id !== user._id)?.avatar || 'https://via.placeholder.com/40'}
                     alt={selectedChat.participants.find(p => p._id !== user._id)?.name}
-                    className="w-10 h-10 rounded-full object-cover"
+                    className="w-9 h-9 rounded-full object-cover"
                   />
                   <div>
                     <h3 className="font-medium">
@@ -383,8 +383,14 @@ const AdminChat = () => {
                     }`}
                   >
                     {formatTime(msg.createdAt)}
+                    {msg.isFromAI && (
+                    <span className='block text-xs italic text-white'>Được gửi bởi trợ lý AI</span>
+                    )}
                     {msg.senderId === user._id && (
                       <span className="ml-1">{msg.isRead ? ' ✓✓' : ' ✓'}</span>
+                    )}
+                    {msg.needsAdminAttention && (
+                    <span className="block text-xs font-bold text-yellow-600 mt-1">⚠️ Cần chú ý</span>
                     )}
                   </div>
                 </div>
@@ -403,20 +409,20 @@ const AdminChat = () => {
             </div>
             
             {/* Message input */}
-            <form onSubmit={handleSubmit} className="border-t border-gray-200 p-3 flex">
+            <form onSubmit={handleSubmit} className="border border-gray-200 p-2 flex">
               <input
                 type="text"
                 value={message}
                 onChange={handleInputChange}
                 placeholder="Nhập tin nhắn..."
-                className="flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-1 focus:ring-primary-light"
+                className="flex-1  rounded-l-md p-2 focus:outline-none"
               />
               <button
                 type="submit"
-                className="bg-primary-light text-white px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
+                className="text-primary-light px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:text-gray-400"
                 disabled={!message.trim()}
               >
-                <IoSendSharp size={20} />
+                <BiSolidSend size={30} />
               </button>
             </form>
           </>
@@ -498,14 +504,14 @@ const AdminChat = () => {
               value={message}
               onChange={handleInputChange}
               placeholder="Nhập tin nhắn..."
-              className="flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-1 focus:ring-primary-light"
+              className=" flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-1 focus:ring-primary-light"
             />
             <button
               type="submit"
-              className="bg-primary-light text-white px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
+              className="text-primary-light px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
               disabled={!message.trim()}
             >
-              <IoSendSharp size={20} />
+              <BiSolidSend size={20} />
             </button>
           </form>
         </div>

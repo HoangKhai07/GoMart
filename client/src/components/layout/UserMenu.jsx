@@ -107,7 +107,7 @@ const UserMenu = ({ close }) => {
           isAdmin(user.role) && (
             <div className='flex gap-2 items-center'>
               <  BiCategory size={15}/>
-            <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm</Link>
+            <Link onClick={handleClose} to={"/dashboard/category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục</Link>
             </div>
           )
         }
@@ -116,7 +116,7 @@ const UserMenu = ({ close }) => {
           isAdmin(user.role) && (
             <div className='flex gap-2 items-center'>
               <  TbCategoryPlus size={15}/>
-            <Link onClick={handleClose} to={"/dashboard/sub-category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục sản phẩm con</Link>
+            <Link onClick={handleClose} to={"/dashboard/sub-category"} className='hover:text-primary-light hover:bg-gray-100' >Danh mục con</Link>
           </div>
           )
         }

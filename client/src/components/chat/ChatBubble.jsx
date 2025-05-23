@@ -274,20 +274,25 @@ const ChatBubble = () => {
                 className={`mb-3 max-w-[80%] ${msg.senderId === user._id
                   ? 'ml-auto bg-green-600 text-white rounded-2xl rounded-br-none'
                   : 'mr-auto bg-gray-100 text-gray-800 rounded-2xl rounded-bl-none'
-                  } p-3 px-4 break-words`}
-              >
+                  } p-3 px-4 break-words`}>
                 {msg.content}
+
                 <div
                   className={`text-xs mt-1 ${msg.senderId === user._id ? 'text-gray-200' : 'text-gray-500'
-                    }`}
-                >
+                    }`}>
+                  <div className='flex justify-between'>
+                  {msg.isFromAI && (
+                    <span className='block text-xs italic text-gray-500'>Được gửi bởi trợ lý AI</span>
+                  )}
                   {new Date(msg.createdAt).toLocaleTimeString('vi-VN', {
                     hour: '2-digit',
                     minute: '2-digit',
                   })}
+                  
                   {msg.senderId === user._id && (
                     <span className="ml-1">{msg.isRead ? ' ✓✓' : ' ✓'}</span>
                   )}
+                  </div>
                 </div>
               </div>
             ))}
