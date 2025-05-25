@@ -207,6 +207,16 @@ const SummaryApi = {
         method: "post"
     },
 
+    create_vnpay_order: {
+        url: "/api/order/create-vnpay-order",
+        method: "post"
+    },
+
+    vnpay_payment: {
+        url: "/api/vnpay/vnpay-payment",
+        method: "post"
+    },
+
     get_order: {
         url: "/api/order/order-list",
         method: "get"

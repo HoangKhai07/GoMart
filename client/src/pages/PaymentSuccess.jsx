@@ -1,12 +1,28 @@
-import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { FaRegCircleCheck } from "react-icons/fa6";
+import React, { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { BiHomeAlt2 } from "react-icons/bi";
+import { FaRegCircleCheck } from "react-icons/fa6";
 import { RiFileListLine } from "react-icons/ri";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const PaymentSuccess = () => {
     const location = useLocation()
     const navigate = useNavigate()
+
+    useEffect(()=> {
+        const queryParams = new URLSearchParams(location.search)
+        const vnp_ResponseCode = queryParams.get('vnp_ResponseCode')
+        const vnp_TransactionStatus = queryParams.get('vnp_TransactionStatus')
+
+        if (vnp_ResponseCode) {
+            if (vnp_ResponseCode === '00' && vnp_TransactionStatus === '00') {
+              toast.success('Thanh toán VNPay thành công!');
+            } else {
+              toast.error('Thanh toán VNPay thất bại!');
+              navigate("/cancel")
+            }
+          }
+    },[location, navigate])
 
     return (
         <section className='max-h-[90vh] min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-b from-green-50 to-green-100'>

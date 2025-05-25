@@ -349,8 +349,8 @@ const CheckoutPage = () => {
                       className="mr-3"
                     />
                     <div>
-                      <p className="font-medium text-gray-800">Chuyển khoản ngân hàng</p>
-                      <p className="text-gray-500 text-sm mt-1">Thanh toán bằng chuyển khoản ngân hàng</p>
+                      <p className="font-medium text-gray-800">Thanh toán online</p>
+                      <p className="text-gray-500 text-sm mt-1">Thanh toán bằng chuyển khoản ngân hàng, ví điện tử, thẻ Visa, Mastercard, JCB</p>
                     </div>
                   </div>
                 </div>

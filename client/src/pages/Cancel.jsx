@@ -1,8 +1,8 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { FaRegTimesCircle } from "react-icons/fa"
 import { BiHomeAlt2 } from "react-icons/bi"
+import { FaRegTimesCircle } from "react-icons/fa"
 import { RiArrowGoBackLine } from "react-icons/ri"
+import { useNavigate } from 'react-router-dom'
 
 const Cancel = () => {
   const navigate = useNavigate()

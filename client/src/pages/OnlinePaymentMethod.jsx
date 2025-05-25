@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import visa from '../assets/visa.webp'
+import stripe from '../assets/stripe.png'
 import vnpay_logo from '../assets/vnpay-logo.jpg'
 import zalopay from '../assets/zalopay.png'
 import SummaryApi from '../common/SummaryApi'
@@ -56,7 +56,37 @@ function OnlinePaymentMethod() {
         }
     }
 
-    
+    const handleVNPayPayment = async () => {
+        try {
+            toast.loading('Đang xử lý thanh toán...')
+            // Tạo order trước
+            const orderResponse = await Axios({
+                ...SummaryApi.create_vnpay_order,
+                data: {
+                    list_items: cartItems,
+                    totalAmt: calculateTotal() - discountAmount,
+                    addressId: selectedAddress,
+                    subTotalAmt: calculateTotal() + savePrice(),
+                    voucherId: voucherSelected || null,
+                    discountAmount: discountAmount
+                }
+            });
+            
+            const orderId = orderResponse.data.data[0]._id;
+            
+            const response = await Axios({
+                ...SummaryApi.vnpay_payment,
+                data: {
+                    orderId: orderId
+                }
+            });
+            
+            window.location.href = response.data.paymentUrl;
+            
+        } catch (error) {
+            AxiosToastError(error)
+        }
+    }
 
     return (
         <div className='max-w-3xl mx-auto p-6 m-20 bg-white rounded-xl shadow-md'>
@@ -66,9 +96,9 @@ function OnlinePaymentMethod() {
                 {/* Credit Card */}
                 <div onClick={handleOnlinePayment} className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md'>
                     <div className='flex items-center gap-4'>
-                        <img src={visa} className='w-16 h-16 object-contain' alt="Visa" />
+                        <img src={stripe} className='w-16 h-16 object-contain' alt="Visa" />
                         <div className='flex-1'>
-                            <h3 className='font-medium text-gray-800'>Thẻ tín dụng / Ghi nợ</h3>
+                            <h3 className='font-medium text-gray-800'>Stripe</h3>
                             <p className='text-sm text-gray-500'>Visa, MasterCard, JCB</p>
                         </div>
                         <div className='flex items-center gap-2'>
@@ -78,12 +108,12 @@ function OnlinePaymentMethod() {
                 </div>
 
                 {/* VNPay */}
-                <div className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md '>
+                <div onClick={handleVNPayPayment} className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md'>
                     <div className='flex items-center gap-4'>
                         <img src={vnpay_logo} className='w-16 h-16 object-contain' alt="VNPay" />
                         <div className='flex-1'>
                             <h3 className='font-medium text-gray-800'>Ví điện tử VNPay</h3>
-                            <p className='text-sm text-gray-500'>Thanh toán nhanh chóng và an toàn</p>
+                            <p className='text-sm text-gray-500'>Ví VNPay, Ngân hàng, Visa, Mastercard, JCB</p>
                         </div>
 
                     </div>
@@ -96,7 +126,7 @@ function OnlinePaymentMethod() {
 
                         <div className='flex-1'>
                             <h3 className='font-medium text-gray-800'>Ví điện tử ZaloPay</h3>
-                            <p className='text-sm text-gray-500'>Thanh toán dễ dàng qua ZaloPay</p>
+                            <p className='text-sm text-gray-500'>Ví ZaloPay, Ngân hàng</p>
                         </div>
 
                     </div>
