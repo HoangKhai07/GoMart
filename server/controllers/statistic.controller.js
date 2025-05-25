@@ -3,7 +3,6 @@ import mongoose from "mongoose"
 
 export const getStatisticsController = async (req, res) => {
     try {
-        // Thống kê tổng doanh thu
         const totalRevenue = await OrderModel.aggregate([
             {
                 $group: {
@@ -13,7 +12,6 @@ export const getStatisticsController = async (req, res) => {
             }
         ]);
 
-        // Thống kê doanh thu theo tháng (12 tháng gần nhất)
         const today = new Date();
         const twelveMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 11, 1);
         
@@ -37,7 +35,6 @@ export const getStatisticsController = async (req, res) => {
             }
         ]);
 
-        // Thống kê doanh thu theo tuần (12 tuần gần nhất)
         const twelveWeeksAgo = new Date();
         twelveWeeksAgo.setDate(twelveWeeksAgo.getDate() - 12 * 7);
         
@@ -69,7 +66,6 @@ export const getStatisticsController = async (req, res) => {
             }
         ]);
         
-        // Thống kê doanh thu theo năm (5 năm gần nhất)
         const fiveYearsAgo = new Date();
         fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
         
@@ -92,7 +88,6 @@ export const getStatisticsController = async (req, res) => {
             }
         ]);
 
-        // Thống kê đơn hàng theo trạng thái
         const orderStatusCounts = await OrderModel.aggregate([
             {
                 $group: {

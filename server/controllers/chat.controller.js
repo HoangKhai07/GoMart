@@ -2,7 +2,7 @@ import MessageModel from '../model/message.model.js'
 import ChatModel from '../model/chat.model.js'
 import UserModel from '../model/user.model.js'
 import { getIO } from '../config/socket.js'
-import { getProjectData, processQuestion } from '../utils/ai.service.js'
+import { getProjectData, processQuestion } from '../utils/aiService.js'
 
 // get chat list
 export const getChatsController = async (req, res) => {

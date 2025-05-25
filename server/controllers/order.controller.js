@@ -209,13 +209,12 @@ export const deleteOrderController = async (req, res) => {
         })
     }    
 }
-//http://localhost:8080/api/order/webhook
 
+
+//stripe payment
 export async function webhookStripe( req,res){
     const event = req.body;
     const endPointSecret = process.env.STRIPE_ENDPOINT_WEBHOOK_SECRET
-
-    console.log("event", event)
 
     // Handle the event
     switch (event.type) {
@@ -258,6 +257,50 @@ export async function webhookStripe( req,res){
 
 }
 
+//vnpay payment
+export async function createVNPayOrderController(req, res) {
+    try {
+      const userId = req.userId
+      const { list_items, totalAmt, addressId, subTotalAmt, voucherId, discountAmount } = req.body;
+  
+      const payload = list_items.map(el => {
+        return({
+            userId: userId,
+            orderId: `ORDER-${new mongoose.Types.ObjectId()}`,
+            productId: el.productId._id,
+            product_details: {
+                name: el.productId.name,
+                image: el.productId.image
+            },
+            paymentId: "",
+            payment_status: "Pending",
+            order_status: "Preparing order", 
+            delivery_address: addressId,
+            subTotalAmt: subTotalAmt,
+            totalAmt: totalAmt,
+            voucherId: voucherId || null,
+            discountAmount: discountAmount || 0
+        })
+    })
+  
+    const tempOrder = await OrderModel.insertMany(payload)
+  
+    return res.json({
+      message: "Order created successfully",
+      error: false,
+      success: true,
+      data: tempOrder
+    })
+  
+    } catch (error) {
+      return res.status(500).json({
+        message: error.message || error,
+        error: true,
+        success: false
+      })
+    }
+}
+  
 export async function getOrderDetailsController(req, res) {
     try {
         const userId = req.userId

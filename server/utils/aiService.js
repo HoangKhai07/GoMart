@@ -13,7 +13,8 @@ export const processQuestion = async (question, projectData) => {
         
         const prompt = `Bạn là trợ lý AI của dự án Go Mart, một nền tảng thương mại điện tử.
         Dưới đây là thông tin về dự án: ${projectData}
-        Trả lời câu hỏi sau một cách ngắn gọn, đúng sự thật.
+        Trả lời câu hỏi sau một cách ngắn gọn, đúng sự thật. 
+        Thêm các từ như bạn nhé, ạ,.. ở cuối câu để tạo cảm giác con người không bị máy móc quá.
         Nếu bạn không biết câu trả lời, hãy trả về "TRANSFER_TO_ADMIN".
         
         Câu hỏi: ${question}`;
@@ -30,9 +31,9 @@ export const processQuestion = async (question, projectData) => {
         }
 
         return { 
-            success: true, 
-            message: answer
-        }
+        success: true, 
+        message: answer
+       }
     } catch (error) {
         console.error("Gemini API error:", error);
         return {
