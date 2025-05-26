@@ -1,7 +1,7 @@
-import logo
-
 <div align="center">
-  <h1>🛒 GoMart - Modern E-commerce Platform</h1>
+  <h1>
+  <img src='./client/src/assets/logo_icon.png'>
+   GoMart - Modern E-commerce Platform</h1>
   <p>
     <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
     <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
@@ -10,8 +10,6 @@ import logo
     <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white"/>
     <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
     <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white"/>
-    <img src="https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=google-gemini&logoColor=white"/>
-    <img src="https://img.shields.io/badge/VNPay-FF6600?style=for-the-badge&logo=&logoColor=white"/>
   </p>
 </div>
 
@@ -23,8 +21,6 @@ import logo
 - [Key Features](#-key-features)
 - [Technology Stack](#-technology-stack)
 - [Installation & Setup](#-installation--setup)
-- [Real-time Features](#-real-time-features)
-- [AI Chatbot](#-ai-chatbot)
 - [Payment System](#-payment-system)
 - [Responsive Design](#-responsive-design)
 - [Security Features](#-security-features)
@@ -48,9 +44,8 @@ import logo
 - Real-time cart updates, wishlist, reviews & ratings
 - Secure authentication, order history, profile & address management
 - Multiple payment methods (Stripe, VNPay), SSL encryption
-- AI-powered chatbot for 24/7 customer support
+- AI-powered chatbot customer support
 - Real-time chat with support, notifications, "Typing..." indicators
-- Intelligent product recommendations via AI
 
 ### 👨‍💼 Admin
 
@@ -58,7 +53,6 @@ import logo
 - Product, category, user, order, voucher, inventory management
 - Customer chat, ticket system, feedback monitoring
 - AI chatbot management and training
-- Payment analytics for both Stripe and VNPay transactions
 
 ---
 
@@ -68,24 +62,15 @@ import logo
 
 - React.js (Vite)
 - Redux Toolkit
-- TailwindCSS, Material UI
-- Socket.IO Client, Chart.js, React Router DOM, Framer Motion
+- TailwindCSS
+- Socket.IO Client
 
 ### Backend
 
-- Node.js, Express.js
-- MongoDB, Mongoose
+- Node.js (Express.js)
+- MongoDB
 - Socket.IO, JWT
-- Google Gemini AI API
-- Stripe API, VNPay API
-- Resend API
 
-### AI & Payments
-
-- **AI Chatbot**: Google Gemini Pro for intelligent customer support
-- **Payments**: Stripe (International), VNPay (Vietnam domestic)
-
----
 
 ## 🚀 Installation & Setup
 
@@ -95,9 +80,6 @@ import logo
 - MongoDB
 - npm or yarn
 - Git
-- Google Gemini API Key
-- Stripe Account
-- VNPay Merchant Account
 
 ### Frontend
 
@@ -121,60 +103,26 @@ npm run dev
 ```env
 VITE_API_URL=your_api_url
 VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
-VITE_VNPAY_RETURN_URL=your_vnpay_return_url
 ```
 
 #### Server `.env`
 ```env
-PORT=your_port
+FRONTEND_URL=your_port
 MONGODB_URI=your_mongodb_uri
+RESEND_API=your_resend_api
+SECRET_KEY_ACCESS_TOKEN = your_secret_key_access_token
+SECRET_KEY_REFRESH_TOKEN = Uyour_secret_key_refresh_token
 JWT_SECRET=your_jwt_secret
-
-# Payment Configuration
+CLOUDINARY_CLOUD_NAME = your_cloudinary_name
+CLOUDINARY_API_KEY = your_cloudinary_api_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_ENDPOINT_WEBHOOK_SECRET =your_stripe_enpoint
 VNPAY_TMN_CODE=your_vnpay_tmn_code
 VNPAY_HASH_SECRET=your_vnpay_hash_secret
 VNPAY_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
 VNPAY_RETURN_URL=your_vnpay_return_url
-VNPAY_IPN_URL=your_vnpay_ipn_url
-
-# AI Configuration
 GEMINI_API_KEY=your_gemini_api_key
-GEMINI_MODEL=gemini-pro
 
-# ...other variables
-```
-
----
-
-## 🔄 Real-time Features
-
-- Live customer-admin chat, typing indicators, read receipts, online status
-- Real-time order status, message, cart, and price change notifications
-- Instant AI chatbot responses with context awareness
-- Live payment status updates for both Stripe and VNPay
-
----
-
-## 🤖 AI Chatbot
-
-### Features
-- **24/7 Customer Support**: AI-powered assistance using Google Gemini
-- **Product Recommendations**: Intelligent suggestions based on user preferences
-- **Order Assistance**: Help with order tracking, returns, and general inquiries
-- **Multi-language Support**: Vietnamese and English language support
-- **Context Awareness**: Maintains conversation context for better assistance
-- **Seamless Handoff**: Easy transition to human support when needed
-
-### AI Capabilities
-- Natural language understanding
-- Product search and recommendations
-- Order status inquiries
-- FAQ responses
-- Shopping assistance
-- Troubleshooting support
-
----
 
 ## 💳 Payment System
 
@@ -224,15 +172,6 @@ GEMINI_MODEL=gemini-pro
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please fork the repo and submit a pull request.
-
-1. Fork this repository
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Create a new Pull Request
 
 ### Development Guidelines
 - Follow ESLint and Prettier configurations
