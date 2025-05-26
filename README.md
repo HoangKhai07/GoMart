@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-  <img src='./client/src/assets/logo_icon.png'>
+  <img src='./client/src/assets/logo_icon.png' width="50"/>
    GoMart - Modern E-commerce Platform</h1>
   <p>
     <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
