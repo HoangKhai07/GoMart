@@ -122,6 +122,7 @@ VNPAY_HASH_SECRET=your_vnpay_hash_secret
 VNPAY_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
 VNPAY_RETURN_URL=your_vnpay_return_url
 GEMINI_API_KEY=your_gemini_api_key
+```
 
 
 ## 💳 Payment System
