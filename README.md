@@ -18,6 +18,7 @@
 ## 📚 Table of Contents
 
 - [Overview](#-overview)
+- [Entity Relationship Diagram](#-ERD)
 - [Key Features](#-key-features)
 - [Technology Stack](#-technology-stack)
 - [Installation & Setup](#-installation--setup)
@@ -34,6 +35,10 @@
 **GoMart** is a modern e-commerce platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js), providing a seamless and secure online shopping experience. The platform features real-time communication, AI-powered chatbot assistance, secure payments with multiple options, and a comprehensive admin dashboard.
 
 ---
+
+## ERD
+
+![GoMart ERD](https://github.com/user-attachments/assets/38f69aac-76fa-425d-ab5a-25f5950e2d4d)
 
 ## ✨ Key Features
 
@@ -192,5 +197,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <div align="center">
   Made with ❤️ by Khai
   <br/>
-  <em>Powered by AI & Modern Payment Solutions</em>
 </div>
