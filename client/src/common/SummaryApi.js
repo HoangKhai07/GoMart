@@ -246,6 +246,11 @@ const SummaryApi = {
         url: "/api/chat/send",
         method: "post"
     },
+
+    send_image_message: {
+        url: "/api/chat/send-image",
+        method: "post"
+    },
     
     get_chats: {
         url: "/api/chat/chats",
