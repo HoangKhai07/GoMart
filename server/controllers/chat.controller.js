@@ -363,3 +363,80 @@ export const getMessagesNeedingAttentionController = async (req, res) => {
         })
     }
 }
+
+export const sendImageMessageController = async (req, res) => {
+    try {
+        const { receiverId, content, image } = req.body;
+        const senderId = req.userId;
+
+        if(!image) {
+            return res.status(400).json({
+                message: "Image URL is required",
+                error: true,
+                success: false
+            })
+        };
+
+        let chat = await ChatModel.findOne({
+            participants: {$all: [senderId, receiverId]}
+        });
+
+        if(!chat){
+            chat = new ChatModel({
+                participants: [senderId, receiverId],
+                lastMessage: "Đã gửi một hình ảnh",
+                lastMessageTime: new Date()
+            });
+            await chat.save();
+        } else {
+            chat.lastMessage = "Đã gửi một hình ảnh",
+            chat.lastMessageTime = new Date();
+            chat.unreadCount += 1;
+            await chat.save();
+        };
+
+        const message = new MessageModel({
+            senderId,
+            receiverId,
+            content: content || "Đã gửi một ảnh",
+            image: image,
+            messageType: content ? 'mixed' : 'image',
+            chatId: chat._id
+        });
+
+        const saveData = await message.save();
+
+        //send read-time with socket.io
+
+        const io = getIO();
+        io.to(`chat_${chat._id}`).emit('newMessage', {
+            senderId,
+            message: saveData,
+            chat: chat._id
+        });
+
+        io.to(`user_${receiverId}`).emit('newMessage', {
+            senderId,
+            message: saveData,
+            chat: chat._id
+        });
+
+        return res.json({
+            message: "Send image message successfully",
+            error: false,
+            success: true,
+            data: {
+                message: saveData,
+                chat: chat._id
+            }
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}

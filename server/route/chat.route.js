@@ -8,12 +8,14 @@ import {
     getMessagesController, 
     getMessagesNeedingAttentionController, 
     markMessagesAsReadController, 
+    sendImageMessageController, 
     sendMessageController 
 } from '../controllers/chat.controller.js'
 
 const chatRouter = Router()
 
 chatRouter.post('/send', auth, sendMessageController)
+chatRouter.post('/send-image', auth, sendImageMessageController)
 chatRouter.get('/chats', auth, getChatsController)
 chatRouter.get('/messages/:chatId', auth, getMessagesController)
 chatRouter.put('/read/:chatId', auth, markMessagesAsReadController)

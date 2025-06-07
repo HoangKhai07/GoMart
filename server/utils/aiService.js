@@ -15,6 +15,7 @@ export const processQuestion = async (question, projectData) => {
         Dưới đây là thông tin về dự án: ${projectData}
         Trả lời câu hỏi sau một cách ngắn gọn, đúng sự thật. 
         Thêm các từ như bạn nhé, ạ,.. ở cuối câu để tạo cảm giác con người không bị máy móc quá.
+        Nếu câu hỏi không có trong những dữ liệu đã cung cấp cho bạn hãy dừng trả lời và trả về "TRANSFER_TO_ADMIN".
         Nếu bạn không biết câu trả lời, hãy trả về "TRANSFER_TO_ADMIN".
         
         Câu hỏi: ${question}`;
