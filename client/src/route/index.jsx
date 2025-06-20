@@ -32,6 +32,7 @@ import UploadProduct from "../pages/UploadProduct";
 import UserManagementPage from "../pages/UserManagementPage.jsx";
 import VoucherManagementPage from "../pages/VoucherManagementPage.jsx";
 import Vouchers from "../pages/Vouchers.jsx";
+import FlashSaleManagementPage from "../pages/FlashSaleManagementPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -144,6 +145,11 @@ const router = createBrowserRouter([
                 {
                     path: "voucher-management",
                     element: <AdminPermission><VoucherManagementPage/></AdminPermission>
+                },
+
+                {
+                    path: "flash-sale-management",
+                    element: <AdminPermission><FlashSaleManagementPage/></AdminPermission>
                 },
 
             ]

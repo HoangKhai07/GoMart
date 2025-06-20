@@ -320,7 +320,49 @@ const SummaryApi = {
     update_voucher: {
         url: '/api/voucher/update',
         method: 'put'
-    }
+    },
+
+    // Add these entries to the SummaryApi object
+
+    get_active_flash_sales: {
+        url: "/api/flashSale/active",
+        method: "get"
+    },
+
+    get_admin_flash_sales: {
+        url: "/api/flashSale/admin",
+        method: "get"
+    },
+
+    get_flash_sale_details: {
+        url: "/api/flashSale/details",
+        method: "get"
+    },
+
+    create_flash_sale: {
+        url: "/api/flashSale/create",
+        method: "post"
+    },
+
+    update_flash_sale: {
+        url: "/api/flashSale/update",
+        method: "put"
+    },
+
+    delete_flash_sale: {
+        url: "/api/flashSale/delete",
+        method: "delete"
+    },
+
+    add_product_to_flash_sale: {
+        url: "/api/flashSale/add-product",
+        method: "post"
+    },
+
+    remove_product_from_flash_sale: {
+        url: "/api/flashSale/remove-product",
+        method: "delete"
+    },
 
 }
 

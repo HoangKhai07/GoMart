@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaCircle } from 'react-icons/fa';
+import { IoClose, IoImageOutline } from 'react-icons/io5';
 import { BiSolidSend } from "react-icons/bi";
 import { useSelector } from 'react-redux';
 import SummaryApi from '../../common/SummaryApi';
@@ -16,10 +17,15 @@ const AdminChat = () => {
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [typing, setTyping] = useState(false);
   const [userTyping, setUserTyping] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isUploading, setIsUploading] = useState(null);
+  const [viewImageModal, setViewImageModal] = useState(null);
   const messagesEndRef = useRef(null);
   const typingTimeoutRef = useRef(null);
   const socketInitialized = useRef(false);
   const user = useSelector((state) => state.user);
+  const fileInputRef = useRef(null);
 
   // Initialize socket when component mounts
   useEffect(() => {
@@ -27,19 +33,19 @@ const AdminChat = () => {
     if (token && !socketInitialized.current) {
       initSocket(token);
       socketInitialized.current = true;
-      
+
       const socket = getSocket();
-      
+
       // Clean up previous listeners to avoid duplicates
       socket.off('newMessage');
       socket.off('userTyping');
       socket.off('messagesRead');
-      
+
       // Add new listeners
       socket.on('newMessage', handleNewMessage);
       socket.on('userTyping', handleUserTyping);
       socket.on('messagesRead', handleMessagesRead);
-      
+
       return () => {
         socket.off('newMessage', handleNewMessage);
         socket.off('userTyping', handleUserTyping);
@@ -69,12 +75,12 @@ const AdminChat = () => {
         if (selectedChat._id !== selectedChat._id) {
           leaveChatRoom(selectedChat._id);
         }
-        
+
         joinChatRoom(selectedChat._id);
         loadMessages(selectedChat._id);
       }
     }
-    
+
     return () => {
       if (selectedChat && selectedChat._id) {
         leaveChatRoom(selectedChat._id);
@@ -84,17 +90,17 @@ const AdminChat = () => {
 
   const handleNewMessage = (data) => {
     console.log('Admin received new message:', data);
-    
+
     if (selectedChat && data.chat === selectedChat._id) {
       setMessages((prev) => {
         const exists = prev.some(msg => msg._id === data.message._id);
         if (exists) return prev;
         return [...prev, data.message];
       });
-      
+
       markMessagesAsRead(selectedChat._id);
     }
-    
+
     setChats((prevChats) => {
       return prevChats.map((chat) => {
         if (chat._id === data.chat) {
@@ -102,8 +108,8 @@ const AdminChat = () => {
             ...chat,
             lastMessage: data.message.content,
             lastMessageTime: data.message.createdAt,
-            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 : 
-                        (data.message.senderId !== user._id ? (chat.unreadCount || 0) + 1 : chat.unreadCount || 0)
+            unreadCount: selectedChat && selectedChat._id === chat._id ? 0 :
+              (data.message.senderId !== user._id ? (chat.unreadCount || 0) + 1 : chat.unreadCount || 0)
           };
         }
         return chat;
@@ -186,16 +192,128 @@ const AdminChat = () => {
 
   const handleChatSelect = (chat) => {
     if (selectedChat && selectedChat._id === chat._id) return;
-    
+
     if (selectedChat && selectedChat._id) {
       leaveChatRoom(selectedChat._id);
     }
-    
+
     setSelectedChat(chat);
   };
 
+  const handleImageSelect = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast.error('Hình ảnh không được vượt quá 5MB');
+        return;
+      }
+      setSelectedImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const removeSelectedImage = () => {
+    setSelectedImage(null);
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleImageUpload = async () => {
+    if (!selectedImage) return;
+
+    setIsUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+
+      const response = await Axios({
+        url: SummaryApi.upload_image.url,
+        method: SummaryApi.upload_image.method,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+
+      if (response.data.success) {
+        // Upload successful, now send image message
+        await sendImageMessage(response.data.data.secure_url);
+        // Clear the image preview and selected image
+        removeSelectedImage();
+      }
+    } catch (error) {
+      toast.error("Không thể tải ảnh lên, vui lòng thử lại sau");
+      AxiosToastError(error);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const sendImageMessage = async (imageUrl) => {
+    if (!selectedChat || !imageUrl) return;
+
+    try {
+      const receiverId = selectedChat.participants.find(
+        (participant) => participant._id !== user._id
+      )._id;
+
+      const messageContent = message.trim() ? message : "Đã gửi một hình ảnh";
+
+      const response = await Axios({
+        ...SummaryApi.send_image_message,
+        data: {
+          receiverId: receiverId,
+          content: messageContent,
+          image: imageUrl
+        }
+      });
+
+      if (response.data.success) {
+        const newMessage = response.data.data.message;
+        setMessages((prev) => [...prev, newMessage]);
+        setChats((prevChats) => {
+          return prevChats.map((chat) => {
+            if (chat._id === selectedChat._id) {
+              return {
+                ...chat,
+                lastMessage: "Đã gửi một hình ảnh",
+                lastMessageTime: new Date()
+              };
+            }
+            return chat;
+          });
+        });
+
+        setMessage('');
+      }
+    } catch (error) {
+      toast.error("Không thể gửi tin nhắn");
+      AxiosToastError(error);
+    }
+  };
+
+  // function handle show full image
+  const handleImageClick = (imageUrl) => {
+    setViewImageModal(imageUrl);
+  };
+
+  // function handle close image modal
+  const closeImageModal = () => {
+    setViewImageModal(null);
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (selectedImage) {
+      await handleImageUpload();
+      return;
+    }
+
     if (!message.trim() || !selectedChat) return;
 
     try {
@@ -214,7 +332,7 @@ const AdminChat = () => {
       if (response.data.success) {
         const newMessage = response.data.data.message;
         setMessages((prev) => [...prev, newMessage]);
-        
+
         setChats((prevChats) => {
           return prevChats.map((chat) => {
             if (chat._id === selectedChat._id) {
@@ -227,7 +345,7 @@ const AdminChat = () => {
             return chat;
           });
         });
-        
+
         setMessage('');
       }
     } catch (error) {
@@ -242,12 +360,12 @@ const AdminChat = () => {
       setTyping(true);
       sendTypingStatus(selectedChat._id, true);
     }
-    
+
 
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
     }
-    
+
     typingTimeoutRef.current = setTimeout(() => {
       setTyping(false);
       if (selectedChat) {
@@ -273,39 +391,38 @@ const AdminChat = () => {
         <div className="p-4 border-b border-gray-200">
           <h2 className="text-base pb-1 font-semibold">Tin nhắn từ khách hàng</h2>
         </div>
-        
+
         <div className="overflow-y-auto h-[calc(100%-64px)]">
           {loading && <div className="text-center py-4">Đang tải...</div>}
-          
+
           {!loading && chats.length === 0 && (
             <div className="text-center py-8 text-gray-500">
               Chưa có tin nhắn nào
             </div>
           )}
-          
+
           {chats.map((chat) => {
             const otherUser = chat.participants.find(
               (participant) => participant._id !== user._id
             );
-            
+
             const lastMessageTime = new Date(chat.lastMessageTime);
             const now = new Date();
             const diffMs = now - lastMessageTime;
             const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            
+
             let timeStr;
             if (diffDays > 0) {
               timeStr = `${diffDays} ngày trước`;
             } else {
               timeStr = formatTime(lastMessageTime);
             }
-            
+
             return (
               <div
                 key={chat._id}
-                className={`p-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100 ${
-                  selectedChat && selectedChat._id === chat._id ? 'bg-gray-200' : ''
-                }`}
+                className={`p-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100 ${selectedChat && selectedChat._id === chat._id ? 'bg-gray-200' : ''
+                  }`}
                 onClick={() => handleChatSelect(chat)}
               >
                 <div className="flex items-center gap-3">
@@ -356,46 +473,57 @@ const AdminChat = () => {
                 </>
               )}
             </div>
-            
+
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
               {loadingMessages && <div className="text-center py-4">Đang tải tin nhắn...</div>}
-              
+
               {!loadingMessages && messages.length === 0 && (
                 <div className="text-center py-8 text-gray-500">
                   Chưa có tin nhắn nào
                 </div>
               )}
-              
+
               {messages.map((msg, index) => (
                 <div
                   key={msg._id || index}
-                  className={`mb-3 max-w-[70%] ${
-                    msg.senderId === user._id
+                  className={`mb-3 max-w-[70%] ${msg.senderId === user._id
                       ? 'ml-auto bg-primary-light text-white rounded-l-lg rounded-tr-lg'
                       : 'mr-auto bg-gray-200 text-gray-800 rounded-r-lg rounded-tl-lg'
-                  } p-3 break-words`}
+                    } p-3 break-words`}
                 >
+                  {/* display image */}
+                  {msg.image && (
+                    <div className="mb-2">
+                      <img
+                        src={msg.image}
+                        alt="Chat image"
+                        className="max-w-full rounded-sm cursor-pointer hover: transition-opacity"
+                        style={{ background: 'transparent' }}
+                        onClick={() => handleImageClick(msg.image)}
+                      />
+                    </div>
+                  )}
+
                   {msg.content}
-                  <div 
-                    className={`text-xs mt-1 flex justify-between items-center ${
-                      msg.senderId === user._id ? 'text-gray-200' : 'text-gray-500'
-                    }`}
+                  <div
+                    className={`text-xs mt-1 flex justify-between items-center ${msg.senderId === user._id ? 'text-gray-200' : 'text-gray-500'
+                      }`}
                   >
                     {formatTime(msg.createdAt)}
                     {msg.isFromAI && (
-                    <span className='block text-xs italic text-white'>Được gửi bởi trợ lý AI</span>
+                      <span className='block text-xs italic text-white'>Được gửi bởi trợ lý AI</span>
                     )}
                     {msg.senderId === user._id && (
                       <span className="ml-1">{msg.isRead ? ' ✓✓' : ' ✓'}</span>
                     )}
                     {msg.needsAdminAttention && (
-                    <span className="block text-xs font-bold text-yellow-600 mt-1">⚠️ Cần chú ý</span>
+                      <span className="block text-xs font-bold text-yellow-600 mt-1">⚠️ Cần chú ý</span>
                     )}
                   </div>
                 </div>
               ))}
-              
+
               {isUserTyping && userTyping[isUserTyping] && (
                 <div className="text-gray-500 text-sm italic ml-2 flex items-center gap-1">
                   <FaCircle className="animate-pulse text-gray-400" size={8} />
@@ -404,10 +532,30 @@ const AdminChat = () => {
                   <span className="ml-1">Đang nhập tin nhắn...</span>
                 </div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
-            
+
+            {/* view image preview */}
+            {imagePreview && (
+              <div className="px-3 pt-2">
+                <div className="relative inline-block">
+                  <img
+                    src={imagePreview}
+                    alt="Xem trước"
+                    className="h-20 rounded-lg border border-gray-200"
+                  />
+                  <button
+                    onClick={removeSelectedImage}
+                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
+                    title="Xóa ảnh"
+                  >
+                    <IoClose size={16} />
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Message input */}
             <form onSubmit={handleSubmit} className="border border-gray-200 p-2 flex">
               <input
@@ -417,9 +565,29 @@ const AdminChat = () => {
                 placeholder="Nhập tin nhắn..."
                 className="flex-1  rounded-l-md p-2 focus:outline-none"
               />
+
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="p-2 text-gray-500 hover:text-green-600 focus:outline-none"
+                disabled={isUploading}
+                title="Gửi hình ảnh"
+              >
+                <IoImageOutline size={25} />
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageSelect}
+                  accept="image/*"
+                  className="hidden"
+                  disabled={isUploading}
+                />
+              </button>
+
               <button
                 type="submit"
-                className="text-primary-light px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:text-gray-400"
+                title="Gửi"
+                className="text-primary-light hover:text-green-600 cursor-pointer px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:text-gray-400"
                 disabled={!message.trim()}
               >
                 <BiSolidSend size={30} />
@@ -445,41 +613,39 @@ const AdminChat = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            
+
             <img
               src={selectedChat.participants.find(p => p._id !== user._id)?.avatar || 'https://via.placeholder.com/40'}
               alt={selectedChat.participants.find(p => p._id !== user._id)?.name}
               className="w-10 h-10 rounded-full object-cover"
             />
-            
+
             <h3 className="font-medium">
               {selectedChat.participants.find(p => p._id !== user._id)?.name}
             </h3>
           </div>
-          
+
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
             {loadingMessages && <div className="text-center py-4">Đang tải tin nhắn...</div>}
-            
+
             {!loadingMessages && messages.length === 0 && (
               <div className="text-center py-8 text-gray-500">
                 Chưa có tin nhắn nào
               </div>
             )}
-            
+
             {messages.map((msg, index) => (
               <div
                 key={msg._id || index}
-                className={`mb-3 max-w-[70%] ${
-                  msg.senderId === user._id
+                className={`mb-3 max-w-[70%] ${msg.senderId === user._id
                     ? 'ml-auto bg-primary-light text-white rounded-l-lg rounded-tr-lg'
                     : 'mr-auto bg-gray-200 text-gray-800 rounded-r-lg rounded-tl-lg'
-                } p-3 break-words`}
+                  } p-3 break-words`}
               >
                 {msg.content}
-                <div 
-                  className={`text-xs mt-1 ${
-                    msg.senderId === user._id ? 'text-gray-200' : 'text-gray-500'
-                  }`}
+                <div
+                  className={`text-xs mt-1 ${msg.senderId === user._id ? 'text-gray-200' : 'text-gray-500'
+                    }`}
                 >
                   {formatTime(msg.createdAt)}
                   {msg.senderId === user._id && (
@@ -488,17 +654,19 @@ const AdminChat = () => {
                 </div>
               </div>
             ))}
-            
+
             {isUserTyping && userTyping[isUserTyping] && (
               <div className="text-gray-500 text-sm italic ml-2">
                 Đang nhập tin nhắn...
               </div>
             )}
-            
+
             <div ref={messagesEndRef} />
           </div>
-          
+
           <form onSubmit={handleSubmit} className="border-t border-gray-200 p-3 flex">
+
+
             <input
               type="text"
               value={message}
@@ -506,14 +674,56 @@ const AdminChat = () => {
               placeholder="Nhập tin nhắn..."
               className=" flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-1 focus:ring-primary-light"
             />
+
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="p-2 text-gray-500 hover:text-green-600 focus:outline-none"
+              disabled={isUploading}
+              title="Gửi hình ảnh"
+            >
+              <IoImageOutline size={22} />
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImageSelect}
+                accept="image/*"
+                className="hidden"
+                disabled={isUploading}
+              />
+            </button>
+
             <button
               type="submit"
-              className="text-primary-light px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
+              title="Gửi"
+
+              className="text-primary-light cursor-pointer px-4 rounded-r-md hover:bg-primary-dark focus:outline-none disabled:bg-gray-400"
               disabled={!message.trim()}
             >
               <BiSolidSend size={20} />
             </button>
           </form>
+        </div>
+      )}
+
+      {viewImageModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center"
+          onClick={closeImageModal}
+        >
+          <div className="max-w-4xl max-h-[90vh] p-2" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={viewImageModal}
+              alt="Xem đầy đủ"
+              className="max-w-full max-h-[85vh] object-contain"
+            />
+            <button
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
+              onClick={closeImageModal}
+            >
+              <IoClose size={24} />
+            </button>
+          </div>
         </div>
       )}
     </div>

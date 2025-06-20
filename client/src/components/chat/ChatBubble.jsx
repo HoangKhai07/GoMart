@@ -17,7 +17,7 @@ const ChatBubble = () => {
   const [typing, setTyping] = useState(false);
   const [adminTyping, setAdminTyping] = useState(false);
   
-  // Thêm state mới cho chức năng gửi hình ảnh
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -154,7 +154,7 @@ const ChatBubble = () => {
     }
   };
 
-  // Thêm function để xử lý chọn ảnh
+  // function handle select image
   const handleImageSelect = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -167,7 +167,7 @@ const ChatBubble = () => {
     }
   };
 
-  // Thêm function để xóa ảnh đã chọn
+  // function handle remove selected image
   const removeSelectedImage = () => {
     setSelectedImage(null);
     setImagePreview(null);
@@ -176,7 +176,7 @@ const ChatBubble = () => {
     }
   };
 
-  // Thêm function để xử lý upload ảnh
+  // function handle upload image
   const handleImageUpload = async () => {
     if (!selectedImage) return;
     
@@ -209,7 +209,7 @@ const ChatBubble = () => {
     }
   };
 
-  // Thêm function để gửi tin nhắn có hình ảnh
+  // function handle send image message
   const sendImageMessage = async (imageUrl) => {
     if (!chatId || !imageUrl) return;
     
@@ -255,12 +255,12 @@ const ChatBubble = () => {
 
 
 
-  // Function để hiển thị ảnh đầy đủ khi click vào
+  // function handle show full image
   const handleImageClick = (imageUrl) => {
     setViewImageModal(imageUrl);
   };
 
-  // Function để đóng modal xem ảnh
+  // function handle close image modal
   const closeImageModal = () => {
     setViewImageModal(null);
   };
@@ -268,13 +268,13 @@ const ChatBubble = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Nếu có ảnh được chọn, thực hiện upload ảnh
+    // if have image selected, perform upload image
     if (selectedImage) {
       await handleImageUpload();
       return;
     }
     
-    // Ngược lại gửi tin nhắn văn bản bình thường
+    // if not have message or chatId, return
     if (!message.trim() || !chatId) return;
 
     try {

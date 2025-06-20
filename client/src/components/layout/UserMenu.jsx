@@ -22,6 +22,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { RiAccountCircleLine } from "react-icons/ri";
+import { AiOutlineThunderbolt } from "react-icons/ai";
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user)
@@ -154,6 +155,15 @@ const UserMenu = ({ close }) => {
             <div className='flex gap-2 items-center'>
               <  LuTicketCheck  size={15}/>
             <Link onClick={handleClose} to={"/dashboard/voucher-management"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Vouchers</Link>
+          </div>
+          )
+        }
+
+        {
+          isAdmin(user.role) && (
+            <div className='flex gap-2 items-center'>
+              <AiOutlineThunderbolt size={15}/>
+            <Link onClick={handleClose} to={"/dashboard/flash-sale-management"} className='hover:text-primary-light hover:bg-gray-100 flex items-center gap-2' >Flash sale</Link>
           </div>
           )
         }

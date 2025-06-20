@@ -5,14 +5,15 @@ import { GoArrowRight } from "react-icons/go";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import app_store_icon from '../assets/apple.png';
 import banner_1 from '../assets/banner/banner_1.jpg';
 import banner_2 from '../assets/banner/banner_2.jpg';
 import banner_3 from '../assets/banner/banner_3.jpg';
 import banner_4 from '../assets/banner/banner_4.jpg';
-import google_play_icon from '../assets/google_play.webp'
-import app_store_icon from '../assets/apple.png'
+import google_play_icon from '../assets/google_play.webp';
 
 import CategoryWiseProductDisplay from '../components/product/CategoryWiseProductDisplay';
+import FlashSaleSection from '../components/sale/FlashSaleSection';
 const banners = [banner_1, banner_2, banner_3, banner_4];
 
 const Home = () => {
@@ -180,6 +181,8 @@ const Home = () => {
         </div>
       </section>
 
+     
+
        {/* Promo Banners */}
        <section className="hidden lg:flex py-8 bg-white">
         <div className="container mx-auto px-4">
@@ -219,6 +222,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* flash sale section */}
+      <section>
+        <FlashSaleSection/>
       </section>
 
       {/* Categories Grid*/}
