@@ -20,6 +20,7 @@ import uploadRouter from './route/upload.route.js'
 import userRouter from './route/user.route.js'
 import vnpayRouter from './route/vnpay.router.js'
 import voucherRouter from './route/voucher.route.js'
+import flashSaleRouter from './route/flashSale.route.js'
 
 dotenv.config()
 const app = express()
@@ -67,3 +68,4 @@ app.use('/api/favorite', favoriteRouter)
 app.use('/api/statistic', statisticRouter)
 app.use('/api/voucher', voucherRouter)
 app.use('/api/vnpay', vnpayRouter)
+app.use('/api/flashSale', flashSaleRouter)

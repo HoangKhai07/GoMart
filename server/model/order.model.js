@@ -8,25 +8,25 @@ const orderSchema = new mongoose.Schema({
 
     orderId: {
         type: String,
-        required:  [true, "provide orderId"],
+        required: [true, "provide orderId"],
         unique: true
     },
 
     productId: {
-       type: mongoose.Schema.ObjectId,
-       ref: "product"
+        type: mongoose.Schema.ObjectId,
+        ref: "product"
     },
 
-    product_details:{
+    product_details: {
         _id: String,
         name: String,
-        image: Array 
+        image: Array
     },
 
     paymentId: {
         type: String,
         default: ""
-    },  
+    },
 
     payment_status: {
         type: String,
@@ -58,6 +58,31 @@ const orderSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+
+
+    products: [{
+        productId: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'product'
+        },
+        quantity: {
+            type: Number
+        },
+        price: {
+            type: Number
+        },
+        
+        isFlashSale: {
+            type: Boolean,
+            default: false
+        },
+        
+        flashSaleId: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'flashSale',
+            default: null
+        }
+    }]
 
 }, {
     timestamps: true
