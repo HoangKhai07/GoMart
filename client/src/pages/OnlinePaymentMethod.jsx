@@ -93,19 +93,7 @@ function OnlinePaymentMethod() {
             <h2 className='text-2xl font-bold text-gray-800 mb-6 text-center'>Phương thức thanh toán</h2>
 
             <div className='space-y-4 justify-center items-center gap-2'>
-                {/* Credit Card */}
-                <div onClick={handleOnlinePayment} className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md'>
-                    <div className='flex items-center gap-4'>
-                        <img src={stripe} className='w-16 h-16 object-contain' alt="Visa" />
-                        <div className='flex-1'>
-                            <h3 className='font-medium text-gray-800'>Stripe</h3>
-                            <p className='text-sm text-gray-500'>Visa, MasterCard, JCB</p>
-                        </div>
-                        <div className='flex items-center gap-2'>
-                        </div>
-
-                    </div>
-                </div>
+               
 
                 {/* VNPay */}
                 <div onClick={handleVNPayPayment} className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md'>
@@ -114,6 +102,20 @@ function OnlinePaymentMethod() {
                         <div className='flex-1'>
                             <h3 className='font-medium text-gray-800'>Ví điện tử VNPay</h3>
                             <p className='text-sm text-gray-500'>Ví VNPay, Ngân hàng, Visa, Mastercard, JCB</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                 {/* Credit Card */}
+                 <div onClick={handleOnlinePayment} className='border rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md'>
+                    <div className='flex items-center gap-4'>
+                        <img src={stripe} className='w-16 h-16 object-contain' alt="Visa" />
+                        <div className='flex-1'>
+                            <h3 className='font-medium text-gray-800'>Stripe</h3>
+                            <p className='text-sm text-gray-500'>Visa, MasterCard, JCB</p>
+                        </div>
+                        <div className='flex items-center gap-2'>
                         </div>
 
                     </div>

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import { FaArrowLeft, FaStar } from 'react-icons/fa';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import SummaryApi from '../common/SummaryApi';
 import Axios from '../utils/Axios';
 import AxiosToastError from '../utils/AxiosToastError';
-import toast from 'react-hot-toast';
-import SummaryApi from '../common/SummaryApi';
-import { FaArrowLeft } from 'react-icons/fa';
 
 const ReviewProduct = () => {
   const { orderId, productId } = useParams();
@@ -57,8 +56,8 @@ const ReviewProduct = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-5 bg-white rounded-lg shadow-md p-6">
+    <div className="min-h-screen bg-white-50 py-8">
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
         <div>
           <button
             onClick={() => navigate(-1)}
