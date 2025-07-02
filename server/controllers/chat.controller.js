@@ -46,19 +46,19 @@ export const getMessagesController = async (req, res) => {
 
         const messages = await MessageModel.find({ chatId }).sort({ createdAt: -1 })
 
-        // Đánh dấu tin nhắn là đã đọc
+        // Mark messages as read
         await MessageModel.updateMany(
             { chatId, receiverId: userId, isRead: false },
             { isRead: true }
         )
 
-        // Cập nhật số tin nhắn chưa đọc
+        // Update unread message count
         await ChatModel.findByIdAndUpdate(
             chatId,
             { $set: { unreadCount: 0 } }
         )
 
-        // Thông báo cho người gửi biết tin nhắn đã được đọc
+        // Notify the sender that the message has been read
         const chat = await ChatModel.findById(chatId)
         if (chat) {
             const senderId = chat.participants.find(id => id.toString() !== userId.toString())
@@ -127,7 +127,7 @@ export const sendMessageController = async (req, res) => {
             chat: chat._id
         })
 
-        // Broadcast đến room riêng của user nếu họ không ở trong chat_room
+
         io.to(`user_${receiverId}`).emit('newMessage', {
             senderId,
             message: saveData,
@@ -210,19 +210,18 @@ export const markMessagesAsReadController = async (req, res) => {
         const { chatId } = req.params
         const userId = req.userId
 
-        // Đánh dấu tin nhắn đã đọc
         const result = await MessageModel.updateMany(
             { chatId, receiverId: userId, isRead: false },
             { isRead: true }
         )
 
-        // Reset số tin nhắn chưa đọc về 0
+      
         await ChatModel.findByIdAndUpdate(
             chatId,
             { $set: { unreadCount: 0 } }
         )
 
-        // Thông báo cho người gửi biết tin nhắn đã được đọc
+      
         if (result.modifiedCount > 0) {
             const chat = await ChatModel.findById(chatId)
             const receiverId = chat.participants.find(id => id.toString() !== userId.toString())

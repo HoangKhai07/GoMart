@@ -42,7 +42,7 @@ const flashSaleSchema = new mongoose.Schema({
         },
         flashSaleLimit: {
             type: Number,
-            default: 0 // 0 means no limit per user
+            default: 0 
         },
         soldCount: {
             type: Number,

@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from 'dotenv';
+import { searchProducts } from './productData.js';
 dotenv.config()
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -8,14 +9,87 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const processQuestion = async (question, projectData) => {
     try {
+        const productRelatedKeywords = [
+            'sản phẩm', 'hàng hóa', 'giá cả', 'đặc điểm', 'giá bao nhiêu', 
+            'còn hàng', 'tồn kho', 'mô tả', 'thương hiệu', 'nhãn hiệu',
+            'chi tiết', 'mua', 'bán', 'đặt hàng'
+        ];
+        
+        const isProductRelated = productRelatedKeywords.some(keyword => 
+            question.toLowerCase().includes(keyword.toLowerCase())
+        );
+        
+        let productInfo = "";
+        if (isProductRelated) {
+            const keywords = question
+                .toLowerCase()
+                .replace(/\b(sản phẩm|hàng hóa|giá cả|đặc điểm|giá bao nhiêu|còn hàng|tồn kho|mô tả|thương hiệu|nhãn hiệu|chi tiết|mua|bán|đặt hàng|có|không|là|và|hay|hoặc|với|của|từ|đến|trong|cho|cái|những|các|một|hai|ba|bốn|năm)\b/g, ' ')
+                .split(/\s+/)
+                .filter(word => word.length > 2);
+                
+            let matchedProducts = [];
+            for (const keyword of keywords) {
+                const products = searchProducts(keyword);
+                if (products.length > 0) {
+                    matchedProducts = [...matchedProducts, ...products];
+                }
+            }
+            
+            matchedProducts = Array.from(new Set(matchedProducts.map(p => p._id)))
+                .map(id => matchedProducts.find(p => p._id === id));
+            
+            matchedProducts = matchedProducts.slice(0, 5);
+            
+            if (matchedProducts.length > 0) {
+                productInfo = `
+                Thông tin sản phẩm liên quan đến câu hỏi:
+                ${matchedProducts.map(product => `
+                - Tên sản phẩm: ${product.name}
+                - Thương hiệu: ${product.brand || 'Không có thông tin'}
+                - Giá: ${product.price ? `${product.price.toLocaleString('vi-VN')} VND` : 'Không có thông tin'}
+                - Mô tả: ${product.description || 'Không có mô tả'}
+                - Số lượng tồn kho: ${product.stock !== undefined ? product.stock : 'Không có thông tin'}
+                ${product.discount ? `- Giảm giá: ${product.discount}%` : ''}
+                `).join('\n')}
+                `;
+            }
+        }
 
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
         
         const prompt = `Bạn là trợ lý AI của dự án Go Mart, một nền tảng thương mại điện tử.
         Dưới đây là thông tin về dự án: ${projectData}
-        Trả lời câu hỏi sau một cách ngắn gọn, đúng sự thật. 
-        Thêm các từ như bạn nhé, ạ,.. ở cuối câu để tạo cảm giác con người không bị máy móc quá.
-        Nếu câu hỏi không có trong những dữ liệu đã cung cấp cho bạn hãy dừng trả lời và trả về "TRANSFER_TO_ADMIN".
+        
+        ${productInfo ? `Đây là thông tin sản phẩm có liên quan:\n${productInfo}` : ''}
+        
+        HƯỚNG DẪN ĐỊNH DẠNG PHẢN HỒI:
+        - Mỗi sản phẩm hãy trình bày rõ ràng theo định dạng sau:
+
+        ---  
+        **🛒 TÊN SẢN PHẨM: [TÊN IN HOA]**  
+        • Thương hiệu: [Thương hiệu IN HOA]  
+        • Giá gốc: [Giá có dấu chấm ngăn cách hàng nghìn] VND  
+        • Giá khuyến mãi: [Giá khuyến mãi nếu có] VND (Giảm [xx]%)  
+        • Mô tả: [tóm tắt mô tả ngắn gọn]  
+        • Tồn kho: [Số lượng hoặc trạng thái]
+
+        ---  
+
+        - Nếu có nhiều sản phẩm thì trình bày tương tự, cách nhau bằng dòng kẻ ngang "---".
+        - Không dùng định dạng dấu **, __, hoặc * tràn lan. Chỉ cần viết rõ, dễ đọc.
+        - Cuối cùng nên gợi ý người dùng: "Bạn muốn đặt hàng sản phẩm nào ạ?" hoặc tương tự.
+        - Đối với giá cả:
+           + Hiển thị cả giá gốc (nếu có) và giá khuyến mãi
+           + Định dạng giá với dấu chấm phân cách hàng nghìn (VD: 200.000 VND)
+           + Nêu rõ phần trăm giảm giá nếu có
+        - Kết thúc với lời gợi ý mua hàng hoặc hành động tiếp theo.
+        - Giữ câu trả lời ngắn gọn, súc tích và trực quan.
+        - Trả lời câu hỏi sau một cách ngắn gọn, đúng sự thật.
+        - Trả lời bằng tiếng Việt, sử dụng ngôn ngữ tự nhiên, thân thiện và dễ hiểu.
+        - Tránh sử dụng các thuật ngữ kỹ thuật hoặc từ ngữ quá phức tạp. Trả lời ngắn gọn, súc tích, không dài
+        - Nếu câu hỏi liên quan đến sản phẩm cụ thể, hãy sử dụng thông tin sản phẩm đã cung cấp.
+        - Thêm các từ như bạn nhé, ạ,.. ở cuối câu để tạo cảm giác con người không bị máy móc quá.
+        Nếu câu hỏi không có trong những dữ liệu đã cung cấp cho bạn hoặc không có thông tin về sản phẩm cụ thể được tìm thấy, hãy dừng trả lời và trả về "TRANSFER_TO_ADMIN".
         Nếu bạn không biết câu trả lời, hãy trả về "TRANSFER_TO_ADMIN".
         
         Câu hỏi: ${question}`;
@@ -32,9 +106,9 @@ export const processQuestion = async (question, projectData) => {
         }
 
         return { 
-        success: true, 
-        message: answer
-       }
+            success: true, 
+            message: answer
+        }
     } catch (error) {
         console.error("Gemini API error:", error);
         return {

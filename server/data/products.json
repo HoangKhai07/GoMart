@@ -1,0 +1,4205 @@
+[{
+  "_id": {
+    "$oid": "6814279e5f540ed814f292ea"
+  },
+  "name": "Thùng 48 bịch sữa dinh dưỡng tiệt trùng có đường Vinamilk Happy Star 220ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151212/goMart/aj2a6er5mcnjeybikudp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151210/goMart/xqqj68dzbngj4byisk5f.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151211/goMart/vnd57b3cr3lwwq0jqnnr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151212/goMart/ycxjlcoh52nunehxsuym.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151210/goMart/onfe67bjmwluijd9tyv8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151211/goMart/iuyxarnda0hvak87a3us.jpg"
+  ],
+  "brand": "Vinamilk",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba33de21e4f6f9c9fdce0"
+    }
+  ],
+  "unit": "Thùng 48 bịch",
+  "price": 375000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Chế biến từ nguồn sữa tươi 100% chứa nhiều dưỡng chất như vitamin A, D3, canxi,... tốt cho xương và hệ miễn dịch. Sữa tươi Vinamilk là thương hiệu được tin dùng hàng đầu với chất lượng tuyệt vời. Thùng 48 bịch sữa dinh dưỡng tiệt trùng có đường Vinamilk Happy Star 220ml đóng thùng tiện dùng lâu dài",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:02:06.572Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:02:06.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681428385f540ed814f292fd"
+  },
+  "name": "Thùng 48 hộp sữa tươi tiệt trùng vị chuối Vinamilk giảm béo 180ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151461/goMart/hnttbkm3t9sozbdongmo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151467/goMart/zrxazkzeay9fxgtbxi6c.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151470/goMart/stvcsjzj8qbazalivxks.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151470/goMart/pasor6gd4htviqgj8ov0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151470/goMart/thah8ppfhhrm9zdlsyh3.jpg"
+  ],
+  "brand": "Vinamilk",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba33de21e4f6f9c9fdce0"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 325000,
+  "stock": 1000,
+  "discount": 15,
+  "description": "Thùng 48 hộp sữa tươi tiệt trùng vị chuối Vinamilk giảm béo 180ml được làm từ sữa tươi kết hợp cùng vị chuối thơm ngon, độc đáo. Sữa tươi Vinamilk giảm 25% hàm lượng chất béo, vẫn đảm bảo cung cấp đầy đủ dinh dưỡng hàng ngày cho cơ thể.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:04:40.232Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:42:02.483Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "681429015f540ed814f29310"
+  },
+  "name": "Thùng 24 bịch sữa dinh dưỡng ít đường Dutch Lady 180ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151666/goMart/toogbk3oxqlehsilchhu.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151674/goMart/vad1bkwh1zkbg6nzclj3.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151673/goMart/sqckbggbvzxdtcqnfii6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151674/goMart/az6sweuqzmuaeuxgmybs.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151674/goMart/hsatijxsbrx2qvmcrygr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151674/goMart/d3klqlvqo5h1ojshqnzb.jpg"
+  ],
+  "brand": "Dutch Lady",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba33de21e4f6f9c9fdce0"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 175000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sữa tươi Dutch Lady  sử dụng nguyên liệu là sữa tươi nguyên chất là nguồn bổ sung canxi và protein thiết yếu mỗi ngày cho bé, giúp bé khoẻ mạnh, cao lớn hơn. Thùng 24 bịch sữa tươi dinh dưỡng ít đường Dutch Lady 180ml ít đường, thơm ngon, uống không ngán.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:08:01.564Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:54.406Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "681429985f540ed814f29323"
+  },
+  "name": "Thùng 48 hộp sữa tươi tiệt trùng ít đường Vinamilk 100% Sữa tươi 180ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151830/goMart/zrikitoq9vi6gw8ywil0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151829/goMart/ahaqn8j5dgmocpzqnszm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151830/goMart/f30hqfgp4ldvo9w5nhog.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151829/goMart/zagqtawwowdgpnl0iwby.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151829/goMart/usjmnrvr2wkp5rbyoe0r.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151829/goMart/klyvz1q9nq27luylfehc.jpg"
+  ],
+  "brand": "Vinamilk",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba33de21e4f6f9c9fdce0"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 353000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Được chế biến từ nguồn sữa tươi 100% chứa nhiều dưỡng chất như vitamin A, D3, canxi,... tốt cho xương và hệ miễn dịch, sữa tươi Vinamilk là thương hiệu được tin dùng hàng đầu với chất lượng tuyệt vời. Thùng 48 hộp sữa tươi tiệt trùng ít đường Vinamilk 100% Sữa Tươi 180ml thơm ngon tiện lợi.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:10:32.776Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:49.417Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142a505f540ed814f29378"
+  },
+  "name": "Thùng 48 hộp sữa tươi tiệt trùng ít đường TH true MILK 180ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151989/goMart/qivkwbmajgzl3zj7ik0v.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151997/goMart/ctertig5a4ooe53ltybf.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151997/goMart/tfujkkmzwg5fvyviseuk.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746151997/goMart/ov2kgdeaos49zjpwl0pa.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152003/goMart/js1edkwl1w8javxrwbvl.jpg"
+  ],
+  "brand": "TH true MILK",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba33de21e4f6f9c9fdce0"
+    }
+  ],
+  "unit": "Thùng ",
+  "price": 420000,
+  "stock": 1000,
+  "discount": 15,
+  "description": "Sữa tươi TH True Milk đảm bảo không sử dụng thêm hương liệu, mang vị ngon sữa tươi nguyên chất 100%, chứa nhiều vitamin và khoáng chất như Vitamin A, D, B1, B2, canxi, kẽm. Thùng 48 hộp sữa tươi tiệt trùng ít đường TH true MILK 180ml đóng thùng tiện lợi, tiết kiệm.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:13:36.904Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:44.121Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142af55f540ed814f2938d"
+  },
+  "name": "Thùng 48 hộp Sữa lúa mạch vị socola Ovaltine bổ sung canxi",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152177/goMart/ellohvcm1aza1s3d7cnp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152177/goMart/uaqlfplcjag14w5agx1w.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152175/goMart/gkesyyshskddagds1s03.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152176/goMart/jkyv1ufgcbfos2mu83as.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152175/goMart/gcppzbgv9ow6beywujvj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152176/goMart/kbrbc9raw8amxcy6seua.jpg"
+  ],
+  "brand": "Ovaltine",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba366e21e4f6f9c9fdce4"
+    }
+  ],
+  "unit": "Thùng ",
+  "price": 315000,
+  "stock": 1000,
+  "discount": 20,
+  "description": "Thùng 48 hộp sữa lúa mạch vị socola Ovaltine bổ sung canxi 180ml không chỉ có hương vị thơm ngon mà còn chứa gấp đôi canxi, phát triển xương khớp khỏe mạnh. Sữa lúa mạch Ovaltine là nhãn hiệu sữa lúa mạch giúp cung cấp năng lượng cùng nhiều vitamin và khoáng chất tốt cho cơ thể.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:16:21.919Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:37.983Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142ba35f540ed814f293b6"
+  },
+  "name": "Thùng 48 hộp sữa lúa mạch Milo 110ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152342/goMart/esvpnrkbmzdpyauglxku.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152343/goMart/ex7dpqkyhuzmjxbck8k1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152343/goMart/m2srhv5g45aktdvpjgod.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152343/goMart/a8ax5dq1vhuafm2p9v9d.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152344/goMart/cd7epn11k9nvjsgdbbco.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152343/goMart/yxm3ealkwdj2bjmseceo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152343/goMart/g9vb1uf9hagonyzee4l6.jpg"
+  ],
+  "brand": "Milo",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba366e21e4f6f9c9fdce4"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 230000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sản phẩm thức uống lúa mạch thơm ngon, giàu canxi và protein cho cơ thể phát triển. Vì vậy, sữa lúa mạch Milo rất được các bé yêu thích và ưa chuộng. Thùng 48 hộp thức uống sữa lúa mạch Milo hộp 110ml đóng thùng  tiện lợi, phù hợp sử dụng lâu dài và cung cấp dinh dưỡng cho sinh hoạt hằng ngày.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:19:15.730Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:27.809Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142c285f540ed814f293c9"
+  },
+  "name": "Thùng 48 hộp Sữa tươi lúa mạch Nuvi vị cacao 180ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152486/goMart/wxhhzc69jev6cb4rco2b.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152486/goMart/qtpb5fgcq8flu80dbhsi.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152485/goMart/q7z8nqptisxpzjgg4fi1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152487/goMart/w4qhdklyucu8ab8ztxji.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152486/goMart/zkfejbyrzya4oblxgmxb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152486/goMart/ewvcve0fla827jgmantu.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152485/goMart/y7xrfg5e7ujiapg5maml.jpg"
+  ],
+  "brand": "Nuvi",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba366e21e4f6f9c9fdce4"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 270000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Thùng 48 hộp sữa tươi lúa mạch Nuvi vị cacao 180ml hương vị sữa cacao lúa mạch tươi ngon, cung cấp nguồn dinh dưỡng vượt trội. Sữa lúa mạch cacao Nuvi hỗ trợ phát triển não bộ, giúp xương chắc khỏe, cho bé cao lớn và mắt sáng hơn.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:21:28.336Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:17.849Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142ddc5f540ed814f29467"
+  },
+  "name": "Kem đặc có đường Ngôi sao Phương Nam Xanh lá hộp 380g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152906/goMart/f4xfdhtb88w8mnuqb9tj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152907/goMart/xn75vfkv0qyxtjrkgvld.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152905/goMart/auogdbycqxbplizibvjd.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152906/goMart/jreyvirbua8zrxwfcna6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152906/goMart/h7tlqnbgcqzpok8do7h4.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152921/goMart/ggsf4u3j1wwhghdy1nbp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746152925/goMart/rfmqwmpapvavyp2pbu6o.jpg"
+  ],
+  "brand": "Ngôi sao Phương Nam",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba378e21e4f6f9c9fdce8"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 21000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Sữa đặc Ngôi sao Phương Nam xanh lá đậm đà đặc sánh, mang lại hương vị hài hòa, thơm béo. Sữa đặc là nguồn nguyên liệu lý tưởng dùng để pha sữa, chấm bánh mì,.. thơm ngon tuyệt vời. Kem đặc có đường Ngôi sao Phương Nam xanh lá hộp 380g ngọt và béo nhất so với các sản phẩm cùng loại.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:28:44.343Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:11.606Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142f435f540ed814f2947a"
+  },
+  "name": "Sữa đặc có đường Ông Thọ Trắng nhãn vàng lon 380g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153278/goMart/el3chxdixgq6guz1rsox.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153278/goMart/frv6snkrlbtsqbh5z3kp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153279/goMart/bap1cpktc8j4fp1ttkv8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153278/goMart/hpreeowxa4c6bi6kra3e.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153278/goMart/rjur3rahkdyj51tm59u2.jpg"
+  ],
+  "brand": "VinaMilk",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba378e21e4f6f9c9fdce8"
+    }
+  ],
+  "unit": "Lon",
+  "price": 34000,
+  "stock": 10000,
+  "discount": 2,
+  "description": "Sữa đặc Ông Thọ với vị thơm ngon, sánh đặc, là bí quyết giúp mẹ có những món ăn ngon, chăm sóc cho cả gia đình. Sữa đặc có đường Ông Thọ trắng nhãn vàng lon 380g có độ đạm cao, pha sữa có độ thơm và đậm vị sữa. Sữa đặc còn có thể dùng chấm bánh mì, pha cà phê đều được.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:34:43.704Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:41:05.294Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "68142fbc5f540ed814f2948d"
+  },
+  "name": "Sữa đặc có đường Dutch Lady Nguyên kem lon 380g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153403/goMart/tweksn5chg4isovguvd0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153402/goMart/d7fk3th0vvw8lncxun61.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153402/goMart/vi97v4reqivpc9r9pb1h.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153402/goMart/nhyo4l4kx3k9wxqyi3t8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746153401/goMart/u5oe3uqhrnd4ax8f8nsf.jpg"
+  ],
+  "brand": " Dutch Lady",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba378e21e4f6f9c9fdce8"
+    }
+  ],
+  "unit": "Lon",
+  "price": 35000,
+  "stock": 10000,
+  "discount": null,
+  "description": "Sữa đặc Dutch Lady giúp món ăn được tăng thêm vị ngon. Mỗi giọt sữa đặc giúp món ăn dậy mùi, béo, ngon không cưỡng được. Sữa đặc có đường Dutch Lady Nguyên kem lon 380g đóng lon dễ bảo quản, phù hợp pha cà phê, sữa uống và nhiều món ăn khác nhau.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T02:36:44.991Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T02:40:58.739Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "681458e15a6adfcadae526b2"
+  },
+  "name": "Thùng 24 túi sữa chua uống tiệt trùng hương cam Lof Kun 110ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163936/goMart/fjy7m4tqa7ntrt7xe3jm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163936/goMart/p2yqkm273c5suxtlkr1p.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163936/goMart/hpmhjgr8edh8ixxvq22k.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163935/goMart/a0dnyajx63fstkay7fzi.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163936/goMart/kx0b065pjtjndcndza0w.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746163935/goMart/ee1rztehz53qywexanrk.jpg"
+  ],
+  "brand": "Kun",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba38ee21e4f6f9c9fdcec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 126000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sữa chua uống cũng cung cấp rất nhiều dinh dưỡng cho bé yêu. Sữa chua uống Lof Kun với hương vị thơm ngon từ trái cây, bổ sung cho bé vitamin A, D3, K2 và canxi, cho bé luôn phát triển toàn diện. Thùng 24 túi sữa chua uống hương cam Lof Kun 110ml hương cam chua ngọt, thơm ngon.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:32:17.164Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:32:17.164Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681459b55a6adfcadae526bd"
+  },
+  "name": "Thùng 48 hộp sữa chua uống hương cam YoMost 170ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164103/goMart/aqwjeabwdplquhkjtywk.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164103/goMart/kjsb1gvtq2obcdgru6yl.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164106/goMart/kjz2ochg8huomgwl5msm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164104/goMart/gypbehlcr5ukj0fbz19t.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164104/goMart/uusw9fvfj6fuodbkxmb8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164103/goMart/warpj3nknetkecvzox3k.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164103/goMart/zazshdqdqubjdt78nqy9.jpg"
+  ],
+  "brand": "YoMost",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba38ee21e4f6f9c9fdcec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 343000,
+  "stock": 1000,
+  "discount": 15,
+  "description": "Thương hiệu sữa chua Yomost mang đến những dòng sản phẩm được làm từ sữa chua lên men tự nhiên, kết hợp với trái cây thơm ngon, cung cấp nhiều loại dinh dưỡng cần thiết và protein cho cơ thể. Thùng 48 hộp sữa chua uống hương cam YoMost 170ml đóng thùng tiện lợi và có hương cam thơm lừng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:35:49.310Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:35:49.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145ac95a6adfcadae526d0"
+  },
+  "name": "Thùng 28 gói sữa chua uống tổ yến Nestlé Gấu 75ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/awuk9nphtpqrmwwzi3jq.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/wrwji4ihpdhjdj4ikrh1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/h93mhktcgtqr2eafrfrt.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/r55ves0pxydafphcilva.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/r1ghsx1qlo2et1i43ot4.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164420/goMart/ukhnhgrdc6rbc41db6wu.jpg"
+  ],
+  "brand": "Nestlé",
+  "category": [
+    {
+      "$oid": "67bbe61b8c971820b190470e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cba38ee21e4f6f9c9fdcec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 200000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sản phẩm sữa chua dinh dưỡng của thương hiệu sữa chua Nestle dồi dào dinh dưỡng tốt giúp cơ thể phát triển khoẻ mạnh. Thùng 28 gói sữa chua uống tổ yến Nestlé Gấu 75ml thơm ngon, tiện lợi, mua với giá tiết kiệm phù hợp sử dụng lâu dài và cung cấp dinh dưỡng hằng ngày với dưỡng chất tổ yến.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:40:25.322Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:40:25.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145c3e5a6adfcadae5275b"
+  },
+  "name": "Chuối già giống Nam Mỹ kg (trái từ 120-220g)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164748/goMart/mfreyhxtntx8vhzodi5z.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164757/goMart/fnvrmk5slhdnmkhboiak.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164775/goMart/zcu3esb25vjubkqpzpzw.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164794/goMart/bm6fdpseed1tunsftayg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164794/goMart/khukhqverp4qlkkdrnyg.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c5c3a19f6dc9843ebb8929"
+    }
+  ],
+  "unit": "Kg",
+  "price": 22000,
+  "stock": 100,
+  "discount": 5,
+  "description": "Hàng tươi ngon, không dập nát: Chuối được tuyển chọn kỹ lưỡng, đảm bảo độ chín vừa, không bị thâm vỏ hay trầy xước.\nNguồn gốc rõ ràng, đầy đủ thông tin số lượng và khối lượng: Giúp người tiêu dùng yên tâm về chất lượng và độ an toàn.\nGiao hàng nhanh chóng, tiện lợi: Đặt mua online dễ dàng, giao tận nơi chỉ trong vài giờ.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:46:38.083Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:46:38.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145d075a6adfcadae52776"
+  },
+  "name": "Quýt giống Úc trái từ 120g trở lên",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164988/goMart/ik4lpnx0ibassu0jcmdm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164989/goMart/cr0gca5tpqrcowap76df.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164989/goMart/rhufqrdxpfhzbmcii4lv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746164989/goMart/pckr4xgxjugstfvuugmb.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c5c3a19f6dc9843ebb8929"
+    }
+  ],
+  "unit": "Kg",
+  "price": 39000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Quýt giống Úc tươi ngon, chất lượng, ngọt thanh. Quýt giống Úc được xem như là loại quýt ngon nhất thế giới. Quýt giống Úc có màu vàng ươm, quả hơi đẹp, trên vỏ quýt có các đốm tinh dầu to bóng. Các tép quýt mọng nước, có vị ngọt.\nQuýt  giống Úc đảm bảo nguồn gốc rõ ràng.\nĐặt giao hàng nhanh\n\n",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:49:59.088Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:49:59.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145dbb5a6adfcadae52789"
+  },
+  "name": "Xoài keo 1kg (trái từ 300g)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165141/goMart/xbfammz8hoguzvm5eqtv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165150/goMart/gxdwvkatfz6grozda3sy.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165150/goMart/sbltg6nitfyoyh27bo1e.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165150/goMart/voirjqbckdwjhiucxexx.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165150/goMart/o69dtl01pjma2yrnjd6c.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c5c3a19f6dc9843ebb8929"
+    }
+  ],
+  "unit": "Kg",
+  "price": 24000,
+  "stock": 1000,
+  "discount": 5,
+  "description": "Hàng đảm bảo tươi ngon, không dập: Xoài keo luôn được lựa chọn kỹ càng, đảm bảo tươi ngon và không bị dập nát. Quá trình kiểm tra chất lượng được thực hiện nghiêm ngặt, mang lại sản phẩm hoàn hảo nhất cho người tiêu dùng.\nĐảm bảo nguồn gốc xuất xứ, số lượng, khối lượng: Mỗi quả xoài keo tại GoMart đều có nguồn gốc rõ ràng từ những vùng trồng xoài uy tín. Cam kết cung cấp đúng số lượng và khối lượng theo niêm yết, mang đến sự minh bạch và tin cậy cho khách hàng.\nĐặt giao hàng nhanh: Chỉ cần vài cú click trên website hoặc ứng dụng để đặt mua xoài keo và nhận hàng tận nơi trong thời gian nhanh chóng, tiết kiệm thời gian và công sức.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:52:59.176Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:52:59.176Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145e5f5a6adfcadae527b2"
+  },
+  "name": "Ổi Đài Loan 1kg (trái từ 220g)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165333/goMart/ypkkvfkviczyhyksmmww.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165342/goMart/ndxwztoqmowsxdmjq8gu.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165342/goMart/tyztcmtivgyamhovxuqy.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165342/goMart/asewq3a5wybbtctstshv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165342/goMart/j4f8ow266ndzsudhlz7d.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165343/goMart/mfzs7nqi18m6qc34pysw.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165342/goMart/gk8u428e8pdsmuh8irat.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c5c3a19f6dc9843ebb8929"
+    }
+  ],
+  "unit": "Kg",
+  "price": 22000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Nghe tên thì bạn cũng đã biết xuất xứ của loài ổi này rồi đúng không nào. Ổi Đài Loan là một giống ổi vừa du nhập vào nước ta vài năm trở lại đây và mang nhiều ưu điểm nổi trội hơn so với những giống trái cây nội địa hiện có như quả to sáng bóng ăn rất giòn và ngọt đặc biệt là rất ít hạt. Giống ổi này có vị ngọt man mát, hơi xốp, giòn, thơm nhè nhẹ, ăn rất là thích thú.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:55:43.380Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:55:43.380Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145efb5a6adfcadae527c5"
+  },
+  "name": "Dưa lưới tròn ruột cam trái 1kg (1 trái)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165465/goMart/cc8oi40qgh7swgosapjl.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165475/goMart/hcci355yqqn9dlh0h4xj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165475/goMart/upvgkjmrcr2kquehv1ut.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165477/goMart/qufitemsopvpqpvj5arg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165478/goMart/gbp1qmavudrw2sr0ajb3.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c5c3a19f6dc9843ebb8929"
+    }
+  ],
+  "unit": "Kg",
+  "price": 65000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Trái tươi giòn, không dập nát: tuyển chọn dưa lưới đạt chuẩn, lớp vỏ còn nguyên vẹn, thịt chắc và không bị mềm úng.\nNguồn gốc rõ ràng, trọng lượng chính xác: Mỗi trái dưa đều có thông tin xuất xứ rõ ràng, đầy đủ về khối lượng và số lượng sản phẩm.\nĐặt hàng dễ dàng, giao nhanh tại nhà: Chỉ cần vài cú nhấp chuột trên website hoặc ứng dụng, dưa lưới sẽ được giao tận nơi trong thời gian ngắn.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T05:58:19.175Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T05:58:19.175Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68145fd05a6adfcadae527e8"
+  },
+  "name": "Cải bẹ dún tươi bó sẵn",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165681/goMart/lu4a3xjtqevnqqkyirft.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165682/goMart/bcjkj3dnxh5enkrqqfph.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165684/goMart/zsxulg4olcgtz4b28b0s.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165684/goMart/ihzhqbguue8fltjrj5fs.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165686/goMart/lcqdvx8mrdvvvpdxqj6u.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165686/goMart/e9hm1xf7rdg0w8dmt9w1.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a10b9ff057c8713d328"
+    }
+  ],
+  "unit": "400g",
+  "price": 8000,
+  "stock": 100,
+  "discount": null,
+  "description": "Hàng đảm bảo tươi ngon, không dập nát: Cải được chọn lọc kỹ, lá xanh mướt, giòn, không úa vàng hay hư hỏng.\nĐảm bảo nguồn gốc xuất xứ rõ ràng: Cam kết thông tin minh bạch về nơi trồng, số lượng và khối lượng sản phẩm.\nĐặt hàng và giao nhanh: Bạn có thể đặt online và nhận rau tươi trong ngày, tiện lợi và tiết kiệm thời gian.\nGiá cạnh tranh: Giá luôn ổn định và phù hợp với chất lượng sản phẩm.\nRau được đóng gói sẵn: Giúp bảo quản tốt hơn, giữ được độ tươi đến cuối ngày và dùng trong vòng 2 ngày nếu bảo quản trong tủ lạnh.\nKhông hài lòng – Được đổi trả: Chính sách hỗ trợ đổi trả linh hoạt, an tâm khi mua sắm.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:01:52.741Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-06T07:21:09.469Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "6814605f5a6adfcadae52803"
+  },
+  "name": "Rau muống hạt 400g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165837/goMart/nxd3vvtpzazupcfecxvp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165840/goMart/wkf0zndrhvdzoctfkink.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165842/goMart/ocsuum0tovqsmwn0wzwq.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165842/goMart/tmffaxv1twaml9qdtv2t.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746165842/goMart/a662stgffhtmbnytwaq7.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a10b9ff057c8713d328"
+    }
+  ],
+  "unit": "400g",
+  "price": 10000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Hàng đảm bảo tươi ngon, không dập nát, được chọn lọc kỹ càng từ nguồn cung uy tín.\nCam kết rõ ràng về nguồn gốc xuất xứ, đảm bảo đúng số lượng và khối lượng như mô tả.\nDịch vụ đặt hàng nhanh chóng, tiện lợi qua website và ứng dụng, giao hàng tận nơi đúng giờ.\nGiá cả cạnh tranh, thường xuyên có chương trình khuyến mãi hấp dẫn.\nRau được sơ chế và đóng gói sẵn tiện lợi, giữ độ tươi đến cuối ngày và có thể bảo quản trong tủ lạnh dùng trong vòng 2 ngày.\nChính sách đổi trả minh bạch, nếu không hài lòng có thể yêu cầu đổi trả dễ dàng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:04:15.733Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:04:15.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681461045a6adfcadae52816"
+  },
+  "name": "Chanh không hạt 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166000/goMart/fgpcvz6r277rbd8fenri.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166005/goMart/ihyfc3anrvfam4vedjxg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166007/goMart/tabtyqt72jfag7ifchui.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166007/goMart/yp8b5aqrzxxwmk4jm5n1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166007/goMart/tynai5o3vpnencvsx7bf.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a10b9ff057c8713d328"
+    }
+  ],
+  "unit": "500g",
+  "price": 17000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Chanh tươi, to trái, chất lượng, mọng nước và đặc biệt là chanh không có hạt. Chanh chất lượng, không bị hư.\nChanh được đảm bảo nguồn gốc xuất xứ rõ ràng\nĐặt giao hàng nhanh.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:07:00.033Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:07:00.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681461e55a6adfcadae52829"
+  },
+  "name": "Nấm kim châm Thái Lan 150g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166190/goMart/bf9vcjuhghw0a9ochbdg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166206/goMart/l8rgxznxrdnrq5ddrygx.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166207/goMart/jxl3v56qgcsqm9vuvybj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166208/goMart/xwkleq4kp75y2jgtx8j0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166207/goMart/rmut9i7xfzmdpz1vedl6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166215/goMart/xmagyws9vbqgjowvxbxz.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166213/goMart/t3tiivffawh0x8qh3xoa.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a34b9ff057c8713d32c"
+    }
+  ],
+  "unit": "150g",
+  "price": 11000,
+  "stock": 998,
+  "discount": null,
+  "description": "Nấm kim châm tươi ngon, chất lượng, sợi nấm nhỏ, dài nhỏ màu trắng. Nấm dai ngon, giòn và khá ngọt. Nấm được đóng gói cẩn thận, tiện lợi.\nNấm được đảm bảo nguồn gốc xuất xứ rõ ràng tại Thái Lan, đóng gói 150g, không bị dập\nHàng đảm bảo tươi ngon, không dập \nĐảm bảo nguồn gốc xuất xứ, số lượng, khối lượng \nĐặt giao hàng nhanh",
+  "more_details": {
+    "Ưu đãi": "Combo 3 gói chỉ 25.000đ"
+  },
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:10:45.121Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:10:45.121Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6814628d5a6adfcadae5285b"
+  },
+  "name": "Nấm đùi gà baby Hàn Quốc 200g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166396/goMart/tmkh2yiekeyk5i30ozbg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166400/goMart/a8pmeuxrfabqnxybzqdq.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166403/goMart/wxqgpvgdmlwr9qroiqgc.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166403/goMart/wjlywdgmnxvzi6knnnvg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166403/goMart/aypccojatzocwl5vnuky.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166407/goMart/buv0f9h9gajgqyfa5xwk.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a34b9ff057c8713d32c"
+    }
+  ],
+  "unit": "200g",
+  "price": 33000,
+  "stock": 10000,
+  "discount": 10,
+  "description": "Nấm được đảm bảo tươi ngon, chất lượng và không bị dập úng \nNấm đùi gà baby là loại nấm thuộc họ bào ngư, nấm có thân dày, màu trắng. Nấm nhỏ, rất dai, ngon, giòn và ngọt. Nấm đảm bảo chất lượng tươi ngon, không bị úng, dập hư.\nĐảm bảo nguồn gốc xuất xứ, khối lượng, số lượng\nĐặt giao hàng nhanh \nNấm được đảm bảo nguồn gốc xuất xứ rõ ràng, an toàn cho người sử dụng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:13:33.947Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:13:33.947Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681463185a6adfcadae5285e"
+  },
+  "name": "Nấm bào ngư xám 300g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166524/goMart/b3axndvaattiovvkesoo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166527/goMart/xgdoraq8flutlngnrzzo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166529/goMart/hfi1ga3rmwr18gfphvw6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166530/goMart/brpo1vwzi5dijosohvzp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166531/goMart/dgbx41wbhp4mrbyophcv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166531/goMart/ggmbxqeyuquoxnjyetvk.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a34b9ff057c8713d32c"
+    }
+  ],
+  "unit": "300g",
+  "price": 25000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Nấm bào ngư có dạng phễu lệch, phiến nấm mang bào tử kéo dài xuống đến chân, cuống nấm gần gốc có lớp lông nhỏ mịn, có màu xám nhẹ. Nấm bào ngư tươi ngon, chất lượng, không bị dập.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:15:52.862Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:15:52.862Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681463c75a6adfcadae5288b"
+  },
+  "name": "Rau quả hỗn hợp đông lạnh SG Food gói 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166718/goMart/hwk2zsmtgwtvhedje1tf.png",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166717/goMart/bp0ch6ron9dge5mif2ax.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166717/goMart/rtlrbgmpsa5rs76kipcc.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166717/goMart/j4rfbmtgoyrdpccddmyu.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166718/goMart/flyjgbrjjs49fzcudr2q.jpg"
+  ],
+  "brand": " SG Food",
+  "category": [
+    {
+      "$oid": "67bbe6e98c971820b1904712"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a4ab9ff057c8713d330"
+    }
+  ],
+  "unit": "Gói",
+  "price": 45000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Rau củ đông lạnh là những sản phẩm thiết yếu trong gian bếp cho mỗi gia đình trong thời đại ngày nay. Rau hỗn hợp SG Food gói 500g đến từ rau củ đông lạnh SG Food có thể dùng để chế biến thành nhiều món ăn như cơm chiên, rau củ xào,... một cách nhanh chóng. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:18:47.048Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:18:47.048Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6814646f5a6adfcadae5289e"
+  },
+  "name": "Bột giặt OMO Comfort tinh dầu thơm nồng nàn túi 5.1kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166807/goMart/temwywbf5wmmlrabvs0g.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166814/goMart/qnaxv3k0xf25cscnhmrc.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166813/goMart/z4fsxhbe4byp0mh8sjff.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166813/goMart/wtezjp84xf6ifkdmw8t3.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746166816/goMart/tognpc2vwwkbvi9quwtg.jpg"
+  ],
+  "brand": "OMO",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141ba25f540ed814f29176"
+    }
+  ],
+  "unit": "Túi",
+  "price": 235000,
+  "stock": 1000,
+  "discount": 20,
+  "description": "Xoáy bay vết bẩn cứng đầu, lưu lại hương thơm bền lâu trên quần áo như được dùng với nước xả. Bột giặt OMO là thương hiệu bột giặt luôn được các chị em tin dùng hàng đầu vì an toàn cho da. Bột giặt OMO Comfort hương tinh dầu thơm 5.1kg túi lớn tiết kiệm, tiện dùng lâu dài",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:21:35.168Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:21:35.168Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6814651d5a6adfcadae528b2"
+  },
+  "name": "Bột giặt Surf nước hoa quyến rũ trắng sạch ngát hương túi 5.3kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167044/goMart/tqklwgl1burllgaqhlrd.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167048/goMart/gjt14xsngpiyfbyey9kv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167046/goMart/uyqc5dcjnuyfshdqjkfn.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167048/goMart/nptt7pbacjnlnl6q6cdf.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167048/goMart/dmo3eqv9cmms1cpsglh0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167048/goMart/pntlsqv4a3xidlzsmimg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167048/goMart/brafj0z4rthalbcianys.jpg"
+  ],
+  "brand": "Surf",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141ba25f540ed814f29176"
+    }
+  ],
+  "unit": "Túi",
+  "price": 197000,
+  "stock": 100,
+  "discount": 29,
+  "description": "Với công nghệ tinh chế hương thơm từ Pháp giúp hương thơm thấm sâu vào từng sợi vải, lan tỏa mùi hương quyến rũ. Bột giặt Surf là thương hiệu bột giặt rất được ưa chuộng vì an toàn cho làn da khi sử dụng. Bột giặt Surf hương nước hoa quyến rũ 5.3kg túi lớn, tiết kiệm, dùng được lâu dài.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:24:29.352Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:24:29.352Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681465da5a6adfcadae528c5"
+  },
+  "name": "Bột giặt IZI HOME trắng ngát hương túi 3kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167253/goMart/z7qreuo4opjrzl3npmz5.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167252/goMart/iqaem9poogbntbc27j9z.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167252/goMart/ksp6dvn2wr992gqbapi6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167252/goMart/vzksu45inggey80y3szo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167253/goMart/c1e7xrjme9bdxvnc1ozu.jpg"
+  ],
+  "brand": " IZI HOME",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141ba25f540ed814f29176"
+    }
+  ],
+  "unit": "Túi",
+  "price": 85000,
+  "stock": 1000,
+  "discount": 19,
+  "description": "Bột giặt IZI HOME là một trong những thương hiệu bột giặt được người tiêu dùng sử dụng phổ biến hiện nay, thích hợp cho cả giặt tay lẫn giặt máy. Bột giặt IZI HOME trắng ngát hương 3kg giúp quần áo trắng sạch, ngát hương thơm.  ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:27:38.340Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:27:38.340Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681466515a6adfcadae528c8"
+  },
+  "name": "Bột giặt nhiệt Aba sạch tinh tươm túi 770g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167372/goMart/hxgtxvs1tjvsf0armlyv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167373/goMart/hxjgqo7m7ojs4fjnksag.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167373/goMart/hjzs6vwenqgjcpflaey0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167373/goMart/pklgdzlqynnpnslts1el.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167373/goMart/y9gdhn18t1x34mrqnsmd.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167373/goMart/eseb2wddkpzambamvper.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167372/goMart/c7nw7l3jfsagt1kso3zb.jpg"
+  ],
+  "brand": "Aba",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141ba25f540ed814f29176"
+    }
+  ],
+  "unit": "Túi",
+  "price": 38000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Là dòng bột giặt nhiệt, với công thức Thermoactiva ưu việt, cô lập, giặt sạch mọi vết bẩn cứng đầu nhất trên quần áo. Bột giặt Aba chống bám tối ưu với thành phần dẫn chất cellulose giữ màu quần áo như mới. Bột giặt nhiệt Aba sạch tinh tươm 770g sự lựa chọn sáng suốt của chị em nội trợ.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:29:37.732Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:29:37.732Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681466c95a6adfcadae528f1"
+  },
+  "name": "Bột giặt Ariel Sạch hoàn hảo - Khử mùi hôi hương Downy đam mê túi 620g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167491/goMart/gnfbhrz8gdhsalgkyzu4.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167491/goMart/m1ietcfbzvdfa3swmmt7.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167492/goMart/jg4uvbpeomzvhtqkhevl.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167492/goMart/aqqtldox0lbzwjqi78tx.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167492/goMart/dxzgukltkilune9eekp8.jpg"
+  ],
+  "brand": "Arie",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141ba25f540ed814f29176"
+    }
+  ],
+  "unit": "Túi",
+  "price": 38000,
+  "stock": 1000,
+  "discount": 19,
+  "description": "Là bột giặt giúp loại bỏ các vết bẩn cứng đầu chỉ trong 1 bước ngay cả những vết bẩn khó giặt như dầu xe, vết dính trái cây, vết bẩn ở cổ áo, cổ tay áo... Bột giặt Ariel nay bổ sung hương Downy đam mê, giúp quần áo thớm thật lâu. Bột giặt Ariel hương Downy đam mê 620g bột giặt tin dùng của mọi nhà.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:31:37.213Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:31:37.213Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681467545a6adfcadae52904"
+  },
+  "name": "Nước giặt OMO Matic Comfort cửa trên tinh dầu nước hoa tinh tế túi 2.1kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167627/goMart/ratng2xkeladvllhandp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167628/goMart/yw6e6ehbnwtfa5jdrkne.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167627/goMart/wuxszg0mafos7omw1gxw.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167627/goMart/h3ujvdhcnxn0xjfjct4i.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167628/goMart/oerjdycgq2coy8kr4sio.jpg"
+  ],
+  "brand": "OMO",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141bbe5f540ed814f2917a"
+    }
+  ],
+  "unit": "Túi",
+  "price": 105000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Nước giặt OMO Matic Comfort cửa trên hương tinh dầu nước hoa tinh tế túi 2.1kg mang lại hương thơm sang trọng suốt ngày dài, là dòng nước giặt chuyên dụng dành cho máy giặt cửa trên. Nước giặt OMO tinh dầu nước hoa tinh tế giúp quần áo thơm mát, dễ chịu kéo dài đến 72 giờ sau khi giặt.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:33:56.093Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:33:56.093Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681467de5a6adfcadae52917"
+  },
+  "name": "Nước xả vải Comfort đậm đặc hương nước hoa thiên nhiên diệu kỳ túi 3.1 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167770/goMart/igaqesbye4unyjxfddco.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167771/goMart/pgrd1v3hsjq3fjgg4byr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167771/goMart/sklni2wqcmelcnrpekbn.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167771/goMart/ntsfssgf716m1zl0fnpc.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167771/goMart/k5scdtvallgecpgrilyr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167770/goMart/avd0glqwvknkew3erz8u.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746167771/goMart/gcltaexujfnwu78rp9ax.jpg"
+  ],
+  "brand": "Comfort",
+  "category": [
+    {
+      "$oid": "67bbe70d8c971820b1904716"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141bd65f540ed814f2917e"
+    }
+  ],
+  "unit": "Túi",
+  "price": 239000,
+  "stock": 1000,
+  "discount": 19,
+  "description": "Là một thương hiệu nước xả vải rất được lòng các chị em nội trợ, nước xả Comfort giúp làm mềm vải hiệu quả, an toàn cho da và công thức xả đậm đặc tiết kiệm hơn rất nhiều. Nước xả vải Comfort hương nước hoa thiên nhiên diệu kỳ túi 3.1 lít hương nước hoa thơm lừng giúp bạn thoải mái tự tin cả ngày  ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:36:14.630Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:36:14.630Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681468e85a6adfcadae52956"
+  },
+  "name": "Dầu gội Clear 9 thảo dược cổ truyền làm sạch gàu giảm gãy rụng 330ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168012/goMart/la0mjavozyxncklflmeh.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168025/goMart/ncg1polerng8d2dkraw9.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168025/goMart/s59lagplzg2av5f4h9n1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168025/goMart/rdnklphqvsbqm74l0cj6.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168026/goMart/sekz5nfmuyebvy3j4aht.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168026/goMart/akjfnxcimiojmlbypvum.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168025/goMart/ouqtuhuejtwh03ufhd9f.jpg"
+  ],
+  "brand": "Clear",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cdb27418e220a0e0c292cf"
+    }
+  ],
+  "unit": "Chai",
+  "price": 135000,
+  "stock": 1000,
+  "discount": 37,
+  "description": "Dầu gội Clear 9 thảo dược cổ truyền làm sạch gàu giảm gãy rụng 330ml là sản phẩm dầu gội Clear mới với công thức 9 loại dược kết hợp hài hòa. Dầu gội giúp mái tóc sạch gàu từ gốc, ngăn gàu tái phát đồng thời giảm gãy rụng hơn 90%. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:40:40.771Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:40:40.771Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681469a65a6adfcadae52969"
+  },
+  "name": "Dầu gội dược liệu Thái Dương 3 sạch gàu hương hoa anh đào 500ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168218/goMart/wfndwd83quvlseqngwgw.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168227/goMart/mniu1l0cj7v8niluohbe.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168223/goMart/poaidsjhrbsluav4ker2.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168227/goMart/dxvqvhblcponsqfbacgx.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168226/goMart/pghjkrvkamxp2bfqotal.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168227/goMart/bqu0pqfnv0aolrxpfwfk.jpg"
+  ],
+  "brand": "Thái Dương",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cdb27418e220a0e0c292cf"
+    }
+  ],
+  "unit": "Chai",
+  "price": 139000,
+  "stock": 100,
+  "discount": null,
+  "description": "Dầu gội dược liệu Thái Dương 3 trị gàu hoa đào 500ml là bước đột phá mới chăm sóc toàn diện. Dầu gội Thái Dương giúp sạch gàu, sạch tóc và da đầu, thoáng mát da đầu. Đồng thời, dầu gội dưỡng tóc, giúp tóc suôn mềm, thơm mát",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:43:50.612Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:43:50.612Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68146a4f5a6adfcadae5296c"
+  },
+  "name": "Dầu gội Sunsilk óng mượt rạng ngời 631ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168392/goMart/hjchimlyrptmekz8pfjm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168400/goMart/na2lhes6ifjrqnv0jywt.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168395/goMart/auwlpdoe5pr7u5prvqbz.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168398/goMart/yv48b7gsc1zdy5igeekf.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168398/goMart/quo1yaiqrvgt9ckbmhcp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168398/goMart/ecgrqb2cwydbhaog34is.jpg"
+  ],
+  "brand": "Sunsilk",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cdb27418e220a0e0c292cf"
+    }
+  ],
+  "unit": "Chai",
+  "price": 99000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Dầu gội Sunsilk là thương hiệu dầu gội chăm sóc tóc nổi trên thị trường nhiều nước. Dầu gội Sunsilk óng mượt rạng ngời 631ml hệ hoạt chất ngăn ngừa tia UV và chiết xuất bồ kết bảo vệ tóc trước tia UV gây khô cháy, cho mái tóc siêu óng mượt suốt ngày dài",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:46:39.845Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:46:39.845Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68146b0f5a6adfcadae5297f"
+  },
+  "name": "Dầu gội Head & Shoulders Men Cool bạc hà làm sạch gàu 850ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168576/goMart/uqrgsyjtdegjt5h8uous.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168583/goMart/kkyrrjrgypimt2iu7j31.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168580/goMart/sqjrktl7qz1sovuiz9pp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168582/goMart/dpctiymtf3wohy5bpzpl.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168584/goMart/cqvmiw0jaitnfqnn0mh2.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168583/goMart/s5llpxzgggsjvuxnntxe.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168584/goMart/wudgprbhzbmidja8yqra.jpg"
+  ],
+  "brand": "Head & Shoulders",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cdb27418e220a0e0c292cf"
+    }
+  ],
+  "unit": "Chai",
+  "price": 251000,
+  "stock": 1000,
+  "discount": 24,
+  "description": "Dầu gội Head & Shoulders là dòng sản phẩm dầu gội dành cho nam giới được nhiều người yêu thích. Dầu gội sạch gàu Head & Shoulders bạc hà mát rượi 850ml công thức chứa bạc hà giúp gội sạch, làm mát lạnh tóc và da đầu sạch gàu và ngăn gàu quay trở lại",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:49:51.717Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:49:51.717Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68146b975a6adfcadae52992"
+  },
+  "name": "Dầu gội Dove phục hồi hư tổn 316ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168715/goMart/rov9iznyxta6bwsfbchy.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168718/goMart/jpcpmieyrdaj5qosxqgb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168720/goMart/qxhkmxnukvkv7i8alvz1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168720/goMart/ctrac8mk8q6bugsze7bs.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168720/goMart/otiqkc4khbftnlkmbmjf.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746168720/goMart/tifyelkmc0x8kmllocgb.jpg"
+  ],
+  "brand": "Dove",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67cdb27418e220a0e0c292cf"
+    }
+  ],
+  "unit": "Chai",
+  "price": 109000,
+  "stock": 1000,
+  "discount": 19,
+  "description": "Dầu gội Dove thương hiệu Anh và Hà Lan nổi tiếng tại Việt Nam. Dầu gội Dove phục hồi hư tổn 316ml phục hồi bề mặt tóc tức thì và nuôi dưỡng sâu giúp tái cấu trúc sợi tóc từ sâu bên trong, cho mái tóc bạn chắc khoẻ dài lâu. Dầu gội thơm dịu nhẹ lưu hương lâu",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:52:07.364Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:52:07.364Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68146d385a6adfcadae52a07"
+  },
+  "name": "Kem xả Dove Ceramide phục hồi hư tổn 622ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169125/goMart/lx3sfbrq2gyokkbq4bct.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169127/goMart/br88gnwg2e7iprolyd7y.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169131/goMart/t2k2zdox2ikzrvjoc7m3.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169130/goMart/grnbkyufjdqk7uhrzxiy.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169129/goMart/tlx3w5dis4oh9d9s2mji.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746169129/goMart/sm7anmjrkd6h2vrccjxp.jpg"
+  ],
+  "brand": "Dove",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141a695f540ed814f29166"
+    }
+  ],
+  "unit": "Chai",
+  "price": 108000,
+  "stock": 1000,
+  "discount": 21,
+  "description": "Dầu xả Dove chứa 𝐂𝐞𝐫𝐚𝐦𝐢𝐝𝐞 - củng cố hàng rào bảo vệ tóc, Dầu xả còn chứa 𝐁𝐢𝐨𝐭𝐢𝐧, giúp tăng sự dẻo dai và chắc khỏe của sợi tóc. Kem xả Dove phục hồi hư tổn 622ml mang lại mái tóc óng ả, giúp phục hồi hàng rào bảo vệ tóc, cho tóc suôn mượt và chắc khỏe gấp 10 lần.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T06:59:04.284Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T06:59:04.284Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6814713f5a6adfcadae52a39"
+  },
+  "name": "Kem đánh răng P/S trắng răng than hoạt tính 230g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746170166/goMart/fjpvhxbicvk0gfjxz7aa.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746170166/goMart/lx8nometx8xxiervusiy.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746170167/goMart/bkgqxuyrakdl5s4uk7w7.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746170166/goMart/ysvbzc2b5uzdeoi5qpw5.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746170166/goMart/flosuvsdpfeewrudf9oy.jpg"
+  ],
+  "brand": "P/S",
+  "category": [
+    {
+      "$oid": "67bbe7278c971820b190471a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141a825f540ed814f2916a"
+    }
+  ],
+  "unit": "Tuýt",
+  "price": 49000,
+  "stock": 1000,
+  "discount": 29,
+  "description": "Với công dụng vượt trội, sản phẩm kem đánh răng chất lượng của thương hiệu kem đánh răng P/S được đánh giá tốt nhất tại Việt Nam. Kem đánh răng P/S bảo vệ 123 than hoạt tính 230g làm sạch các vết ố, mảng bám từ thức ăn, trả lại độ trắng tự nhiên cho răng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-02T07:16:15.134Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T07:16:15.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816c50b9009b7c13e758f22"
+  },
+  "name": "Chân giò heo nhập khẩu Đức túi 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322690/goMart/hosfwabagr2a24nu5nne.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322691/goMart/t3js42uqbi1dkmfaamln.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322692/goMart/ldjcrywpkg3kf0xttwf8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322691/goMart/uczmjn2tzokctdwvudse.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322699/goMart/tuputyfmakd0ehcfdmly.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a7fb9ff057c8713d334"
+    }
+  ],
+  "unit": "Túi",
+  "price": 33000,
+  "stock": 100,
+  "discount": 27,
+  "description": "Chân giò heo nhập khẩu Đức được đảm bảo nguồn gốc xuất xứ rõ ràng, bao gồm chân giò trước và chân giò sau của con heo.\nChân giò heo được đóng khay, hút chân không tiện lợi, sạch sẽ.\nĐặt giao hàng nhanh",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:38:19.025Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T01:38:19.025Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816c6039009b7c13e758f35"
+  },
+  "name": "Ba rọi heo chuẩn C.P",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322940/goMart/kto5nfatocqbxsonpwpi.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322940/goMart/gorvsnar1i8lptsyh6ge.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322940/goMart/zrrr2ra8est6j8yqkmlb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322940/goMart/v9vckmqu96jarqrbvmwo.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746322940/goMart/e2wdqewak6cxclnhdb4f.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a7fb9ff057c8713d334"
+    }
+  ],
+  "unit": "300g",
+  "price": 55000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Thịt ba rọi heo (ba chỉ heo) là phần thịt heo ngon nhất, bắt mắt nhất được kết hợp bởi da, mỡ và thịt. Phần thịt này không có xương, nhiều mỡ, cắt ra từ bụng của con heo. Khi cắt ngang miếng thịt ba chỉ sẽ thấy được thịt và mỡ xen kẽ theo thứ tự lớp thịt, lớp mỡ, rồi lớp thịt. Các lớp được xếp tầng xen kẽ, hoà cùng với phần da heo dai giòn trên bề mặt, tạo nên sự hài hòa khi thưởng thức món thịt ba chỉ heo này. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:42:27.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-06T07:19:42.776Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "6816c68d9009b7c13e758f48"
+  },
+  "name": "Ba rọi heo nhập khẩu Nga",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323051/goMart/tcvocutyfb7vy31fkczk.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323055/goMart/sbmh1w1uitq9uqqc6tp1.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323058/goMart/lslcgg8mjht4agoiofpj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323057/goMart/imukc6gf2hljbhdw7rmd.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323059/goMart/s1zvbgqi1wcqmu9cumfv.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a7fb9ff057c8713d334"
+    }
+  ],
+  "unit": "300g",
+  "price": 43000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Ba rọi heo nhập khẩu đông lạnh đảm bảo tươi ngon, chất lượng\nĐảm bảo về nguồn gốc xuất xứ của sản phẩm, cân đúng và đủ khối lượng\nĐặt hàng giao nhanh chóng, tiện lợi chỉ với vài lần click chuột đơn hàng của bạn sẽ được giao đến tận nhà trong 2 giờ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:44:45.067Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T01:44:45.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816c7729009b7c13e758f9d"
+  },
+  "name": "Thịt heo xay sẵn",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323299/goMart/dtptizuyjdwxmjzmjv6h.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323304/goMart/v4jsenw9ogecw3gjiak4.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323305/goMart/cw4g4ow9n4exb8wjbdgn.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323304/goMart/mwk4tykua5xoewwymyei.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323304/goMart/snzymiv1mkw7rxqxoz28.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323305/goMart/o0gpvu6aepk6rdsgt7mg.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a7fb9ff057c8713d334"
+    }
+  ],
+  "unit": "300g",
+  "price": 35000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Thịt xay tiện lợi, tiết kiệm thời gian, đóng khay sạch sẽ. Thịt xay còn có xen lẫn thịt nạc và mỡ giúp cho món thịt sau khi chế biến không bị khô. \nThịt xay được đảm bảo nguồn gốc xuất xứ và an toàn vệ sinh.\nĐặt giao hàng nhanh ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:48:34.881Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-06T07:19:22.080Z"
+  },
+  "__v": 0,
+  "more_details": {}
+},
+{
+  "_id": {
+    "$oid": "6816c8079009b7c13e758fb0"
+  },
+  "name": "Gầu bò Mỹ Kiwifood 300g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323447/goMart/ii6lqc8f9cqpt9kci67f.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323447/goMart/pvs9fgyxsxsng0wefwlm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323447/goMart/wqhxaetiaya9hidoi87z.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323447/goMart/zd5z9n7pennmlpqt5uxa.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323448/goMart/hdbvsj7ku8gxt6tr7z3y.jpg"
+  ],
+  "brand": "Kiwifood ",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a94b9ff057c8713d338"
+    }
+  ],
+  "unit": "300g",
+  "price": 105000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Ready to cook, sản phẩm được sơ chế tiện lợi có thế nấu ngay.\nSản phẩm nhập khẩu chính ngạch từ Mỹ.\nTinh túy của bò Mỹ, đậm đà từng thớ thịt!",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:51:03.169Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T01:51:03.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816c88b9009b7c13e758fc3"
+  },
+  "name": "Ba chỉ bò Mỹ Kiwifood 300g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323590/goMart/ejuskqmgkidtsorah6cg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323589/goMart/vcampjuja0rkaqeifxtz.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323589/goMart/jjjtngzuddzm4kdr350e.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323589/goMart/zgtjgidozs3atidxo4os.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323590/goMart/cwrvymwkyavlrsbkplfn.jpg"
+  ],
+  "brand": "Kiwifood ",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68a94b9ff057c8713d338"
+    }
+  ],
+  "unit": "300g",
+  "price": 98000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Ready to cook, sản phẩm được sơ chế tiện lợi có thế nấu ngay.\nSản phẩm nhập khẩu chính ngạch từ Mỹ.\nTinh túy của bò Mỹ, đậm đà từng thớ thịt!",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T01:53:15.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T01:53:15.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816ca519009b7c13e758fec"
+  },
+  "name": "Ức gà phi lê có da 500g (1-3 miếng)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323760/goMart/wr9qnm3ltbvyaoltvnii.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323760/goMart/crhqe7pzbhxyvkyrpypb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323760/goMart/m3yp6guebgnxjmig3ifg.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323760/goMart/ifr3haarztiriasbhlqu.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746323763/goMart/zjpwqxxdeqdwqtazm1mt.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68aabb9ff057c8713d33c"
+    }
+  ],
+  "unit": "500g",
+  "price": 41000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Ức gà phi lê được lấy từ nguồn thịt gà tươi ngon của các trang trại sạch, đạt chất lượng. Quá trình sơ chế và bảo quản sản phẩm được thực hiện theo quy trình khép kín, đảm bảo vệ sinh an toàn thực phẩm. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T02:00:49.995Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T02:00:49.995Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816cb479009b7c13e75902e"
+  },
+  "name": "Cá chim nước ngọt làm sạch 450g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324259/goMart/akrlpild2imroyjy0eta.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324259/goMart/segr1c0x5x4kfomnxgnw.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324258/goMart/oacevahopoxs03h2whni.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324259/goMart/yrmtx7i2ludc41cj3zd5.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324258/goMart/i1evfjy5lmzztkds49cb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746324260/goMart/ytkwzsaviwv9mwo9kv5b.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7568c971820b190471e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c68b00b9ff057c8713d340"
+    }
+  ],
+  "unit": "450g",
+  "price": 35000,
+  "stock": 100,
+  "discount": 10,
+  "description": "Thịt cá tươi ngon mời bạn ăn nha, tui đây không chờ bạn nữa giờ tui ăn liền",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T02:04:55.938Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T02:04:55.938Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816de5a9009b7c13e7590d7"
+  },
+  "name": "Bánh cá vị gà BBQ Orion Marine Boy hộp 35g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329117/goMart/a2lrzf5pxxeyrajcojm9.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329126/goMart/ny0jybqigurvkzoahmrl.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329121/goMart/igoujnpu7ayio7hgryhq.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329119/goMart/gtcqlshmlp7kvbis7mlv.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329121/goMart/tmp0oiflkx8uocgvfnbm.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329121/goMart/honzshv7a6bxa9qgxpgj.jpg"
+  ],
+  "brand": "BBQ Orion Marine",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141c4e5f540ed814f2918a"
+    }
+  ],
+  "unit": "hộp",
+  "price": 13000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Bánh quy thơm vị gà BBQ, bánh mỏng, giòn tan trong miệng ngon mê li. Bánh cá vị gà BBQ Orion Marine Boy hộp 35g không chỉ thơm ngon mà còn cung cấp chất dinh dưỡng và năng lượng giúp bạn hoạt động giữa buổi nữa nhé. Bánh quy Orion là thương hiệu Hàn Quốc",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:26:18.223Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:26:18.223Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816def69009b7c13e7590ea"
+  },
+  "name": "Bánh bơ trứng Richy Karo gói 270g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329328/goMart/czy5fuvuspgluengllrx.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329335/goMart/fsiyv2iu8bbohy5x8icr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329333/goMart/wri9yb4cv4wzgnsz2no3.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329331/goMart/mltpbhcgrl39inq5spud.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329333/goMart/wdxcfrdhurrgfo0el9zr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329333/goMart/rtlnaf93evuumlchdge8.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329334/goMart/lk9kkohzupnmjrsih6aa.jpg"
+  ],
+  "brand": "Karo",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141c4e5f540ed814f2918a"
+    }
+  ],
+  "unit": "Túi",
+  "price": 39000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Bánh quy trứng xốp, giòn tan trong miệng khi ăn, hấp dẫn vô cùng. Bánh bơ trứng Richy Karo gói 270g hương vị béo ngậy của bơ, sữa và vị ngọt dịu của mạch nha, gồm nhiều gói nhỏ tiện lợi, bánh quy Richy dễ dàng mang theo túi để thưởng thức và chia sẻ với bạn bè.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:28:54.058Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:28:54.058Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816df549009b7c13e7590ed"
+  },
+  "name": "Bánh quy kem dẻo Richy Kenju Nougat vị kem sữa gói 186g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329420/goMart/rbsidyrssnvi8aadh37j.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329429/goMart/r2k6g8kuisnkqcstmuaf.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329426/goMart/c3uqtseb8ssmjiahly8x.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329426/goMart/qc7yktisij3poibw0nwk.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329426/goMart/wab8nehpzamuunnmsmyz.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329426/goMart/xq43ygloff5hrydllgsa.jpg"
+  ],
+  "brand": "Richy Kenju Nougat",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141c4e5f540ed814f2918a"
+    }
+  ],
+  "unit": "Túi",
+  "price": 29000,
+  "stock": 10000,
+  "discount": null,
+  "description": "Lớp bánh quy giòn rụm với lớp kem sữa béo thơm, Bánh quy kem dẻo Richy Kenju Nougat vị kem sữa hộp 155g là sản phẩm bánh quy Richy được phục vụ trên các chuyến bay của Vietnam Airlines với lớp kem dẻo độc đáo kết hợp cùng vị giòn mặn mặn của bánh sẽ cung cấp dinh dưỡng và năng lượng cho bạn mỗi ngày.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:30:28.597Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:30:28.597Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816df9d9009b7c13e7590f0"
+  },
+  "name": "Bánh cracker vị lúa mì AFC Dinh Dưỡng hộp 172g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329496/goMart/ghtjfvgbp6okntksh71i.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329498/goMart/jxe4regzhusw23iklkqc.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329500/goMart/lsww3bzbm3aryt1pbkbj.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329500/goMart/sqtwcg6al4xnvclbtwvp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329500/goMart/t8phebpuwqs1rtnsukyo.jpg"
+  ],
+  "brand": "AFC",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141c4e5f540ed814f2918a"
+    }
+  ],
+  "unit": "hộp",
+  "price": 31000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Bánh quy dinh dưỡng, thơm ngon. Bánh cracker lúa mì AFC Dinh Dưỡng hộp 172g (8 gói x 21.5g) có hàm lượng canxi cao và nguồn chất xơ từ yến mạch, cung cấp năng lượng cho bạn hoạt động ngày dài. Bánh quy AFC hỗ trợ xương chắc khỏe và hấp thụ canxi tốt hơn.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:31:41.515Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:31:41.515Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816e02c9009b7c13e759103"
+  },
+  "name": "Bánh gạo Nhật vị Shouyu mật ong Ichi gói 180g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329639/goMart/fbye5077dfbcjhxonc5w.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329642/goMart/m4pyucbclmm8t8zne1vp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329644/goMart/irtd3hgyo9bkwk11hpsd.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329644/goMart/dioupgqvzjpmv6ewlq8e.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329644/goMart/f3joyaoctonejwdi2nph.jpg"
+  ],
+  "brand": "ICHI",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141cf35f540ed814f291d8"
+    }
+  ],
+  "unit": "Túi",
+  "price": 29000,
+  "stock": 10900,
+  "discount": null,
+  "description": "Bánh gạo giòn giòn thơm ngon, bánh có kích thước vừa, thơm ngon, lạ miệng và kích thích vị giác. Bánh gạo Ichi Vị shouyu mật ong 180g tiện lợi cho các buổi tiệc ngọt. Bánh gạo Ichi dinh dưỡng, ăn vặt cũng rất phù hợp để thư giãn và đọc sách.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:34:04.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:34:04.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816e0fc9009b7c13e759106"
+  },
+  "name": "Bánh gạo nướng vị tảo biển Orion An gói 111.3g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329847/goMart/x7flvqzyj4d912xvikm3.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329847/goMart/ffqwohhln0vm9owmqz2y.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329847/goMart/cg9iinrhasldnjzqeyo4.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329847/goMart/cag32yvcydk9kwxgz9cp.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329847/goMart/mfjnd0psryzr8twy4lee.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329848/goMart/tc7x5n2fctvdpv1iuqsa.jpg"
+  ],
+  "brand": "Orion",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141cf35f540ed814f291d8"
+    }
+  ],
+  "unit": "Túi",
+  "price": 23000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Bánh gạo giòn giòn thơm ngon, bánh có lớp rong biển phủ bên ngoài, thơm ngon, lạ miệng và kích thích vị giác. Bánh gạo nướng vị tảo biển Orion An gói 111.3g tiện lợi cho các buổi tiệc ngọt. Bánh gạo Orion dinh dưỡng, ăn vặt cũng rất phù hợp để thư giãn và đọc sách.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:37:32.210Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:37:32.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6816e16d9009b7c13e759109"
+  },
+  "name": "Ngũ cốc dinh dưỡng MacCereal bịch 560g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329959/goMart/c4qaa9djssbrruvrzdt0.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329959/goMart/lglvebqd6dkrshtkqics.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329964/goMart/tmr9j4n7kuqeuo2b8sjr.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329959/goMart/a63koabwl2enlqykl8ug.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329959/goMart/tzw2p6xgbvda7kjtslzb.jpg",
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746329960/goMart/qpkmscym3omvw13styqg.jpg"
+  ],
+  "brand": "MacCereal",
+  "category": [
+    {
+      "$oid": "67bbe7728c971820b1904722"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d0d5f540ed814f291dc"
+    }
+  ],
+  "unit": "Túi",
+  "price": 76000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Ngũ cốc dinh dưỡng của thương hiệu MacCereal với công thức đặc biệt ít calo, ít chất béo, nhiều chất xơ, giúp bạn kiểm soát cân nặng một cách hiệu quả mang lại cho bạn một cơ thể khỏe mạnh và một vóc dáng thon thả, như ý. Ngũ cốc dinh dưỡng MacCereal bịch 560g thơm ngon dễ uống",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T03:39:25.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T03:39:25.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170c649009b7c13e759192"
+  },
+  "name": "Thùng 24 lon nước ngọt Fanta hương soda kem trái cây 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746340961/goMart/cirquq6hcqqqhyewax9p.jpg"
+  ],
+  "brand": "Fanta",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d885f540ed814f291ec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 138000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Nước ngọt có gas của thương hiệu nước ngọt Fanta nổi tiếng giúp giải khát sau khi hoạt động ngoài trời, giải tỏa căng thẳng, mệt mỏi khi học tập, làm việc. Thùng 24 lon nước ngọt Fanta soda trái cây 320ml thơm ngon vị trái cây độc đáo giúp xua tan cơn khát và kích thích vị giác cho cảm giác ngon miệng hơn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:42:44.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:42:44.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170cc09009b7c13e7591d1"
+  },
+  "name": "Thùng 24 lon nước ngọt Coca Cola 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341055/goMart/sxlmgd8wcxjglxmhxgvm.jpg"
+  ],
+  "brand": "Coca Cola",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d885f540ed814f291ec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 180000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Là loại nước ngọt được nhiều người yêu thích với hương vị thơm ngon, sảng khoái. 24 lon nước ngọt Coca Cola 320ml chính hãng nước ngọt Coca Cola với lượng gas lớn sẽ giúp bạn xua tan mọi cảm giác mệt mỏi, căng thẳng, đem lại cảm giác thoải mái sau khi hoạt động ngoài trời.\n ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:44:16.895Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:44:16.895Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170d049009b7c13e7591d4"
+  },
+  "name": "Thùng 24 lon nước ngọt Pepsi Cola 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341122/goMart/pstj9isbur2srcq1lbal.jpg"
+  ],
+  "brand": "Pepsi",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d885f540ed814f291ec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 256000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sản phẩm nước ngọt chính hãng từ thương hiệu nước ngọt Pepsi nổi tiếng toàn cầu, hương thơm hấp dẫn, vị ngọt ngon hài hòa cùng vị ga bùng nổ sảng khoái. Thùng 24 lon nước ngọt Pepsi Cola lon 320ml bổ sung năng lượng làm việc mỗi ngày, xua tan căng thẳng mệt mỏi",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:45:24.078Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:45:24.078Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170d469009b7c13e7591d7"
+  },
+  "name": "Thùng 24 lon nước ngọt 7 Up vị chanh 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341189/goMart/rf6vr3g4dxdfackkftgp.jpg"
+  ],
+  "brand": "7 Up",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d885f540ed814f291ec"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 252000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Từ thương hiệu nước giải khát 7Up uy tín được ưa chuộng. 24 lon nước ngọt 7 Up hương chanh lon 320ml có vị ngọt vừa phải và hương vị gas the mát, giúp bạn xua tan nhanh chóng cơn khát, giảm cảm giác ngấy, kích thích vị giác giúp ăn ngon hơn, cung cấp năng lượng cho tinh thần tươi vui mỗi ngày",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:46:30.822Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:46:30.822Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170d8d9009b7c13e7591da"
+  },
+  "name": "6 lon nước ngọt Mirinda hương xá xị 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341260/goMart/kfxouubnhbmohh41orfs.jpg"
+  ],
+  "brand": "Mirinda",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d885f540ed814f291ec"
+    }
+  ],
+  "unit": "Lốc",
+  "price": 45000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Nước ngọt giải khát từ thương hiệu nước ngọt Mirinda nổi tiếng được nhiều người ưa chuộng với hương và vị hấp dẫn. 6 lon nước ngọt Mirinda hương xá xị lon 320ml có hương xá xị tự nhiên, độc đáo giúp bạn giải nhanh cơn khát, với vị ga nhẹ là thức uống giải khát tuyệt vời dành cho mọi lứa tuổi",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:47:41.655Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:47:41.655Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170ddf9009b7c13e7591dd"
+  },
+  "name": "Thùng 24 chai nước khoáng La Vie 500ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341339/goMart/f4a9oyrfe3lqkn045yqt.jpg"
+  ],
+  "brand": "La Vie",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141d735f540ed814f291e8"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 95000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Được sản xuất từ nguồn nước khoáng sâu trong lòng đất, lọc qua nhiều tầng địa chất giàu khoáng chất, hấp thu muối, các yếu tố vi lượng như calcium, magie, potassium, sodium, bicarbonate... Sản phẩm không những cung cấp nước và khoáng chất và duy trì sinh lực cho cơ thể. Dạng thùng tiết kiệm hơn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:49:03.283Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:49:03.283Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170e349009b7c13e7591f0"
+  },
+  "name": "24 lon nước tăng lực Sting hương dâu 320ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341425/goMart/kixuphnnatcdvf7f5gox.jpg"
+  ],
+  "brand": "Sting",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141da75f540ed814f291f4"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 223000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Nước tăng lực Sting với mùi vị thơm ngon, sảng khoái cùng hương dâu dễ chịu. Sting giúp cơ thể bù đắp nước, bổ sung năng lượng, vitamin C và E, giúp xua tan cơn khát và cảm giác mệt mỏi cùng dâu cho nhẹ nhàng và dễ chịu. Cam kết chính hãng, chất lượng và an toàn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:50:28.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:50:28.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170e809009b7c13e7591f3"
+  },
+  "name": "Thùng 24 lon nước tăng lực Redbull Thái 250ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341500/goMart/ybj0bjpnl0dbjzviccin.jpg"
+  ],
+  "brand": "Redbull",
+  "category": [
+    {
+      "$oid": "67bbe79f8c971820b1904726"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141da75f540ed814f291f4"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 276000,
+  "stock": 10000,
+  "discount": 10,
+  "description": "Nước tăng lực Redbull thành phần tự nhiên, mùi vị thơm ngon, sảng khoái. Thùng 24 lon nước tăng lực Redbull Thái 250ml giúp cơ thể bù đắp nước, bổ sung năng lượng, vitamin và các khoáng chất, giúp xua tan cơn khát và cảm giác mệt mỏi. Nước tăng lực không có đường hóa học, không chứa hóa chất độc hại, đảm bảo an toàn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:51:44.242Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:51:44.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170f2a9009b7c13e759222"
+  },
+  "name": "Thùng 24 lon bia Blanc 1664 330ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341669/goMart/mwmnzydvvl5ehjnon4gb.jpg"
+  ],
+  "brand": "Blanc 1664",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141dd55f540ed814f291fc"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 410000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Tinh túy bia Pháp từ năm 1664.  Bia 1664 Blanc sản xuất trên dây chuyền hiện đại cùng bí quyết nấu bia tuyệt hảo cho cảm giác uống sảng khoái đầy thích thú. Bia lon tiện dụng, thiết kế hiện đại, 24 lon bia Blanc 1664 330ml dạng thùng tiết kiệm hơn cho những cuộc vui kéo dài",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:54:34.804Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:54:34.804Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170f739009b7c13e759225"
+  },
+  "name": "Thùng 24 lon bia Tiger lon 250ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341747/goMart/noqvjqz0bhec3rimxwhs.jpg"
+  ],
+  "brand": "Tiger",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141dd55f540ed814f291fc"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 268000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Hương vị truyền thống, quen thuộc đến từ thương hiệu bia Tiger nổi tiếng được lên men tự nhiên từ các thành phần chính nước, đại mạch, ngũ cốc và hoa bia. Bia Tiger lon 250ml độc đáo và rất riêng của bia Tiger, đậm đà, cho bạn cảm giác uống sảng khoái",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:55:47.457Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:55:47.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170fba9009b7c13e759228"
+  },
+  "name": "Thùng 24 lon bia Sài Gòn Lager 330ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341813/goMart/vhfejrdchnzercxsyadc.jpg"
+  ],
+  "brand": "Sài Gòn Lager",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141dd55f540ed814f291fc"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 260000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Được sản xuất tại Việt Nam từ nước, malt đại mạch, ngũ cốc và hoa bia, chính hãng thương hiệu bia Sài Gòn. Thùng 24 lon bia Sài Gòn Lager 330ml có hương vị đậm đà, thơm ngon, cùng hương thơm ngũ cốc dễ chịu giúp bạn thăng hoa hơn, sảng khoái hơn trong những cuộc vui cùng gia đình và bạn bè.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:56:58.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:56:58.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68170ffa9009b7c13e75922b"
+  },
+  "name": "Thùng 24 lon bia Sapporo 330m",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341881/goMart/qjfcafjhhbu0tagppiav.jpg"
+  ],
+  "brand": "Sapporo ",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141dd55f540ed814f291fc"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 430000,
+  "stock": 1000,
+  "discount": 19,
+  "description": "Từ thương hiệu bia Nhật uy tín - bia Sapporo. Thùng 24 lon bia Sapporo 330ml có hương vị đậm đà kích thích vị giác cùng mùi thơm đặc trưng vô cùng hấp dẫn là lựa chọn không thể bỏ qua trong những cuộc vui, tụ tập cùng gia định, bạn bè, đồng nghiệp. Cam kết chất lượng và an toàn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:58:02.646Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:58:02.646Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681710539009b7c13e75923e"
+  },
+  "name": "Thùng 24 lon bia Heineken Silver 250ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746341961/goMart/lxrzcr58gmlcbvcqdrai.jpg"
+  ],
+  "brand": "Heineken ",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141dd55f540ed814f291fc"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 400000,
+  "stock": 10000,
+  "discount": 10,
+  "description": "Sản phẩm bia Heineken chính hãng chất lượng được bán giá tốt tại GoMart. Thùng 24 lon bia Heineken Silver 250ml thiết kế nhỏ gọn tiện dụng, thiết kế sang trọng và màu sắc nổi bật, hương vị bia đậm đà thơm đặc trưng mang đến cho bạn cảm giác hào hứng, hứng khởi cùng bạn bè",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T06:59:31.902Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T06:59:31.902Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681711019009b7c13e759251"
+  },
+  "name": "Rượu vang đỏ Sài Gòn Classic 12.5% chai 750ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746342144/goMart/ypnfx0ybnfrpqwyqhhqo.jpg"
+  ],
+  "brand": "Sài Gòn Classic ",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141de25f540ed814f29200"
+    }
+  ],
+  "unit": "Chai",
+  "price": 99000,
+  "stock": 1000,
+  "discount": null,
+  "description": "Rượu vang đỏ Sài Gòn Classic 12.5% chai 750ml từ Việt Nam, được làm từ tổng hợp giống nho từ Chile, Úc,... Hương vị giữa trái cây chín và độ chát rõ nét. Phù hợp với thịt bò, món Âu-Á và món ăn Việt Nam.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T07:02:25.362Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T07:02:25.362Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6817114b9009b7c13e759254"
+  },
+  "name": "Rượu soju Heejin vị dâu 12% chai 360ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746342214/goMart/dukamcuwl1fzvyvodvtr.jpg"
+  ],
+  "brand": "Heejin ",
+  "category": [
+    {
+      "$oid": "67bbe7b28c971820b190472a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141de25f540ed814f29200"
+    }
+  ],
+  "unit": "Chai",
+  "price": 49000,
+  "stock": 10000,
+  "discount": null,
+  "description": "Rượu soju Heejin vị dâu 12% chai 360ml mang đến hương vị đặc trưng của dâu kết hợp với vị ngọt nhẹ của rượu Soju, tạo nên một trải nghiệm thú vị cho người thưởng thức. Với độ cồn 12%, đây là một lựa chọn phổ biến trong các buổi tiệc hoặc dịp sum họp.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-04T07:03:39.778Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-04T07:03:39.778Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681813bd6be72496f77ec518"
+  },
+  "name": "Thùng 30 gói mì 3 Miền gà sợi phở gói 65g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408382/goMart/xvnqwboxnscea3pd2zg1.jpg"
+  ],
+  "brand": "3 Miền",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e475f540ed814f29208"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 99000,
+  "stock": 10000,
+  "discount": 10,
+  "description": "Mì ăn liền chính hãng mì 3 Miền sở hữu nét đậm đà chuẩn hương vị truyền thống. Thùng 30 gói mì 3 Miền gà sợi phở gói 65g với sợi mì to bản được kết hợp hoàn hảo với nước súp đậm đà và hương thơm của hành phi, mang đến một hương vị thơm ngon khó cưỡng cho người tiêu dùng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:26:21.573Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:26:21.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681813f96be72496f77ec51b"
+  },
+  "name": "Thùng 24 ly mì Handy Hảo Hảo tôm chua cay 67g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408442/goMart/idxpiuzn8vq4nk38r5g6.jpg"
+  ],
+  "brand": "Hảo Hảo",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e475f540ed814f29208"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 210000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sợi mì vàng dai ngon hòa quyện trong nước súp tôm chua cay Hảo Hảo chua ngọt, đậm đà thấm đẫm từng sợi mì sóng sánh cùng hương thơm quyến rũ ngất ngây. Mì Handy Hảo Hảo vị tôm chua cay ly 67g là lựa chọn hấp dẫn không thể bỏ qua đặc biệt là cho những ngày bận rộn cần bổ sung năng lượng nhanh chóng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:27:21.075Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:27:21.075Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818142c6be72496f77ec51e"
+  },
+  "name": "Thùng 24 gói mì hải sản SiuKay 129g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408494/goMart/wosksep66rnqfcy2yyvf.jpg"
+  ],
+  "brand": "SiuKay",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e475f540ed814f29208"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 300000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Sợi mì vàng dai ngon hòa quyện vào nước súp mì SiuKay vị hải sản đậm đà thấm đẫm từng sợi hấp dẫn cùng hương thơm lừng quyến rũ ngất ngây. 24 gói mì hải sản SiuKay 129g là lựa chọn không thể bỏ qua cho thực đơn bận rộn, cần một bữa ăn nhanh gọn và đảm bảo dinh dưỡng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:28:12.580Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:28:12.580Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818145f6be72496f77ec521"
+  },
+  "name": "Thùng 30 gói mì Kokomi 90 tôm chua cay 90g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408543/goMart/iz8yoopw7424m7twa7en.jpg"
+  ],
+  "brand": "Kokomi",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e475f540ed814f29208"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 115000,
+  "stock": 335235,
+  "discount": 10,
+  "description": "Sợi mì vàng dai ngon hòa quyện trong nước súp mì Kokomi vị tôm chua cay đậm đà thấm đẫm từng sợi cùng hương thơm lừng quyến rũ. 30 gói mì Kokomi Kokomi 90 tôm chua cay 90g tiện lợi, nhanh chóng, hấp dẫn cho bữa ăn nhanh gọn đơn giản nhưng vẫn đầy đủ dưỡng chất.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:29:03.196Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:29:03.196Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681814926be72496f77ec524"
+  },
+  "name": "Thùng 24 gói mì Koreno vị bò cay 100g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408594/goMart/f8mtvfpk3wywvspxpxvf.jpg"
+  ],
+  "brand": "Koreno",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e475f540ed814f29208"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 240000,
+  "stock": 343223,
+  "discount": 10,
+  "description": "Sợi mì vàng dai ngon hòa quyện trong nước súp Koreno vị bò cay đậm đà thấm đều trong từng sợi cùng hương thơm lừng quyến rũ ngất ngây. 24 gói mì Koreno vị bò cay 100g tiện lợi thơm ngon là một lựa ngọn hấp dẫn cho những bữa ăn nhanh gọn, đơn giản và đủ dưỡng chất",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:29:54.854Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:29:54.854Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681814e16be72496f77ec527"
+  },
+  "name": "Thùng 30 gói hủ tiếu Nam Vang Nhịp Sống 70g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408673/goMart/btmkt93acwpamazvok8s.png"
+  ],
+  "brand": "Nam Vang Nhịp Sống",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e755f540ed814f2921c"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 237000,
+  "stock": 242343,
+  "discount": 10,
+  "description": "Bữa ăn cực tiện lợi và thơm ngon. 30 gói hủ tiếu Nam Vang Nhịp Sống 70g là sản phẩm hủ tiếu ăn liền của thương hiệu hủ tiếu Nhịp sống với hương vị hủ tiếu Nam Vang đậm đà thấm trong từng sợi hủ tiếu dai ngon cực đã cùng mùi hương hấp dẫn lôi cuốn không thể chối từ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:31:13.344Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:31:13.344Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818152a6be72496f77ec52a"
+  },
+  "name": "Thùng 50 gói cháo thịt bằm Gấu Đỏ 50g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408747/goMart/pq0oymrboecs4he8i2ci.jpg"
+  ],
+  "brand": "Gấu Đỏ ",
+  "category": [
+    {
+      "$oid": "67bbe7d38c971820b190472e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141e885f540ed814f29220"
+    }
+  ],
+  "unit": "Thùng",
+  "price": 175000,
+  "stock": 35352,
+  "discount": 10,
+  "description": "Sản phẩm cháo ăn liền tiện lợi từ thương hiệu Gấu Đỏ. 50 gói cháo thịt bằm Gấu Đỏ 50g từ các nguyên liệu tự nhiên, không chất bảo quản an toàn cho sức khỏe, cháo có vị thịt bằm thơm ngon cùng mùi hương hấp dẫn, đủ dinh dưỡng cho một bữa ăn mà lại cực nhanh và đơn giản",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:32:26.021Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:32:26.021Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818159e6be72496f77ec53d"
+  },
+  "name": "Gạo thơm Neptune ST25 Extra túi 5kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408862/goMart/xz4n0ywmaf3qu14vuztb.jpg"
+  ],
+  "brand": "Neptune ",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141edc5f540ed814f2922c"
+    }
+  ],
+  "unit": "Túi",
+  "price": 135000,
+  "stock": 4354325,
+  "discount": 10,
+  "description": "Gạo Neptune chất thơm ngon, chất lượng được các bà nội trợ tin dùng. Gạo thơm Neptune ST25 Extra túi 5kg mang hương vị thơm ngon, độ mềm và dẻo vừa phải mang đến bữa ăn của bạn thêm tròn vị đậm đà và hấp dẫn. Gạo không tẩm các hoá chất độc hại an toàn cho người sử dụng. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:34:22.626Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:34:22.626Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681815d06be72496f77ec540"
+  },
+  "name": "Gạo thơm Vua Gạo ST25 + túi 5kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408909/goMart/i7xoejxzom1i9yuhqpti.jpg"
+  ],
+  "brand": "Vua Gạo",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141edc5f540ed814f2922c"
+    }
+  ],
+  "unit": "Túi",
+  "price": 135000,
+  "stock": 3434,
+  "discount": 10,
+  "description": "Gạo thơm Vua Gạo chất lượng với giống lúa ST25 ngon nhất thế giới đảm bảo mang đến loại gạo chất lượng, giúp bạn ăn ngon miệng. Mua Gạo thơm Vua Gạo ST25 túi 5kg dẻo và mềm nhiều, nở ít, ăn cơm ngon, thơm rất thích hợp sử dụng cho cả gia đình. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:35:12.082Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:35:12.082Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681816086be72496f77ec543"
+  },
+  "name": "Gạo thơm A An ST25+ túi 5kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746408968/goMart/smufd3kthcg3ex6l4ydc.jpg"
+  ],
+  "brand": "A An",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141edc5f540ed814f2922c"
+    }
+  ],
+  "unit": "Túi",
+  "price": 1350000,
+  "stock": 4324,
+  "discount": 10,
+  "description": "Gạo ST25 là thương hiệu gạo được nhiều bà mẹ lựa chọn sử dụng cho bữa ăn gia đình mình. Gạo thơm A An ST25+ túi 5kg với hạt gạo dài, trắng trong, không bạc bụng cho cơm mềm, dẻo dai, cơm giữ nguyên hạt, mùi thơm tự nhiên, để nguội cơm vẫn ngon",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:36:08.868Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:36:08.868Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818163b6be72496f77ec546"
+  },
+  "name": "Gạo thơm lài túi 5kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409019/goMart/jtqsrjbsl0zwob5fnt5u.jpg"
+  ],
+  "brand": "GoMart",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141edc5f540ed814f2922c"
+    }
+  ],
+  "unit": "Túi",
+  "price": 90000,
+  "stock": 452452,
+  "discount": null,
+  "description": "Gạo Vinh Phát chất lượng, không chứa chất bảo quản, tạo mùi hay tẩy trắng. Gạo thơm lài túi 5kg cho ra cơm mềm, thơm và dẻo, giúp ăm ngon miệng hơn. Gạo túi 5kg tiện lợi và tiết kiệm cho cả gia đình cùng sử dụng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:36:59.596Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:36:59.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818167d6be72496f77ec549"
+  },
+  "name": "Gạo lứt ST25 Vinh Hiển túi 1kg",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409077/goMart/drog4owsxg8yooax50sf.jpg"
+  ],
+  "brand": "Vinh Hiển",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141edc5f540ed814f2922c"
+    }
+  ],
+  "unit": "Túi",
+  "price": 50000,
+  "stock": 13454,
+  "discount": null,
+  "description": "Gạo Vinh Hiển chất lượng được nhiều người lựa chọn sử dụng. Mua Gạo lứt thơm Vinh Hiển ST25 túi 1kg giúp kiểm soát đường huyết, hỗ trợ tiêu hoá thích hợp với chế độ ăn kiêng lành mạnh. Loại gạo này giúp duy trì cân nặng và đảm bảo sức khoẻ. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:38:05.653Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:38:05.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681816c86be72496f77ec54c"
+  },
+  "name": "Xúc xích heo tiệt trùng C.P gói 200g (5 cây x 40g)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409157/goMart/k012ktbbhch2h6orwphi.png"
+  ],
+  "brand": "C.P",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141f065f540ed814f29230"
+    }
+  ],
+  "unit": "Gói",
+  "price": 20000,
+  "stock": 325235,
+  "discount": null,
+  "description": "Xúc xích thơm ngon, đậm vị thịt heo, gia vị vừa phải ăn rất ngon miệng. Xúc xích heo tiệt trùng C.P gói 200g dinh dưỡng, có thể ăn với mì tôm hoặc những món ăn khác như xúc xích chiên rất ngon. Xúc xích C.P là thương hiệu xúc xích lớn tại Việt Nam được nhiều người tin dùng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:39:20.123Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:39:20.123Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818173f6be72496f77ec54f"
+  },
+  "name": "Cá mòi xốt cà chua nắp giật 3 Cô Gái hộp 155g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409243/goMart/crquidzlc15mdadtg6oo.png"
+  ],
+  "brand": "3 Cô Gái",
+  "category": [
+    {
+      "$oid": "67bbe7e58c971820b1904732"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "68141f175f540ed814f29234"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 20000,
+  "stock": 5325,
+  "discount": null,
+  "description": "Sản phẩm cá hộp mang đến cho người dùng sự tiện lợi, cùng hương vị đậm đà của nước sốt cà. Cá mòi sốt cà 3 Cô Gái hộp nắp giựt 155g có thể dùng để ăn liền hoặc chế biến thành các món ăn tuỳ ý. Cá hộp 3 cô gái đem đến cho gia đình bạn những món ăn ngon lành và bổ dưỡng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:41:19.635Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:41:19.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681817f56be72496f77ec595"
+  },
+  "name": "Dầu đậu nành Meizan can 2 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409461/goMart/euhgy1ama3p66aaa2m7e.jpg"
+  ],
+  "brand": " Meizan",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70421b9ff057c8713d362"
+    }
+  ],
+  "unit": "Can",
+  "price": 130000,
+  "stock": 524352,
+  "discount": 10,
+  "description": "Dầu đậu nành Meizan can 2 lít cung cấp các dưỡng chất quan trọng như Vitamin A và E từ thiên nhiên, giàu Omega 3, 6 tốt cho hệ tim mạch. Dầu đậu nành của nhãn hiệu dầu ăn Meizan sản xuất theo công nghệ của Châu Âu, đạt chuẩn vệ sinh an toàn thực phẩm.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:44:21.164Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:44:21.164Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681818506be72496f77ec5a7"
+  },
+  "name": "Dầu đậu nành tinh luyện Janbee can 2 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409550/goMart/c62sqbjxitmvv7sp4s0h.jpg"
+  ],
+  "brand": "Janbee",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70421b9ff057c8713d362"
+    }
+  ],
+  "unit": "Can",
+  "price": 150000,
+  "stock": 42545,
+  "discount": 10,
+  "description": "Dầu đậu nành tinh luyện Janbee 2 lít có màu sáng trong và mùi nhẹ, thích hợp để chế biến món ăn như chiên, xào, trộn salad và làm nước sốt. Dầu ăn Janbee là một trong những loại dầu thực vật được sử dụng phổ biến bởi những lợi ích tuyệt vời cho sức khỏe.  ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:45:52.712Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:45:52.712Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681818906be72496f77ec5aa"
+  },
+  "name": "Dầu đậu nành Happi Soya can 2 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409614/goMart/gnoxe2otx5foyhqmrolt.jpg"
+  ],
+  "brand": "Happi Soya ",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70421b9ff057c8713d362"
+    }
+  ],
+  "unit": "Can",
+  "price": 140000,
+  "stock": 332423,
+  "discount": null,
+  "description": "Dầu đậu nành Happi Soya là loại dầu ăn không chỉ chịu được nhiệt độ đun nấu cao (>170 độ C) mà còn chứa Omega-3, 6, 9, vitamin A và E. Dầu đậu nành nguyên chất Happi Soya can 2 lít tinh chế 100% từ hạt đậu nành chọn lọc, tăng cường hệ miễn dịch, cho bạn một trái tim khoẻ mạnh.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:46:56.088Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:46:56.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681818e76be72496f77ec5ad"
+  },
+  "name": "Dầu đậu nành 100% nguyên chất Tường An can 2 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746409705/goMart/mbljthevjlvbpt49hhqj.jpg"
+  ],
+  "brand": "Tường An",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70421b9ff057c8713d362"
+    }
+  ],
+  "unit": "Can",
+  "price": 139000,
+  "stock": 353523,
+  "discount": 10,
+  "description": "Được tinh chế từ các hạt đậu nành tự nhiên chọn lọc. Là sản phẩm dầu đậu nành đầu tiên tại thị trường Việt Nam từ năm 1992, là sự lựa chọn lý tưởng bảo vệ sức khỏe tim mạch và đem đến các món ăn “Thơm ngon tinh tế”. Chai dung tích 2 lít vừa đủ cho gia đình đông người, giúp tiết kiệm hơn. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:48:23.388Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:48:23.388Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181a696be72496f77ec5ce"
+  },
+  "name": "Dầu đậu nành nguyên chất Simply chai 1 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410092/goMart/atnz9aspxtxj00h4xcu2.jpg"
+  ],
+  "brand": "Simply",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70421b9ff057c8713d362"
+    }
+  ],
+  "unit": "Chai",
+  "price": 680000,
+  "stock": 3434,
+  "discount": null,
+  "description": "Dầu đậu nành nguyên chất Simply chai 1 lít chứa tới 80% axit béo chưa bão hoà cùng lượng lớn chất chống oxy hoá giúp làm giảm lượng cholesterol xấu trong máu và cho bạn một trái tim khoẻ mạnh. Dầu ăn Simply là nhãn hiệu dầu ăn duy nhất được Hội Tim Mạch Học Việt Nam khuyên dùng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:54:49.643Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:54:49.643Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181ab16be72496f77ec5d1"
+  },
+  "name": "Nước chấm Đầu Bếp Tôm chai 1,8 lít",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410163/goMart/fcwaj7waxjkdfe2jbumu.jpg"
+  ],
+  "brand": "Nam Ngư",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70430b9ff057c8713d366"
+    }
+  ],
+  "unit": "Chai",
+  "price": 20000,
+  "stock": 9997,
+  "discount": null,
+  "description": "Nước mắm Đầu Bếp Tôm thơm ngon, đậm đà được nhiều chị em nội trợ tin dùng và lựa chọn. Nước chấm Đầu Bếp Tôm chai 1,8 lít mang hương thơm đặc trưng, đậm đà đến khó cưỡng. Quy trình chế biến ra nước mắm an toàn đã được kiểm nghiệm nghiêm ngặt nên bạn có thể yên tâm sử dụng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:56:01.305Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:56:01.305Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181b0a6be72496f77ec5d4"
+  },
+  "name": "Nước tương Chinsu tỏi ớt chai 330ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410247/goMart/xwy9tgrhkmf6su7z3jyx.jpg"
+  ],
+  "brand": "Chinsu",
+  "category": [
+    {
+      "$oid": "67bbe8158c971820b190473a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "67c70446b9ff057c8713d36a"
+    }
+  ],
+  "unit": "Chai",
+  "price": 22000,
+  "stock": 7347823,
+  "discount": null,
+  "description": "Nước tương Chinsu mang đến cho người tiêu dùng loại sản phẩm nước tương pha sẵn chất lượng và an toàn, được đông đảo người tiêu dùng Việt Nam yêu thích. Nước tương Chinsu tỏi ớt chai 330ml kết hợp từ tỏi và ớt tạo nên hương vị thơm ngon đặc trưng khiến bạn không thể bỏ lỡ được.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:57:30.458Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:57:30.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181b7e6be72496f77ec5e6"
+  },
+  "name": "Chả giò da xốp nhân thịt Cầu Tre 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410366/goMart/bkdxu0u6yxdvlbbiajsv.jpg"
+  ],
+  "brand": "Cầu Tre",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420a15f540ed814f29240"
+    }
+  ],
+  "unit": "Bịch",
+  "price": 59000,
+  "stock": 132321,
+  "discount": 10,
+  "description": "Chả giò Cầu Tre là thương hiệu không thể bỏ qua khi nhắc đến chả giò, chả ram chất lượng được chế biến từ những nguyên liệu tươi ngon. Chả giò da xốp nhân thịt Cầu Tre gói 500g mang đến những cuốn chả giò với lớp da giòn xốp cùng với phần nhân thịt tươi ngon, đầy dưỡng chất.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T01:59:26.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T01:59:26.608Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181bbc6be72496f77ec5e9"
+  },
+  "name": "Chả giò da xốp mực Trần Gia gói 300g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410431/goMart/iaocflxvdxfeppzxhcbn.jpg"
+  ],
+  "brand": "Trần Gia",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420a15f540ed814f29240"
+    }
+  ],
+  "unit": "Bịch",
+  "price": 49000,
+  "stock": 1323,
+  "discount": 10,
+  "description": "Chả giò Trần Gia được đóng gói an toàn, cuốn sẵn tiện dụng, chế biến nhanh chóng. Với sản phẩm Chả giò da xốp mực Trần Gia gói 300g người dùng sẽ cảm nhận được vị ngọt từ những nguyên liệu tự nhiên cùng các loại gia vị hòa quyện và lớp vỏ chả giò giòn rụm của bánh đa giúp kích thích vị giác. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:00:28.627Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:00:28.627Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181c026be72496f77ec5ec"
+  },
+  "name": "Chả giò đặc biệt hải sản Cầu Tre 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410501/goMart/mnrnu2uvv2r7huekyegz.jpg"
+  ],
+  "brand": "Cầu Tre",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420a15f540ed814f29240"
+    }
+  ],
+  "unit": "Bịch",
+  "price": 75000,
+  "stock": 46436,
+  "discount": null,
+  "description": "Chả giò Cầu Tre là thương hiệu không thể bỏ qua khi nhắc đến các món chả giò, chả ram chất lượng được chế biến từ những nguyên liệu tươi ngon. Chả giò đặc biệt hải sản Cầu Tre 500g mang đến những cuốn chả giò giòn rụm cùng với phần nhân hải sản tươi ngon, đầy dưỡng chất. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:01:38.772Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:01:38.772Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181c636be72496f77ec5ef"
+  },
+  "name": "Chả lụa bì ớt xiêm xanh G Kitchen cây 450g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410596/goMart/injezolvrjgzyrxpgdlb.jpg"
+  ],
+  "brand": "G Kitchen",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420c65f540ed814f29244"
+    }
+  ],
+  "unit": "Cây",
+  "price": 79000,
+  "stock": 186856,
+  "discount": null,
+  "description": "Chả lụa được chế biến với những nguyên liệu tươi ngon cùng công thức chế biến riêng biệt từ thương hiệu chả lụa G Kitchen. Chả lụa bì ớt xiêm xanh G Kitchen cây 450g là sự hoà quyện giữa mùi thơm nồng, cay nhẹ kích thích vị giác hòa quyện với dai giòn sần sật của bì cắt hạt lựu. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:03:15.295Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:03:15.295Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68181ce36be72496f77ec5f3"
+  },
+  "name": "Chả lụa bì ớt xiêm xanh MEATDeli cây 300g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746410716/goMart/piypydvxdsdpivyyo6ym.jpg"
+  ],
+  "brand": " MEATDeli",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420c65f540ed814f29244"
+    }
+  ],
+  "unit": "Cây",
+  "price": 60000,
+  "stock": 3325325,
+  "discount": 0,
+  "description": "Chả lụa bì ớt xiêm xanh MEATDeli cây 300g thương hiệu chả lụa MEATDeli từ nguồn thịt sạch, ngon chất lượng. Chả lụa món ăn khai vị truyền thống của người Việt, thơm mềm gia vị đậm đà thêm ớt xiêm xanh cay nồng bắt vị ngon.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:05:23.100Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:05:23.100Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681826406be72496f77ec613"
+  },
+  "name": "Cá viên Kitkool gói 500g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413120/goMart/grdo5z5ma5t8hho2bvbm.jpg"
+  ],
+  "brand": "Kitkool",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420e85f540ed814f29248"
+    }
+  ],
+  "unit": "Gói",
+  "price": 45000,
+  "stock": 10000,
+  "discount": 10,
+  "description": "Cá viên Kitkool gói 500g từ thương hiệu bò viên Kitkool cho các sản phẩm cá viên, bò viên chất lượng cao, phù hợp cho đa dạng món ăn khác nhau. Sản phẩm từ cá thật tươi ngon, gia vị nêm nếm đậm đà khó cưỡng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:45:20.918Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:45:20.918Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681826ad6be72496f77ec616"
+  },
+  "name": "Bò viên Hoa Doanh gói 200g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413233/goMart/b4zjk8s3jispe2iqjobl.jpg"
+  ],
+  "brand": "Hoa Doanh",
+  "category": [
+    {
+      "$oid": "67bbe82f8c971820b190473e"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681420e85f540ed814f29248"
+    }
+  ],
+  "unit": "Gói",
+  "price": 39000,
+  "stock": 3434234,
+  "discount": null,
+  "description": "Bò viên đông lạnh Hoa Doanh là sản phẩm cá viên, bò viên thơm ngon từ nguyên liệu tự nhiên tuyệt vời, được bày bán ở rất nhiều các tụ điểm bán hàng, đa dạng sản phẩm. Bò viên  đông lạnh Hoa Doanh 200g làm từ thịt bò tươi ngon tự nhiên, chế biến được nhiều món ăn ấn tượng, ngon hoàn hảo.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:47:09.589Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:47:09.589Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818277e6be72496f77ec628"
+  },
+  "name": "Trứng gà omega Emivest hộp 6 quả",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413430/goMart/cmqpcemwxtwds0egw9lu.jpg"
+  ],
+  "brand": "Emivest",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681421655f540ed814f29254"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 30000,
+  "stock": 532523532,
+  "discount": null,
+  "description": "Trứng tươi ngon",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:50:38.488Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:50:38.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681827f76be72496f77ec642"
+  },
+  "name": "Trứng gà thả vườn Emivest hộp 6",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413557/goMart/vkdtzpdkvjn5mog5gjcw.jpg"
+  ],
+  "brand": "Emivest",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681421655f540ed814f29254"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 32000,
+  "stock": 423432,
+  "discount": null,
+  "description": "Trứng tươi ngon",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:52:39.186Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:52:39.186Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681828616be72496f77ec645"
+  },
+  "name": "Trứng vịt lộn Phương Nam hộp 10 quả",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413656/goMart/pn9wqusq2pantb2kpmba.jpg"
+  ],
+  "brand": "Phương Nam",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814218d5f540ed814f2925c"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 49000,
+  "stock": 5235325,
+  "discount": null,
+  "description": "Trứng vịt lộn hộp 10 quả",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:54:25.549Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:54:25.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681828c16be72496f77ec648"
+  },
+  "name": "Trứng cút lộn Phương Nam hộp 30 quả",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413754/goMart/wyrhoscowpikfzxvuisr.jpg"
+  ],
+  "brand": "Phương Nam",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681421a75f540ed814f29270"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 36000,
+  "stock": 3432432,
+  "discount": null,
+  "description": "Trứng cút lộn hộp 30 quả",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:56:01.003Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:56:01.003Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182923399b6fa32e1852ab"
+  },
+  "name": "Trứng gà thả vườn Emivest hộp 6",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413557/goMart/vkdtzpdkvjn5mog5gjcw.jpg"
+  ],
+  "brand": "Emivest",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681421655f540ed814f29254"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 32000,
+  "stock": 423432,
+  "discount": null,
+  "description": "Trứng tươi ngon",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:52:39.186Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:52:39.186Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182940399b6fa32e1852ac"
+  },
+  "name": "Trứng vịt lộn Phương Nam hộp 10 quả",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413656/goMart/pn9wqusq2pantb2kpmba.jpg"
+  ],
+  "brand": "Phương Nam",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814218d5f540ed814f2925c"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 49000,
+  "stock": 5235325,
+  "discount": null,
+  "description": "Trứng vịt lộn hộp 10 quả",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:54:25.549Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:54:25.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6818294c399b6fa32e1852ad"
+  },
+  "name": "Trứng cút lộn Phương Nam hộp 30 quả",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746413754/goMart/wyrhoscowpikfzxvuisr.jpg"
+  ],
+  "brand": "Phương Nam",
+  "category": [
+    {
+      "$oid": "67bbe8468c971820b1904742"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681421a75f540ed814f29270"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 36000,
+  "stock": 3432432,
+  "discount": null,
+  "description": "Trứng cút lộn hộp 30 quả",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T02:56:01.003Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T02:56:01.003Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681829bf6be72496f77ec694"
+  },
+  "name": "Phấn thơm trẻ em Babi Mild White Sakura 180g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414015/goMart/x45rj0emndv73x2gpgum.jpg"
+  ],
+  "brand": "Babi Mild White Sakura",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814222a5f540ed814f29274"
+    }
+  ],
+  "unit": "Chai",
+  "price": 35000,
+  "stock": 5325235,
+  "discount": 10,
+  "description": "Phấn thơm cho bé Babi Mild với những thành phần an toàn và dịu nhẹ cho làn da mỏng manh của bé. Phấn thơm giúp bé ngừa rôm sẩy, hăm tã, mang hương thơm dễ chịu. Phấn thơm trẻ em Babi Mild White Sakura 180g hương thơm dịu nhẹ suốt cả ngày cho bé yêu",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:00:15.767Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:00:15.767Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681829f16be72496f77ec697"
+  },
+  "name": "Dầu massage cho bé Johnson's 200ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414068/goMart/q8yg07d2stsgqzcnsqen.jpg"
+  ],
+  "brand": "Johnson's",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814222a5f540ed814f29274"
+    }
+  ],
+  "unit": "Chai",
+  "price": 115000,
+  "stock": 3432,
+  "discount": 10,
+  "description": "Dầu dưỡng ẩm, massage với những thành phần an toàn, dịu nhẹ và lành tính cho da của bé, giúp cho da bé yêu luôn ẩm, mịn màng. Dầu massage cho bé Johnson's 200ml chai lớn tiện dùng, sản xuất tại Thái Lan, massage giữ ấm cơ thể bé từ dầu dưỡng ẩm, massage Johnson's",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:01:05.808Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:01:05.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182a3e6be72496f77ec69a"
+  },
+  "name": "Tắm gội Carrie Junior Yoghurt Apricot 700g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414142/goMart/qdip0rbeblyhtbcesvun.jpg"
+  ],
+  "brand": "Carrie Junior ",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814224a5f540ed814f29278"
+    }
+  ],
+  "unit": "Chai",
+  "price": 200000,
+  "stock": 43324,
+  "discount": 10,
+  "description": "Tắm gội cho bé Carrie Junior là thương hiệu sữa tắm nổi tiếng được nhiều người yêu thích. Tắm gội Carrie Junior Yoghurt Apricot 700g giúp cho làn da và tóc bé luôn khoẻ mạnh đồng thời cung cấp Vitamin cho da luôn căng mướt và ẩm mịn. Sữa tắm cho bé được làm từ những thành phần an toàn cho làn da nhạy cảm bé. ",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:02:22.421Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:02:22.421Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182a786be72496f77ec69d"
+  },
+  "name": "Tắm gội cho bé Lactacyd Milky 250ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414200/goMart/bgz4yhycsgenwsed5eqf.jpg"
+  ],
+  "brand": "Lactacyd",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814224a5f540ed814f29278"
+    }
+  ],
+  "unit": "Chai",
+  "price": 100000,
+  "stock": 242314,
+  "discount": 10,
+  "description": "Tắm gội cho bé Lactacyd với hương thơm dịu nhẹ, không làm hại đến làn da mỏng manh của bé. Tắm gội cho bé giúp bé yêu luôn sạch sẽ, thơm tho, dưỡng ẩm, ngừa rôm sẩy. Tắm gội toàn thân cho bé Lactacyd Milky 250ml làm sạch nhẹ nhàng, lan toả hương thơm cả ngày",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:03:20.537Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:03:20.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182aad6be72496f77ec6a0"
+  },
+  "name": "Tắm gội toàn thân cho bé Pigeon hoa hướng dương 700ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414253/goMart/nik1o2jdksht0lwztczc.jpg"
+  ],
+  "brand": "Pigeon",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814224a5f540ed814f29278"
+    }
+  ],
+  "unit": "Chai",
+  "price": 200000,
+  "stock": 434321,
+  "discount": 10,
+  "description": "Tắm gội cho bé Pigeon với hương thơm dịu nhẹ, không làm hại đến làn da mỏng manh của bé. Tắm gội cho bé giúp bé yêu luôn sạch sẽ, thơm tho, dưỡng ẩm, ngừa rôm sẩy. Tắm gội toàn thân cho bé Pigeon hoa hướng dương 700ml hương thơm dịu nhẹ, cho làn da bé ẩm mịn",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:04:13.536Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:04:13.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182af26be72496f77ec6a3"
+  },
+  "name": "Tắm gội toàn thân cho bé Johnson's Baby 500ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414322/goMart/jfwh1ul5vjjkazm6otf3.jpg"
+  ],
+  "brand": "Johnson's Baby",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814224a5f540ed814f29278"
+    }
+  ],
+  "unit": "Chai",
+  "price": 170000,
+  "stock": 14534,
+  "discount": 10,
+  "description": "Johnson's Baby từ lâu đã là thương hiệu dành cho em bé hàng đầu, đặc biệt là các sản phẩm tắm gội cho bé. Cực kỳ an toàn, dịu nhẹ và phù hợp với làn da của bé. Tắm gội toàn thân cho bé Johnson's Baby Top To Toe 500ml không cay mắt cho bé, vòi pump dễ dàng lấy sản phẩm",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:05:22.307Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:05:22.307Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182b426be72496f77ec6a6"
+  },
+  "name": "Kem đánh răng Colgate Kid Free From dành cho trẻ em 6-9 tuổi không hương liệu và chất bảo quản 80g",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414401/goMart/gpkgnpw209ezs5j1mfmb.jpg"
+  ],
+  "brand": "Colgate",
+  "category": [
+    {
+      "$oid": "67bbe8838c971820b1904746"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "6814225e5f540ed814f2927c"
+    }
+  ],
+  "unit": "Hộp",
+  "price": 47000,
+  "stock": 1000,
+  "discount": 10,
+  "description": "Kem đánh răng cho bé Colgate ngừa sâu răng, bảo vệ men răng cho bé tối ưu cho bé 6-9 tuổi. Kem đánh răng cho bé giúp bảo vệ hàm răng bé vượt trội. Kem đánh răng cho bé từ 6 - 9 tuổi Colgate hương dâu bạc hà 80g với huơng bạc hà thơm lừng, kích thích bé chải răng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:06:42.056Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:06:42.056Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182b9d6be72496f77ec6b8"
+  },
+  "name": "Hộp đựng thực phẩm trữ đông nhựa Hokkaido Inochi 290ml",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414492/goMart/njnthfn49x27zqot48zj.jpg"
+  ],
+  "brand": "Hokkaido Inochi",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422a55f540ed814f2928b"
+    }
+  ],
+  "unit": "Cái",
+  "price": 20000,
+  "stock": 2424324,
+  "discount": null,
+  "description": "Hộp đựng thực phẩm Inochi chất lượng, bền và tiện lợi cho người dùng. Hộp đựng thực phẩm trữ đông nhựa Hokkaido Inochi 290ml có đồng hồ ghi nhớ thời gian trữ đông, ion bạc kháng khuẩn, nắp đậy chặt an toàn, khả năngchịu nhiệt tốt. Hộp đựng thực phẩm có thể sử dụng để đựng rau, củ, quả, đồ sống hoặc đồ gia dụng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:08:13.114Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:08:13.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182be86be72496f77ec6bc"
+  },
+  "name": "Hộp dựng hành tỏi Hokkaido vuông Inochi",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414566/goMart/v1n8sx8ucu0yhpqv8xay.jpg"
+  ],
+  "brand": "Hokkaido",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422a55f540ed814f2928b"
+    }
+  ],
+  "unit": "Cái",
+  "price": 20000,
+  "stock": 2347324,
+  "discount": null,
+  "description": "Hộp đựng thực phẩm Inochi chất lượng, bền và vô cùng tiện lợi cho người dùng. Hộp dựng hành tỏi Hokkaido vuông Inochi (giao màu ngẫu nhiên) không chất độc hại, thiết kế lưới ráo nước, an toàn. Hộp đựng thực phẩm có thể sử dụng để đựng rau, củ, quả, đồ sống hoặc đồ gia dụng",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:09:28.073Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:09:28.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182c456be72496f77ec6bf"
+  },
+  "name": "Vỉ 4 viên pin AA Con Ó R6P",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414658/goMart/bghc7kzmtyqw53wwzf7b.jpg"
+  ],
+  "brand": "Con ó",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422b45f540ed814f2928f"
+    }
+  ],
+  "unit": "Vỉ",
+  "price": 16000,
+  "stock": 3432423,
+  "discount": null,
+  "description": "Được sản xuất trên dây chuyền công nghệ hiện đại nên pin Con Ó an toàn, sử dụng tốt. Vỉ 4 viên Pin tiểu AA Con Ó R6P thích hợp dùng cho các thiết bị, pin có thời lượng sử dụng lâu dài, giúp duy trì hoạt động và tuổi thọ của các vật dụng gia đình một cách hiệu quả.\n",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:11:01.170Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:11:01.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182c886be72496f77ec6c2"
+  },
+  "name": "Vỉ 4 viên pin AA Panasonic LR6T/4B-V",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414732/goMart/f0ts6klau2agzurc3qd6.jpg"
+  ],
+  "brand": "Panasonic",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422b45f540ed814f2928f"
+    }
+  ],
+  "unit": "Vỉ",
+  "price": 63000,
+  "stock": 43434,
+  "discount": null,
+  "description": "Pin tiểu Panasonic là loại pin sử dụng bền bỉ, xả pin chậm giúp dùng được lâu hơn, chống rò rỉ. Vỉ 4 viên Pin tiểu AA Panasonic Alkaline AA LR6T/4B-V sử dụng tốt trong nhiều điều kiện nhiệt độ. Pin tiểu có thể sử dụng cho chuột bluetooth, remote tivi, đồ chơi,...",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:12:08.804Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:12:08.804Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182cd16be72496f77ec6c5"
+  },
+  "name": "3 cuộn túi đựng rác màu TBP 64x78cm (1kg)",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414802/goMart/iipi7igs349unld5apd4.jpg"
+  ],
+  "brand": "TABAFACO",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422955f540ed814f29287"
+    }
+  ],
+  "unit": "Túi",
+  "price": 63000,
+  "stock": 2343,
+  "discount": null,
+  "description": "Túi đựng rác TBP là thương hiệu túi đựng rác chất lượng cao của Việt Nam với đa dạng sản phẩm. 3 cuộn túi đựng rác màu TBP 64x78cm (1kg) với chất liệu nhựa PE dày dặn, túi rác 3 màu, dễ phân loại rác, chịu lực khá tốt, thân thiện với môi trường, dễ dàng sử dụng.",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:13:21.618Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:13:21.618Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182d0e6be72496f77ec6c8"
+  },
+  "name": "Chảo chống dính đáy từ Sunhouse Saving SV20MY 20cm",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414865/goMart/t6lypbl8se3wbfwpzkj3.jpg"
+  ],
+  "brand": "Sunhouse",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422ee5f540ed814f2929b"
+    }
+  ],
+  "unit": "Cái",
+  "price": 65000,
+  "stock": 23122,
+  "discount": null,
+  "description": "Chảo chống dính Sunhouse là thương hiệu chảo chống dính nổi tiếng hàng đầu với đa dạng mẫu mã, kích thước. Chảo chống dính đáy từ Sunhouse Saving SV20MY 20cm thiết kế gọn nhẹ, sử dụng được cho hầu hết các loại bếp, dùng lâu bền, an toàn khi chế biến.\n",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:14:22.068Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:14:22.068Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68182d536be72496f77ec6da"
+  },
+  "name": "Dao thái thép không gỉ cán gỗ Tân Bách Phát 501 28cm",
+  "image": [
+    "http://res.cloudinary.com/djzrhnegz/image/upload/v1746414930/goMart/crvf6sktcryhujqqeapw.jpg"
+  ],
+  "brand": "Tân Bách Phát",
+  "category": [
+    {
+      "$oid": "67bbe8a38c971820b190474a"
+    }
+  ],
+  "subCategory": [
+    {
+      "$oid": "681422df5f540ed814f29297"
+    }
+  ],
+  "unit": "Cái",
+  "price": 26000,
+  "stock": 9998,
+  "discount": null,
+  "description": "Với chất liệu lưỡi dao là thép không gỉ cùng cán gỗ chắc chắn, bạn có thể thoải mái dùng dao Tân Bách Phát gọt trái cây, thực phẩm thật dễ dàng. Dao thái thép không gỉ cán gỗ 28cm Tân Bách Phát 501 nhỏ gọn, siêu bền, cực bén",
+  "publish": true,
+  "createdAt": {
+    "$date": "2025-05-05T03:15:31.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T03:15:31.265Z"
+  },
+  "__v": 0
+}]

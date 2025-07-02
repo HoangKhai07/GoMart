@@ -30,7 +30,7 @@ export const initSocket = (server) => {
 
     //handle user conect information
     const connectedUsers = new Map()
-    const userRooms = new Map() // Track which rooms users are in
+    const userRooms = new Map() 
     
     io.on('connection', (socket)=> {
         const userId = socket.userId

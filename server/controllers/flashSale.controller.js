@@ -14,7 +14,6 @@ export const createFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra thời gian bắt đầu phải trước thời gian kết thúc
         if(new Date(startDate) >= new Date(endDate)) {
             return res.status(400).json({
                 message: "Thời gian bắt đầu phải trước thời gian kết thúc!",
@@ -23,7 +22,6 @@ export const createFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra các sản phẩm có tồn tại không
         for(const item of products) {
             const product = await ProductModel.findById(item.product);
             if(!product) {
@@ -34,7 +32,7 @@ export const createFlashSaleController = async (req, res) => {
                 });
             }
             
-            // Kiểm tra giá flash sale không lớn hơn giá gốc
+
             if(item.flashSalePrice >= product.price) {
                 return res.status(400).json({
                     message: `Giá flash sale của sản phẩm ${product.name} phải nhỏ hơn giá gốc!`,
@@ -43,7 +41,7 @@ export const createFlashSaleController = async (req, res) => {
                 });
             }
             
-            // Kiểm tra số lượng flash sale không lớn hơn tồn kho
+     
             if(item.flashSaleStock > product.stock) {
                 return res.status(400).json({
                     message: `Số lượng flash sale của sản phẩm ${product.name} không thể lớn hơn tồn kho!`,
@@ -82,7 +80,6 @@ export const createFlashSaleController = async (req, res) => {
     }
 };
 
-// Lấy danh sách flash sale cho admin
 export const getFlashSalesForAdminController = async (req, res) => {
     try {
         let { page, limit } = req.query;
@@ -124,7 +121,6 @@ export const getFlashSalesForAdminController = async (req, res) => {
     }
 };
 
-// Lấy danh sách flash sale đang diễn ra cho người dùng
 export const getActiveFlashSalesController = async (req, res) => {
     try {
         const currentTime = new Date();
@@ -153,7 +149,7 @@ export const getActiveFlashSalesController = async (req, res) => {
     }
 };
 
-// Lấy chi tiết flash sale
+
 export const getFlashSaleDetailsController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -192,7 +188,7 @@ export const getFlashSaleDetailsController = async (req, res) => {
     }
 };
 
-// Cập nhật flash sale
+
 export const updateFlashSaleController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -216,7 +212,6 @@ export const updateFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra và cập nhật các trường
         if(name) flashSale.name = name;
         if(description !== undefined) flashSale.description = description;
         if(startDate) flashSale.startDate = startDate;
@@ -226,7 +221,6 @@ export const updateFlashSaleController = async (req, res) => {
         if(showOnHomepage !== undefined) flashSale.showOnHomepage = showOnHomepage;
         if(displayOrder !== undefined) flashSale.displayOrder = displayOrder;
         
-        // Kiểm tra thời gian bắt đầu phải trước thời gian kết thúc
         if(new Date(flashSale.startDate) >= new Date(flashSale.endDate)) {
             return res.status(400).json({
                 message: "Thời gian bắt đầu phải trước thời gian kết thúc!",
@@ -235,7 +229,6 @@ export const updateFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra và cập nhật thông tin sản phẩm
         if(products) {
             for(const item of products) {
                 const product = await ProductModel.findById(item.product);
@@ -247,7 +240,6 @@ export const updateFlashSaleController = async (req, res) => {
                     });
                 }
                 
-                // Kiểm tra giá flash sale không lớn hơn giá gốc
                 if(item.flashSalePrice >= product.price) {
                     return res.status(400).json({
                         message: `Giá flash sale của sản phẩm ${product.name} phải nhỏ hơn giá gốc!`,
@@ -256,7 +248,6 @@ export const updateFlashSaleController = async (req, res) => {
                     });
                 }
                 
-                // Kiểm tra số lượng flash sale không lớn hơn tồn kho
                 if(item.flashSaleStock > product.stock) {
                     return res.status(400).json({
                         message: `Số lượng flash sale của sản phẩm ${product.name} không thể lớn hơn tồn kho!`,
@@ -285,7 +276,7 @@ export const updateFlashSaleController = async (req, res) => {
     }
 };
 
-// Xóa flash sale
+
 export const deleteFlashSaleController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -323,7 +314,7 @@ export const deleteFlashSaleController = async (req, res) => {
     }
 };
 
-// Thêm sản phẩm vào flash sale
+
 export const addProductToFlashSaleController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -347,7 +338,6 @@ export const addProductToFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra sản phẩm đã tồn tại trong flash sale chưa
         const existingProduct = flashSale.products.find(p => p.product.toString() === product);
         if(existingProduct) {
             return res.status(400).json({
@@ -357,7 +347,6 @@ export const addProductToFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra sản phẩm có tồn tại trong hệ thống không
         const productInfo = await ProductModel.findById(product);
         if(!productInfo) {
             return res.status(400).json({
@@ -367,7 +356,6 @@ export const addProductToFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra giá flash sale không lớn hơn giá gốc
         if(flashSalePrice >= productInfo.price) {
             return res.status(400).json({
                 message: `Giá flash sale của sản phẩm ${productInfo.name} phải nhỏ hơn giá gốc!`,
@@ -376,7 +364,6 @@ export const addProductToFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra số lượng flash sale không lớn hơn tồn kho
         if(flashSaleStock > productInfo.stock) {
             return res.status(400).json({
                 message: `Số lượng flash sale của sản phẩm ${productInfo.name} không thể lớn hơn tồn kho!`,
@@ -385,7 +372,6 @@ export const addProductToFlashSaleController = async (req, res) => {
             });
         }
         
-        // Thêm sản phẩm vào flash sale
         flashSale.products.push({
             product,
             flashSalePrice,
@@ -412,7 +398,7 @@ export const addProductToFlashSaleController = async (req, res) => {
     }
 };
 
-// Xóa sản phẩm khỏi flash sale
+
 export const removeProductFromFlashSaleController = async (req, res) => {
     try {
         const { id, productId } = req.params;
@@ -435,7 +421,6 @@ export const removeProductFromFlashSaleController = async (req, res) => {
             });
         }
         
-        // Kiểm tra sản phẩm có trong flash sale không
         const productIndex = flashSale.products.findIndex(p => p.product.toString() === productId);
         if(productIndex === -1) {
             return res.status(404).json({
@@ -445,7 +430,6 @@ export const removeProductFromFlashSaleController = async (req, res) => {
             });
         }
         
-        // Xóa sản phẩm khỏi flash sale
         flashSale.products.splice(productIndex, 1);
         
         const updatedFlashSale = await flashSale.save();
